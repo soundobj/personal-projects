@@ -1,4 +1,12 @@
-import { isEmpty, compact, shuffle, isEqual, random } from "lodash";
+import {
+  isEmpty,
+  compact,
+  shuffle,
+  isEqual,
+  random,
+  concat,
+  uniqBy
+} from "lodash";
 
 export const VALID_NUMBERS = [1,2,3,4,5,6,7,8,9]
 
@@ -178,33 +186,61 @@ export const canSetValueInBoard = (
   isEmpty(doesValueExistInColumn(board, value, coordinate.y)) &&
   isEmpty(doesValueExistInSquare(board, value, coordinate));
 
+export const getRow = (
+  board: Cell[][],
+  rowId: number
+): Cell[] => board[rowId]
+
+export const getColumn = (board: Cell[][], columnId: number): Cell[] =>
+  compact(
+    [0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => {
+      return board[i] && board[i][columnId];
+    })
+  ); 
+ 
+export const getSquare = (
+  board: Cell[][],
+  coordinate: Coordinate
+): Cell[] => {
+  const x = getSquareAreaMapping(coordinate.x);
+  const y = getSquareAreaMapping(coordinate.y);
+  const values = [];
+  x.forEach(xCoord => {
+    y.forEach(yCoord => {
+      const cell = board[xCoord] && board[xCoord][yCoord];
+      values.push(cell);
+    });
+  });
+  return compact(values);
+};
+  
 export const getRowValues = (
   board: Cell[][],
   rowId: number
-): number[] => board[rowId].map(cell => cell.solution)
+): number[] => getRow(board, rowId).map(cell => cell.solution)
 
 export const getColumnValues = (board: Cell[][], columnId: number): number[] =>
-  compact(
-    [0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => {
-      const value = board[i] && board[i][columnId];
-      return isEmpty(value) ? undefined : value.solution;
-    })
-  );
+  getColumn(board, columnId).map(cell => isEmpty(cell) ? undefined : cell.solution)
 
 export const getSquareValues = (
   board: Cell[][],
-  coordinate: Coordinate): number[] => {
-    const x = getSquareAreaMapping(coordinate.x);
-    const y = getSquareAreaMapping(coordinate.y);
-    const values = []
-    x.forEach(xCoord => {
-      y.forEach(yCoord => {
-          const cell = board[xCoord] && board[xCoord][yCoord];
-          values.push(cell.solution);
-      })
-    });
-    return compact(values)
-  }
+  coordinate: Coordinate): number[] =>
+  getSquare(board, coordinate).map(cell => cell.solution) 
+
+// every cell in the sudoku board belongs to a row, square and a column. get those related cells
+export const getRelatedCells = (
+  board: Cell[][],
+  coordinate: Coordinate
+): Cell[] =>
+  uniqBy(
+    concat(
+      getRow(board, coordinate.x),
+      getColumn(board, coordinate.y),
+      getSquare(board, coordinate)
+    ),
+    (cell: Cell) => [cell.coordinate.x, cell.coordinate.y].join()
+  );
+
 
 export const isSudokuValid = (board: Cell[][]): boolean => {
   for (let x = 0; x < board.length; x++) {

@@ -212,4 +212,46 @@ describe("sudoku/utils", () => {
       expect(verifyDifficulty).toMatchObject(difficulty)
     })
   })
+  describe('getRelatedCells',() => {
+    const board = [
+      createBoardRow([5,8,3,1,9,6,2,4,7]),
+      createBoardRow([7,2,6,8,3,4,9,5,1],1),
+      createBoardRow([1,4,9,7,2,5,6,3,8],2),
+      createBoardRow([4,5,8,2,7,3,1,9,6],3),
+      createBoardRow([6,9,7,5,1,8,3,2,4],4),
+      createBoardRow([2,3,1,4,6,9,8,7,5],5),
+      createBoardRow([3,1,4,9,8,7,5,6,2],6),
+      createBoardRow([8,6,5,3,4,2,7,1,9],7),
+      createBoardRow([9,7,2,6,5,1,4,8,3],8),
+    ];
+    it('gets the related cells of a given cell by coordinate', () => {
+      const expected = [
+        // row
+        utils.generateCell({x:5, y:0}, 2),
+        utils.generateCell({x:5, y:1}, 3),
+        utils.generateCell({x:5, y:2}, 1),
+        utils.generateCell({x:5, y:3}, 4),
+        utils.generateCell({x:5, y:4}, 6),
+        utils.generateCell({x:5, y:5}, 9),
+        utils.generateCell({x:5, y:6}, 8),
+        utils.generateCell({x:5, y:7}, 7),
+        utils.generateCell({x:5, y:8}, 5),
+        // column minus duplicates
+        utils.generateCell({x:0, y:5}, 6),
+        utils.generateCell({x:1, y:5}, 4),
+        utils.generateCell({x:2, y:5}, 5),
+        utils.generateCell({x:3, y:5}, 3),
+        utils.generateCell({x:4, y:5}, 8),
+        utils.generateCell({x:6, y:5}, 7),
+        utils.generateCell({x:7, y:5}, 2),
+        utils.generateCell({x:8, y:5}, 1),
+        // square minus duplicates
+        utils.generateCell({x:3, y:3}, 2),
+        utils.generateCell({x:3, y:4}, 7),
+        utils.generateCell({x:4, y:3}, 5),
+        utils.generateCell({x:4, y:4}, 1),
+      ]
+      expect(utils.getRelatedCells(board, {x:5, y: 5})).toMatchObject(expected)
+    })
+  })
 });
