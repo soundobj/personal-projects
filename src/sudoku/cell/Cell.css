@@ -1,0 +1,25 @@
+.grid__item {
+  position: relative;
+  width: 100%;
+}
+.grid__item:before {
+  content: "";
+  height: 0;
+  display: inline-block;
+  padding-top: 100%;
+  width: 1px;
+  position: relative;
+}
+.grid__item .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.grid__item .content-inside {
+  margin: 0 auto;
+}

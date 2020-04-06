@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  /* grid: 1fr 1fr / 1fr 1fr; */
+  grid: repeat(9, auto) / repeat(9, auto);
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.grid > div {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+}
+
+.grid > div:nth-last-child(-n+9) {
+  border-bottom: 1px solid #ccc;
+}
+
+.grid > div:nth-child(9n) {
+  border-right: 1px solid #ccc;
+}
