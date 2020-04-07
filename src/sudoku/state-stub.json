@@ -2,6 +2,7 @@
   "mistakes": 0,
   "editMode": "NUMBER",
   "gameLevel": "EASY",
+  "cellsToComplete": 52,
   "game": [
     [
       {

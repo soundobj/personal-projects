@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import { sudokuReducer, initialState, Actions} from './context'
-import { GameLevel, Cell, Coordinate } from './definitions'
+import { GameLevel, Cell, Coordinate, VALID_NUMBERS } from './definitions'
 import BoardCell  from './cell/Cell'
 import * as stateStub from './state-stub.json'
 import './vars.css'
@@ -85,7 +85,7 @@ export default () => {
       )}
       <NewGameModal show={modalShow} onHide={newGameOnHide} />
       <KeyboardEventHandler
-        handleKeys={[..."123456789".split(''), "c", "left", "right", "up", "down"]}
+        handleKeys={[...VALID_NUMBERS, "c", "left", "right", "up", "down"]}
         onKeyEvent={(key: string) =>
           console.log(`do something upon keydown event of ${key}`)
         }
