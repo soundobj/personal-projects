@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-//@ts-ignore
+//@ts-ignore  @TODO: write missing typings for 3rd party dependency
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import { sudokuReducer, initialState, Actions} from './context'
