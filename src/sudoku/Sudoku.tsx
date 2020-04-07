@@ -5,8 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import { sudokuReducer, initialState, Actions} from './context'
-import { GameLevel, Cell, Coordinate, VALID_NUMBERS } from './definitions'
+import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes } from './definitions'
 import BoardCell  from './cell/Cell'
+import Controls from './controls/Controls'
 import * as stateStub from './state-stub.json'
 import './vars.css'
 import './Sudoku.css'
@@ -57,7 +58,9 @@ export default () => {
     }
     setModalShow(false)
   }
-  const setSelectedCell = (coordinate: Coordinate) => dispatch({ type: Actions.SET_SELECTED_CELL, payload: coordinate })
+  const setSelectedCell = (coordinate: Coordinate) => dispatch({ type: Actions.SELECT_CELL, payload: coordinate })
+  const setEditMode = (editMode: MoveTypes) => dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode })
+  const issueNumber = (number: number) => dispatch({ type: Actions.ISSUE_NUMBER, payload: number })
   console.error('@state', state)
 
   const { game } = state
@@ -67,6 +70,11 @@ export default () => {
       <Button variant="primary" onClick={() => setModalShow(true)}>
         New Game
       </Button>
+      <Controls
+        editMode={state.editMode}
+        setEditMode={setEditMode}
+        issueNumber={issueNumber}
+      />
       {state.gameLevel && (
         <div className="grid">
           {game &&
@@ -85,10 +93,24 @@ export default () => {
       )}
       <NewGameModal show={modalShow} onHide={newGameOnHide} />
       <KeyboardEventHandler
-        handleKeys={[...VALID_NUMBERS, "c", "left", "right", "up", "down"]}
-        onKeyEvent={(key: string) =>
-          console.log(`do something upon keydown event of ${key}`)
-        }
+        handleKeys={[
+          ...VALID_NUMBERS.map(String),
+          "c",
+          "left",
+          "right",
+          "up",
+          "down",
+        ]}
+        onKeyEvent={(key: string) => {
+          console.log(`do something upon keydown event of ${key}`);
+          switch (key) {
+            // Toggle between the two only modes casting the opposite boolean that ! yields into it's digit counterpart using +
+            case "c":
+              setEditMode(+!state.editMode);
+            default:
+              break;
+          }
+        }}
       />
     </>
   );

@@ -1,6 +1,6 @@
 {
   "mistakes": 0,
-  "editMode": "NUMBER",
+  "editMode": 1,
   "gameLevel": "EASY",
   "cellsToComplete": 52,
   "game": [

@@ -1,6 +1,10 @@
+// export enum MoveTypes {
+//   CANDIDATE = "CANDIDATE",
+//   NUMBER = "NUMBER"
+// }
 export enum MoveTypes {
-  CANDIDATE = "CANDIDATE",
-  NUMBER = "NUMBER"
+  CANDIDATE,
+  NUMBER
 }
 
 export enum GameLevel {
