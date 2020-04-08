@@ -306,7 +306,7 @@ export const createGame = (board: Cell[][], difficulty: NumberDifficulty): Cell[
 export const navigateBoard = (
   board: Coordinable[][],
   currentPosition: Coordinate,
-  direction: Direction
+  direction: string
 ): Coordinate => {
   const { x, y } = currentPosition;
   if (isEmpty(board[x][y])) {
@@ -314,10 +314,10 @@ export const navigateBoard = (
   }
   switch (direction) {
     case Direction.LEFT: {
-      return !isEmpty(board[x][y + 1]) ?  board[x][y + 1].coordinate : currentPosition; 
+      return !isEmpty(board[x][y - 1]) ?  board[x][y - 1].coordinate : currentPosition; 
     }
     case Direction.RIGHT: {
-      return !isEmpty(board[x][y - 1]) ?  board[x][y - 1].coordinate : currentPosition; 
+      return !isEmpty(board[x][y + 1]) ?  board[x][y + 1].coordinate : currentPosition; 
     }
     case Direction.UP: {
       return !isEmpty(board[x - 1]) && !isEmpty(board[x - 1][y])

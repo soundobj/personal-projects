@@ -35,3 +35,7 @@
 .incorrect {
   color: var(--warning);
 }
+
+.sudoku__cell__selected {
+  border: 3px rgb(2, 97, 2) solid;
+}

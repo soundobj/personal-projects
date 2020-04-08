@@ -278,23 +278,23 @@ describe("sudoku/utils", () => {
     ];
     it('returns the new coordinate in the board if left direction is issued', () => {
       expect(
-        utils.navigateBoard(board, { x: 0, y: 0 }, Direction.LEFT)
-      ).toMatchObject({ x: 0, y: 1 });
+        utils.navigateBoard(board, { x: 0, y: 1 }, Direction.LEFT)
+      ).toMatchObject({ x: 0, y: 0 });
     })
     it('returns the same coordinate in the board if left direction is issued and we have reached the left most side of the board', () => {
       expect(
-        utils.navigateBoard(board, { x: 0, y: 8 }, Direction.LEFT)
-      ).toMatchObject({ x: 0, y: 8 });
+        utils.navigateBoard(board, { x: 0, y: 0 }, Direction.LEFT)
+      ).toMatchObject({ x: 0, y: 0 });
     })
     it('returns the new coordinate in the board if right direction is issued', () => {
       expect(
         utils.navigateBoard(board, { x: 0, y: 4 }, Direction.RIGHT)
-      ).toMatchObject({ x: 0, y: 3 });
+      ).toMatchObject({ x: 0, y: 5 });
     })
     it('returns the same coordinate in the board if right direction is issued and we have reached the right most side of the board', () => {
       expect(
-        utils.navigateBoard(board, { x: 0, y: 0 }, Direction.RIGHT)
-      ).toMatchObject({ x: 0, y: 0 });
+        utils.navigateBoard(board, { x: 0, y: 8 }, Direction.RIGHT)
+      ).toMatchObject({ x: 0, y: 8 });
     })
     it('returns the new coordinate in the board if up direction is issued', () => {
       expect(

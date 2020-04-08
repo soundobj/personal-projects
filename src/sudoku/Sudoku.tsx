@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import { sudokuReducer, initialState, Actions} from './context'
-import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes } from './definitions'
+import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes, Direction } from './definitions'
+import { navigateBoard } from './utils'
 import BoardCell  from './cell/Cell'
 import Controls from './controls/Controls'
 import * as stateStub from './state-stub.json'
@@ -58,12 +59,12 @@ export default () => {
     }
     setModalShow(false)
   }
-  const setSelectedCell = (coordinate: Coordinate) => dispatch({ type: Actions.SELECT_CELL, payload: coordinate })
+  const selectCell = (coordinate: Coordinate) => dispatch({ type: Actions.SELECT_CELL, payload: coordinate })
   const setEditMode = (editMode: MoveTypes) => dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode })
   const issueNumber = (number: number) => dispatch({ type: Actions.ISSUE_NUMBER, payload: number })
   console.error('@state', state)
 
-  const { game } = state
+  const { game, selectedCell, editMode } = state
 
   return (
     <>
@@ -84,7 +85,7 @@ export default () => {
                   <BoardCell
                     {...y}
                     key={`x${indexX}y${indexY}`}
-                    setSelectedCell={setSelectedCell}
+                    selectCell={selectCell}
                   />
                 );
               });
@@ -102,13 +103,20 @@ export default () => {
           "down",
         ]}
         onKeyEvent={(key: string) => {
-          console.log(`do something upon keydown event of ${key}`);
-          switch (key) {
-            // Toggle between the two only modes casting the opposite boolean that ! yields into it's digit counterpart using +
-            case "c":
-              setEditMode(+!state.editMode);
-            default:
-              break;
+          console.error(`do something upon keydown event of ${key}`);
+          // Toggle between the two only modes casting the opposite boolean that ! yields into it's digit counterpart using +
+          if (key === "c") {
+            setEditMode(+!editMode);
+          }
+          const directions: string[] = Object.values(Direction)
+          if (directions.includes(key)) {
+            if (game && selectedCell) {
+              selectCell(navigateBoard(game, selectedCell, key));
+            }
+          }
+          if (VALID_NUMBERS.map(String).includes(key)) {
+            console.error("@handle number enter");
+            issueNumber(parseInt(key, 10))
           }
         }}
       />
