@@ -8,7 +8,7 @@ import {
   uniqBy
 } from "lodash";
 
-import { Cell, Coordinate, NumberDifficulty, GameLevel, VALID_NUMBERS } from './definitions'
+import { Cell, Coordinate, Coordinable, NumberDifficulty, GameLevel, Direction, VALID_NUMBERS } from './definitions'
 
 export const generateCell = (
   coordinate: Coordinate,
@@ -19,11 +19,6 @@ export const generateCell = (
   solution
 });
 
-export const generateCoordinate = (x: number, y: number): Coordinate => ({
-  x,
-  y
-});
-
 export const generateBoard = (): Cell[][] => {
   let board: Cell[][] = [];
   let backtrackingCount = 0;
@@ -31,7 +26,7 @@ export const generateBoard = (): Cell[][] => {
     board.push([]);
     const foundValues = [];
     for (let y = 0; y < 9; y++) {
-      const coordinate = generateCoordinate(x, y);
+      const coordinate = { x, y };
       const value = findValue(board, coordinate, foundValues);
       if (!value) {
         /*
@@ -307,3 +302,34 @@ export const createGame = (board: Cell[][], difficulty: NumberDifficulty): Cell[
   });
   return board
 }
+
+export const navigateBoard = (
+  board: Coordinable[][],
+  currentPosition: Coordinate,
+  direction: Direction
+): Coordinate => {
+  const { x, y } = currentPosition;
+  if (isEmpty(board[x][y])) {
+    return { x: 0, y: 0 };
+  }
+  switch (direction) {
+    case Direction.LEFT: {
+      return !isEmpty(board[x][y + 1]) ?  board[x][y + 1].coordinate : currentPosition; 
+    }
+    case Direction.RIGHT: {
+      return !isEmpty(board[x][y - 1]) ?  board[x][y - 1].coordinate : currentPosition; 
+    }
+    case Direction.UP: {
+      return !isEmpty(board[x - 1]) && !isEmpty(board[x - 1][y])
+        ? board[x - 1][y].coordinate
+        : currentPosition;
+    }
+    case Direction.DOWN: {
+      return !isEmpty(board[x + 1]) && !isEmpty(board[x + 1][y])
+        ? board[x + 1][y].coordinate
+        : currentPosition;
+    }
+    default:
+      return currentPosition;
+  }
+};
