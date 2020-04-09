@@ -6,7 +6,7 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import { sudokuReducer, initialState, Actions} from './context'
 import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes, Direction } from './definitions'
-import { navigateBoard } from './utils'
+import { navigateBoardNextAvailable } from './utils'
 import BoardCell  from './cell/Cell'
 import Controls from './controls/Controls'
 import * as stateStub from './state-stub.json'
@@ -111,7 +111,7 @@ export default () => {
           const directions: string[] = Object.values(Direction)
           if (directions.includes(key)) {
             if (game && selectedCell) {
-              selectCell(navigateBoard(game, selectedCell, key));
+              selectCell(navigateBoardNextAvailable(game, selectedCell, key));
             }
           }
           if (VALID_NUMBERS.map(String).includes(key)) {
