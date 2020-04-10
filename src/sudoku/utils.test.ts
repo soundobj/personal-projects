@@ -438,4 +438,90 @@ describe("sudoku/utils", () => {
       ).toMatchObject({ x: 1, y: 0 });
     })
   })
+  describe.only('nextOverflowAvailable',() => {
+    const board = [
+      createBoardRow([1], 0, { 0: true }),
+      createBoardRow([2], 1, { 0: false }),
+      createBoardRow([3], 2, { 0: false }),
+      createBoardRow([4], 3, { 0: false }),
+      createBoardRow([5], 4, { 0: true }),
+      createBoardRow([6], 5, { 0: true }),
+      createBoardRow([7], 6, { 0: false }),
+      createBoardRow([8], 7, { 0: false }),
+      createBoardRow([9], 8, { 0: true }),
+    ];
+    board[3][0].value = 4
+    it('finds de next free or incorrectly cell in the row in the opposite side if there are not more available in the move direction', () => {
+      const currentPosition = { x: 1, y: 0 };
+      expect(
+        utils.nextOverflowAvailable(board, currentPosition, Direction.UP)
+      ).toMatchObject({ x: 7, y: 0 });
+    })
+    it('recurses towards the a new column if there are not any other available spaces in the current column', () => {
+      const board = [
+        createBoardRow([0, 0], 0, { 0: true, 1: true }),
+        createBoardRow([1, 1], 1, { 0: true, 1: true }),
+        createBoardRow([2, 2], 2, { 0: true, 1: true }),
+        createBoardRow([3, 3], 3, { 0: false, 1: false }),
+        createBoardRow([4, 4], 4, { 0: false, 1: true }),
+        createBoardRow([5, 5], 5, { 0: false, 1: true }),
+        createBoardRow([6, 6], 6, { 0: true, 1: true }),
+        createBoardRow([7, 7], 7, { 0: true, 1: true }),
+        createBoardRow([8, 8], 8, { 0: true, 1: true }),
+      ];
+      const coordinate = { x: 3, y: 1 }
+      expect(
+        utils.nextOverflowAvailable(board, coordinate, Direction.UP)
+      ).toMatchObject({ x: 5, y: 0 });
+    })
+    it('recurses towards the new column far away if there are not any other available spaces in the current column or next column', () => {
+      const board = [
+        createBoardRow([0, 0, 0], 0, { 0: true, 1: true, 2: true }),
+        createBoardRow([1, 1, 1], 1, { 0: true, 1: true, 2: true }),
+        createBoardRow([2, 2, 2], 2, { 0: true, 1: true, 2: true }),
+        createBoardRow([3, 3, 3], 3, { 0: true, 1: true, 2: true }),
+        createBoardRow([4, 4, 4], 4, { 0: true, 1: false, 2: false }),
+        createBoardRow([5, 5, 5], 5, { 0: true, 1: true, 2: false }),
+        createBoardRow([6, 6, 6], 6, { 0: true, 1: true, 2: true }),
+        createBoardRow([7, 7, 7], 7, { 0: true, 1: true, 2: true }),
+        createBoardRow([8, 8, 8], 8, { 0: true, 1: true, 2: true }),
+      ];
+      const coordinate = { x: 4, y: 1 }
+      expect(
+        utils.nextOverflowAvailable(board, coordinate, Direction.UP)
+      ).toMatchObject({ x: 5, y: 2 });
+    })
+    it('returns the same coordinate if the board is completely filled up apart from the current coordinate', () => {
+      const board = [
+        createBoardRow([0, 0, 0], 0, { 0: true, 1: true, 2: true }),
+        createBoardRow([1, 1, 1], 1, { 0: true, 1: true, 2: true }),
+        createBoardRow([2, 2, 2], 2, { 0: true, 1: true, 2: true }),
+        createBoardRow([3, 3, 3], 3, { 0: true, 1: true, 2: true }),
+        createBoardRow([4, 4, 4], 4, { 0: true, 1: false, 2: true }),
+        createBoardRow([5, 5, 5], 5, { 0: true, 1: true, 2: true }),
+        createBoardRow([6, 6, 6], 6, { 0: true, 1: true, 2: true }),
+        createBoardRow([7, 7, 7], 7, { 0: true, 1: true, 2: true }),
+        createBoardRow([8, 8, 8], 8, { 0: true, 1: true, 2: true }),
+      ];
+      const coordinate = { x: 4, y: 1 }
+      expect(
+        utils.nextOverflowAvailable(board, coordinate, Direction.UP)
+      ).toMatchObject({ x: 4, y: 1 });
+    })
+  })
+  describe('filterOutByCoordinate',() => {
+    it('it filters out the items that have the same coordinate supplied', () => {
+      const filterOutCoordinate = {x:0, y:0}
+      const coordinates = [
+        {coordinate: {x:1, y:0}},
+        {coordinate: {x:0, y:2}},
+        {coordinate: filterOutCoordinate}
+      ]
+      const curriedFilter = utils.filterOutByCoordinateNotEqual(filterOutCoordinate)
+      // @ts-ignore
+      expect(coordinates.filter(curriedFilter)).toMatchObject([
+        {coordinate: {x:1, y:0}},
+        {coordinate: {x:0, y:2}}])
+    })
+  })
 });
