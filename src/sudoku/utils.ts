@@ -8,6 +8,7 @@ import {
   uniqBy,
   last,
   curry,
+  cloneDeep,
 } from "lodash";
 
 import { Cell, Coordinate, Coordinable, NumberDifficulty, GameLevel, Direction, VALID_NUMBERS } from './definitions'
@@ -175,7 +176,7 @@ export const canSetValueInBoard = (
 export const getRow = <T extends Coordinable>(
   board: T[][],
   coordinate:  Coordinate | number
-): T[] => board[(typeof coordinate === "number") ? coordinate : coordinate.y]
+): T[] => cloneDeep(board[(typeof coordinate === "number") ? coordinate : coordinate.x])
 
 export const getColumn = <T extends Coordinable>(board: T[][], coordinate: Coordinate | number): T[] => {
   const y = (typeof coordinate === "number") ? coordinate : coordinate.y

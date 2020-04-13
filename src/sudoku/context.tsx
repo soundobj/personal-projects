@@ -26,6 +26,7 @@ export enum Actions {
   SELECT_CELL,
   START_GAME,
   ISSUE_NUMBER,
+  RESOLVE_CELL,
 }
 
 export const initialState: State = {
@@ -91,6 +92,20 @@ export const sudokuReducer = (state: State, action: Action ) => {
         game[x][y].value = action.payload;
       }
       return { ...state, game }
+    }
+    case Actions.RESOLVE_CELL: {
+      console.error('@RESOLVE CELL', process.env.REACT_APP_DEV_MODE, action.payload)
+      if (!process.env.REACT_APP_DEV_MODE) {
+        return 
+      }
+      const coordinate: Coordinate = action.payload
+      const game = state.game
+      //@ts-ignore
+      const {x, y} = state.selectedCell
+      if (game) {
+        game[x][y].value = game[x][y].solution
+      }
+      return { ...state, game}
     }
     default: throw new Error(`Unexpected Sudoku reducer action ${action.type}`);
   }

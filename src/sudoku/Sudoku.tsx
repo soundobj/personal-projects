@@ -6,7 +6,8 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import { sudokuReducer, initialState, Actions} from './context'
 import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes, Direction } from './definitions'
-import { navigateBoardNextAvailable } from './utils'
+// import { navigateBoardNextAvailable as navigateBoard } from './board'
+import { navigateBoardNextAvailableOverflow as navigateBoard } from './board'
 import BoardCell  from './cell/Cell'
 import Controls from './controls/Controls'
 import * as stateStub from './state-stub.json'
@@ -60,6 +61,7 @@ export default () => {
     setModalShow(false)
   }
   const selectCell = (coordinate: Coordinate) => dispatch({ type: Actions.SELECT_CELL, payload: coordinate })
+  const resolveCell = () => dispatch({ type: Actions.RESOLVE_CELL })
   const setEditMode = (editMode: MoveTypes) => dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode })
   const issueNumber = (number: number) => dispatch({ type: Actions.ISSUE_NUMBER, payload: number })
   console.error('@state', state)
@@ -79,8 +81,8 @@ export default () => {
       {state.gameLevel && (
         <div className="grid">
           {game &&
-            game.map((x: Cell[], indexX) => {
-              return x.map((y: Cell, indexY) => {
+            game.map((x: Cell[], indexX: number) => {
+              return x.map((y: Cell, indexY: number) => {
                 return (
                   <BoardCell
                     {...y}
@@ -97,6 +99,7 @@ export default () => {
         handleKeys={[
           ...VALID_NUMBERS.map(String),
           "c",
+          "s",
           "left",
           "right",
           "up",
@@ -108,10 +111,17 @@ export default () => {
           if (key === "c") {
             setEditMode(+!editMode);
           }
+          if (key === "s") {
+            resolveCell();
+          }
           const directions: string[] = Object.values(Direction)
           if (directions.includes(key)) {
             if (game && selectedCell) {
-              selectCell(navigateBoardNextAvailable(game, selectedCell, key));
+              selectCell(navigateBoard(game, selectedCell, key));
+            } else {
+              // if the board is not selected upon navigation shortcut input select the first cell
+              // @TODO select the first cell that is not filled in already.
+              selectCell({ x: 0, y: 0 });
             }
           }
           if (VALID_NUMBERS.map(String).includes(key)) {

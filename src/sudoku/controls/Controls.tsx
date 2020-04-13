@@ -38,6 +38,7 @@ export default (props : Props): JSX.Element => {
         <ButtonGroup>
           {VALID_NUMBERS.map((number: number) => (
             <Button
+              key={`control${number}`}
               onClick={(e: SyntheticEvent) => { 
                 const target = e.target as HTMLElement;
                 target.blur();
