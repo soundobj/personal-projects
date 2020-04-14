@@ -66,7 +66,7 @@ export default () => {
   const issueNumber = (number: number) => dispatch({ type: Actions.ISSUE_NUMBER, payload: number })
   console.error('@state', state)
 
-  const { game, selectedCell, editMode } = state
+  const { game, selectedCell, editMode, cellsToComplete } = state
 
   return (
     <>
@@ -119,7 +119,7 @@ export default () => {
           if (directions.includes(move)) {
             if (game && selectedCell) {
               isValidMoveType(move) &&
-              selectCell(navigateBoard(game, selectedCell, Direction[move]));
+              selectCell(navigateBoard(game, selectedCell, Direction[move], cellsToComplete));
             } else {
               // if the board is not selected upon navigation shortcut input select the first cell
               // @TODO select the first cell that is not filled in already.

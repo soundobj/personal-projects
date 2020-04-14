@@ -215,14 +215,19 @@ export const nextOverFlowAvailable = (
 export const navigateBoardNextAvailableOverflow = (
   board: Cell[][],
   currentPosition: Coordinate,
-  direction: Direction
+  direction: Direction,
+  cellsToComplete?: number
 ): Coordinate => {
-  return (
-    nextOverFlowAvailable(board, currentPosition, direction) ||
-    navigateBoardNextAvailableOverflow(
-      board,
-      getNextAreaCoordinate(currentPosition, direction),
-      direction
-    )
-  );
-}
+  if (cellsToComplete && cellsToComplete > 0) {
+    return (
+      nextOverFlowAvailable(board, currentPosition, direction) ||
+      navigateBoardNextAvailableOverflow(
+        board,
+        getNextAreaCoordinate(currentPosition, direction),
+        direction,
+        cellsToComplete
+      )
+    );
+  }
+  return currentPosition;
+};

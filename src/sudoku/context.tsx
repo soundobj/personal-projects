@@ -84,28 +84,38 @@ export const sudokuReducer = (state: State, action: Action ) => {
     case Actions.ISSUE_NUMBER: {
       console.error('@ISSUE_NUMBER', action.payload)
       const { game, selectedCell } = state
+      let cellsToComplete = state.cellsToComplete
       if (!selectedCell) {
         return state
       }
       const { x, y } = selectedCell
       if (game) {
-        game[x][y].value = action.payload;
+        const cell = game[x][y]
+        cell.value = action.payload;
+        if (action.payload === cell.solution) {
+          cellsToComplete--
+        }
       }
-      return { ...state, game }
+      return { ...state, game, cellsToComplete }
     }
     case Actions.RESOLVE_CELL: {
       console.error('@RESOLVE CELL', process.env.REACT_APP_DEV_MODE, action.payload)
       if (!process.env.REACT_APP_DEV_MODE) {
         return 
       }
-      const coordinate: Coordinate = action.payload
+      // const coordinate: Coordinate = action.payload
       const game = state.game
+      let cellsToComplete = state.cellsToComplete
       //@ts-ignore
-      const {x, y} = state.selectedCell
+      const {x, y} = state.selectedCell  
       if (game) {
-        game[x][y].value = game[x][y].solution
+        const cell = game[x][y]
+        if (cell.value !== cell.solution) {
+          cellsToComplete--
+        }
+        cell.value = cell.solution 
       }
-      return { ...state, game}
+      return { ...state, game, cellsToComplete}
     }
     default: throw new Error(`Unexpected Sudoku reducer action ${action.type}`);
   }
