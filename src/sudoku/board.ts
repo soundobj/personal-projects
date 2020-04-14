@@ -2,6 +2,13 @@ import { isEmpty, isEqual, curryRight } from "lodash";
 import { Cell, Coordinate, Coordinable, Direction } from "./definitions";
 import { getRow, getColumn } from './utils'
 
+export const isValidMoveType = (value: string): value is keyof typeof Direction => {
+  return value in Direction;
+}
+
+/*
+  navigates the board one cell at a time stopping at edges of the board
+*/
 export const navigateBoard = (
   board: Coordinable[][],
   currentPosition: Coordinate,
@@ -37,16 +44,13 @@ export const findNextByCriteria = <T extends Cell>(
   list: T[],
   startCoordinate: Coordinate,
   includeStartIndex: boolean = false,
-  criteria: (element: T) => boolean
+  criteriaHandler: (element: T) => boolean
 ): Coordinate | undefined => {
   const coordinateIndex = list.findIndex(curryRight(filterByCoordinate)(startCoordinate))
   const start = includeStartIndex ? coordinateIndex : coordinateIndex + 1
-  // console.error('@args', includeStartIndex, start)
   for (let index = start; index < list.length; index++) {
     const element = list[index];
-    // console.error('@index el', index, element)
-    if (criteria(element)) {
-      // console.error('@found', element.coordinate)
+    if (criteriaHandler(element)) {
       return element.coordinate;
     }
   }
@@ -94,6 +98,9 @@ export const nextUpAvailable = <T extends Cell>(
   return findNextSudokuAvailableCell(list, currentPosition, includeStartIndex)
 };
 
+/*
+  navigates the board, skipping any correct cells, stopping at the edges of the board
+*/
 export const navigateBoardNextAvailable = (
   board: Cell[][],
   currentPosition: Coordinate,
@@ -144,10 +151,18 @@ export const getBoardDimensions = (board: Cell[][]): Coordinate => {
   return coordinate
 }
 
-const getNextUpColumnCoordinate = (c: Coordinate): Coordinate => c.y === 0 ? { x: 8, y: 8 } : { x: 9, y: c.y - 1 };
-const getNextDownColumnCoordinate = (c: Coordinate): Coordinate => c.y === 8 ? { x: 0, y: 0 } : { x: -1, y: c.y + 1 };
-const getNextLeftRowCoordinate = (c: Coordinate): Coordinate => c.x === 0 ? { x: 8, y: 8 } : { x: c.x - 1, y: 9 };
-const getNextRightRowCoordinate = (c: Coordinate): Coordinate => c.x === 8 ? { x: 0, y: 0 } : { x: c.x + 1, y: -1 };
+/* 
+  returns the next row or column coordinate in a LEFT DOWN clockwise direction and RIGHT UP anti clockwise direction 
+  it wraps around if at the edges of the board creating a wrapping loop
+*/
+export const getNextAreaCoordinate = (c: Coordinate, direction: Direction): Coordinate => {
+  switch (direction) {
+    case Direction.UP: return c.y === 0 ? { x: 8, y: 8 } : { x: 9, y: c.y - 1 }
+    case Direction.DOWN: return c.y === 8 ? { x: 0, y: 0 } : { x: -1, y: c.y + 1 }
+    case Direction.LEFT: return c.x === 0 ? { x: 8, y: 8 } : { x: c.x - 1, y: 9 }
+    case Direction.RIGHT: return c.x === 8 ? { x: 0, y: 0 } : { x: c.x + 1, y: -1 }
+  }
+}
  
 export const getCellByCoordinate = (coordinate: Coordinate, board: Cell[][]): Cell => {
   const {x, y} = coordinate
@@ -180,98 +195,34 @@ export const nextOverFlowAvailable = (
   currentPosition: Coordinate,
   direction: Direction 
 ): Coordinate | undefined => {
-  // console.error('@current pos', currentPosition)
   const nextHandler = getNextPositionDirectionHandler(direction)
   const nextUp = nextHandler(board, currentPosition)
   if (!isEqual(nextUp, currentPosition) && cellIsAvailable(getCellByCoordinate(nextUp, board))) {
     return nextUp
   }
   const oppositeCoordinateInList = getOppositeCoordinateInList(currentPosition, direction)
-  // console.error('@ocil', oppositeCoordinateInList)
   const nextUpFromOpposite = nextHandler(board, oppositeCoordinateInList, true)
-  // console.error('@nufp', nextUpFromOpposite)
   if (!isEqual(nextUpFromOpposite, currentPosition) && cellIsAvailable(getCellByCoordinate(nextUpFromOpposite, board))) {
     return nextUpFromOpposite
   }
 };
 
 /*
-  overflow navigation features:
+  Overflow navigation features:
   - selecting the opposite end of the row / column when the user uses the keyboard navigation control in the direction where there are not available cells to move
   - selecting the next row / column with available cells when the user uses the keyboard navigation control in the direction where there are not available cells to move and there is a single available cell in the column / row which is the one currently selected
 */
 export const navigateBoardNextAvailableOverflow = (
   board: Cell[][],
   currentPosition: Coordinate,
-  direction: string
+  direction: Direction
 ): Coordinate => {
-  switch (direction) {
-    // case Direction.UP: {
-    //   const newPosition = nextOverFlowAvailable(board, currentPosition, direction)
-    //   if (newPosition) {
-    //     return newPosition
-    //   }
-    //   return navigateBoardNextAvailableOverflow(
-    //     board,
-    //     getNextUpColumnCoordinate(currentPosition),
-    //     direction
-    //   );
-    // }
-    case Direction.UP:
-      return (
-        nextOverFlowAvailable(board, currentPosition, direction) ||
-        navigateBoardNextAvailableOverflow(
-          board,
-          getNextUpColumnCoordinate(currentPosition),
-          direction
-        )
-      );
-    case Direction.DOWN: {
-      const newPosition = nextOverFlowAvailable(
-        board,
-        currentPosition,
-        direction
-      );
-      if (newPosition) {
-        return newPosition;
-      }
-      return navigateBoardNextAvailableOverflow(
-        board,
-        getNextDownColumnCoordinate(currentPosition),
-        direction
-      );
-    }
-    case Direction.LEFT: {
-      const newPosition = nextOverFlowAvailable(
-        board,
-        currentPosition,
-        direction
-      );
-      if (newPosition) {
-        return newPosition;
-      }
-      return navigateBoardNextAvailableOverflow(
-        board,
-        getNextLeftRowCoordinate(currentPosition),
-        direction
-      );
-    }
-    case Direction.RIGHT: {
-      const newPosition = nextOverFlowAvailable(
-        board,
-        currentPosition,
-        direction
-      );
-      if (newPosition) {
-        return newPosition;
-      }
-      return navigateBoardNextAvailableOverflow(
-        board,
-        getNextRightRowCoordinate(currentPosition),
-        direction
-      );
-    }
-    default:
-      return currentPosition;
-  }
-};
+  return (
+    nextOverFlowAvailable(board, currentPosition, direction) ||
+    navigateBoardNextAvailableOverflow(
+      board,
+      getNextAreaCoordinate(currentPosition, direction),
+      direction
+    )
+  );
+}

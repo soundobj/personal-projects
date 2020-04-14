@@ -4,10 +4,10 @@ export enum MoveTypes {
 }
 
 export enum Direction {
-  UP = "up",
-  LEFT = "left",
-  DOWN = "down",
-  RIGHT = "right" 
+  UP = "UP",
+  LEFT = "LEFT",
+  DOWN = "DOWN",
+  RIGHT = "RIGHT" 
 }
 
 export enum GameLevel {

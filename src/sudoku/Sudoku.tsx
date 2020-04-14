@@ -7,7 +7,7 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { sudokuReducer, initialState, Actions} from './context'
 import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes, Direction } from './definitions'
 // import { navigateBoardNextAvailable as navigateBoard } from './board'
-import { navigateBoardNextAvailableOverflow as navigateBoard } from './board'
+import { navigateBoardNextAvailableOverflow as navigateBoard, isValidMoveType } from './board'
 import BoardCell  from './cell/Cell'
 import Controls from './controls/Controls'
 import * as stateStub from './state-stub.json'
@@ -115,9 +115,11 @@ export default () => {
             resolveCell();
           }
           const directions: string[] = Object.values(Direction)
-          if (directions.includes(key)) {
+          const move = key.toUpperCase()
+          if (directions.includes(move)) {
             if (game && selectedCell) {
-              selectCell(navigateBoard(game, selectedCell, key));
+              isValidMoveType(move) &&
+              selectCell(navigateBoard(game, selectedCell, Direction[move]));
             } else {
               // if the board is not selected upon navigation shortcut input select the first cell
               // @TODO select the first cell that is not filled in already.
