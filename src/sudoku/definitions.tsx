@@ -40,6 +40,8 @@ export interface Cell extends Coordinable {
   solution: number;
   selected?: true;
   candidates?: CandidateMap
+  conflicting?: true;
+  related?: true;
 }
 
 export interface Move {

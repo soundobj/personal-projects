@@ -36,6 +36,11 @@
   color: var(--warning);
 }
 
-.sudoku__cell__selected {
+/* @TODO: use var for border padding so it can be reused for offseting the padding of the content when the border is toggled */
+.sudoku__cell--selected {
   border: 3px rgb(2, 97, 2) solid;
+}
+
+.sudoku__cell--conflicting {
+  background: var(--warning);
 }
