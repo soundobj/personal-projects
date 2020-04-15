@@ -10,7 +10,7 @@ interface State {
   moves?: Move[] 
   editMode: MoveTypes
   selectedCell?: Coordinate
-  game?: Cell[][]
+  game: Cell[][]
   cellsToComplete: number
   conflictingCells: Coordinate[]
   relatedCells: Coordinate[]
@@ -38,6 +38,7 @@ export const initialState: State = {
   cellsToComplete: BOARD_SIZE,
   conflictingCells: [],
   relatedCells: [],
+  game: [[]],
 }
 
 export const sudokuReducer = (state: State, action: Action ) => {
@@ -71,13 +72,11 @@ export const sudokuReducer = (state: State, action: Action ) => {
       }
       const { x: newX, y: newY } = selectedCell;
       const game = state.game
-      if (game) {
-        if (currentSelectedCell) {
-          const { x: currentX, y: currentY } = currentSelectedCell;
-          delete game[currentX][currentY].selected
-        }
-        game[newX][newY].selected = true
+      if (currentSelectedCell) {
+        const { x: currentX, y: currentY } = currentSelectedCell;
+        delete game[currentX][currentY].selected
       }
+      game[newX][newY].selected = true
       return { ...state, selectedCell, game }
     }
     case Actions.SET_EDIT_MODE: {
@@ -99,13 +98,11 @@ export const sudokuReducer = (state: State, action: Action ) => {
       let cellsToComplete = state.cellsToComplete
       //@ts-ignore
       const {x, y} = state.selectedCell  
-      if (game) {
-        const cell = game[x][y]
-        if (cell.value !== cell.solution) {
-          cellsToComplete--
-        }
-        cell.value = cell.solution 
+      const cell = game[x][y]
+      if (cell.value !== cell.solution) {
+        cellsToComplete--
       }
+      cell.value = cell.solution 
       return { ...state, game, cellsToComplete}
     }
     default: throw new Error(`Unexpected Sudoku reducer action ${action.type}`);
@@ -120,12 +117,10 @@ export const setCellValue = (state: State, number: number) => {
   }
   let cellsToComplete = state.cellsToComplete
   const { x, y } = selectedCell
-  if (game) {
-    const cell = game[x][y]
-    cell.value = number;
-    if (number === cell.solution) {
-      cellsToComplete--
-    }
+  const cell = game[x][y]
+  cell.value = number;
+  if (number === cell.solution) {
+    cellsToComplete--
   }
   return { ...state, game, cellsToComplete }
 }
@@ -138,25 +133,23 @@ export const setCellCandidate = (state: State, number: number) => {
   }
   const { x, y } = selectedCell
   let candidateConflicts: Coordinate[] = []
-  if (game) {
-    // Clear any conflicting cells from the board
-    conflictingCells && conflictingCells.forEach((c: Coordinate) => {
-      delete game[c.x][c.y].conflicting
+  // Clear any conflicting cells from the board
+  conflictingCells && conflictingCells.forEach((c: Coordinate) => {
+    delete game[c.x][c.y].conflicting
+  })
+  candidateConflicts = getConflicts(number, selectedCell, game)
+  if (candidateConflicts.length) {
+    console.error('@GET CONFLICTS found', candidateConflicts)
+    candidateConflicts.forEach((c: Coordinate) => {
+      game[c.x][c.y].conflicting = true 
     })
-    candidateConflicts = getConflicts(number, selectedCell, game)
-    if (candidateConflicts.length) {
-      console.error('@GET CONFLICTS found', candidateConflicts)
-      candidateConflicts.forEach((c: Coordinate) => {
-        game[c.x][c.y].conflicting = true 
-      })
-    } else {
-      const cell = game[x][y];
-      if (cell && !cell.candidates) {
-        cell.candidates = {};
-        cell.candidates[number] = true;
-      } else if (cell && cell.candidates) {
-        cell.candidates[number] = !cell.candidates[number];
-      }
+  } else {
+    const cell = game[x][y];
+    if (cell && !cell.candidates) {
+      cell.candidates = {};
+      cell.candidates[number] = true;
+    } else if (cell && cell.candidates) {
+      cell.candidates[number] = !cell.candidates[number];
     }
   }
   return { ...state, game, conflictingCells: candidateConflicts }
