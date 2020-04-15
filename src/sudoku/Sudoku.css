@@ -4,7 +4,6 @@
 
 .grid {
   display: grid;
-  /* grid: 1fr 1fr / 1fr 1fr; */
   grid: repeat(9, auto) / repeat(9, auto);
   max-width: 500px;
   margin: 0 auto;
@@ -16,10 +15,37 @@
   border-left: 1px solid #ccc;
 }
 
+/* outer bottom black line row */
 .grid > div:nth-last-child(-n+9) {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid black;
 }
 
+/* outer top black line row */
+.grid > div:nth-child(-n+9) {
+  border-top: 1px solid black;
+}
+
+/* 1st inner row */
+.grid > div:nth-child(n+19):nth-child(-n+27) {
+  border-bottom: 1px solid black;
+}
+
+/* 1cnd inner row */
+.grid > div:nth-child(n+46):nth-child(-n+54) {
+  border-bottom: 1px solid black;
+}
+
+/* two inner columns */
+.grid > div:nth-child(3n) {
+  border-right: 1px solid black;
+}
+
+/* outer right black line column */
 .grid > div:nth-child(9n) {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid black;
+}
+
+/* outer left black line column */
+.grid > div:nth-child(9n-8) {
+  border-left: 1px solid black;
 }
