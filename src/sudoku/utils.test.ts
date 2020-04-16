@@ -291,21 +291,36 @@ describe("sudoku/utils", () => {
       expect(utils.doesValueConflictWithRowValues(board, 3, 0)).toBe(undefined)
     })
   })
-  describe.only('getRedundantCandidates',() => {
+  describe('getRedundantCandidates',() => {
+    const board = [
+      createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
+      createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
+      createBoardRow([6, 7, 8], 2, { 0: false, 1: false, 2: false }),
+    ];
     it('finds the coordinates of the related cells that have candidates conflicting with then newly correctly entered value', () => {
-      const board = [
-        createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
-        createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
-        createBoardRow([6, 7, 8], 2, { 0: false, 1: false, 2: false }),
-      ];
       board[0][0].candidates = {
-        3: true,
-        5: true,
-        7: true
+        3: { selected:false, entered: true },
+        5: { selected:false, entered: true },
+        7: { selected:false, entered: true },
       }
       board[1][0].value = 3;
-      const res = utils.getRedundantCandidates(board[1][0], board)
-      console.error('@res', res)
+      expect(utils.getRedundantCandidates(board[1][0], board)).toMatchObject([{x:0, y:0}])
+    })  
+    it('returns empty Coordinate array if it cannot find any related cells that have candidates conflicting with then newly correctly entered value', () => {
+      board[0][0].candidates = {
+        5: { selected:false, entered: true },
+        7: { selected:false, entered: true },
+      }
+      board[1][0].value = 3;
+      expect(utils.getRedundantCandidates(board[1][0], board)).toMatchObject([])
+    })
+    it('returns empty Coordinate array if it cannot find any related cells that have candidates conflicting, ignoring wrong enterd cells', () => {
+      board[0][0].candidates = {
+        5: { selected:false, entered: true },
+        7: { selected:false, entered: true },
+      }
+      board[1][0].value = 5;
+      expect(utils.getRedundantCandidates(board[1][0], board)).toMatchObject([])
     })
   })
  });

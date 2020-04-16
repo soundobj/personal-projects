@@ -290,7 +290,7 @@ export const getRelatedCells = (
 
   export const getRedundantCandidates = (cell: Cell, board: Cell[][]): Coordinate[] | undefined => {
     return pipe(
-      filter((c: Cell) => c.candidates !== undefined && cell.solution in c.candidates),
+      filter((c: Cell) => c.candidates !== undefined && cell.value === cell.solution && cell.solution in c.candidates),
       map('coordinate')
     )(getRelatedCells(board, cell.coordinate))
   }
