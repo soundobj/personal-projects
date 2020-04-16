@@ -31,7 +31,10 @@ export interface Coordinable {
 }
 
 export interface CandidateMap {
-  [key: number]: boolean
+  [key: number]: {
+    entered: boolean,
+    selected: boolean
+  }
 }
 
 export interface Cell extends Coordinable {

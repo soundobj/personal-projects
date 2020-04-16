@@ -164,7 +164,7 @@ export const getNextAreaCoordinate = (c: Coordinate, direction: Direction): Coor
   }
 }
  
-export const getCellByCoordinate = (coordinate: Coordinate, board: Cell[][]): Cell => {
+export const getCell = (coordinate: Coordinate, board: Cell[][]): Cell => {
   const {x, y} = coordinate
   return board[x][y]
 }
@@ -197,12 +197,12 @@ export const nextOverFlowAvailable = (
 ): Coordinate | undefined => {
   const nextHandler = getNextPositionDirectionHandler(direction)
   const nextUp = nextHandler(board, currentPosition)
-  if (!isEqual(nextUp, currentPosition) && cellIsAvailable(getCellByCoordinate(nextUp, board))) {
+  if (!isEqual(nextUp, currentPosition) && cellIsAvailable(getCell(nextUp, board))) {
     return nextUp
   }
   const oppositeCoordinateInList = getOppositeCoordinateInList(currentPosition, direction)
   const nextUpFromOpposite = nextHandler(board, oppositeCoordinateInList, true)
-  if (!isEqual(nextUpFromOpposite, currentPosition) && cellIsAvailable(getCellByCoordinate(nextUpFromOpposite, board))) {
+  if (!isEqual(nextUpFromOpposite, currentPosition) && cellIsAvailable(getCell(nextUpFromOpposite, board))) {
     return nextUpFromOpposite
   }
 };
