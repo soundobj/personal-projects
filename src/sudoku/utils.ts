@@ -288,6 +288,12 @@ export const getRelatedCells = (
     (cell: Coordinable) => [cell.coordinate.x, cell.coordinate.y].join()
   );
 
+export const getRelatedCellsCoordinates = (
+  coordinate: Coordinate,
+  board: Cell[][]
+): Coordinate[] =>
+  map("coordinate", getRelatedCells(board, coordinate) || []);
+
 export const getRedundantCandidates = (
   cell: Cell,
   board: Cell[][]

@@ -44,3 +44,7 @@
 .sudoku__cell--conflicting {
   background: var(--warning);
 }
+
+.sudoku__cell--related {
+  background-color: antiquewhite;
+}

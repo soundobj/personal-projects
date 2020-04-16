@@ -1,11 +1,11 @@
 import { cloneDeep } from 'lodash'
-import { removeConflictingCandidates } from './reducer'
+import * as reducer from './reducer'
 import { Cell } from './definitions'
 import * as utilsTest from './utils.test'
 import * as utils from './utils'
 
 describe('sudoku/reducer',() => {
-  describe.only('removeConflictingCandidates', () => {
+  describe('removeConflictingCandidates', () => {
     const board = [
       utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
       utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
@@ -34,7 +34,187 @@ describe('sudoku/reducer',() => {
         3: { selected:false, entered: true },
         7: { selected:false, entered: true },
       }
-      expect(removeConflictingCandidates(board, cell)).toStrictEqual(expected)
+      expect(reducer.removeConflictingCandidates(board, cell)).toStrictEqual(expected)
+      getRedundantCandidatesMock.mockRestore();
+    })
+  })
+  describe('removeUnrelatedCells',() => {
+    it('clears out any old related cells that do not match the current related cells', () => {
+      const board = [
+        utilsTest.createBoardRow([5,8,3,1,9,6,2,4,7],0),
+        utilsTest.createBoardRow([7,2,6,8,3,4,9,5,1],1),
+        utilsTest.createBoardRow([1,4,9,7,2,5,6,3,8],2),
+        utilsTest.createBoardRow([4,5,8,2,7,3,1,9,6],3),
+        utilsTest.createBoardRow([6,9,7,5,1,8,3,2,4],4),
+        utilsTest.createBoardRow([2,3,1,4,6,9,8,7,5],5),
+        utilsTest.createBoardRow([3,1,4,9,8,7,5,6,2],6),
+        utilsTest.createBoardRow([8,6,5,3,4,2,7,1,9],7),
+        utilsTest.createBoardRow([9,7,2,6,5,1,4,8,3],8),
+      ];
+      const newRelatedCells = [
+        {x: 0, y: 0},
+        {x: 0, y: 1},
+        {x: 0, y: 2},
+        {x: 0, y: 3},
+        {x: 0, y: 4},
+        {x: 0, y: 5},
+      ]
+      const existingRelatedCells = [
+        {x: 0, y: 0},
+        {x: 0, y: 1},
+        {x: 0, y: 4},
+        {x: 0, y: 5},
+        {x: 1, y: 5},
+        {x: 2, y: 5},
+      ]
+      board[0][0].related = true
+      board[0][1].related = true
+      board[0][4].related = true
+      board[0][5].related = true
+      board[1][5].related = true
+      board[2][5].related = true
+
+      const expected = cloneDeep(board)
+      expected[0][0].related = true
+      expected[0][1].related = true
+      expected[0][4].related = true
+      expected[0][5].related = true
+      // delete the difference between existing and new
+      delete expected[1][5].related
+      delete expected[2][5].related
+
+      expect(reducer.removeUnrelatedCells(board, newRelatedCells, existingRelatedCells)).toStrictEqual(expected)
+    })
+  })
+  describe('setRelatedCells',() => {
+    it('clears out any old related cells that do not match the current related cells', () => {
+      const board = [
+        utilsTest.createBoardRow([5,8,3,1,9,6,2,4,7],0),
+        utilsTest.createBoardRow([7,2,6,8,3,4,9,5,1],1),
+        utilsTest.createBoardRow([1,4,9,7,2,5,6,3,8],2),
+        utilsTest.createBoardRow([4,5,8,2,7,3,1,9,6],3),
+        utilsTest.createBoardRow([6,9,7,5,1,8,3,2,4],4),
+        utilsTest.createBoardRow([2,3,1,4,6,9,8,7,5],5),
+        utilsTest.createBoardRow([3,1,4,9,8,7,5,6,2],6),
+        utilsTest.createBoardRow([8,6,5,3,4,2,7,1,9],7),
+        utilsTest.createBoardRow([9,7,2,6,5,1,4,8,3],8),
+      ];
+      const newRelatedCells = [
+        {x: 0, y: 0},
+        {x: 0, y: 1},
+        {x: 0, y: 2},
+        {x: 0, y: 3},
+        {x: 0, y: 4},
+        {x: 0, y: 5},
+      ]
+      const existingRelatedCells = [
+        {x: 0, y: 0},
+        {x: 0, y: 1},
+        {x: 0, y: 4},
+        {x: 0, y: 5},
+        {x: 1, y: 5},
+        {x: 2, y: 5},
+      ]
+      board[0][0].related = true
+      board[0][1].related = true
+      board[0][4].related = true
+      board[0][5].related = true
+      board[1][5].related = true
+      board[2][5].related = true
+
+      const expected = cloneDeep(board)
+      // add the two missing related cells from the new List
+      expected[0][2].related = true
+      expected[0][3].related = true
+
+      expect(reducer.setRelatedCells(board, newRelatedCells, existingRelatedCells)).toStrictEqual(expected)
+    })
+    
+    it('set the newRelated cells only as there is not difference between existing cells', () => {
+      const board = [
+        utilsTest.createBoardRow([5,8,3,1,9,6,2,4,7],0),
+        utilsTest.createBoardRow([7,2,6,8,3,4,9,5,1],1),
+        utilsTest.createBoardRow([1,4,9,7,2,5,6,3,8],2),
+        utilsTest.createBoardRow([4,5,8,2,7,3,1,9,6],3),
+        utilsTest.createBoardRow([6,9,7,5,1,8,3,2,4],4),
+        utilsTest.createBoardRow([2,3,1,4,6,9,8,7,5],5),
+        utilsTest.createBoardRow([3,1,4,9,8,7,5,6,2],6),
+        utilsTest.createBoardRow([8,6,5,3,4,2,7,1,9],7),
+        utilsTest.createBoardRow([9,7,2,6,5,1,4,8,3],8),
+      ];
+      const newRelatedCells = [
+        {x: 0, y: 0},
+        {x: 0, y: 1},
+        {x: 0, y: 2},
+        {x: 0, y: 3},
+        {x: 0, y: 4},
+        {x: 0, y: 5},
+      ]
+
+      const expected = cloneDeep(board)
+      expected[0][0].related = true
+      expected[0][1].related = true
+      expected[0][2].related = true
+      expected[0][3].related = true
+      expected[0][4].related = true
+      expected[0][5].related = true
+
+      expect(reducer.setRelatedCells(board, newRelatedCells, [])).toStrictEqual(expected)
+    })
+  })
+  describe.only('manageSelectedCellRelatedCells',() => {
+    const board = [
+      utilsTest.createBoardRow([5,8,3,1,9,6,2,4,7],0),
+      utilsTest.createBoardRow([7,2,6,8,3,4,9,5,1],1),
+      utilsTest.createBoardRow([1,4,9,7,2,5,6,3,8],2),
+      utilsTest.createBoardRow([4,5,8,2,7,3,1,9,6],3),
+      utilsTest.createBoardRow([6,9,7,5,1,8,3,2,4],4),
+      utilsTest.createBoardRow([2,3,1,4,6,9,8,7,5],5),
+      utilsTest.createBoardRow([3,1,4,9,8,7,5,6,2],6),
+      utilsTest.createBoardRow([8,6,5,3,4,2,7,1,9],7),
+      utilsTest.createBoardRow([9,7,2,6,5,1,4,8,3],8),
+    ];
+
+    it('updates the game and the selectedCellRelatedCells', () => {
+      const newRelatedCells = [
+        {x: 0, y: 0},
+        {x: 0, y: 1},
+        {x: 0, y: 2},
+        {x: 0, y: 3},
+        {x: 0, y: 4},
+        {x: 0, y: 5},
+      ]
+      const existingRelatedCells = [
+        {x: 0, y: 0},
+        {x: 0, y: 1},
+        {x: 0, y: 4},
+        {x: 0, y: 5},
+        {x: 1, y: 5},
+        {x: 2, y: 5},
+      ]
+      board[0][0].related = true
+      board[0][1].related = true
+      board[0][4].related = true
+      board[0][5].related = true
+      board[1][5].related = true
+      board[2][5].related = true
+
+      const state = {
+        game: board,
+        selectedCellRelatedCells: existingRelatedCells,
+        selectedCell: {x: 0, y: 0}
+      } as any as reducer.State
+
+      // const expected = cloneDeep(state)
+      const getRelatedCellsCoordinatesMock = jest.spyOn(utils, "getRelatedCellsCoordinates")
+      const setRelatedCellsMock = jest.spyOn(reducer, "setRelatedCells")
+      const removeUnrelatedCellsMock = jest.spyOn(reducer, "removeUnrelatedCells")
+      //@TODO spy on method calls setRelatedCellsMock removeUnrelatedCellsMock
+      getRelatedCellsCoordinatesMock.mockImplementationOnce(() => newRelatedCells)
+      expect(reducer.manageSelectedCellRelatedCells(state).selectedCellRelatedCells).toStrictEqual(newRelatedCells)
+      getRelatedCellsCoordinatesMock.mockRestore()
+      setRelatedCellsMock.mockRestore()
+      removeUnrelatedCellsMock.mockRestore()
     })
   })
 })
