@@ -8,8 +8,12 @@ import {
   uniqBy,
   last,
   curry,
+  find,
+  head,
   cloneDeep,
 } from "lodash";
+
+import { pipe, prop, map, filter } from 'lodash/fp'
 
 import { Cell, Coordinate, Coordinable, NumberDifficulty, GameLevel, Direction, VALID_NUMBERS } from './definitions'
 
@@ -284,7 +288,13 @@ export const getRelatedCells = (
     (cell: Coordinable) => [cell.coordinate.x, cell.coordinate.y].join()
   );
 
-
+  export const getRedundantCandidates = (cell: Cell, board: Cell[][]): Coordinate[] | undefined => {
+    return pipe(
+      filter((c: Cell) => c.candidates !== undefined && cell.solution in c.candidates),
+      map('coordinate')
+    )(getRelatedCells(board, cell.coordinate))
+  }
+  
 export const isSudokuValid = (board: Cell[][]): boolean => {
   for (let x = 0; x < board.length; x++) {
     if (!isEqual(getRowValues(board,x).sort(),VALID_NUMBERS)) {
@@ -352,6 +362,7 @@ export const createGameCoordinates = (): Coordinate[] => {
     return coordinates
 }
 
+//@TODO make pure as difficulty is passed as a ref
 export const createGame = (board: Cell[][], difficulty: NumberDifficulty): Cell[][] => {
   shuffle(createGameCoordinates()).forEach(coordinate => {
       const cell = board[coordinate.x][coordinate.y]
