@@ -288,12 +288,19 @@ export const getRelatedCells = (
     (cell: Coordinable) => [cell.coordinate.x, cell.coordinate.y].join()
   );
 
-  export const getRedundantCandidates = (cell: Cell, board: Cell[][]): Coordinate[] | undefined => {
-    return pipe(
-      filter((c: Cell) => c.candidates !== undefined && cell.value === cell.solution && cell.solution in c.candidates),
-      map('coordinate')
-    )(getRelatedCells(board, cell.coordinate))
-  }
+export const getRedundantCandidates = (
+  cell: Cell,
+  board: Cell[][]
+): Coordinate[] | undefined =>
+  pipe(
+    filter(
+      (c: Cell) =>
+        c.candidates !== undefined &&
+        cell.value === cell.solution &&
+        cell.solution in c.candidates
+    ),
+    map("coordinate")
+  )(getRelatedCells(board, cell.coordinate));
   
 export const isSudokuValid = (board: Cell[][]): boolean => {
   for (let x = 0; x < board.length; x++) {

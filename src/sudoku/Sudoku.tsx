@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //@ts-ignore  @TODO: write missing typings for 3rd party dependency
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
-import { sudokuReducer, initialState, Actions} from './context'
+import { sudokuReducer, initialState, Actions} from './reducer'
 import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes, Direction } from './definitions'
 // import { navigateBoardNextAvailable as navigateBoard } from './board'
 import { navigateBoardNextAvailableOverflow as navigateBoard, isValidMoveType } from './board'
