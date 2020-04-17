@@ -175,46 +175,46 @@ describe('sudoku/reducer',() => {
       utilsTest.createBoardRow([9,7,2,6,5,1,4,8,3],8),
     ];
 
-    it('updates the game and the selectedCellRelatedCells', () => {
-      const newRelatedCells = [
-        {x: 0, y: 0},
-        {x: 0, y: 1},
-        {x: 0, y: 2},
-        {x: 0, y: 3},
-        {x: 0, y: 4},
-        {x: 0, y: 5},
-      ]
-      const existingRelatedCells = [
-        {x: 0, y: 0},
-        {x: 0, y: 1},
-        {x: 0, y: 4},
-        {x: 0, y: 5},
-        {x: 1, y: 5},
-        {x: 2, y: 5},
-      ]
-      board[0][0].related = true
-      board[0][1].related = true
-      board[0][4].related = true
-      board[0][5].related = true
-      board[1][5].related = true
-      board[2][5].related = true
+    // it('updates the game and the selectedCellRelatedCells', () => {
+    //   const newRelatedCells = [
+    //     {x: 0, y: 0},
+    //     {x: 0, y: 1},
+    //     {x: 0, y: 2},
+    //     {x: 0, y: 3},
+    //     {x: 0, y: 4},
+    //     {x: 0, y: 5},
+    //   ]
+    //   const existingRelatedCells = [
+    //     {x: 0, y: 0},
+    //     {x: 0, y: 1},
+    //     {x: 0, y: 4},
+    //     {x: 0, y: 5},
+    //     {x: 1, y: 5},
+    //     {x: 2, y: 5},
+    //   ]
+    //   board[0][0].related = true
+    //   board[0][1].related = true
+    //   board[0][4].related = true
+    //   board[0][5].related = true
+    //   board[1][5].related = true
+    //   board[2][5].related = true
 
-      const state = {
-        game: board,
-        selectedCellRelatedCells: existingRelatedCells,
-        selectedCell: {x: 0, y: 0}
-      } as any as reducer.State
+    //   const state = {
+    //     game: board,
+    //     selectedCellRelatedCells: existingRelatedCells,
+    //     selectedCell: {x: 0, y: 0}
+    //   } as any as reducer.State
 
-      // const expected = cloneDeep(state)
-      const getRelatedCellsCoordinatesMock = jest.spyOn(utils, "getRelatedCellsCoordinates")
-      const setRelatedCellsMock = jest.spyOn(reducer, "setRelatedCells")
-      const removeUnrelatedCellsMock = jest.spyOn(reducer, "removeUnrelatedCells")
-      //@TODO spy on method calls setRelatedCellsMock removeUnrelatedCellsMock
-      getRelatedCellsCoordinatesMock.mockImplementationOnce(() => newRelatedCells)
-      expect(reducer.manageSelectedCellRelatedCells(state).selectedCellRelatedCells).toStrictEqual(newRelatedCells)
-      getRelatedCellsCoordinatesMock.mockRestore()
-      setRelatedCellsMock.mockRestore()
-      removeUnrelatedCellsMock.mockRestore()
-    })
+      // // const expected = cloneDeep(state)
+      // const getRelatedCellsCoordinatesMock = jest.spyOn(utils, "getRelatedCellsCoordinates")
+      // const setRelatedCellsMock = jest.spyOn(reducer, "setRelatedCells")
+      // const removeUnrelatedCellsMock = jest.spyOn(reducer, "removeUnrelatedCells")
+      // //@TODO spy on method calls setRelatedCellsMock removeUnrelatedCellsMock
+      // getRelatedCellsCoordinatesMock.mockImplementationOnce(() => newRelatedCells)
+      // expect(reducer.manageSelectedCellRelatedCells(state).selectedCellRelatedCells).toStrictEqual(newRelatedCells)
+      // getRelatedCellsCoordinatesMock.mockRestore()
+      // setRelatedCellsMock.mockRestore()
+      // removeUnrelatedCellsMock.mockRestore()
+    // })
   })
 })

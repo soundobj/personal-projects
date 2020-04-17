@@ -42,7 +42,7 @@
 }
 
 .sudoku__cell--conflicting {
-  background: var(--warning);
+  color: var(--warning);
 }
 
 .sudoku__cell--related {

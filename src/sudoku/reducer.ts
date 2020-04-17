@@ -11,7 +11,7 @@ export interface State {
   timeEllapsed?: string
   moves?: Move[] 
   editMode: MoveTypes
-  selectedCell?: Coordinate
+  selectedCell: Coordinate
   game: Cell[][]
   cellsToComplete: number
   conflictingCells: Coordinate[]
@@ -36,14 +36,14 @@ export enum Actions {
 export const initialState: State = {
   mistakes: 0,
   editMode: MoveTypes.NUMBER,
-  selectedCell: undefined,
+  selectedCell: {x: -1, y: -1}, // outside of the board
   cellsToComplete: BOARD_SIZE,
   conflictingCells: [],
   selectedCellRelatedCells: [],
   game: [[]],
 }
 
-export const sudokuReducer = (state: State, action: Action ) => {
+export const sudokuReducer = (state: State, action: Action) => {
   switch (action.type) {
     case Actions.RECORD_MISTAKE: {
       console.error('@RECORD_MISTAKE', state.mistakes)
@@ -67,11 +67,13 @@ export const sudokuReducer = (state: State, action: Action ) => {
     }
     case Actions.SELECT_CELL: {      
       console.error('@SELECT_CELL', action.payload)
-      const { selectedCell:currentSelectedCell, game, conflictingCells } = state
+      const { selectedCell:currentSelectedCell, conflictingCells, selectedCellRelatedCells } = state
+      let { game } = state
       const selectedCell: Coordinate = action.payload
       if (isEqual(currentSelectedCell, selectedCell)) {
         return state;
       }
+
       clearConflictingCells(game, conflictingCells)
       const { x: newX, y: newY } = selectedCell;
       if (currentSelectedCell) {
@@ -79,8 +81,8 @@ export const sudokuReducer = (state: State, action: Action ) => {
         delete game[currentX][currentY].selected
       }
       game[newX][newY].selected = true
-      const stateRelated = manageSelectedCellRelatedCells(state)
-      return { ...stateRelated, selectedCell, game }
+      const {game:newGame, selectedCellRelatedCells:newSelectedCellRelatedCells } = manageSelectedCellRelatedCells(game, selectedCell, selectedCellRelatedCells)
+      return { ...state, selectedCell, game: newGame, selectedCellRelatedCells:newSelectedCellRelatedCells }
     }
     case Actions.SET_EDIT_MODE: {
       console.error('@SET_EDIT_MODE', action.payload)
@@ -115,9 +117,9 @@ export const sudokuReducer = (state: State, action: Action ) => {
 export const setCellValue = (state: State, number: number) => {
   console.error('@ISSUE_NUMBER', number)
   let { game, selectedCell } = state
-  if (!selectedCell) {
-    return state
-  }
+  // if (!selectedCell) {
+  //   return state
+  // }
   let cellsToComplete = state.cellsToComplete
   const { x, y } = selectedCell
   const cell = game[x][y]
@@ -139,19 +141,23 @@ export const removeConflictingCandidates = (board: Cell[][], cell: Cell): Cell[]
   return b
 }
 
-export const manageSelectedCellRelatedCells = (state: State): State => {
-  console.error('@manageSelectedCellRelatedCells', )
-  const { selectedCell, selectedCellRelatedCells} = state
-  let { game } = state
-  if (!selectedCell) {
-    return state
-  }
-  const newRelatedCells = getRelatedCellsCoordinates(selectedCell, game)
-  console.error('@nrc', newRelatedCells)
-  game = setRelatedCells(game, newRelatedCells, selectedCellRelatedCells || [])
-  game = removeUnrelatedCells(game, newRelatedCells, selectedCellRelatedCells)
-  return {...state, game, selectedCellRelatedCells:newRelatedCells }
-}
+export const manageSelectedCellRelatedCells = (
+  game: Cell[][],
+  newSelectedCell: Coordinate,
+  selectedCellRelatedCells: Coordinate[]
+): { game: Cell[][]; selectedCellRelatedCells: Coordinate[] } => {
+  console.error("@manageSelectedCellRelatedCells");
+  // const { selectedCell, selectedCellRelatedCells} = state
+  // let { game } = state
+  // if (!selectedCell) {
+  //   return state
+  // }
+  const newRelatedCells = getRelatedCellsCoordinates(newSelectedCell, game);
+  console.error("@nrc", newRelatedCells);
+  game = setRelatedCells(game, newRelatedCells, selectedCellRelatedCells || []);
+  game = removeUnrelatedCells(game, newRelatedCells, selectedCellRelatedCells);
+  return { game, selectedCellRelatedCells: newRelatedCells };
+};
 
 export const setRelatedCells = (
   board: Cell[][],
@@ -216,6 +222,12 @@ export const clearConflictingCells = (
   conflictingCells.forEach((c: Coordinate) => {
     delete game[c.x][c.y].conflicting;
   });
+
+export const clearConflictingCellsState = (state: State, action: Action): State => {
+  const { game, conflictingCells } = state
+  clearConflictingCells(game, conflictingCells)
+  return { ...state, game }
+}
 
 // @TODO: remove impurity
 export const getCandidateConflictingCells = (candidate: number, coordinate: Coordinate, game: Cell[][]): Coordinate[] => {
