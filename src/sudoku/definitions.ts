@@ -53,6 +53,10 @@ export interface Move {
   type: MoveTypes
 }
 
-export interface NumberDifficulty {
-  [key: number]: {count: number}
+export interface NumberMap {
+  [key: number]: {
+    count: number,
+    coordinates: Coordinate[],
+    candidates: Coordinate[]
+  }
 }
