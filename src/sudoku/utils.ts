@@ -291,8 +291,10 @@ export const getRelatedCells = (
 export const getRelatedCellsCoordinates = (
   coordinate: Coordinate,
   board: Cell[][]
-): Coordinate[] =>
-  map("coordinate", getRelatedCells(board, coordinate) || []);
+): Coordinate[] => {
+  // console.error('@getRelatedCellsCoordinates', coordinate)
+ return map("coordinate", getRelatedCells(board, coordinate) || []);
+}
 
 export const getRedundantCandidates = (
   cell: Cell,

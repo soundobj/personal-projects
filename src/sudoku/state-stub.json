@@ -670,5 +670,7 @@
         "solution": 6
       }
     ]
-  ]
+  ],
+  "selectedCellRelatedCells": [],
+  "conflictingCells": []
 }

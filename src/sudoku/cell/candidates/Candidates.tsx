@@ -13,7 +13,7 @@ export default (props: Props): JSX.Element => {
   return (
     <ul className={`sudoku__cell__candidates ${selected && 'sudoku__cell__candidates--selected'} `}>
       {VALID_NUMBERS.map((number) => (
-        <li className="sudoku__cell__candidates__candidate">
+        <li key ={`candidate${number}`}className="sudoku__cell__candidates__candidate">
           {candidates[number] !== undefined && candidates[number].entered && number}
         </li>
       ))}

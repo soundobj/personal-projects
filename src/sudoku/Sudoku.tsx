@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, useCallback } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 //@ts-ignore  @TODO: write missing typings for 3rd party dependency
@@ -61,6 +61,12 @@ export default () => {
     setModalShow(false)
   }
   const selectCell = (coordinate: Coordinate) => dispatch({ type: Actions.SELECT_CELL, payload: coordinate })
+
+  const callBack = useCallback((coordinate: Coordinate) => {
+  console.error('@enter Callback', coordinate)
+   return selectCell(coordinate)
+  }, [])
+
   const resolveCell = () => dispatch({ type: Actions.RESOLVE_CELL })
   const setEditMode = (editMode: MoveTypes) => dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode })
   const issueNumber = (number: number) => dispatch({ type: Actions.ISSUE_NUMBER, payload: number })
@@ -83,11 +89,13 @@ export default () => {
           {game &&
             game.map((x: Cell[], indexX: number) => {
               return x.map((y: Cell, indexY: number) => {
+                // y.coordinate.x === 0 && y.coordinate.y === 0 && console.error('@y', y)
                 return (
                   <BoardCell
                     {...y}
                     key={`x${indexX}y${indexY}`}
-                    selectCell={selectCell}
+                    selectCell={callBack}
+                    // selectCell={selectCell}
                   />
                 );
               });
@@ -106,7 +114,7 @@ export default () => {
           "down",
         ]}
         onKeyEvent={(key: string) => {
-          console.error(`do something upon keydown event of ${key}`);
+          // console.error(`do something upon keydown event of ${key}`);
           // Toggle between the two only modes casting the opposite boolean that ! yields into it's digit counterpart using +
           if (key === "c") {
             setEditMode(+!editMode);
@@ -127,7 +135,6 @@ export default () => {
             }
           }
           if (VALID_NUMBERS.map(String).includes(key)) {
-            console.error("@handle number enter");
             issueNumber(parseInt(key, 10))
           }
         }}
