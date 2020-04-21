@@ -41,7 +41,7 @@ export interface State {
   numberMap: NumberMap 
 }
 
-interface Action {
+export interface Action {
   type: Actions,
   payload?: any
 }
@@ -108,6 +108,22 @@ export const sudokuReducer = (state: State, action: Action) => {
     default: throw new Error(`Unexpected Sudoku reducer action ${action.type}`);
   }
 };
+
+export const addNumberToNumberMap = (state: State, number: number) => produce(state, (draft: State) => {
+  // const num
+})
+
+export const removeNumberFromNumberMap = (state: State) => produce(state, (draft: State) => {
+
+})
+
+export const addCandidateToNumberMap = (state: State) => produce(state, (draft: State) => {
+
+})
+
+export const removeCandidateFromNumberMap = (state: State) => produce(state, (draft: State) => {
+
+})
 
 export const startGame = (state: State, level: GameLevel) => produce(state, (draft: State) => {
   const board = generateBoard()
@@ -191,16 +207,17 @@ export const setRelatedCells = (state: State, newRelatedCells: Coordinate[]) =>
 
 export const removeUnrelatedCells = (
   state: State,
-  newRelatedCells: Coordinate[],
-) => produce(state, (draft: State) => {
-  const { selectedCellRelatedCells, game } = draft
-  const differentCells = differenceWith(
-    selectedCellRelatedCells,
-    newRelatedCells,
-    isEqual
-  );
-  differentCells.forEach((c: Coordinate) => delete game[c.x][c.y].related);
-});
+  newRelatedCells: Coordinate[]
+) =>
+  produce(state, (draft: State) => {
+    const { selectedCellRelatedCells, game } = draft;
+    const differentCells = differenceWith(
+      selectedCellRelatedCells,
+      newRelatedCells,
+      isEqual
+    );
+    differentCells.forEach((c: Coordinate) => delete game[c.x][c.y].related);
+  });
 
 export const setCellCandidate = (state: State, number: number) => {
   const { selectedCell, game } = state
