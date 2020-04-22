@@ -239,14 +239,14 @@ describe('sudoku/reducer',() => {
       const state = {
         numberMap,
       } as reducer.State;
-      const expected = reducer.removeCandidateToNumberMap(state, 3, selectedCell)
+      const expected = reducer.removeCandidateFromNumberMap(state, 3, selectedCell)
       // mutations after effect
       state.numberMap[3].candidates = []
       expect(expected).toStrictEqual(state)
     })
   })
   describe('setSameNumberAsSelectedCells',() => {
-    it('sets sameAsSelected to true to all associated cells seen in the board by number or coordinate', () => {
+    it('sets sameAsSelected to true to all associated cells seen in the board by number or candidate', () => {
       const game = [
         utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: true, 2: false }),
         utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
@@ -284,4 +284,46 @@ describe('sudoku/reducer',() => {
       expect(newState).toStrictEqual(expected)
     })
   })
+  describe('removeSameNumberAsSelectedCells',() => {
+    it('removes sameAsSelected prop from cells seen in the board', () => {
+      const game = [
+        utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: true, 2: false }),
+        utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([6, 7, 8], 2, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([5, 6, 1], 3, { 0: false, 1: false, 2: true }),
+        utilsTest.createBoardRow([8, 9, 6], 3, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([4, 9, 7], 3, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([1, 9, 4], 3, { 0: false, 1: false, 2: false }),
+      ];
+      const selectedCell = { x: 3, y: 2 }
+      const action: reducer.Action = {
+        type: reducer.Actions.SELECT_CELL,
+        payload: selectedCell
+      }
+      game[6][0].candidates = {
+        1: { selected:false, entered: true },
+      }
+      const numberMap: NumberMap = {
+        1: {
+          count: 2,
+          coordinates: [{x:0, y:1}, selectedCell],
+          candidates: [{x:6, y:0}]
+        }
+      }
+      const state = {
+        selectedCell,
+        game,
+        numberMap
+      } as reducer.State
+      const newState = cloneDeep(state)
+      newState.game[0][1].sameAsSelected = { type: MoveTypes.NUMBER }
+      newState.game[6][0].sameAsSelected = { type: MoveTypes.CANDIDATE,  candidate: 1}
+      const expected = reducer.clearSameNumberAsSelectedCells(state)
+      // mutations after effect
+      delete newState.game[0][1].sameAsSelected
+      delete newState.game[6][0].sameAsSelected
+      expect(newState).toStrictEqual(expected)
+    })
+  })
+
 })

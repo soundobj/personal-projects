@@ -86,11 +86,11 @@ export const sudokuReducer = (state: State, action: Action) => {
         return state;
       }
       return pipe(
-        // clearSameNumberAsSelectedCells,
+        clearSameNumberAsSelectedCells,
         clearConflictingCells,
         curryRight(setNewSelectedCell)(action),
         curryRight(setSelectedCellRelatedCells)(action),
-        // curryRight(setSameNumberAsSelectedCells(action)),
+        curryRight(setSameNumberAsSelectedCells)(action),
       )(state)
     }
     case Actions.SET_EDIT_MODE: {
@@ -114,8 +114,8 @@ export const sudokuReducer = (state: State, action: Action) => {
 
 const setGameCellSameAsSelected = (
   c: Coordinate,
-  type: MoveTypes,
   game: Cell[][],
+  type: MoveTypes,
   number: number
 ) => {
   // console.error('@setGameCellSameAsSelected c', c,)
@@ -126,6 +126,15 @@ const setGameCellSameAsSelected = (
     type === MoveTypes.NUMBER
       ? { type: MoveTypes.NUMBER }
       : { type: MoveTypes.CANDIDATE, candidate: number };
+};
+
+const removeGameCellSameAsSelected = (
+  c: Coordinate,
+  game: Cell[][],
+) => {
+  // console.error('@setGameCellSameAsSelected c', c,)
+  // console.error('@setGameCellSameAsSelected game', game)
+  delete game[c.x][c.y].sameAsSelected
 };
 
 const applyToListMinusCoordinate = (
@@ -148,7 +157,25 @@ export const setSameNumberAsSelectedCells = (state: State, action:Action) => pro
     applyToListMinusCoordinate(
       numberMap[cell.solution][getMoveTypePropertyMap(move)],
       newCellToSelect,
-      curryRight(setGameCellSameAsSelected)(move, game, cell.solution)
+      curryRight(setGameCellSameAsSelected)(game, move, cell.solution)
+    );
+  });
+})
+
+export const clearSameNumberAsSelectedCells = (state: State) => produce(state, (draft: State) => {
+  const { game, numberMap, selectedCell } = draft
+  if (!selectedCell) {
+    return
+  }
+  const cell = getCell(selectedCell, game)
+  if (cellIsAvailable(cell)) {
+    return
+  }
+  getEnumValues(MoveTypes).forEach((move: number) => {
+    applyToListMinusCoordinate(
+      numberMap[cell.solution][getMoveTypePropertyMap(move)],
+      selectedCell,
+      curryRight(removeGameCellSameAsSelected)(game)
     );
   });
 })
@@ -213,7 +240,7 @@ export const addCandidateToNumberMap = (
   coordinate: Coordinate
 ) => addNumberToNumberMap(state, number, coordinate, MoveTypes.CANDIDATE);
 
-export const removeCandidateToNumberMap = (
+export const removeCandidateFromNumberMap = (
   state: State,
   number: number,
   coordinate: Coordinate
@@ -241,7 +268,7 @@ export const resolveCell = (state: State) => produce(state, (draft: State) => {
 export const setCellValue = (state: State, number: number) => {
   return pipe(
     curryRight(updateValueAndCellsToCompleteCount)(number),
-    curryRight(removeConflictingCandidates)(number)
+    curryRight(removeConflictingCandidates)(number),
   )(state);
 };
 

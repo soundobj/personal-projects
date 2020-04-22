@@ -63,7 +63,7 @@ export default () => {
   const selectCell = (coordinate: Coordinate) => dispatch({ type: Actions.SELECT_CELL, payload: coordinate })
 
   const callBack = useCallback((coordinate: Coordinate) => {
-  console.error('@enter Callback', coordinate)
+  // console.error('@enter Callback', coordinate)
    return selectCell(coordinate)
   }, [])
 
