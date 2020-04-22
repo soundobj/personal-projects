@@ -13,6 +13,6 @@
 
 .sudoku__cell__candidates__candidate {
   padding: 3px;
-  color: green;
+  color: var(--completed);
   font-weight: bold;
 }

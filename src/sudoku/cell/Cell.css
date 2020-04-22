@@ -38,11 +38,15 @@
 
 /* @TODO: use var for border padding so it can be reused for offseting the padding of the content when the border is toggled */
 .sudoku__cell--selected {
-  border: 3px rgb(2, 97, 2) solid;
+  border: 3px var(--ok) solid;
 }
 
 .sudoku__cell--conflicting {
   color: var(--warning);
+}
+
+.sudoku__cell--same-as-selected {
+  color: var(--ok);
 }
 
 .sudoku__cell--related {

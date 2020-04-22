@@ -247,7 +247,7 @@ describe('sudoku/boar',() => {
       ).toMatchObject({ x: 4, y: 1 });
     })
   })
-  describe('filterOutByCoordinate',() => {
+  describe('filterOutCellByCoordinate',() => {
     it('it filters out the items that have the same coordinate supplied', () => {
       const filterOutCoordinate = {x:0, y:0}
       const coordinates = [
@@ -255,7 +255,7 @@ describe('sudoku/boar',() => {
         {coordinate: {x:0, y:2}},
         {coordinate: filterOutCoordinate}
       ]
-      const curriedFilter = utils.filterOutCoordinate(filterOutCoordinate)
+      const curriedFilter = utils.filterOutCellByCoordinate(filterOutCoordinate)
       // @ts-ignore
       expect(coordinates.filter(curriedFilter)).toMatchObject([
         {coordinate: {x:1, y:0}},

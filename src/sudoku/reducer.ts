@@ -1,4 +1,4 @@
-import { shuffle, isEqual, isEmpty, differenceWith, curryRight } from 'lodash'
+import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry } from 'lodash'
 import { pipe } from 'lodash/fp'
 import memoize from 'fast-memoize'
 import produce from 'immer'
@@ -24,8 +24,9 @@ import {
   getConflicts,
   getRedundantCandidates,
   getRelatedCellsCoordinates,
+  getEnumValues,
 } from "./utils";
-import { getCell } from './board'
+import { getCell, filterOutCoordinate, cellIsAvailable } from './board'
 
 export interface State {
   gameLevel?: GameLevel
@@ -85,9 +86,11 @@ export const sudokuReducer = (state: State, action: Action) => {
         return state;
       }
       return pipe(
+        // clearSameNumberAsSelectedCells,
         clearConflictingCells,
         curryRight(setNewSelectedCell)(action),
-        curryRight(manageSelectedCellRelatedCells)(action),
+        curryRight(setSelectedCellRelatedCells)(action),
+        // curryRight(setSameNumberAsSelectedCells(action)),
       )(state)
     }
     case Actions.SET_EDIT_MODE: {
@@ -109,21 +112,112 @@ export const sudokuReducer = (state: State, action: Action) => {
   }
 };
 
-export const addNumberToNumberMap = (state: State, number: number) => produce(state, (draft: State) => {
-  // const num
+const setGameCellSameAsSelected = (
+  c: Coordinate,
+  type: MoveTypes,
+  game: Cell[][],
+  number: number
+) => {
+  // console.error('@setGameCellSameAsSelected c', c,)
+  // console.error('@setGameCellSameAsSelected type', type)
+  // console.error('@setGameCellSameAsSelected number', number)
+  // console.error('@setGameCellSameAsSelected game', game)
+  game[c.x][c.y].sameAsSelected =
+    type === MoveTypes.NUMBER
+      ? { type: MoveTypes.NUMBER }
+      : { type: MoveTypes.CANDIDATE, candidate: number };
+};
+
+const applyToListMinusCoordinate = (
+  list: Coordinate[],
+  c: Coordinate,
+  handler: (c: Coordinate) => void
+) =>
+  list
+    .filter(curry(filterOutCoordinate)(c))
+    .forEach((coordinate: Coordinate) => handler(coordinate));
+
+export const setSameNumberAsSelectedCells = (state: State, action:Action) => produce(state, (draft: State) => {
+  const { game, numberMap } = draft
+  const newCellToSelect = action.payload
+  const cell = getCell(newCellToSelect, game)
+  if (cellIsAvailable(cell)) {
+    return
+  }
+  getEnumValues(MoveTypes).forEach((move: number) => {
+    applyToListMinusCoordinate(
+      numberMap[cell.solution][getMoveTypePropertyMap(move)],
+      newCellToSelect,
+      curryRight(setGameCellSameAsSelected)(move, game, cell.solution)
+    );
+  });
 })
 
-export const removeNumberFromNumberMap = (state: State) => produce(state, (draft: State) => {
+// export const setSameNumberAsSelectedCells1 = (state: State, action:Action) => produce(state, (draft: State) => {
+//   const { game, numberMap } = draft
+//   const newCellToSelect = action.payload
+//   const cell = getCell(newCellToSelect, game)
+//   if (cellIsAvailable(cell)) {
+//     return
+//   }
+//   const sameNumberCoordinates = numberMap[cell.solution].coordinates
+//   sameNumberCoordinates
+//     .filter(curry(filterOutCoordinate)(newCellToSelect))
+//     .forEach((c: Coordinate) => {
+//       game[c.x][c.y].sameAsSelected = { type : MoveTypes.NUMBER }
+//     })
+//   const sameNumberCandidates = numberMap[cell.solution].candidates
+//   sameNumberCandidates
+//     .filter(curry(filterOutCoordinate)(newCellToSelect))
+//     .forEach((c: Coordinate) => {
+//       game[c.x][c.y].sameAsSelected = { type : MoveTypes.CANDIDATE, candidate: cell.solution }
+//     })
+// })
 
-})
+const getMoveTypePropertyMap = (
+  type: MoveTypes
+): "coordinates" | "candidates" => {
+  switch (type) {
+    case MoveTypes.NUMBER: return "coordinates";
+    case MoveTypes.CANDIDATE: return "candidates";
+  }
+};
 
-export const addCandidateToNumberMap = (state: State) => produce(state, (draft: State) => {
+export const addNumberToNumberMap = (
+  state: State,
+  number: number,
+  coordinate: Coordinate,
+  type: MoveTypes = MoveTypes.NUMBER
+) =>
+  produce(state, (draft: State) => {
+    const { numberMap } = draft;
+    numberMap[number][getMoveTypePropertyMap(type)].push(coordinate);
+  });
 
-})
+export const removeNumberFromNumberMap = (
+  state: State,
+  number: number,
+  coordinate: Coordinate,
+  type: MoveTypes = MoveTypes.NUMBER
+) =>
+  produce(state, (draft: State) => {
+    const { numberMap } = draft;
+    numberMap[number][getMoveTypePropertyMap(type)] = numberMap[
+      number
+    ].coordinates.filter(curry(filterOutCoordinate)(coordinate));
+  });
 
-export const removeCandidateFromNumberMap = (state: State) => produce(state, (draft: State) => {
+export const addCandidateToNumberMap = (
+  state: State,
+  number: number,
+  coordinate: Coordinate
+) => addNumberToNumberMap(state, number, coordinate, MoveTypes.CANDIDATE);
 
-})
+export const removeCandidateToNumberMap = (
+  state: State,
+  number: number,
+  coordinate: Coordinate
+) => removeNumberFromNumberMap(state, number, coordinate, MoveTypes.CANDIDATE);
 
 export const startGame = (state: State, level: GameLevel) => produce(state, (draft: State) => {
   const board = generateBoard()
@@ -175,7 +269,7 @@ export const removeConflictingCandidates = (state: State, number: number) => pro
   }); 
 })
 
-export const manageSelectedCellRelatedCells = (state: State, action: Action): State => {
+export const setSelectedCellRelatedCells = (state: State, action: Action): State => {
   const newSelectedCell: Coordinate = action.payload
   const newRelatedCells = memGetRelatedCellsCoordinates(newSelectedCell, state.game);
   return pipe(

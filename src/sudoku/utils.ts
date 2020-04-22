@@ -13,9 +13,10 @@ import {
   cloneDeep,
 } from "lodash";
 import produce from 'immer'
-import { pipe, prop, map, filter } from 'lodash/fp'
+import { pipe, map, filter } from 'lodash/fp'
+import memoize from 'fast-memoize'
 
-import { Cell, Coordinate, Coordinable, NumberMap, GameLevel, Direction, VALID_NUMBERS } from './definitions'
+import { Cell, Coordinate, Coordinable, NumberMap, GameLevel, VALID_NUMBERS } from './definitions'
 
 export const generateCell = (
   coordinate: Coordinate,
@@ -398,3 +399,14 @@ export const createGame = (state: GameState) => produce(state, (draft: GameState
   })
 })
 
+const _getEnumValues = <T>(_enum: T): number[] => {
+  const vals = []
+  for (let key in _enum) {
+    if (!isNaN(Number(key))) {
+      vals.push(Number(key))
+    }
+  }
+  return vals
+}
+
+export const getEnumValues = memoize(_getEnumValues)
