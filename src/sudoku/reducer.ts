@@ -1,4 +1,4 @@
-import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry } from 'lodash'
+import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry, concat } from 'lodash'
 import { pipe } from 'lodash/fp'
 import memoize from 'fast-memoize'
 import produce from 'immer'
@@ -118,25 +118,15 @@ const setGameCellSameAsSelected = (
   game: Cell[][],
   type: MoveTypes,
   number: number
-) => {
-  // console.error('@setGameCellSameAsSelected c', c,)
-  // console.error('@setGameCellSameAsSelected type', type)
-  // console.error('@setGameCellSameAsSelected number', number)
-  // console.error('@setGameCellSameAsSelected game', game)
-  game[c.x][c.y].sameAsSelected =
+) => game[c.x][c.y].sameAsSelected =
     type === MoveTypes.NUMBER
       ? { type: MoveTypes.NUMBER }
       : { type: MoveTypes.CANDIDATE, candidate: number };
-};
 
 const removeGameCellSameAsSelected = (
   c: Coordinate,
   game: Cell[][],
-) => {
-  // console.error('@setGameCellSameAsSelected c', c,)
-  // console.error('@setGameCellSameAsSelected game', game)
-  delete game[c.x][c.y].sameAsSelected
-};
+) => delete game[c.x][c.y].sameAsSelected
 
 const applyToListMinusCoordinate = (
   list: Coordinate[],
@@ -356,29 +346,31 @@ export const setCandidateConflicts = (state: State, candidate: number, coordinat
 export const setCandidate = (state: State, number: number, coordinate: Coordinate) => produce(state, (draft: State) => {
   const { game, numberMap } = draft
   const candidateConflicts = memGetConflictsOnce(number, coordinate, game)
-  if (isEmpty(candidateConflicts)) { 
-    const cell = getCell(coordinate, game)
-    if (!cell) {
-      return
-    }
-    if (!cell.candidates) {
-      cell.candidates = {};
-    }
-    if (cell.candidates && !cell.candidates[number]) {
-      cell.candidates[number] = { entered: true, selected: false};
-    } else if (cell.candidates && cell.candidates[number]) {
-      let numberMapCandidates = numberMap[number].candidates
-      if (cell.candidates[number].entered) {
-        numberMapCandidates = numberMapCandidates.filter(curry(filterOutCoordinate)(coordinate))
-        draft.numberMap[number].candidates = numberMapCandidates
-      } else {
-        draft.numberMap[number].candidates.push(coordinate)
-      }
-      cell.candidates[number].entered = !cell.candidates[number].entered;
-    }
-    if (!numberMap[number]) {
-      numberMap[number] = initialiseNumberMapEntry({candidates: [coordinate]})
-    }
+  const cell = getCell(coordinate, game)
+
+  if (!isEmpty(candidateConflicts) || !cell) {
+    return
+  }
+
+  if (!cell.candidates) {
+    cell.candidates = {};
+  }
+
+  if (!numberMap[number]) {
+    numberMap[number] = initialiseNumberMapEntry({})
+  }
+  // initial candidate input to cell
+  if (cell.candidates && !cell.candidates[number]) {
+    cell.candidates[number] = { entered: true, selected: false};
+    numberMap[number].candidates.push(coordinate)
+  } else {
+    // toggle on / off after initial input
+    const candidatesMap = numberMap[number].candidates;
+    numberMap[number].candidates = cell.candidates[number].entered
+      ? candidatesMap.filter(curry(filterOutCoordinate)(coordinate))
+      : concat(candidatesMap, [coordinate]);
+
+    cell.candidates[number].entered = !cell.candidates[number].entered;
   }
 })
 
