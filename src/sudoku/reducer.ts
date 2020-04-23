@@ -14,6 +14,7 @@ import {
   Coordinate,
   NumberMap,
   VALID_NUMBERS,
+  NumberMapPayload,
 } from "./definitions";
 import {
   generateBoard,
@@ -180,27 +181,6 @@ export const clearSameNumberAsSelectedCells = (state: State) => produce(state, (
   });
 })
 
-// export const setSameNumberAsSelectedCells1 = (state: State, action:Action) => produce(state, (draft: State) => {
-//   const { game, numberMap } = draft
-//   const newCellToSelect = action.payload
-//   const cell = getCell(newCellToSelect, game)
-//   if (cellIsAvailable(cell)) {
-//     return
-//   }
-//   const sameNumberCoordinates = numberMap[cell.solution].coordinates
-//   sameNumberCoordinates
-//     .filter(curry(filterOutCoordinate)(newCellToSelect))
-//     .forEach((c: Coordinate) => {
-//       game[c.x][c.y].sameAsSelected = { type : MoveTypes.NUMBER }
-//     })
-//   const sameNumberCandidates = numberMap[cell.solution].candidates
-//   sameNumberCandidates
-//     .filter(curry(filterOutCoordinate)(newCellToSelect))
-//     .forEach((c: Coordinate) => {
-//       game[c.x][c.y].sameAsSelected = { type : MoveTypes.CANDIDATE, candidate: cell.solution }
-//     })
-// })
-
 const getMoveTypePropertyMap = (
   type: MoveTypes
 ): "coordinates" | "candidates" => {
@@ -261,6 +241,8 @@ export const resolveCell = (state: State) => produce(state, (draft: State) => {
   const cell = getCell(selectedCell, game)
   if (cell.value !== cell.solution) {
     draft.cellsToComplete--;
+    draft.numberMap[cell.solution].count++
+    draft.numberMap[cell.solution].coordinates.push(selectedCell)
   }
   cell.value = cell.solution;
 })
@@ -372,7 +354,7 @@ export const setCandidateConflicts = (state: State, candidate: number, coordinat
 })
 
 export const setCandidate = (state: State, number: number, coordinate: Coordinate) => produce(state, (draft: State) => {
-  const { game } = draft
+  const { game, numberMap } = draft
   const candidateConflicts = memGetConflictsOnce(number, coordinate, game)
   if (isEmpty(candidateConflicts)) { 
     const cell = getCell(coordinate, game)
@@ -385,10 +367,29 @@ export const setCandidate = (state: State, number: number, coordinate: Coordinat
     if (cell.candidates && !cell.candidates[number]) {
       cell.candidates[number] = { entered: true, selected: false};
     } else if (cell.candidates && cell.candidates[number]) {
+      let numberMapCandidates = numberMap[number].candidates
+      if (cell.candidates[number].entered) {
+        numberMapCandidates = numberMapCandidates.filter(curry(filterOutCoordinate)(coordinate))
+        draft.numberMap[number].candidates = numberMapCandidates
+      } else {
+        draft.numberMap[number].candidates.push(coordinate)
+      }
       cell.candidates[number].entered = !cell.candidates[number].entered;
+    }
+    if (!numberMap[number]) {
+      numberMap[number] = initialiseNumberMapEntry({candidates: [coordinate]})
     }
   }
 })
+
+export const initialiseNumberMapEntry = (data: Partial<NumberMapPayload>) => {
+  const { count, coordinates, candidates } = data;
+  return {
+    count: count || 0,
+    coordinates: coordinates || [],
+    candidates: candidates || [],
+  };
+};
 
 export const setNewSelectedCell = (state: State, action: Action) => produce(state, (draft: State) => {
   const { selectedCell, game } = draft

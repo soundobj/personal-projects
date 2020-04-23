@@ -325,5 +325,112 @@ describe('sudoku/reducer',() => {
       expect(newState).toStrictEqual(expected)
     })
   })
-
+  describe('resolveCell',() => {
+    it('set the cell value, updates the cellsToComplete counter and updates the numberMap with the new number coordinate', () => {
+      const game = [
+        utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([6, 7, 8], 2, { 0: false, 1: false, 2: false }),
+      ];
+      const numberMap: NumberMap = {
+        9: {
+          count: 0,
+          coordinates: [],
+          candidates: []
+        }
+      }
+      const selectedCell = {x:0, y:0}
+      const _state = {
+        game,
+        numberMap,
+        selectedCell,
+        cellsToComplete: 5
+      } as reducer.State
+      const state = cloneDeep(_state)
+      const expected = reducer.resolveCell(_state)
+      // mutations after effect
+      state.game[0][0].value = 9
+      state.cellsToComplete = 4
+      state.numberMap[9].count = 1
+      state.numberMap[9].coordinates = [{x:0, y:0}]
+      expect(expected).toStrictEqual(state)
+    })
+  })
+  describe('setCandidate',() => {
+    it('set the candidate in the cell and updates the numberMap with the coordinate of the cell that shows the candidate', () => {
+      const getConflictsMock = jest.spyOn(utils, "getConflicts")
+      getConflictsMock.mockImplementationOnce(() => [])
+      const game = [
+        utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([6, 7, 8], 2, { 0: false, 1: false, 2: false }),
+      ];
+      const numberMap: NumberMap = {
+        9: {
+          count: 0,
+          coordinates: [],
+          candidates: []
+        }
+      }
+      const selectedCell = {x:0, y:0}
+      const _state = {
+        game,
+        numberMap,
+        selectedCell,
+        cellsToComplete: 5
+      } as reducer.State
+      const state = cloneDeep(_state)
+      const expected = reducer.setCandidate(_state, 3, selectedCell)
+      // mutations after effect
+      state.game[0][0].candidates = {
+        3: { entered: true, selected: false }
+      }
+      state.numberMap[3] = {
+        count: 0,
+        coordinates: [],
+        candidates: [selectedCell]
+      }
+      expect(expected).toStrictEqual(state)
+      getConflictsMock.mockRestore()
+    })
+    it('removes the candidate from the cell and removes the candidate from the candidate map if the candidate is toggled from entered to not entered', () => {
+      const getConflictsMock = jest.spyOn(utils, "getConflicts")
+      getConflictsMock.mockImplementationOnce(() => [])
+      const game = [
+        utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([6, 7, 8], 2, { 0: false, 1: false, 2: false }),
+      ];
+      const selectedCell = {x:0, y:0}
+      const numberMap: NumberMap = {
+        3: {
+          count: 0,
+          coordinates: [],
+          candidates: [selectedCell, {x:5, y: 5}]
+        }
+      }
+      game[0][0].candidates = {
+        3: { entered: true, selected: false }
+      }
+      const _state = {
+        game,
+        numberMap,
+        selectedCell,
+        cellsToComplete: 5
+      } as reducer.State
+      const state = cloneDeep(_state)
+      const expected = reducer.setCandidate(_state, 3, selectedCell)
+      // mutations after effect
+      state.game[0][0].candidates = {
+        3: { entered: false, selected: false }
+      }
+      state.numberMap[3] = {
+        count: 0,
+        coordinates: [],
+        candidates: [{x:5, y: 5}]
+      }
+      expect(expected).toStrictEqual(state)
+      getConflictsMock.mockRestore()
+    })
+  })
 })

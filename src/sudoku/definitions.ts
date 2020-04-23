@@ -56,10 +56,12 @@ export interface Move {
   type: MoveTypes
 }
 
+export type NumberMapPayload = {
+  count: number,
+  coordinates: Coordinate[],
+  candidates: Coordinate[]
+}
+
 export interface NumberMap {
-  [key: number]: {
-    count: number,
-    coordinates: Coordinate[],
-    candidates: Coordinate[]
-  }
+  [key: number]: NumberMapPayload
 }
