@@ -1,4 +1,4 @@
-import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry, concat, head, filter } from 'lodash'
+import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry, concat, cloneDeep, last } from 'lodash'
 import { pipe } from 'lodash/fp'
 import memoize from 'fast-memoize'
 import produce from 'immer'
@@ -27,13 +27,13 @@ import {
   getRelatedCellsCoordinates,
   getEnumValues,
 } from "./utils";
-import { getCell, filterOutCoordinate, cellIsAvailable } from './board'
+import { getCell, filterOutCoordinate, cellIsAvailable, filterOutCellByCoordinate, filterByCellCoordinate } from './board'
 
 export interface State {
   gameLevel?: GameLevel
   mistakes: number
   timeEllapsed?: string
-  moves?: Move[] 
+  moveHistory: Move[] 
   editMode: MoveTypes
   selectedCell: Coordinate
   game: Cell[][]
@@ -56,6 +56,7 @@ export enum Actions {
   START_GAME,
   ISSUE_NUMBER,
   RESOLVE_CELL,
+  UNDO_MOVE,
 }
 
 export const initialState: State = {
@@ -66,7 +67,8 @@ export const initialState: State = {
   conflictingCells: [],
   selectedCellRelatedCells: [],
   game: [[]],
-  numberMap: {}
+  numberMap: {},
+  moveHistory: []
 }
 
 const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates)
@@ -103,6 +105,7 @@ export const sudokuReducer = (state: State, action: Action) => {
         ? setCellValue(state, action.payload)
         : setCellCandidate(state, action.payload);
     }
+    case Actions.UNDO_MOVE: return undoMove(state)
     case Actions.RESOLVE_CELL: {
       if (!process.env.REACT_APP_DEV_MODE) {
         return 
@@ -112,6 +115,55 @@ export const sudokuReducer = (state: State, action: Action) => {
     default: throw new Error(`Unexpected Sudoku reducer action ${action.type}`);
   }
 };
+
+const undoCellInput = (state: State) => produce(state, (draft:State) => {
+  const { moveHistory, numberMap, game } = draft
+  const lastMove: Move = moveHistory[moveHistory.length -1]
+  const { coordinate } = lastMove
+  if (lastMove.isSolution === true) {
+    // remove coordinates of lastMove number from numberMap
+    numberMap[lastMove.value].coordinates = numberMap[lastMove.value].coordinates.filter(curry(filterOutCoordinate)(coordinate))
+  }
+  moveHistory.pop()
+  const backwardsSearch = cloneDeep(moveHistory)
+  const previousCellMove = backwardsSearch.reverse().find(curry(filterByCellCoordinate)(coordinate))
+  if (previousCellMove) {
+    game[coordinate.x][coordinate.y].value = previousCellMove.value
+  } else {
+    delete game[coordinate.x][coordinate.y].value
+  }
+})
+
+const toggleCandidate = (game:Cell[][], numberMap:NumberMap, number: number, coordinate:Coordinate) => {
+  const cell = getCell(coordinate, game)
+  if (!cell.candidates) {
+    return
+  }
+  const candidatesMap = numberMap[number].candidates;
+  numberMap[number].candidates = cell.candidates[number].entered
+    ? candidatesMap.filter(curry(filterOutCoordinate)(coordinate))
+    : concat(candidatesMap, [coordinate]);
+
+  cell.candidates[number].entered = !cell.candidates[number].entered;
+}
+
+const undoCellCandidate = (state: State) => produce(state, (draft:State) => {
+  const { moveHistory, game, numberMap } = draft
+  const lastMove: Move = moveHistory[moveHistory.length -1]
+  toggleCandidate(game, numberMap, lastMove.value, lastMove.coordinate)
+  moveHistory.pop()
+})
+
+export const undoMove = (state: State) => {
+  const { moveHistory } = state
+  if (isEmpty(moveHistory)) {
+    return
+  }
+  switch (moveHistory[moveHistory.length -1].type) {
+    case MoveTypes.NUMBER: return undoCellInput(state)
+    case MoveTypes.CANDIDATE: return undoCellCandidate(state)
+  }  
+}
 
 const setGameCellSameAsSelected = (
   c: Coordinate,
@@ -371,12 +423,13 @@ export const setCandidate = (state: State, number: number, coordinate: Coordinat
     numberMap[number].candidates.push(coordinate)
   } else {
     // toggle on / off after initial input
-    const candidatesMap = numberMap[number].candidates;
-    numberMap[number].candidates = cell.candidates[number].entered
-      ? candidatesMap.filter(curry(filterOutCoordinate)(coordinate))
-      : concat(candidatesMap, [coordinate]);
+    toggleCandidate(game, numberMap, number, coordinate)
+    // const candidatesMap = numberMap[number].candidates;
+    // numberMap[number].candidates = cell.candidates[number].entered
+    //   ? candidatesMap.filter(curry(filterOutCoordinate)(coordinate))
+    //   : concat(candidatesMap, [coordinate]);
 
-    cell.candidates[number].entered = !cell.candidates[number].entered;
+    // cell.candidates[number].entered = !cell.candidates[number].entered;
   }
 })
 

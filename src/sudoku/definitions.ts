@@ -50,9 +50,9 @@ export interface Cell extends Coordinable {
   sameAsSelected?: SameAsSelected
 }
 
-export interface Move {
-  coordinate: Coordinate
+export interface Move extends Coordinable {
   value: number
+  isSolution?: boolean
   type: MoveTypes
 }
 
@@ -62,6 +62,9 @@ export type NumberMapPayload = {
   candidates: Coordinate[]
 }
 
+/*
+  this data structure needs commentary :)
+*/
 export interface NumberMap {
   [key: number]: NumberMapPayload
 }

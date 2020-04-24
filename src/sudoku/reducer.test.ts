@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash'
 import * as reducer from './reducer'
-import { Cell , Coordinate, NumberMap, MoveTypes, NumberMapPayload } from './definitions'
+import { Cell , Coordinate, NumberMap, MoveTypes, NumberMapPayload, Move } from './definitions'
 import * as utilsTest from './utils.test'
 import * as utils from './utils'
 import Candidates from './cell/candidates/Candidates'
@@ -458,6 +458,143 @@ describe('sudoku/reducer',() => {
   //       state.coordinates = [coord]
   //       expect(expected).toStrictEqual(state)
   //   })
-
   // })
+  describe('recordMove',() => {
+    it('bar', () => {
+      
+    })
+  })
+  describe('undoMove',() => {
+    it('goes back in history', () => {
+      const moveHistory: Move[] = [
+        {
+          coordinate: {x: 0, y: 0},
+          value: 1,
+          isSolution: false,
+          type: MoveTypes.NUMBER
+        },
+        {
+          coordinate: {x: 3, y: 0},
+          value: 2,
+          type: MoveTypes.CANDIDATE
+        },
+        // toggle on
+        {
+          coordinate: {x: 3, y: 0},
+          value: 4,
+          type: MoveTypes.CANDIDATE
+        },
+        // toggle off
+        {
+          coordinate: {x: 3, y: 0},
+          value: 4,
+          type: MoveTypes.CANDIDATE
+        },
+        // mend initial mistake
+        {
+          coordinate: {x: 0, y: 0},
+          value: 9,
+          isSolution: true,
+          type: MoveTypes.NUMBER
+        },
+        // getting correct solution first attempt
+        {
+          coordinate: {x: 2, y: 0},
+          value: 6,
+          isSolution: true,
+          type: MoveTypes.NUMBER
+        },
+      ]
+      const game = [
+        utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([6, 7, 8], 2, { 0: false, 1: false, 2: false }),
+        utilsTest.createBoardRow([4, 9, 7], 3, { 0: false, 1: false, 2: false }),
+      ];
+      // mutate game state to reflect moveHistory
+      game[0][0].value = 9
+      game[2][0].value = 6
+      game[3][0].candidates = {
+        2: { entered: true, selected: false },
+        4: { entered: false, selected: false }
+      }
+      const numberMap: NumberMap = {
+        6: {
+          count: 0,
+          coordinates: [{x:2, y:0}],
+          candidates: []
+        },
+        9: {
+          count: 0,
+          coordinates: [{x:0, y:0}],
+          candidates: []
+        },
+        4: {
+          count: 0,
+          coordinates: [],
+          candidates: []
+        },
+        2: {
+          count: 0,
+          coordinates: [],
+          candidates: [{x: 3, y: 0}]
+        },
+      }
+      const _state = {
+        game,
+        moveHistory,
+        numberMap
+      } as reducer.State
+      const state = cloneDeep(_state)
+      const expected = reducer.undoMove(_state)
+      // mutations after first effect
+      delete state.game[2][0].value
+      state.numberMap[6].coordinates = []
+      state.moveHistory.pop()
+      expect(expected).toStrictEqual(state)
+
+      const state1 = cloneDeep(state)
+      const expected1 = reducer.undoMove(state)
+      // mutations after second effect
+      state1.game[0][0].value = 1
+      state1.moveHistory.pop()
+      state1.numberMap[9].coordinates = []
+      expect(expected1).toStrictEqual(state1)
+
+      const state2 = cloneDeep(state1)
+      const expected2 = reducer.undoMove(state1)
+      // mutations after third effect
+      //@ts-ignore
+      state2.game[3][0].candidates[4].entered = true
+      state2.numberMap[4].candidates = [{x:3, y:0}]
+      state2.moveHistory.pop()
+      expect(expected2).toStrictEqual(state2)
+
+      const state3 = cloneDeep(state2)
+      const expected3 = reducer.undoMove(state2)
+      // mutations after fourth effect
+      //@ts-ignore
+      state3.game[3][0].candidates[4].entered = false
+      state3.numberMap[4].candidates = []
+      state3.moveHistory.pop()
+      expect(expected3).toStrictEqual(state3)
+
+      const state4 = cloneDeep(state3)
+      const expected4 = reducer.undoMove(state3)
+      // mutations after fith effect
+      //@ts-ignore
+      state4.game[3][0].candidates[2].entered = false
+      state4.numberMap[2].candidates = []
+      state4.moveHistory.pop()
+      expect(expected4).toStrictEqual(state4)
+
+      const state5 = cloneDeep(state4)
+      const expected5 = reducer.undoMove(state4)
+      // mutations after sith effect
+      delete state5.game[0][0].value
+      state5.moveHistory.pop()
+      expect(expected5).toStrictEqual(state5)
+      expect(expected5?.moveHistory).toStrictEqual([])
+    })
+  })
 })
