@@ -1,8 +1,7 @@
-import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry, concat, cloneDeep, last } from 'lodash'
+import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry, concat, cloneDeep, noop } from 'lodash'
 import { pipe } from 'lodash/fp'
 import memoize from 'fast-memoize'
 import produce from 'immer'
-import memoizeOne from 'memoize-one';
 
 import {
   MoveTypes,
@@ -27,7 +26,7 @@ import {
   getRelatedCellsCoordinates,
   getEnumValues,
 } from "./utils";
-import { getCell, filterOutCoordinate, cellIsAvailable, filterOutCellByCoordinate, filterByCellCoordinate } from './board'
+import { getCell, filterOutCoordinate, cellIsAvailable, filterByCellCoordinate } from './board'
 
 export interface State {
   gameLevel?: GameLevel
@@ -72,7 +71,6 @@ export const initialState: State = {
 }
 
 const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates)
-const memGetConflictsOnce = memoizeOne(getConflicts)
 
 export const sudokuReducer = (state: State, action: Action) => {
   switch (action.type) {
@@ -110,7 +108,12 @@ export const sudokuReducer = (state: State, action: Action) => {
       if (!process.env.REACT_APP_DEV_MODE) {
         return 
       }
-      return resolveCell(state)
+      const { selectedCell, game } = state;
+      const cell = getCell(selectedCell, game);
+      return pipe(
+        resolveCell,
+        curryRight(recordMove)(MoveTypes.NUMBER, cell.solution)
+      )(state);
     }
     default: throw new Error(`Unexpected Sudoku reducer action ${action.type}`);
   }
@@ -134,7 +137,7 @@ const undoCellInput = (state: State) => produce(state, (draft:State) => {
   }
 })
 
-const toggleCandidate = (game:Cell[][], numberMap:NumberMap, number: number, coordinate:Coordinate) => {
+const toggleCandidate = (game:Cell[][], numberMap:NumberMap, number: number, coordinate:Coordinate): undefined => {
   const cell = getCell(coordinate, game)
   if (!cell.candidates) {
     return
@@ -164,6 +167,17 @@ export const undoMove = (state: State) => {
     case MoveTypes.CANDIDATE: return undoCellCandidate(state)
   }  
 }
+
+export const recordMove = (state: State, type:MoveTypes, value: number) => produce(state, (draft:State) => {
+  const { moveHistory, selectedCell, game } = draft 
+  const {x, y} = selectedCell
+  moveHistory.push({
+    type,
+    value,
+    isSolution: game[x][y].solution === value,
+    coordinate:selectedCell
+  })
+})
 
 const setGameCellSameAsSelected = (
   c: Coordinate,
@@ -301,6 +315,7 @@ export const setCellValue = (state: State, number: number) => {
   return pipe(
     curryRight(updateValueAndCellsToCompleteCount)(number),
     curryRight(removeConflictingCandidates)(number),
+    curryRight(recordMove)(MoveTypes.NUMBER, number),
   )(state);
 };
 
@@ -378,10 +393,13 @@ export const setCellCandidate = (state: State, number: number) => {
   if (getCell(selectedCell, game).value) {
     return state
   }
+  const conflicts = getConflicts(number, selectedCell, game)
+  const maybeRecordMove = isEmpty(conflicts) ? curryRight(recordMove)(MoveTypes.CANDIDATE, number) : (state: State): State => state
   return pipe(
     clearConflictingCells,
-    curryRight(setCandidateConflicts)(number, selectedCell),
-    curryRight(setCandidate)(number, selectedCell)
+    curryRight(setCandidateConflicts)(conflicts),
+    curryRight(setCandidate)(number, conflicts),
+    maybeRecordMove,
   )(state)
 }
 
@@ -393,23 +411,19 @@ export const clearConflictingCells = (state: State) => produce(state, (draft: St
   });
 })
 
-export const setCandidateConflicts = (state: State, candidate: number, coordinate: Coordinate) => produce(state, (draft: State) => {
+export const setCandidateConflicts = (state: State, conflicts: Coordinate[]) => produce(state, (draft: State) => {
   const { game } = draft
-  const candidateConflicts = memGetConflictsOnce(candidate, coordinate, game)
-  if (candidateConflicts.length) {
-    candidateConflicts.forEach((c: Coordinate) => {
-      game[c.x][c.y].conflicting = true 
-    })
-    draft.conflictingCells = candidateConflicts
-  }
+  conflicts.forEach((c: Coordinate) => {
+    game[c.x][c.y].conflicting = true 
+  })
+  draft.conflictingCells = conflicts
 })
 
-export const setCandidate = (state: State, number: number, coordinate: Coordinate) => produce(state, (draft: State) => {
-  const { game, numberMap } = draft
-  const candidateConflicts = memGetConflictsOnce(number, coordinate, game)
-  const cell = getCell(coordinate, game)
+export const setCandidate = (state: State, number: number, conflicts: Coordinate[]) => produce(state, (draft: State) => {
+  const { game, numberMap, selectedCell } = draft
+  const cell = getCell(selectedCell, game)
 
-  if (!isEmpty(candidateConflicts) || !cell) {
+  if (!isEmpty(conflicts) || !cell) {
     return
   }
 
@@ -420,10 +434,10 @@ export const setCandidate = (state: State, number: number, coordinate: Coordinat
   // initial candidate input to cell
   if (cell.candidates && !cell.candidates[number]) {
     cell.candidates[number] = { entered: true, selected: false};
-    numberMap[number].candidates.push(coordinate)
+    numberMap[number].candidates.push(selectedCell)
   } else {
     // toggle on / off after initial input
-    toggleCandidate(game, numberMap, number, coordinate)
+    toggleCandidate(game, numberMap, number, selectedCell)
     // const candidatesMap = numberMap[number].candidates;
     // numberMap[number].candidates = cell.candidates[number].entered
     //   ? candidatesMap.filter(curry(filterOutCoordinate)(coordinate))

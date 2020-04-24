@@ -358,8 +358,8 @@ describe('sudoku/reducer',() => {
   })
   describe('setCandidate',() => {
     it('set the candidate in the cell and updates the numberMap with the coordinate of the cell that shows the candidate', () => {
-      const getConflictsMock = jest.spyOn(utils, "getConflicts")
-      getConflictsMock.mockImplementationOnce(() => [])
+      // const getConflictsMock = jest.spyOn(utils, "getConflicts")
+      // getConflictsMock.mockImplementationOnce(() => [])
       const game = [
         utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
         utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
@@ -380,7 +380,7 @@ describe('sudoku/reducer',() => {
         cellsToComplete: 5
       } as reducer.State
       const state = cloneDeep(_state)
-      const expected = reducer.setCandidate(_state, 3, selectedCell)
+      const expected = reducer.setCandidate(_state, 3, [])
       // mutations after effect
       state.game[0][0].candidates = {
         3: { entered: true, selected: false }
@@ -391,11 +391,11 @@ describe('sudoku/reducer',() => {
         candidates: [selectedCell]
       }
       expect(expected).toStrictEqual(state)
-      getConflictsMock.mockRestore()
+      // getConflictsMock.mockRestore()
     })
     it('removes the candidate from the cell and removes the candidate from the candidate map if the candidate is toggled from entered to not entered', () => {
-      const getConflictsMock = jest.spyOn(utils, "getConflicts")
-      getConflictsMock.mockImplementationOnce(() => [])
+      // const getConflictsMock = jest.spyOn(utils, "getConflicts")
+      // getConflictsMock.mockImplementationOnce(() => [])
       const game = [
         utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
         utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
@@ -419,7 +419,7 @@ describe('sudoku/reducer',() => {
         cellsToComplete: 5
       } as reducer.State
       const state = cloneDeep(_state)
-      const expected = reducer.setCandidate(_state, 3, selectedCell)
+      const expected = reducer.setCandidate(_state, 3, [])
       // mutations after effect
       state.game[0][0].candidates = {
         3: { entered: false, selected: false }
@@ -430,7 +430,7 @@ describe('sudoku/reducer',() => {
         candidates: [{x:5, y: 5}]
       }
       expect(expected).toStrictEqual(state)
-      getConflictsMock.mockRestore()
+      // getConflictsMock.mockRestore()
     })
   })
   // describe('updateNumberMapEntry',() => {
@@ -545,7 +545,7 @@ describe('sudoku/reducer',() => {
         moveHistory,
         numberMap
       } as reducer.State
-      
+
       const state = cloneDeep(_state)
       const expected = reducer.undoMove(_state)
       // mutations after first effect

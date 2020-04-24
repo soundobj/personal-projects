@@ -1,5 +1,6 @@
 {
   "mistakes": 0,
+  "moveHistory": [],
   "editMode": 1,
   "gameLevel": "EASY",
   "cellsToComplete": 53,
