@@ -545,6 +545,7 @@ describe('sudoku/reducer',() => {
         moveHistory,
         numberMap
       } as reducer.State
+      
       const state = cloneDeep(_state)
       const expected = reducer.undoMove(_state)
       // mutations after first effect

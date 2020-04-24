@@ -121,7 +121,7 @@ const undoCellInput = (state: State) => produce(state, (draft:State) => {
   const lastMove: Move = moveHistory[moveHistory.length -1]
   const { coordinate } = lastMove
   if (lastMove.isSolution === true) {
-    // remove coordinates of lastMove number from numberMap
+    // remove coordinates of lastMove from numberMap
     numberMap[lastMove.value].coordinates = numberMap[lastMove.value].coordinates.filter(curry(filterOutCoordinate)(coordinate))
   }
   moveHistory.pop()
