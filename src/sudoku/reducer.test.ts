@@ -1,9 +1,8 @@
 import { cloneDeep } from 'lodash'
 import * as reducer from './reducer'
-import { Cell , Coordinate, NumberMap, MoveTypes, NumberMapPayload, Move } from './definitions'
+import { Coordinate, NumberMap, MoveTypes, Move } from './definitions'
 import * as utilsTest from './utils.test'
 import * as utils from './utils'
-import Candidates from './cell/candidates/Candidates'
 
 describe('sudoku/reducer',() => {
   describe('removeConflictingCandidates', () => {
@@ -25,7 +24,8 @@ describe('sudoku/reducer',() => {
         game
       } as reducer.State
       const expected = reducer.removeConflictingCandidates(state, 5)
-      // @ts-ignore mutations after effect
+      // mutations after effect
+      // @ts-ignore
       delete state.game[0][0].candidates[5]
       expect(state).toStrictEqual(expected)
       getRedundantCandidatesMock.mockRestore();
@@ -164,88 +164,6 @@ describe('sudoku/reducer',() => {
       expect(state).toStrictEqual(expected)
     })
   })
-  // describe('addNumberToNumberMap',() => {
-  //   it('adds a new coordinate to the number map', () => {
-  //     const selectedCell = {x:0, y:0}
-  //     const coordinates: Coordinate[] = []
-  //     const candidates: Coordinate[] = []
-  //     const numberMap: NumberMap = {
-  //       3: {
-  //         count: 2,
-  //         coordinates,
-  //         candidates,
-  //       },
-  //     };
-  //     const state = {
-  //       numberMap,
-  //     } as reducer.State;
-  //     const expected = reducer.addNumberToNumberMap(state, 3, selectedCell)
-  //     state.numberMap[3].coordinates.push(selectedCell)
-  //     expect(expected).toStrictEqual(state)
-  //   })
-  // })
-  // describe('removeNumberFromNumberMap',() => {
-  //   it('removes a coordinate from the number map', () => {
-  //     const selectedCell = {x:0, y:0}
-  //     const coordinates: Coordinate[] = [selectedCell]
-  //     const candidates: Coordinate[] = []
-  //     const numberMap: NumberMap = {
-  //       3: {
-  //         count: 2,
-  //         coordinates,
-  //         candidates,
-  //       },
-  //     };
-  //     const state = {
-  //       numberMap,
-  //     } as reducer.State;
-  //     const expected = reducer.removeNumberFromNumberMap(state, 3, selectedCell)
-  //     // mutations after effect
-  //     state.numberMap[3].coordinates = []
-  //     expect(expected).toStrictEqual(state)
-  //   })
-  // })
-  // describe('addCandidateToNumberMap',() => {
-  //   it('adds a new candidate to the number map', () => {
-  //     const selectedCell = {x:0, y:0}
-  //     const coordinates: Coordinate[] = []
-  //     const candidates: Coordinate[] = []
-  //     const numberMap: NumberMap = {
-  //       3: {
-  //         count: 2,
-  //         coordinates,
-  //         candidates,
-  //       },
-  //     };
-  //     const state = {
-  //       numberMap,
-  //     } as reducer.State;
-  //     const expected = reducer.addCandidateToNumberMap(state, 3, selectedCell)
-  //     state.numberMap[3].candidates.push(selectedCell)
-  //     expect(expected).toStrictEqual(state)
-  //   })
-  // })
-  // describe('removeCandidateToNumberMap',() => {
-  //   it('removes a candidate from the number map', () => {
-  //     const selectedCell = {x:0, y:0}
-  //     const coordinates: Coordinate[] = []
-  //     const candidates: Coordinate[] = [selectedCell]
-  //     const numberMap: NumberMap = {
-  //       3: {
-  //         count: 2,
-  //         coordinates,
-  //         candidates,
-  //       },
-  //     };
-  //     const state = {
-  //       numberMap,
-  //     } as reducer.State;
-  //     const expected = reducer.removeCandidateFromNumberMap(state, 3, selectedCell)
-  //     // mutations after effect
-  //     state.numberMap[3].candidates = []
-  //     expect(expected).toStrictEqual(state)
-  //   })
-  // })
   describe('setSameNumberAsSelectedCells',() => {
     it('sets sameAsSelected to true to all associated cells seen in the board by number or candidate', () => {
       const game = [
@@ -297,10 +215,6 @@ describe('sudoku/reducer',() => {
         utilsTest.createBoardRow([1, 9, 4], 3, { 0: false, 1: false, 2: false }),
       ];
       const selectedCell = { x: 3, y: 2 }
-      const action: reducer.Action = {
-        type: reducer.Actions.SELECT_CELL,
-        payload: selectedCell
-      }
       game[6][0].candidates = {
         1: { selected:false, entered: true },
       }
@@ -358,8 +272,6 @@ describe('sudoku/reducer',() => {
   })
   describe('setCandidate',() => {
     it('set the candidate in the cell and updates the numberMap with the coordinate of the cell that shows the candidate', () => {
-      // const getConflictsMock = jest.spyOn(utils, "getConflicts")
-      // getConflictsMock.mockImplementationOnce(() => [])
       const game = [
         utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
         utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
@@ -391,11 +303,8 @@ describe('sudoku/reducer',() => {
         candidates: [selectedCell]
       }
       expect(expected).toStrictEqual(state)
-      // getConflictsMock.mockRestore()
     })
     it('removes the candidate from the cell and removes the candidate from the candidate map if the candidate is toggled from entered to not entered', () => {
-      // const getConflictsMock = jest.spyOn(utils, "getConflicts")
-      // getConflictsMock.mockImplementationOnce(() => [])
       const game = [
         utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: false, 2: false }),
         utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
@@ -430,38 +339,6 @@ describe('sudoku/reducer',() => {
         candidates: [{x:5, y: 5}]
       }
       expect(expected).toStrictEqual(state)
-      // getConflictsMock.mockRestore()
-    })
-  })
-  // describe('updateNumberMapEntry',() => {
-  //   it('updates the count to one and add the new coordinate if coordinates passed and action is add and no existing data', () => {
-  //       const state = {
-  //         count: 1,
-  //         coordinates: [{x:0, y:0}],
-  //         candidates: []
-  //       }
-  //       const expected = reducer.updateNumberMapEntry(undefined, {coordinates: [{x:0, y:0}]})
-  //       expect(expected).toStrictEqual(state)
-  //   })
-    
-  //   it('updates the count and add the new coordinate if coordinates passed and action is add and no existing data', () => {
-  //       const _state = {
-  //         count: 5,
-  //         coordinates: [],
-  //         candidates: []
-  //       } as NumberMapPayload
-  //       const coord: Coordinate = {x:0, y:0} 
-  //       const state = cloneDeep(_state)
-  //       const expected = reducer.updateNumberMapEntry(_state, {coordinates: [coord]})
-  //       // mutations after effect
-  //       state.count = 6
-  //       state.coordinates = [coord]
-  //       expect(expected).toStrictEqual(state)
-  //   })
-  // })
-  describe('recordMove',() => {
-    it('bar', () => {
-      
     })
   })
   describe('undoMove',() => {
@@ -543,7 +420,8 @@ describe('sudoku/reducer',() => {
       const _state = {
         game,
         moveHistory,
-        numberMap
+        numberMap,
+        cellsToComplete: 10,
       } as reducer.State
 
       const state = cloneDeep(_state)
@@ -551,6 +429,7 @@ describe('sudoku/reducer',() => {
       // mutations after first effect
       delete state.game[2][0].value
       state.numberMap[6].coordinates = []
+      state.cellsToComplete = 11
       state.moveHistory.pop()
       expect(expected).toStrictEqual(state)
 
@@ -559,6 +438,7 @@ describe('sudoku/reducer',() => {
       // mutations after second effect
       state1.game[0][0].value = 1
       state1.moveHistory.pop()
+      state1.cellsToComplete = 12
       state1.numberMap[9].coordinates = []
       expect(expected1).toStrictEqual(state1)
 

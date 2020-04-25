@@ -1,4 +1,4 @@
-import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry, concat, cloneDeep, noop } from 'lodash'
+import { shuffle, isEqual, isEmpty, differenceWith, curryRight, curry, concat, cloneDeep } from 'lodash'
 import { pipe } from 'lodash/fp'
 import memoize from 'fast-memoize'
 import produce from 'immer'
@@ -126,6 +126,7 @@ const undoCellInput = (state: State) => produce(state, (draft:State) => {
   if (lastMove.isSolution === true) {
     // remove coordinates of lastMove from numberMap
     numberMap[lastMove.value].coordinates = numberMap[lastMove.value].coordinates.filter(curry(filterOutCoordinate)(coordinate))
+    draft.cellsToComplete++;
   }
   moveHistory.pop()
   const backwardsSearch = cloneDeep(moveHistory)
@@ -185,9 +186,6 @@ const setGameCellSameAsSelected = (
   type: MoveTypes,
   number: number
 ) => {
-  // console.error('@c', JSON.stringify(c))
-  // console.error('@type', type)
-  // console.error('@number', number)
   return game[c.x][c.y].sameAsSelected =
     type === MoveTypes.NUMBER
       ? { type: MoveTypes.NUMBER }
@@ -251,42 +249,6 @@ const getMoveTypePropertyMap = (
   }
 };
 
-// export const addNumberToNumberMap = (
-//   state: State,
-//   number: number,
-//   coordinate: Coordinate,
-//   type: MoveTypes = MoveTypes.NUMBER
-// ) =>
-//   produce(state, (draft: State) => {
-//     const { numberMap } = draft;
-//     numberMap[number][getMoveTypePropertyMap(type)].push(coordinate);
-//   });
-
-// export const removeNumberFromNumberMap = (
-//   state: State,
-//   number: number,
-//   coordinate: Coordinate,
-//   type: MoveTypes = MoveTypes.NUMBER
-// ) =>
-//   produce(state, (draft: State) => {
-//     const { numberMap } = draft;
-//     numberMap[number][getMoveTypePropertyMap(type)] = numberMap[
-//       number
-//     ].coordinates.filter(curry(filterOutCoordinate)(coordinate));
-//   });
-
-// export const addCandidateToNumberMap = (
-//   state: State,
-//   number: number,
-//   coordinate: Coordinate
-// ) => addNumberToNumberMap(state, number, coordinate, MoveTypes.CANDIDATE);
-
-// export const removeCandidateFromNumberMap = (
-//   state: State,
-//   number: number,
-//   coordinate: Coordinate
-// ) => removeNumberFromNumberMap(state, number, coordinate, MoveTypes.CANDIDATE);
-
 export const startGame = (state: State, level: GameLevel) => produce(state, (draft: State) => {
   const board = generateBoard()
   const numberDifficultyMap: NumberMap = createNumberDifficultyMap(difficulty[level], shuffle(VALID_NUMBERS))
@@ -306,10 +268,6 @@ export const resolveCell = (state: State) => produce(state, (draft: State) => {
   }
   cell.value = cell.solution;
 })
-
-export const updateNumberMap = (numberMap: NumberMapPayload) => {
-
-}
 
 export const setCellValue = (state: State, number: number) => {
   return pipe(
@@ -438,12 +396,6 @@ export const setCandidate = (state: State, number: number, conflicts: Coordinate
   } else {
     // toggle on / off after initial input
     toggleCandidate(game, numberMap, number, selectedCell)
-    // const candidatesMap = numberMap[number].candidates;
-    // numberMap[number].candidates = cell.candidates[number].entered
-    //   ? candidatesMap.filter(curry(filterOutCoordinate)(coordinate))
-    //   : concat(candidatesMap, [coordinate]);
-
-    // cell.candidates[number].entered = !cell.candidates[number].entered;
   }
 })
 
@@ -455,48 +407,6 @@ export const initialiseNumberMapEntry = (data: Partial<NumberMapPayload>) => {
     candidates: candidates || [],
   };
 };
-
-// export const updateNumberMapEntry = (
-//   existing: NumberMapPayload | undefined,
-//   data: Partial<NumberMapPayload>,
-//   action: "add" | "remove" = "add"
-// ) => {
-//   if (!existing) {
-//     existing = initialiseNumberMapEntry({})
-//   }
-
-//   const { coordinates, candidates } = existing;
-//   const hasCoordinates = data.coordinates && data.coordinates.length > -1
-//   const hasCandidates = data.candidates && data.candidates.length > -1
-//   console.error('@data', data, hasCoordinates, hasCandidates, action)
-//   const numberMap = {...existing}
-
-//   if (hasCoordinates) { 
-//     const newCount = hasCoordinates && action === "add"
-//     ? existing.count + 1
-//     : existing.count - 1
-//     console.error('@nc', newCount)
-//     numberMap.count = newCount
-//   }
-
-//   if (hasCoordinates) {
-//       const newCoordinates = (action === "add")
-//         ? concat(coordinates, data.coordinates)
-//         // @ts-ignore
-//         : filter(curry(filterOutCoordinate)(head(data.coordinates)), coordinates)
-//       numberMap.coordinates = newCoordinates
-//   }
-  
-//   if (hasCandidates) {
-//       const newCandidates = (action === "add")
-//         ? concat(candidates, data.candidates)
-//         // @ts-ignore
-//         : filter(curry(filterOutCoordinate)(head(data.candidates)), candidates)
-//       numberMap.candidates = newCandidates
-//   }
-
-//   return numberMap
-// };
 
 export const setNewSelectedCell = (state: State, action: Action) => produce(state, (draft: State) => {
   const { selectedCell, game } = draft

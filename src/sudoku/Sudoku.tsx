@@ -1,11 +1,12 @@
 import React, { useReducer, useEffect, useCallback } from 'react'
+import { isEmpty } from 'lodash'
 import { Button, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 //@ts-ignore  @TODO: write missing typings for 3rd party dependency
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 import { sudokuReducer, initialState, Actions} from './reducer'
-import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes, Direction } from './definitions'
+import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes, Direction, Move } from './definitions'
 // import { navigateBoardNextAvailable as navigateBoard } from './board'
 import { navigateBoardNextAvailableOverflow as navigateBoard, isValidMoveType } from './board'
 import BoardCell  from './cell/Cell'
@@ -14,12 +15,27 @@ import * as stateStub from './state-stub.json'
 import './vars.css'
 import './Sudoku.css'
 
+interface UndoMoveProps {
+  moveHistory: Move[],
+  undoMove: () => {}
+}
+
+const UndoMoveButton = (props: UndoMoveProps) => {
+  const { moveHistory, undoMove } = props
+  return (
+    <Button
+      disabled={isEmpty(moveHistory)}
+      onClick={undoMove}
+    >Undo</Button>
+  )
+}
+
 interface NewGameModalProps {
   show: boolean
   onHide: (gameLevel?: string) => void
 }
 
-function NewGameModal(props: NewGameModalProps) {
+const NewGameModal = React.memo((props: NewGameModalProps) => {
   return (
     <Modal
       {...props}
@@ -45,7 +61,7 @@ function NewGameModal(props: NewGameModalProps) {
       </Modal.Footer>
     </Modal>
   );
-}
+})
 
 export default () => {
   // const [state, dispatch] = useReducer(sudokuReducer, initialState)
@@ -54,12 +70,12 @@ export default () => {
   const [state, dispatch] = useReducer(sudokuReducer, stateStub.default)
   const [modalShow, setModalShow] = React.useState(false);
 
-  const newGameOnHide = (gameLevel?: string) => {
+  const newGameOnHide = useCallback((gameLevel?: string) => {
     if (gameLevel && GameLevel.hasOwnProperty(gameLevel)) {
       startGame(gameLevel)
     }
     setModalShow(false)
-  }
+  }, [])
 
   const selectCell = useCallback(
     (coordinate: Coordinate) =>
@@ -96,7 +112,7 @@ export default () => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button variant="primary" onClick={useCallback(() => setModalShow(true), [])}>
         New Game
       </Button>
       <Controls
@@ -104,6 +120,7 @@ export default () => {
         setEditMode={setEditMode}
         issueNumber={issueNumber}
       />
+      <UndoMoveButton moveHistory={moveHistory} undoMove={undoMove} />
       {state.gameLevel && (
         <div className="grid">
           {game &&
