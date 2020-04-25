@@ -3,7 +3,7 @@ import { stopWatch } from './stopwatch'
 
 jest.useFakeTimers();
 
-describe.only('[stopWatch]',() => {
+describe('[stopWatch]',() => {
   it('starts the timer, counts elapsed seconds, pauses the counter, continues after restart and clears the stopWatch when invoking clear()', (done) => {
     const callback = jest.fn();
     const sw = stopWatch(callback)
