@@ -52,27 +52,47 @@ export default () => {
   // @TODO: remove temp stub
   //@ts-ignore
   const [state, dispatch] = useReducer(sudokuReducer, stateStub.default)
-
   const [modalShow, setModalShow] = React.useState(false);
+
   const newGameOnHide = (gameLevel?: string) => {
     if (gameLevel && GameLevel.hasOwnProperty(gameLevel)) {
-      dispatch({ type: Actions.START_GAME, payload: gameLevel})
+      startGame(gameLevel)
     }
     setModalShow(false)
   }
-  const selectCell = (coordinate: Coordinate) => dispatch({ type: Actions.SELECT_CELL, payload: coordinate })
 
-  const callBack = useCallback((coordinate: Coordinate) => {
-  // console.error('@enter Callback', coordinate)
-   return selectCell(coordinate)
-  }, [])
+  const selectCell = useCallback(
+    (coordinate: Coordinate) =>
+      dispatch({ type: Actions.SELECT_CELL, payload: coordinate }),
+    []
+  );
+  const startGame = useCallback(
+    (gameLevel: string) =>
+      dispatch({ type: Actions.START_GAME, payload: gameLevel }),
+    []
+  );
+  const resolveCell = useCallback(
+    () => dispatch({ type: Actions.RESOLVE_CELL }),
+    []
+  );
+  const setEditMode = useCallback(
+    (editMode: MoveTypes) =>
+      dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode }),
+    []
+  );
+  const issueNumber = useCallback(
+    (number: number) =>
+      dispatch({ type: Actions.ISSUE_NUMBER, payload: number }),
+    []
+  );
+  const undoMove = useCallback(
+    () =>
+      dispatch({ type: Actions.UNDO_MOVE }),
+    []
+  );
 
-  const resolveCell = () => dispatch({ type: Actions.RESOLVE_CELL })
-  const setEditMode = (editMode: MoveTypes) => dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode })
-  const issueNumber = (number: number) => dispatch({ type: Actions.ISSUE_NUMBER, payload: number })
   console.error('@state', state)
-
-  const { game, selectedCell, editMode, cellsToComplete } = state
+  const { game, selectedCell, editMode, cellsToComplete, moveHistory } = state
 
   return (
     <>
@@ -89,13 +109,11 @@ export default () => {
           {game &&
             game.map((x: Cell[], indexX: number) => {
               return x.map((y: Cell, indexY: number) => {
-                // y.coordinate.x === 0 && y.coordinate.y === 0 && console.error('@y', y)
                 return (
                   <BoardCell
                     {...y}
                     key={`x${indexX}y${indexY}`}
-                    selectCell={callBack}
-                    // selectCell={selectCell}
+                    selectCell={selectCell}
                   />
                 );
               });
@@ -114,7 +132,6 @@ export default () => {
           "down",
         ]}
         onKeyEvent={(key: string) => {
-          // console.error(`do something upon keydown event of ${key}`);
           // Toggle between the two only modes casting the opposite boolean that ! yields into it's digit counterpart using +
           if (key === "c") {
             setEditMode(+!editMode);
