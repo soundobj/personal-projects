@@ -32,19 +32,16 @@ export const stopWatch = (
       ISOString: printElapsedTime(),
     });
   }
-  const start = () => {
-    timer();
-  };
+
   const clear = () => {
     elapsedTime = 0;
     clearTimeout(t);
   };
-  const stop = () => {
-    clearTimeout(t);
-  };
+
+  const start = () => timer();
+  const stop = () => clearTimeout(t);
   const getElapsedSeconds = () => elapsedTime * 1000;
-  const printElapsedTime = () =>
-    new Date(elapsedTime * 1000).toISOString().substr(11, 8);
+  const printElapsedTime = () => new Date(elapsedTime * 1000).toISOString().substr(11, 8);
 
   return {
     start,
