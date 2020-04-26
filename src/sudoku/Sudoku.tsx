@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //@ts-ignore  @TODO: write missing typings for 3rd party dependency
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 
+import StopWatchUI from '../stopWatch/StopWatchUI'
+
 import { sudokuReducer, initialState, Actions} from './reducer'
 import { GameLevel, Cell, Coordinate, VALID_NUMBERS, MoveTypes, Direction, Move } from './definitions'
 // import { navigateBoardNextAvailable as navigateBoard } from './board'
@@ -107,18 +109,29 @@ export default () => {
     []
   );
 
+  const haltGame = useCallback(() => console.error("@haltGame"), [])
+  const getTimeToComplete = useCallback(() => console.error("@getTimeToComplete"), [])
+
   console.error('@state', state)
   const { game, selectedCell, editMode, cellsToComplete, moveHistory } = state
 
   return (
     <>
-      <Button variant="primary" onClick={useCallback(() => setModalShow(true), [])}>
+      <Button
+        variant="primary"
+        onClick={useCallback(() => setModalShow(true), [])}
+      >
         New Game
       </Button>
       <Controls
         editMode={state.editMode}
         setEditMode={setEditMode}
         issueNumber={issueNumber}
+      />
+      <StopWatchUI
+        shouldClear={false} 
+        onClear={getTimeToComplete}
+        onPause={haltGame}
       />
       <UndoMoveButton moveHistory={moveHistory} undoMove={undoMove} />
       {state.gameLevel && (
@@ -156,12 +169,19 @@ export default () => {
           if (key === "s") {
             resolveCell();
           }
-          const directions: string[] = Object.values(Direction)
-          const move = key.toUpperCase()
+          const directions: string[] = Object.values(Direction);
+          const move = key.toUpperCase();
           if (directions.includes(move)) {
             if (game && selectedCell) {
               isValidMoveType(move) &&
-              selectCell(navigateBoard(game, selectedCell, Direction[move], cellsToComplete));
+                selectCell(
+                  navigateBoard(
+                    game,
+                    selectedCell,
+                    Direction[move],
+                    cellsToComplete
+                  )
+                );
             } else {
               // if the board is not selected upon navigation shortcut input select the first cell
               // @TODO select the first cell that is not filled in already.
@@ -169,7 +189,7 @@ export default () => {
             }
           }
           if (VALID_NUMBERS.map(String).includes(key)) {
-            issueNumber(parseInt(key, 10))
+            issueNumber(parseInt(key, 10));
           }
         }}
       />

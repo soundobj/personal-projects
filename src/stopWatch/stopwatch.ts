@@ -4,9 +4,10 @@ export interface StopWatch {
   clear: () => void
   getElapsedSeconds: () => number
   printElapsedTime: () => string
+  setCallback: (c:any) => void
 }
 
-interface CallbackPayload {
+export interface CallbackPayload {
   elapsedTime: number,
   ISOString: string
 }
@@ -14,19 +15,13 @@ interface CallbackPayload {
 /*
   Supply a callback to stoWatch to be notified with CallbackPayload every time the stopWatch ticks
 */
-export const stopWatch = (
-  callback: (payload: CallbackPayload) => CallbackPayload
-): StopWatch => {
+export const stopWatch = (): StopWatch => {
   let elapsedTime = 0;
-  let t: any;
+  let timer: NodeJS.Timeout
+  let callback: (c:any) => void
 
-  function timer() {
-    t = setTimeout(add, 1000); // one second
-  }
   function add() {
     elapsedTime++;
-    timer();
-    // TODO: check the output of the callback in the test and use the callback in a useState() hook to update the UI every second.
     callback({
       elapsedTime: elapsedTime * 1000,
       ISOString: printElapsedTime(),
@@ -35,13 +30,17 @@ export const stopWatch = (
 
   const clear = () => {
     elapsedTime = 0;
-    clearTimeout(t);
+    clearInterval(timer);
   };
 
-  const start = () => timer();
-  const stop = () => clearTimeout(t);
+  const start = () => {
+    timer = setInterval(add, 1000); // one second
+  }
+
+  const stop = () => clearInterval(timer);
   const getElapsedSeconds = () => elapsedTime * 1000;
   const printElapsedTime = () => new Date(elapsedTime * 1000).toISOString().substr(11, 8);
+  const setCallback = (c:() => void) => callback = c
 
   return {
     start,
@@ -49,5 +48,6 @@ export const stopWatch = (
     clear,
     getElapsedSeconds,
     printElapsedTime,
+    setCallback
   };
 };
