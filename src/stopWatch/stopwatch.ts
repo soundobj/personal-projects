@@ -4,7 +4,7 @@ export interface StopWatch {
   clear: () => void
   getElapsedSeconds: () => number
   printElapsedTime: () => string
-  setCallback: (c:any) => void
+  setCallback: (c:(c:any)=> void) => void
 }
 
 export interface CallbackPayload {
@@ -40,7 +40,7 @@ export const stopWatch = (): StopWatch => {
   const stop = () => clearInterval(timer);
   const getElapsedSeconds = () => elapsedTime * 1000;
   const printElapsedTime = () => new Date(elapsedTime * 1000).toISOString().substr(11, 8);
-  const setCallback = (c:() => void) => callback = c
+  const setCallback = (c:(c:any) => void) => callback = c
 
   return {
     start,
