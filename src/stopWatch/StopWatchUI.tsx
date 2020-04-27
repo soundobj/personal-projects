@@ -7,6 +7,7 @@ interface Props {
   onPause: (payload: boolean) => void
   shouldClear: boolean,
   onClear: (timeElapsed: CallbackPayload) => void
+  shouldStart: boolean,
 }
 
 const watch = stopWatch()
@@ -17,14 +18,28 @@ const StopWatchUI = (props: Props) => {
     ISOString: "00:00:00",
   }
 
-  const { shouldClear, onClear, onPause } = props
+  const { shouldClear, onClear, onPause, shouldStart } = props
   const [timeElapsed, setTimeElapsed] = useState(initialTimeElapsed);
-  if (shouldClear) {
+  /* 
+    this boolean allows to start() or clear() the timer once only
+    until the watch is paused, the game ended or restarted, acting as a toggle between
+    finished games and new games
+  */
+  const [hasCleared, setHasCleared] = useState(false);
+
+  if(shouldStart && hasCleared) {
+    setTimeElapsed(initialTimeElapsed)
+    watch.start()
+    setHasCleared(false)
+  }
+
+  if (shouldClear && !hasCleared) {
     onClear(timeElapsed)
     watch.clear();
+    setHasCleared(true)
   }
   const [isPaused, setisPaused] = useState(false)
-  
+
   useEffect(() => {
     watch.setCallback(setTimeElapsed)
     watch.start();

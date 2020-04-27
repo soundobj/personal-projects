@@ -80,14 +80,13 @@ export default () => {
       <NewGame onNewGame={newGame} />
       <EditMode editMode={editMode} setEditMode={setEditMode} />
       <Numbers issueNumber={issueNumber} />
-      { !gameElapsedTime &&
-        <StopWatchUI
-          shouldClear={!isGamePlayed} 
-          onClear={getTimeToComplete}
-          onPause={haltGame}
-        />
-      }
-      <EndGame onEndGame={endGame} />
+      <StopWatchUI
+        shouldStart={isGamePlayed}
+        shouldClear={!isGamePlayed} 
+        onClear={getTimeToComplete}
+        onPause={haltGame}
+      />
+      <EndGame onEndGame={haltGame} onConfirmEndGame={endGame} />
       <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
       {gameLevel && <Board game={game} selectCell={selectCell} isGamePaused={isGamePaused} /> }
       <KeyboardInput
