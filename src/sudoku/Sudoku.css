@@ -49,3 +49,7 @@
 .grid > div:nth-child(9n-8) {
   border-left: 1px solid black;
 }
+
+.game--paused .content-inside {
+  visibility: hidden;
+}

@@ -61,7 +61,10 @@ export default () => {
     []
   );
 
-  const haltGame = useCallback(() => console.error("@haltGame"), [])
+  const haltGame = useCallback(
+    (payload: boolean) => dispatch({ type: Actions.PAUSE_GAME, payload }),
+    []
+  );
   const endGame = useCallback(() => dispatch({ type: Actions.END_GAME }), [])
   const getTimeToComplete = useCallback(
     (payload: any) =>
@@ -70,7 +73,7 @@ export default () => {
   );
 
   console.error('@state', state)
-  const { game, selectedCell, cellsToComplete, moveHistory, isGamePlayed, gameElapsedTime, gameLevel, editMode } = state
+  const { game, selectedCell, cellsToComplete, moveHistory, isGamePlayed, gameElapsedTime, gameLevel, editMode, isGamePaused } = state
 
   return (
     <>
@@ -86,7 +89,7 @@ export default () => {
       }
       <EndGame onEndGame={endGame} />
       <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
-      {gameLevel && <Board game={game} selectCell={selectCell} /> }
+      {gameLevel && <Board game={game} selectCell={selectCell} isGamePaused={isGamePaused} /> }
       <KeyboardInput
         game={game}
         selectedCell={selectedCell}

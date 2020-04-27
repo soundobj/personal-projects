@@ -89,6 +89,9 @@ export const sudokuReducer = (state: State, action: Action) => {
       return { ...state, mistakes: state.mistakes + 1 };
     }
     case Actions.START_GAME: return startGame(state, action.payload)
+    case Actions.PAUSE_GAME: {
+      return { ...state, isGamePaused: action.payload}
+    }
     case Actions.END_GAME: {
       return { ...state, isGamePlayed: false}
     }

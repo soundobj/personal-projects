@@ -6,12 +6,13 @@ import BoardCell from "../cell/Cell";
 interface Props {
   game: Cell[][];
   selectCell: (coordinate: Coordinate) => void;
+  isGamePaused: boolean
 }
 
 const Board = (props: Props) => {
-  const { game, selectCell } = props;
+  const { game, selectCell, isGamePaused } = props;
   return (
-    <div className="grid">
+    <div className={`grid ${isGamePaused? 'game--paused' : ''}`}>
       {game &&
         game.map((x: Cell[], indexX: number) => {
           return x.map((y: Cell, indexY: number) => {

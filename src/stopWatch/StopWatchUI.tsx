@@ -4,7 +4,7 @@ import { stopWatch, CallbackPayload } from './stopWatch'
 import './StopWatchUI.css'
 
 interface Props {
-  onPause: () => void
+  onPause: (payload: boolean) => void
   shouldClear: boolean,
   onClear: (timeElapsed: CallbackPayload) => void
 }
@@ -17,7 +17,7 @@ const StopWatchUI = (props: Props) => {
     ISOString: "00:00:00",
   }
 
-  const { shouldClear, onClear } = props
+  const { shouldClear, onClear, onPause } = props
   const [timeElapsed, setTimeElapsed] = useState(initialTimeElapsed);
   if (shouldClear) {
     onClear(timeElapsed)
@@ -36,7 +36,13 @@ const StopWatchUI = (props: Props) => {
       { <Button
         onClick={() => {
           setisPaused(!isPaused)
-          isPaused ? watch.start() : watch.stop();
+          if (isPaused) { 
+            watch.start()
+            onPause(false)
+          } else { 
+            watch.stop();
+            onPause(true)
+          }
         }}
       >
         {isPaused ? "Resume" : "Pause"}
