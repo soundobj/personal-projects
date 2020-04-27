@@ -20,9 +20,8 @@ const StopWatchUI = (props: Props) => {
   const { shouldClear, onClear } = props
   const [timeElapsed, setTimeElapsed] = useState(initialTimeElapsed);
   if (shouldClear) {
-    setTimeElapsed(initialTimeElapsed)
     onClear(timeElapsed)
-    watch.stop();
+    watch.clear();
   }
   const [isPaused, setisPaused] = useState(false)
   

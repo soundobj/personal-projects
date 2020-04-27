@@ -110,10 +110,15 @@ export default () => {
   );
 
   const haltGame = useCallback(() => console.error("@haltGame"), [])
-  const getTimeToComplete = useCallback(() => console.error("@getTimeToComplete"), [])
+  const endGame = useCallback(() => dispatch({ type: Actions.END_GAME }), [])
+  const getTimeToComplete = useCallback(
+    (payload: any) =>
+      dispatch({ type: Actions.SET_GAME_ELLAPSED_TIME, payload }),
+    []
+  );
 
   console.error('@state', state)
-  const { game, selectedCell, editMode, cellsToComplete, moveHistory } = state
+  const { game, selectedCell, editMode, cellsToComplete, moveHistory, isGamePlayed, gameElapsedTime } = state
 
   return (
     <>
@@ -128,11 +133,14 @@ export default () => {
         setEditMode={setEditMode}
         issueNumber={issueNumber}
       />
-      <StopWatchUI
-        shouldClear={false} 
-        onClear={getTimeToComplete}
-        onPause={haltGame}
-      />
+      { !gameElapsedTime &&
+        <StopWatchUI
+          shouldClear={!isGamePlayed} 
+          onClear={getTimeToComplete}
+          onPause={haltGame}
+        />
+      }
+      <Button onClick={endGame}>End Game</Button>
       <UndoMoveButton moveHistory={moveHistory} undoMove={undoMove} />
       {state.gameLevel && (
         <div className="grid">

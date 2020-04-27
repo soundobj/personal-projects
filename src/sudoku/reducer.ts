@@ -39,7 +39,10 @@ export interface State {
   cellsToComplete: number
   conflictingCells: Coordinate[]
   selectedCellRelatedCells: Coordinate[]
-  numberMap: NumberMap 
+  numberMap: NumberMap
+  isGamePaused: boolean 
+  isGamePlayed: boolean
+  gameElapsedTime?: string
 }
 
 export interface Action {
@@ -56,6 +59,8 @@ export enum Actions {
   ISSUE_NUMBER,
   RESOLVE_CELL,
   UNDO_MOVE,
+  END_GAME,
+  SET_GAME_ELLAPSED_TIME
 }
 
 export const initialState: State = {
@@ -67,7 +72,9 @@ export const initialState: State = {
   selectedCellRelatedCells: [],
   game: [[]],
   numberMap: {},
-  moveHistory: []
+  moveHistory: [],
+  isGamePaused: false,
+  isGamePlayed: false,
 }
 
 const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates)
@@ -82,6 +89,13 @@ export const sudokuReducer = (state: State, action: Action) => {
       return { ...state, mistakes: state.mistakes + 1 };
     }
     case Actions.START_GAME: return startGame(state, action.payload)
+    case Actions.END_GAME: {
+      return { ...state, isGamePlayed: false}
+    }
+    case Actions.SET_GAME_ELLAPSED_TIME: {
+      console.error('@SET_GAME_ELLAPSED_TIME', action.payload)
+      return { ...state , gameElapsedTime:action.payload.ISOString}
+    }
     case Actions.SELECT_CELL: {   
       if (isEqual(state.selectedCell, action.payload)) {
         return state;
@@ -257,6 +271,8 @@ export const startGame = (state: State, level: GameLevel) => produce(state, (dra
   draft.gameLevel = level
   draft.game = game
   draft.numberMap = numberMap
+  draft.isGamePlayed = true
+  delete draft.gameElapsedTime
 })
 
 export const resolveCell = (state: State) => produce(state, (draft: State) => {

@@ -1,5 +1,7 @@
 {
   "mistakes": 0,
+  "isGamePaused": false,
+  "isGamePlayed": true,
   "moveHistory": [],
   "editMode": 1,
   "gameLevel": "EASY",
