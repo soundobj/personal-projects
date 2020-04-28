@@ -53,3 +53,11 @@
 .game--paused .content-inside {
   visibility: hidden;
 }
+
+.gameLevel__options {
+  text-transform: lowercase;
+}
+
+.gameLevel__options::first-letter {
+  text-transform: capitalize;
+}

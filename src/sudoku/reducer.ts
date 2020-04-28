@@ -43,6 +43,9 @@ export interface State {
   isGamePaused: boolean 
   isGamePlayed: boolean
   gameElapsedTime?: string
+  restartGameNumberMap: NumberMap
+  restartCellsToComplete: number
+  restartGame: Cell[][]
 }
 
 export interface Action {
@@ -60,7 +63,8 @@ export enum Actions {
   RESOLVE_CELL,
   UNDO_MOVE,
   END_GAME,
-  SET_GAME_ELLAPSED_TIME
+  SET_GAME_ELLAPSED_TIME,
+  RESTART_GAME,
 }
 
 export const initialState: State = {
@@ -75,6 +79,9 @@ export const initialState: State = {
   moveHistory: [],
   isGamePaused: false,
   isGamePlayed: false,
+  restartGameNumberMap: {},
+  restartCellsToComplete: BOARD_SIZE,
+  restartGame: [[]],
 }
 
 const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates)
@@ -89,6 +96,7 @@ export const sudokuReducer = (state: State, action: Action) => {
       return { ...state, mistakes: state.mistakes + 1 };
     }
     case Actions.START_GAME: return startGame(state, action.payload)
+    case Actions.RESTART_GAME: return restartGame(state)
     case Actions.PAUSE_GAME: {
       return { ...state, isGamePaused: action.payload}
     }
@@ -135,6 +143,12 @@ export const sudokuReducer = (state: State, action: Action) => {
     default: throw new Error(`Unexpected Sudoku reducer action ${action.type}`);
   }
 };
+
+const restartGame = (state: State) => produce(state, (draft:State) => {
+  draft.cellsToComplete = draft.restartCellsToComplete
+  draft.numberMap = draft.restartGameNumberMap
+  draft.game = draft.restartGame
+})
 
 const undoCellInput = (state: State) => produce(state, (draft:State) => {
   const { moveHistory, numberMap, game } = draft
@@ -276,6 +290,10 @@ export const startGame = (state: State, level: GameLevel) => produce(state, (dra
   draft.numberMap = numberMap
   draft.isGamePlayed = true
   delete draft.gameElapsedTime
+  // restart game clone
+  draft.restartGameNumberMap = cloneDeep(numberMap)
+  draft.restartCellsToComplete = draft.cellsToComplete
+  draft.restartGame = cloneDeep(game)
 })
 
 export const resolveCell = (state: State) => produce(state, (draft: State) => {
