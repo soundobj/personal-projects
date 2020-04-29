@@ -7,6 +7,8 @@ export interface NewGameModalProps {
   show: boolean;
   onHide: () => void;
   onNewGame: (gameLevel?: string) => void;
+  onEnter: () => void;
+  onEscapeKeyDown: () => void
 }
 
 export const NewGameLevelOptions = (
@@ -33,7 +35,7 @@ export const NewGameLevelOptions = (
 };
 
 const NewGameModal = React.memo((props: NewGameModalProps) => {
-  const { onHide, onNewGame } = props;
+  const { onHide, onNewGame, onEscapeKeyDown } = props;
   return (
     <Modal
       {...props}
@@ -50,7 +52,14 @@ const NewGameModal = React.memo((props: NewGameModalProps) => {
         <NewGameLevelOptions onHide={onHide} onNewGame={onNewGame} />
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={() => props.onHide()}>Cancel</Button>
+        <Button
+          onClick={() => {
+            props.onHide();
+            onEscapeKeyDown();
+          }}
+        >
+          Cancel
+        </Button>
       </Modal.Footer>
     </Modal>
   );
@@ -58,10 +67,12 @@ const NewGameModal = React.memo((props: NewGameModalProps) => {
 
 interface NewGameProps {
   onNewGame: () => void;
+  onEnter: () => void;
+  onEscapeKeyDown: () => void
 }
 
 const NewGame = (props: NewGameProps) => {
-  const { onNewGame } = props;
+  const { onNewGame, onEnter, onEscapeKeyDown } = props;
   const [modalShow, setModalShow] = useState(false);
 
   const onHide = useCallback(() => {
@@ -76,7 +87,7 @@ const NewGame = (props: NewGameProps) => {
       >
         New Game
       </Button>
-      <NewGameModal show={modalShow} onHide={onHide} onNewGame={onNewGame} />
+      <NewGameModal show={modalShow} onHide={onHide} onNewGame={onNewGame} onEnter={onEnter} onEscapeKeyDown={onEscapeKeyDown} />
     </>
   );
 };

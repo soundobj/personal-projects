@@ -2,6 +2,7 @@ import React, { useReducer, useCallback } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import StopWatchUI from '../stopWatch/StopWatchUI'
+import { stopWatch, CallbackPayload } from '../stopWatch/stopWatch'
 
 import { sudokuReducer, initialState, Actions} from './reducer'
 import { GameLevel, Coordinate, MoveTypes } from './definitions'
@@ -19,15 +20,20 @@ import * as stateStub from './state-stub.json'
 import './vars.css'
 import './Sudoku.css'
 
+const watch = stopWatch()
+
 export default () => {
   // const [state, dispatch] = useReducer(sudokuReducer, initialState)
   // @TODO: remove temp stub
   //@ts-ignore
   const [state, dispatch] = useReducer(sudokuReducer, stateStub.default)
-
+  
   const newGame = useCallback((gameLevel?: string) => {
     if (gameLevel && GameLevel.hasOwnProperty(gameLevel)) {
       startGame(gameLevel)
+      watch.clear()
+      watch.start()
+      haltGame(false)
     }
   }, [])
 
@@ -77,18 +83,29 @@ export default () => {
 
   return (
     <>
-      <NewGame onNewGame={newGame} />
+      <NewGame
+        onNewGame={newGame}
+        onEnter={() => {
+          watch.stop();
+          haltGame(true);
+        }}
+        onEscapeKeyDown={() => {
+          watch.start();
+          haltGame(false);
+        }}
+      />
       <EditMode editMode={editMode} setEditMode={setEditMode} />
       <Numbers issueNumber={issueNumber} />
-      <StopWatchUI
-        shouldStart={isGamePlayed}
-        shouldClear={!isGamePlayed} 
-        onClear={getTimeToComplete}
-        onPause={haltGame}
-      />
+      <StopWatchUI watch={watch} onPause={haltGame} />
       <EndGame onEndGame={haltGame} onConfirmEndGame={endGame} />
       <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
-      {gameLevel && <Board game={game} selectCell={selectCell} isGamePaused={isGamePaused} /> }
+      {gameLevel && (
+        <Board
+          game={game}
+          selectCell={selectCell}
+          isGamePaused={isGamePaused}
+        />
+      )}
       <KeyboardInput
         game={game}
         selectedCell={selectedCell}

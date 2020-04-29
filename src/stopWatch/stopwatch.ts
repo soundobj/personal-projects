@@ -12,6 +12,11 @@ export interface CallbackPayload {
   ISOString: string
 }
 
+export const initialTimeElapsed = {
+  elapsedTime: 0,
+  ISOString: "00:00:00",
+}
+
 /*
   Supply a callback to stoWatch to be notified with CallbackPayload every time the stopWatch ticks
 */
