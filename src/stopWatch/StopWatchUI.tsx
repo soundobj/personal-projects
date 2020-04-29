@@ -6,10 +6,11 @@ import './StopWatchUI.css'
 interface Props {
   watch: StopWatch
   onPause: (payload: boolean) => void
+  isGamePlayed: boolean
 }
 
 const StopWatchUI = (props: Props) => {
-  const { watch, onPause } = props
+  const { watch, onPause, isGamePlayed } = props
   const [timeElapsed, setTimeElapsed] = useState(initialTimeElapsed);
   const [isPaused, setisPaused] = useState(false)
   watch.setCallback(setTimeElapsed)
@@ -18,6 +19,7 @@ const StopWatchUI = (props: Props) => {
     <>
       <div className="stopWatchUI">{timeElapsed.ISOString}</div>
       { <Button
+        disabled={!isGamePlayed}
         onClick={() => {
           setisPaused(!isPaused)
           if (isPaused) { 

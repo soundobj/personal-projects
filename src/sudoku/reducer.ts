@@ -28,6 +28,7 @@ import {
 } from "./utils";
 import { getCell, filterOutCoordinate, cellIsAvailable, filterByCellCoordinate } from './board'
 
+export type Dialogs = 'NEW_GAME' | 'END_GAME'
 export interface State {
   gameLevel?: GameLevel
   mistakes: number
@@ -46,6 +47,7 @@ export interface State {
   restartGameNumberMap: NumberMap
   restartCellsToComplete: number
   restartGame: Cell[][]
+  currentDialog: Dialogs
 }
 
 export interface Action {
@@ -65,6 +67,7 @@ export enum Actions {
   END_GAME,
   SET_GAME_ELLAPSED_TIME,
   RESTART_GAME,
+  SET_CURRENT_DIALOG,
 }
 
 export const initialState: State = {
@@ -82,6 +85,7 @@ export const initialState: State = {
   restartGameNumberMap: {},
   restartCellsToComplete: BOARD_SIZE,
   restartGame: [[]],
+  currentDialog: 'NEW_GAME'
 }
 
 const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates)
@@ -94,6 +98,11 @@ export const sudokuReducer = (state: State, action: Action) => {
         console.error('@reducer RECORD_MISTAKE SHOW NEW GAME ALERT', )
       }
       return { ...state, mistakes: state.mistakes + 1 };
+    }
+    case Actions.SET_CURRENT_DIALOG: {
+      console.error('@SET_CURRENT_DIALOG', action.payload)
+      const dialog: Dialogs = action.payload
+      return { ...state, currentDialog: dialog}
     }
     case Actions.START_GAME: return startGame(state, action.payload)
     case Actions.RESTART_GAME: return restartGame(state)

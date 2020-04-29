@@ -15,6 +15,10 @@ interface EndGameModalProps {
   onConfirmEndGame: () => void;
 }
 
+// export const EndGameOptions = (props) => {
+
+// }
+
 const EndGameModal = React.memo((props: EndGameModalProps) => {
   const { show, onHide, onEndGame, onConfirmEndGame } = props;
   return (
