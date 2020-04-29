@@ -7,15 +7,14 @@ import { stopWatch, CallbackPayload } from '../stopWatch/stopWatch'
 
 import { sudokuReducer, initialState, Actions, Dialogs} from './reducer'
 import { GameLevel, Coordinate, MoveTypes } from './definitions'
-import EndGame from './endGame/EndGame'
-import NewGame from './newGame/NewGame'
 import UndoMove from './undoMove/UndoMove'
 import Board from './board/Board'
 import Numbers from './numbers/Numbers'
 import EditMode from './editMode/EditMode'
 import KeyboardInput from './keyboadInput/KeyboardInput'
 import Dialog, { DialogContent } from './dialog/Dialog'
-import { NewGameLevelOptions } from './newGame/NewGame'
+import NewGameOptions from './newGameOptions/NewGameOptions'
+import EndGameModal from './endGameModal/EndGameModal'
 
 // dev only
 import * as stateStub from './state-stub.json'
@@ -92,16 +91,27 @@ export default () => {
   );
 
   console.error('@state', state)
-  const { game, selectedCell, cellsToComplete, moveHistory, isGamePlayed, gameElapsedTime, gameLevel, editMode, isGamePaused, currentDialog } = state
+  const {
+    game,
+    selectedCell,
+    cellsToComplete,
+    moveHistory,
+    isGamePlayed,
+    gameElapsedTime,
+    gameLevel,
+    editMode,
+    isGamePaused,
+    currentDialog,
+  } = state;
 
   const dialogs: Record<Dialogs, DialogContent> = {
     'NEW_GAME': {
       header: 'Choose difficulty',
-      component: <NewGameLevelOptions onHide={onHide} onNewGame={newGame} />
+      component: <NewGameOptions onHide={onHide} onNewGame={newGame} />
     },
     'END_GAME': {
       header: 'Are you sure?',
-      component: <NewGameLevelOptions onHide={onHide} onNewGame={newGame} />
+      component: <EndGameModal onHide={onHide} onEndGame={pauseGame} onConfirmEndGame={endGame} />
     }
   }
 
@@ -136,7 +146,11 @@ export default () => {
         onPause={pauseGame}
         isGamePlayed={isGamePlayed}
       />
-      <EndGame onEndGame={pauseGame} onConfirmEndGame={endGame} />
+      <Button onClick={useCallback(() => {
+          setCurrentDialog('END_GAME')
+          setDialogShow(true)
+        }, [])}
+      >End Game</Button>
       <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
       {gameLevel && (
         <Board
