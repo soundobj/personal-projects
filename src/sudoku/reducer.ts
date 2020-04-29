@@ -28,7 +28,7 @@ import {
 } from "./utils";
 import { getCell, filterOutCoordinate, cellIsAvailable, filterByCellCoordinate } from './board'
 
-export type Dialogs = 'NEW_GAME' | 'END_GAME'
+export type Dialogs = 'NEW_GAME' | 'END_GAME' | 'GAME_OVER'
 export interface State {
   gameLevel?: GameLevel
   mistakes: number
@@ -56,7 +56,6 @@ export interface Action {
 }
 
 export enum Actions {
-  RECORD_MISTAKE,
   PAUSE_GAME,
   SET_EDIT_MODE,
   SELECT_CELL,
@@ -92,15 +91,7 @@ const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates)
 
 export const sudokuReducer = (state: State, action: Action) => {
   switch (action.type) {
-    case Actions.RECORD_MISTAKE: {
-      console.error('@RECORD_MISTAKE', state.mistakes)
-      if (state.mistakes === ALLOWED_MISTAKES) {
-        console.error('@reducer RECORD_MISTAKE SHOW NEW GAME ALERT', )
-      }
-      return { ...state, mistakes: state.mistakes + 1 };
-    }
     case Actions.SET_CURRENT_DIALOG: {
-      console.error('@SET_CURRENT_DIALOG', action.payload)
       const dialog: Dialogs = action.payload
       return { ...state, currentDialog: dialog}
     }
@@ -157,6 +148,10 @@ const restartGame = (state: State) => produce(state, (draft:State) => {
   draft.cellsToComplete = draft.restartCellsToComplete
   draft.numberMap = draft.restartGameNumberMap
   draft.game = draft.restartGame
+  draft.isGamePlayed = true
+  draft.mistakes = 0
+  draft.selectedCellRelatedCells = []
+  draft.conflictingCells = []
 })
 
 const undoCellInput = (state: State) => produce(state, (draft:State) => {
@@ -317,7 +312,7 @@ export const resolveCell = (state: State) => produce(state, (draft: State) => {
 
 export const setCellValue = (state: State, number: number) => {
   return pipe(
-    curryRight(updateValueAndCellsToCompleteCount)(number),
+    curryRight(updateCellValue)(number),
     curryRight(removeConflictingCandidates)(number),
     curryRight(recordMove)(MoveTypes.NUMBER, number),
   )(state);
@@ -325,13 +320,18 @@ export const setCellValue = (state: State, number: number) => {
 
 export const isNumberSolution = (number: number, cell: Cell): boolean => number === cell.solution
 
-export const updateValueAndCellsToCompleteCount = (state: State, number: number) => produce(state, (draft: State) => {
-  const { game, selectedCell } = draft
+export const updateCellValue = (state: State, number: number) => produce(state, (draft: State) => {
+  const { game, selectedCell, mistakes } = draft
   const cell = getCell(selectedCell, game)
   cell.value = number;
   if (isNumberSolution(number, cell)) {
     draft.cellsToComplete--
     draft.numberMap[number].coordinates.push(selectedCell)
+  } else if (mistakes + 1 > ALLOWED_MISTAKES) {
+    draft.isGamePlayed = false
+    draft.currentDialog = 'GAME_OVER'
+  } else {
+    draft.mistakes++
   }
 })
 

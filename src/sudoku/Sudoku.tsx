@@ -15,6 +15,7 @@ import KeyboardInput from './keyboadInput/KeyboardInput'
 import Dialog, { DialogContent } from './dialog/Dialog'
 import NewGameOptions from './newGameOptions/NewGameOptions'
 import EndGameModal from './endGameModal/EndGameModal'
+import GameOverModal from './gameOverModal/GameOverModal'
 
 // dev only
 import * as stateStub from './state-stub.json'
@@ -36,13 +37,20 @@ export default () => {
   const onHide = useCallback(() => {
     setDialogShow(false);
   }, []);
+
+  const restartWatch = () => {
+    watch.clear()
+    watch.start()
+    pauseGame(false)
+  }
   
   const newGame = useCallback((gameLevel?: string) => {
     if (gameLevel && GameLevel.hasOwnProperty(gameLevel)) {
       startGame(gameLevel)
-      watch.clear()
-      watch.start()
-      pauseGame(false)
+      restartWatch()
+      // watch.clear()
+      // watch.start()
+      // pauseGame(false)
     }
   }, [])
   const selectCell = useCallback(
@@ -55,6 +63,11 @@ export default () => {
       dispatch({ type: Actions.START_GAME, payload: gameLevel }),
     []
   );
+  const restartGame = useCallback(() => {
+    dispatch({ type: Actions.RESTART_GAME });
+    restartWatch()
+
+  }, []);
   const resolveCell = useCallback(
     () => dispatch({ type: Actions.RESOLVE_CELL }),
     []
@@ -105,14 +118,37 @@ export default () => {
   } = state;
 
   const dialogs: Record<Dialogs, DialogContent> = {
-    'NEW_GAME': {
-      header: 'Choose difficulty',
-      component: <NewGameOptions onHide={onHide} onNewGame={newGame} />
+    NEW_GAME: {
+      header: "Choose difficulty",
+      component: <NewGameOptions onHide={onHide} onNewGame={newGame} />,
     },
-    'END_GAME': {
-      header: 'Are you sure?',
-      component: <EndGameModal onHide={onHide} onEndGame={pauseGame} onConfirmEndGame={endGame} />
-    }
+    END_GAME: {
+      header: "Are you sure?",
+      component: (
+        <EndGameModal
+          onHide={onHide}
+          onEndGame={pauseGame}
+          onConfirmEndGame={endGame}
+        />
+      ),
+    },
+    GAME_OVER: {
+      header: "Game Over",
+      component: (
+        <GameOverModal
+          onHide={onHide}
+          onNewGame={newGame}
+          onRestart={restartGame}
+        />
+      ),
+    },
+  };
+
+  let showGameOver = false
+  // show the game over modal if required
+  if (currentDialog === 'GAME_OVER' && !isGamePlayed) {
+    // dont use setShowGameOver() to avoid re-rendering the component
+    showGameOver = true
   }
 
   return (
@@ -133,11 +169,12 @@ export default () => {
         onEscapeKeyDown={() => {
           isGamePlayed && watch.start();
           pauseGame(false);
+          !isGamePlayed && setCurrentDialog('NEW_GAME')
         }}
         onHide={onHide}
         //@ts-ignore
         content={dialogs[currentDialog]}
-        show={dialogShow}
+        show={dialogShow || showGameOver}
       />
       <EditMode editMode={editMode} setEditMode={setEditMode} />
       <Numbers issueNumber={issueNumber} />
