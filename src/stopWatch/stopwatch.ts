@@ -5,9 +5,10 @@ export interface StopWatch {
   getElapsedSeconds: () => number
   printElapsedTime: () => string
   setCallback: (c:(c:any)=> void) => void
+  getElapsedTime: () => StopWatchCallbackPayload
 }
 
-export interface CallbackPayload {
+export interface StopWatchCallbackPayload {
   elapsedTime: number,
   ISOString: string
 }
@@ -45,6 +46,10 @@ export const stopWatch = (): StopWatch => {
   const stop = () => clearInterval(timer);
   const getElapsedSeconds = () => elapsedTime * 1000;
   const printElapsedTime = () => new Date(elapsedTime * 1000).toISOString().substr(11, 8);
+  const getElapsedTime = () => ({
+    elapsedTime: elapsedTime * 1000,
+    ISOString: printElapsedTime(),
+  });
   const setCallback = (c:(c:any) => void) => callback = c
 
   return {
@@ -53,6 +58,9 @@ export const stopWatch = (): StopWatch => {
     clear,
     getElapsedSeconds,
     printElapsedTime,
-    setCallback
+    setCallback,
+    getElapsedTime,
   };
 };
+
+export default stopWatch

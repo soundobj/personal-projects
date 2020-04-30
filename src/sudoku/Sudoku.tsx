@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import StopWatchUI from '../stopWatch/StopWatchUI'
-import { stopWatch, CallbackPayload } from '../stopWatch/stopWatch'
+import stopWatch from '../stopWatch/stopWatch'
 
 import { sudokuReducer, initialState, Actions, Dialogs} from './reducer'
 import { GameLevel, Coordinate, MoveTypes } from './definitions'
@@ -17,6 +17,7 @@ import Dialog, { DialogContent } from './dialog/Dialog'
 import NewGameOptions from './newGameOptions/NewGameOptions'
 import EndGameModal from './endGameModal/EndGameModal'
 import GameOverModal from './gameOverModal/GameOverModal'
+import GameCompletedModal from './gameCompletedModal/GameCompletedModal'
 
 // dev only stubs
 // import * as stateStub from './stubs/state-stub.json'
@@ -29,10 +30,10 @@ const watch = stopWatch()
 
 export default () => {
   // @ts-ignore
-  const [state, dispatch] = useReducer(sudokuReducer, initialState)
+  // const [state, dispatch] = useReducer(sudokuReducer, initialState)
   // @TODO: remove temp stub
   // @ts-ignore
-  // const [state, dispatch] = useReducer(sudokuReducer, stateStub.default)
+  const [state, dispatch] = useReducer(sudokuReducer, stateStub.default)
 
   const [dialogShow, setDialogShow] = useState(false);
 
@@ -81,11 +82,15 @@ export default () => {
       dispatch({ type: Actions.SET_CURRENT_DIALOG, payload: dialog }),
     []
   );
-  const issueNumber = useCallback(
-    (number: number) =>
-      dispatch({ type: Actions.ISSUE_NUMBER, payload: number }),
-    []
-  );
+  const issueNumber = (number: number) => {
+    dispatch({ type: Actions.ISSUE_NUMBER, payload: number });
+    if (state.cellsToComplete === 1) {
+      dispatch({
+        type: Actions.SET_FINISHED_TIME,
+        payload: watch.getElapsedTime(),
+      });
+    }
+  }
   const undoMove = useCallback(
     () =>
       dispatch({ type: Actions.UNDO_MOVE }),
@@ -96,11 +101,6 @@ export default () => {
     []
   );
   const endGame = useCallback(() => dispatch({ type: Actions.END_GAME }), [])
-  const getTimeToComplete = useCallback(
-    (payload: any) =>
-      dispatch({ type: Actions.SET_FINISHED_TIME, payload }),
-    []
-  );
 
   console.error('@state', state)
   const {
@@ -109,8 +109,7 @@ export default () => {
     cellsToComplete,
     moveHistory,
     isGamePlayed,
-    gameElapsedTime,
-    gameLevel,
+    finishedTime,
     editMode,
     isGamePaused,
     currentDialog,
@@ -144,17 +143,17 @@ export default () => {
     GAME_FINISHED: {
       header: "Game Completed",
       component: (
-        <GameOverModal
+        <GameCompletedModal
           onHide={onHide}
           onNewGame={newGame}
-          onRestart={restartGame}
+          finishedTime={finishedTime}
         />
       ),
     },
   };
 
   let showModal = false
-  if (currentDialog === 'GAME_OVER' && !isGamePlayed) {
+  if (currentDialog === 'GAME_OVER' || currentDialog === 'GAME_FINISHED' && !isGamePlayed) {
     // dont use setShowGameOver() to avoid re-rendering the component
     showModal = true
   }
@@ -177,7 +176,7 @@ export default () => {
         onEscapeKeyDown={() => {
           isGamePlayed && watch.start();
           pauseGame(false);
-          // if user exits any modal without taking any action reset the dialog to NEW_GAME
+          // if user exits any modal without taking any action then reset the dialog to NEW_GAME
           !isGamePlayed && setCurrentDialog('NEW_GAME')
         }}
         onHide={onHide}

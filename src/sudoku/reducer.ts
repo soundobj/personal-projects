@@ -3,6 +3,8 @@ import { pipe } from 'lodash/fp'
 import memoize from 'fast-memoize'
 import produce from 'immer'
 
+import { StopWatchCallbackPayload } from "../stopWatch/stopWatch";
+
 import {
   MoveTypes,
   Move,
@@ -48,7 +50,7 @@ export interface State {
   restartCellsToComplete: number
   restartGame: Cell[][]
   currentDialog: Dialogs
-  finishedTime: string
+  finishedTime: StopWatchCallbackPayload
 }
 
 export interface Action {
@@ -87,7 +89,7 @@ export const initialState: State = {
   restartCellsToComplete: BOARD_SIZE,
   restartGame: [[]],
   currentDialog: 'NEW_GAME',
-  finishedTime: ''
+  finishedTime: { elapsedTime: 0, ISOString: ''}
 }
 
 const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates)
@@ -107,8 +109,7 @@ export const sudokuReducer = (state: State, action: Action) => {
       return { ...state, isGamePlayed: false}
     }
     case Actions.SET_FINISHED_TIME: {
-      console.error('@SET_FINISHED_TIME', action.payload)
-      return { ...state , finishedTime:action.payload.ISOString}
+      return { ...state , finishedTime:action.payload}
     }
     case Actions.SELECT_CELL: {   
       if (isEqual(state.selectedCell, action.payload)) {
@@ -155,6 +156,7 @@ const restartGame = (state: State) => produce(state, (draft:State) => {
   draft.mistakes = 0
   draft.selectedCellRelatedCells = []
   draft.conflictingCells = []
+  delete draft.finishedTime
 })
 
 const undoCellInput = (state: State) => produce(state, (draft:State) => {
@@ -301,6 +303,7 @@ export const startGame = (state: State, level: GameLevel) => produce(state, (dra
   draft.restartGameNumberMap = cloneDeep(numberMap)
   draft.restartCellsToComplete = draft.cellsToComplete
   draft.restartGame = cloneDeep(game)
+  draft.currentDialog = 'NEW_GAME'
 })
 
 export const resolveCell = (state: State) => produce(state, (draft: State) => {
@@ -348,7 +351,7 @@ export const maybeGameOver = (state: State, number: number) => produce(state, (d
 })
 
 export const updateCellValue = (state: State, number: number) => produce(state, (draft: State) => {
-  const { game, selectedCell, mistakes } = draft
+  const { game, selectedCell } = draft
   const cell = getCell(selectedCell, game)
   cell.value = number;
   if (isNumberSolution(number, cell)) {

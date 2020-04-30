@@ -1,5 +1,6 @@
 {
   "mistakes": 0,
+  "finishedTime":{ "elapsedTime": 0, "ISOString": ""},
   "editMode": 1,
   "selectedCell": {
     "x": 7,
