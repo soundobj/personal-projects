@@ -27,8 +27,9 @@ import {
   getEnumValues,
 } from "./utils";
 import { getCell, filterOutCoordinate, cellIsAvailable, filterByCellCoordinate } from './board'
+import * as emptyGame from './stubs/emptyGame.json'
 
-export type Dialogs = 'NEW_GAME' | 'END_GAME' | 'GAME_OVER'
+export type Dialogs = 'NEW_GAME' | 'END_GAME' | 'GAME_OVER' | 'GAME_FINISHED'
 export interface State {
   gameLevel?: GameLevel
   mistakes: number
@@ -43,11 +44,11 @@ export interface State {
   numberMap: NumberMap
   isGamePaused: boolean 
   isGamePlayed: boolean
-  gameElapsedTime?: string
   restartGameNumberMap: NumberMap
   restartCellsToComplete: number
   restartGame: Cell[][]
   currentDialog: Dialogs
+  finishedTime: string
 }
 
 export interface Action {
@@ -64,7 +65,7 @@ export enum Actions {
   RESOLVE_CELL,
   UNDO_MOVE,
   END_GAME,
-  SET_GAME_ELLAPSED_TIME,
+  SET_FINISHED_TIME,
   RESTART_GAME,
   SET_CURRENT_DIALOG,
 }
@@ -76,7 +77,8 @@ export const initialState: State = {
   cellsToComplete: BOARD_SIZE,
   conflictingCells: [],
   selectedCellRelatedCells: [],
-  game: [[]],
+  // @ts-ignore
+  game: emptyGame.default,
   numberMap: {},
   moveHistory: [],
   isGamePaused: false,
@@ -84,7 +86,8 @@ export const initialState: State = {
   restartGameNumberMap: {},
   restartCellsToComplete: BOARD_SIZE,
   restartGame: [[]],
-  currentDialog: 'NEW_GAME'
+  currentDialog: 'NEW_GAME',
+  finishedTime: ''
 }
 
 const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates)
@@ -103,9 +106,9 @@ export const sudokuReducer = (state: State, action: Action) => {
     case Actions.END_GAME: {
       return { ...state, isGamePlayed: false}
     }
-    case Actions.SET_GAME_ELLAPSED_TIME: {
-      console.error('@SET_GAME_ELLAPSED_TIME', action.payload)
-      return { ...state , gameElapsedTime:action.payload.ISOString}
+    case Actions.SET_FINISHED_TIME: {
+      console.error('@SET_FINISHED_TIME', action.payload)
+      return { ...state , finishedTime:action.payload.ISOString}
     }
     case Actions.SELECT_CELL: {   
       if (isEqual(state.selectedCell, action.payload)) {
@@ -293,8 +296,8 @@ export const startGame = (state: State, level: GameLevel) => produce(state, (dra
   draft.game = game
   draft.numberMap = numberMap
   draft.isGamePlayed = true
-  delete draft.gameElapsedTime
-  // restart game clone
+  delete draft.finishedTime
+  // reset restart game clone
   draft.restartGameNumberMap = cloneDeep(numberMap)
   draft.restartCellsToComplete = draft.cellsToComplete
   draft.restartGame = cloneDeep(game)
@@ -312,13 +315,37 @@ export const resolveCell = (state: State) => produce(state, (draft: State) => {
 
 export const setCellValue = (state: State, number: number) => {
   return pipe(
+    curryRight(maybeGameOver)(number),
     curryRight(updateCellValue)(number),
     curryRight(removeConflictingCandidates)(number),
     curryRight(recordMove)(MoveTypes.NUMBER, number),
+    maybeFinishGame,
   )(state);
 };
 
 export const isNumberSolution = (number: number, cell: Cell): boolean => number === cell.solution
+
+export const maybeFinishGame = (state: State) => produce(state, (draft: State) => {
+  if (draft.cellsToComplete === 0) {
+    draft.currentDialog = 'GAME_FINISHED'
+    draft.isGamePlayed = false
+  }
+})
+
+export const maybeGameOver = (state: State, number: number) => produce(state, (draft: State) => {
+  const { game, selectedCell, mistakes } = draft
+  const cell = getCell(selectedCell, game)
+  if (isNumberSolution(number, cell) || cell.value && cell.value === number) {
+    return
+  }
+  cell.value = number;
+  if (mistakes + 1 > ALLOWED_MISTAKES) {
+    draft.isGamePlayed = false
+    draft.currentDialog = 'GAME_OVER'
+  } else {
+    draft.mistakes++
+  }
+})
 
 export const updateCellValue = (state: State, number: number) => produce(state, (draft: State) => {
   const { game, selectedCell, mistakes } = draft
@@ -327,11 +354,6 @@ export const updateCellValue = (state: State, number: number) => produce(state, 
   if (isNumberSolution(number, cell)) {
     draft.cellsToComplete--
     draft.numberMap[number].coordinates.push(selectedCell)
-  } else if (mistakes + 1 > ALLOWED_MISTAKES) {
-    draft.isGamePlayed = false
-    draft.currentDialog = 'GAME_OVER'
-  } else {
-    draft.mistakes++
   }
 })
 

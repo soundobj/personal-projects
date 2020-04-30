@@ -1,4 +1,5 @@
 import React, { useReducer, useCallback, useState } from 'react'
+import { noop } from "lodash";
 import { Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,8 +18,9 @@ import NewGameOptions from './newGameOptions/NewGameOptions'
 import EndGameModal from './endGameModal/EndGameModal'
 import GameOverModal from './gameOverModal/GameOverModal'
 
-// dev only
-import * as stateStub from './state-stub.json'
+// dev only stubs
+// import * as stateStub from './stubs/state-stub.json'
+import * as stateStub from './stubs/almostComplete.json'
 
 import './vars.css'
 import './Sudoku.css'
@@ -48,9 +50,6 @@ export default () => {
     if (gameLevel && GameLevel.hasOwnProperty(gameLevel)) {
       startGame(gameLevel)
       restartWatch()
-      // watch.clear()
-      // watch.start()
-      // pauseGame(false)
     }
   }, [])
   const selectCell = useCallback(
@@ -99,7 +98,7 @@ export default () => {
   const endGame = useCallback(() => dispatch({ type: Actions.END_GAME }), [])
   const getTimeToComplete = useCallback(
     (payload: any) =>
-      dispatch({ type: Actions.SET_GAME_ELLAPSED_TIME, payload }),
+      dispatch({ type: Actions.SET_FINISHED_TIME, payload }),
     []
   );
 
@@ -142,13 +141,22 @@ export default () => {
         />
       ),
     },
+    GAME_FINISHED: {
+      header: "Game Completed",
+      component: (
+        <GameOverModal
+          onHide={onHide}
+          onNewGame={newGame}
+          onRestart={restartGame}
+        />
+      ),
+    },
   };
 
-  let showGameOver = false
-  // show the game over modal if required
+  let showModal = false
   if (currentDialog === 'GAME_OVER' && !isGamePlayed) {
     // dont use setShowGameOver() to avoid re-rendering the component
-    showGameOver = true
+    showModal = true
   }
 
   return (
@@ -169,34 +177,34 @@ export default () => {
         onEscapeKeyDown={() => {
           isGamePlayed && watch.start();
           pauseGame(false);
+          // if user exits any modal without taking any action reset the dialog to NEW_GAME
           !isGamePlayed && setCurrentDialog('NEW_GAME')
         }}
         onHide={onHide}
         //@ts-ignore
         content={dialogs[currentDialog]}
-        show={dialogShow || showGameOver}
+        show={dialogShow || showModal}
       />
       <EditMode editMode={editMode} setEditMode={setEditMode} />
-      <Numbers issueNumber={issueNumber} />
+      <Numbers issueNumber={issueNumber} isGamePlayed={isGamePlayed} />
       <StopWatchUI
         watch={watch}
         onPause={pauseGame}
         isGamePlayed={isGamePlayed}
       />
-      <Button onClick={useCallback(() => {
+      <Button disabled={!isGamePlayed} onClick={useCallback(() => {
           setCurrentDialog('END_GAME')
           setDialogShow(true)
         }, [])}
       >End Game</Button>
       <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
-      {gameLevel && (
-        <Board
-          game={game}
-          selectCell={selectCell}
-          isGamePaused={isGamePaused}
-        />
-      )}
+      <Board
+        game={game}
+        selectCell={isGamePlayed ? selectCell: noop}
+        isGamePaused={isGamePaused}
+      />
       <KeyboardInput
+        isGamePlayed={isGamePlayed}
         game={game}
         selectedCell={selectedCell}
         cellsToComplete={cellsToComplete}

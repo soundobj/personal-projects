@@ -6,10 +6,11 @@ import './Numbers.css'
 
 interface Props {
   issueNumber: (n: number) => void
+  isGamePlayed: boolean
 }
 
 const Numbers = (props: Props) => {
-  const { issueNumber } = props
+  const { issueNumber, isGamePlayed } = props
   return (
     <>
     <ButtonToolbar>
@@ -17,6 +18,7 @@ const Numbers = (props: Props) => {
       {VALID_NUMBERS.map((number: number) => (
         <Button
           key={`control${number}`}
+          disabled={!isGamePlayed}
           onClick={(e: React.SyntheticEvent) => { 
             const target = e.target as HTMLElement;
             target.blur();

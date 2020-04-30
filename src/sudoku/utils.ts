@@ -293,7 +293,6 @@ export const getRelatedCellsCoordinates = (
   coordinate: Coordinate,
   board: Cell[][]
 ): Coordinate[] => {
-  // console.error('@getRelatedCellsCoordinates', coordinate)
  return map("coordinate", getRelatedCells(board, coordinate) || []);
 }
 

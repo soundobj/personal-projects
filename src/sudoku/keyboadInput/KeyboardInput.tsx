@@ -18,6 +18,7 @@ interface Props {
   game: Cell[][];
   selectedCell: Coordinate;
   cellsToComplete: number;
+  isGamePlayed: boolean;
 }
 
 const KeyboardInput = (props: Props) => {
@@ -30,7 +31,12 @@ const KeyboardInput = (props: Props) => {
     cellsToComplete,
     selectCell,
     issueNumber,
+    isGamePlayed,
   } = props;
+
+  if (!isGamePlayed) {
+    return null;
+  }
   return (
     <KeyboardEventHandler
       handleKeys={[
