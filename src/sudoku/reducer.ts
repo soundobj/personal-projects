@@ -299,6 +299,7 @@ export const startGame = (state: State, level: GameLevel) => produce(state, (dra
   draft.numberMap = numberMap
   draft.isGamePlayed = true
   delete draft.finishedTime
+  draft.mistakes = 0
   // reset restart game clone
   draft.restartGameNumberMap = cloneDeep(numberMap)
   draft.restartCellsToComplete = draft.cellsToComplete

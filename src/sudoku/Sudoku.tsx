@@ -19,6 +19,7 @@ import EndGameModal from './endGameModal/EndGameModal'
 import GameOverModal from './gameOverModal/GameOverModal'
 import GameCompletedModal from './gameCompletedModal/GameCompletedModal'
 import Mistakes from './mistakes/Mistakes'
+import FeatureDetect from "./featureDetect/FeatureDetect";
 
 // dev only stubs
 import * as stateStub from './stubs/state-stub.json'
@@ -162,10 +163,15 @@ export default () => {
 
   return (
     <>
+      <FeatureDetect
+        feature="grid"
+        onDoesNotSupport={() => console.error("@does not support")}
+        onDoesSupport={() => console.error("@does support")}
+      />
       <Button
         onClick={useCallback(() => {
-          setCurrentDialog('NEW_GAME')
-          setDialogShow(true)
+          setCurrentDialog("NEW_GAME");
+          setDialogShow(true);
         }, [])}
       >
         New Game
@@ -177,16 +183,20 @@ export default () => {
         onPause={pauseGame}
         isGamePlayed={isGamePlayed}
       />
-      <Button disabled={!isGamePlayed} onClick={useCallback(() => {
-          setCurrentDialog('END_GAME')
-          setDialogShow(true)
+      <Button
+        disabled={!isGamePlayed}
+        onClick={useCallback(() => {
+          setCurrentDialog("END_GAME");
+          setDialogShow(true);
         }, [])}
-      >End Game</Button>
+      >
+        End Game
+      </Button>
       <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
       <Mistakes mistakes={mistakes} />
       <Board
         game={game}
-        selectCell={isGamePlayed ? selectCell: noop}
+        selectCell={isGamePlayed ? selectCell : noop}
         isGamePaused={isGamePaused}
       />
       <KeyboardInput
@@ -209,7 +219,7 @@ export default () => {
           isGamePlayed && watch.start();
           pauseGame(false);
           // if user exits any modal without taking any action then reset the dialog to NEW_GAME
-          !isGamePlayed && setCurrentDialog('NEW_GAME')
+          !isGamePlayed && setCurrentDialog("NEW_GAME");
         }}
         onHide={onHide}
         //@ts-ignore
