@@ -6,12 +6,12 @@ interface Props {
   onDoesNotSupport: () => void
 }
 
-const FeatureDetect = (props: Props) => {
+const CssFeatureDetect = (props: Props) => {
   const { feature, onDoesSupport, onDoesNotSupport } = props
-  const element = useRef(null);
+  const element = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    //@ts-ignore
+    // @ts-ignore
     if (typeof element.current.style[feature] === 'string') {
       onDoesSupport()
     } else {
@@ -21,4 +21,4 @@ const FeatureDetect = (props: Props) => {
   return <div style={{display: "none"}} ref={element} />
 }
 
-export default FeatureDetect
+export default CssFeatureDetect

@@ -19,7 +19,7 @@ import EndGameModal from './endGameModal/EndGameModal'
 import GameOverModal from './gameOverModal/GameOverModal'
 import GameCompletedModal from './gameCompletedModal/GameCompletedModal'
 import Mistakes from './mistakes/Mistakes'
-import FeatureDetect from "./featureDetect/FeatureDetect";
+import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
 
 // dev only stubs
 import * as stateStub from './stubs/state-stub.json'
@@ -163,7 +163,7 @@ export default () => {
 
   return (
     <>
-      <FeatureDetect
+      <CssFeatureDetect
         feature="grid"
         onDoesNotSupport={() => console.error("@does not support")}
         onDoesSupport={() => console.error("@does support")}
