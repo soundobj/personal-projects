@@ -18,10 +18,11 @@ import NewGameOptions from './newGameOptions/NewGameOptions'
 import EndGameModal from './endGameModal/EndGameModal'
 import GameOverModal from './gameOverModal/GameOverModal'
 import GameCompletedModal from './gameCompletedModal/GameCompletedModal'
+import Mistakes from './mistakes/Mistakes'
 
 // dev only stubs
-// import * as stateStub from './stubs/state-stub.json'
-import * as stateStub from './stubs/almostComplete.json'
+import * as stateStub from './stubs/state-stub.json'
+// import * as stateStub from './stubs/almostComplete.json'
 
 import './vars.css'
 import './Sudoku.css'
@@ -113,6 +114,7 @@ export default () => {
     editMode,
     isGamePaused,
     currentDialog,
+    mistakes,
   } = state;
 
   const dialogs: Record<Dialogs, DialogContent> = {
@@ -168,22 +170,6 @@ export default () => {
       >
         New Game
       </Button>
-      <Dialog
-        onEnter={() => {
-          watch.stop();
-          pauseGame(true);
-        }}
-        onEscapeKeyDown={() => {
-          isGamePlayed && watch.start();
-          pauseGame(false);
-          // if user exits any modal without taking any action then reset the dialog to NEW_GAME
-          !isGamePlayed && setCurrentDialog('NEW_GAME')
-        }}
-        onHide={onHide}
-        //@ts-ignore
-        content={dialogs[currentDialog]}
-        show={dialogShow || showModal}
-      />
       <EditMode editMode={editMode} setEditMode={setEditMode} />
       <Numbers issueNumber={issueNumber} isGamePlayed={isGamePlayed} />
       <StopWatchUI
@@ -197,6 +183,7 @@ export default () => {
         }, [])}
       >End Game</Button>
       <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
+      <Mistakes mistakes={mistakes} />
       <Board
         game={game}
         selectCell={isGamePlayed ? selectCell: noop}
@@ -212,6 +199,22 @@ export default () => {
         resolveCell={resolveCell}
         selectCell={selectCell}
         issueNumber={issueNumber}
+      />
+      <Dialog
+        onEnter={() => {
+          watch.stop();
+          pauseGame(true);
+        }}
+        onEscapeKeyDown={() => {
+          isGamePlayed && watch.start();
+          pauseGame(false);
+          // if user exits any modal without taking any action then reset the dialog to NEW_GAME
+          !isGamePlayed && setCurrentDialog('NEW_GAME')
+        }}
+        onHide={onHide}
+        //@ts-ignore
+        content={dialogs[currentDialog]}
+        show={dialogShow || showModal}
       />
     </>
   );

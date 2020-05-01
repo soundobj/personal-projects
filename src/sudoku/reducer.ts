@@ -342,12 +342,11 @@ export const maybeGameOver = (state: State, number: number) => produce(state, (d
     return
   }
   cell.value = number;
-  if (mistakes + 1 > ALLOWED_MISTAKES) {
+  if (mistakes + 1 > ALLOWED_MISTAKES -1 ) {
     draft.isGamePlayed = false
     draft.currentDialog = 'GAME_OVER'
-  } else {
-    draft.mistakes++
   }
+  draft.mistakes++
 })
 
 export const updateCellValue = (state: State, number: number) => produce(state, (draft: State) => {
