@@ -20,6 +20,8 @@ import GameOverModal from './gameOverModal/GameOverModal'
 import GameCompletedModal from './gameCompletedModal/GameCompletedModal'
 import Mistakes from './mistakes/Mistakes'
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
+import { FcPlus } from "react-icons/fc";
+import Icon from "./icon/Icon";
 
 // dev only stubs
 import * as stateStub from './stubs/state-stub.json'
@@ -30,12 +32,13 @@ import './Sudoku.css'
 
 const watch = stopWatch()
 
-export default () => {
+const Sudoku = () => {
   // @ts-ignore
   // const [state, dispatch] = useReducer(sudokuReducer, initialState)
   // @TODO: remove temp stub
   // @ts-ignore
   const [state, dispatch] = useReducer(sudokuReducer, stateStub.default)
+  const iconSize = 50;
 
   const [dialogShow, setDialogShow] = useState(false);
 
@@ -168,14 +171,17 @@ export default () => {
         onDoesNotSupport={() => console.error("@does not support")}
         onDoesSupport={() => console.error("@does support")}
       />
-      <Button
+      <Icon
+        tooltipPosition="right"
+        className=""
+        title="New Game"
         onClick={useCallback(() => {
           setCurrentDialog("NEW_GAME");
           setDialogShow(true);
         }, [])}
       >
-        New Game
-      </Button>
+        <FcPlus size={iconSize} />
+      </Icon>
       <EditMode editMode={editMode} setEditMode={setEditMode} />
       <Numbers issueNumber={issueNumber} isGamePlayed={isGamePlayed} />
       <StopWatchUI
@@ -229,3 +235,5 @@ export default () => {
     </>
   );
 }
+
+export default Sudoku;
