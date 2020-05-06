@@ -1,0 +1,13 @@
+.edit-mode-options {
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+}
+
+.edit-mode-options .form-check {
+    padding: 0;
+}
+
+.edit-mode-input > input {
+ display: none;
+}

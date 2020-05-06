@@ -62,12 +62,25 @@
   text-transform: capitalize;
 }
 
-.top-fixed {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+.sudoku__game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#root {
-  padding-top: 80px;
+.sudoku__game_controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+/* @TODO 500px should be a global to match sudoku game */
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.sudoku__game_controls * {
+  flex: 1 1 auto;
+}
+
+.sudoku__game__board {
+  width: 100%;
 }

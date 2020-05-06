@@ -27,6 +27,7 @@ import Icon from "./icon/Icon";
 import * as stateStub from './stubs/state-stub.json'
 // import * as stateStub from './stubs/almostComplete.json'
 
+import 'reset-css';
 import './vars.css'
 import './Sudoku.css'
 
@@ -182,29 +183,39 @@ const Sudoku = () => {
       >
         <FcPlus size={iconSize} />
       </Icon>
-      <EditMode editMode={editMode} setEditMode={setEditMode} />
-      <Numbers issueNumber={issueNumber} isGamePlayed={isGamePlayed} />
-      <StopWatchUI
-        watch={watch}
-        onPause={pauseGame}
-        isGamePlayed={isGamePlayed}
-      />
-      <Button
-        disabled={!isGamePlayed}
-        onClick={useCallback(() => {
-          setCurrentDialog("END_GAME");
-          setDialogShow(true);
-        }, [])}
-      >
-        End Game
-      </Button>
-      <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
-      <Mistakes mistakes={mistakes} />
-      <Board
-        game={game}
-        selectCell={isGamePlayed ? selectCell : noop}
-        isGamePaused={isGamePaused}
-      />
+
+      <article className="sudoku__game">
+        <section className="sudoku__game_controls">
+          <EditMode editMode={editMode} setEditMode={setEditMode} />
+          <StopWatchUI
+            watch={watch}
+            onPause={pauseGame}
+            isGamePlayed={isGamePlayed}
+          />
+          <Button
+            disabled={!isGamePlayed}
+            onClick={useCallback(() => {
+              setCurrentDialog("END_GAME");
+              setDialogShow(true);
+            }, [])}
+          >
+            End Game
+          </Button>
+          <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
+          <Mistakes mistakes={mistakes} />
+        </section>
+        <section className="sudoku__game__board">
+          <Board
+            game={game}
+            selectCell={isGamePlayed ? selectCell : noop}
+            isGamePaused={isGamePaused}
+          />
+        </section>
+        <section className="sudoku__game_footer">
+          {/* <Numbers issueNumber={issueNumber} isGamePlayed={isGamePlayed} /> */}
+        </section>
+      </article>
+
       <KeyboardInput
         isGamePlayed={isGamePlayed}
         game={game}
