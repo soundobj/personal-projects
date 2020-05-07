@@ -1,6 +1,5 @@
 import React, { useReducer, useCallback, useState } from 'react'
-import { noop } from "lodash";
-import { Button } from 'react-bootstrap'
+import { noop, isEmpty } from "lodash";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import StopWatchUI from '../stopWatch/StopWatchUI'
@@ -8,10 +7,8 @@ import stopWatch from '../stopWatch/stopWatch'
 
 import { sudokuReducer, initialState, Actions, Dialogs} from './reducer'
 import { GameLevel, Coordinate, MoveTypes } from './definitions'
-import UndoMove from './undoMove/UndoMove'
 import Board from './board/Board'
 import Numbers from './numbers/Numbers'
-import EditMode from './editMode/EditMode'
 import KeyboardInput from './keyboadInput/KeyboardInput'
 import Dialog, { DialogContent } from './dialog/Dialog'
 import NewGameOptions from './newGameOptions/NewGameOptions'
@@ -22,6 +19,9 @@ import Mistakes from './mistakes/Mistakes'
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
 import { FcPlus } from "react-icons/fc";
 import Icon from "./icon/Icon";
+import { IoMdCloseCircle } from "react-icons/io";
+import { AiOutlineRollback } from "react-icons/ai";
+import { BsPen } from "react-icons/bs";
 
 // dev only stubs
 import * as stateStub from './stubs/state-stub.json'
@@ -83,6 +83,7 @@ const Sudoku = () => {
       dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode }),
     []
   );
+
   const setCurrentDialog = useCallback(
     (dialog: Dialogs) =>
       dispatch({ type: Actions.SET_CURRENT_DIALOG, payload: dialog }),
@@ -121,6 +122,7 @@ const Sudoku = () => {
     currentDialog,
     mistakes,
   } = state;
+  const isCandidateMode = editMode === MoveTypes.CANDIDATE
 
   const dialogs: Record<Dialogs, DialogContent> = {
     NEW_GAME: {
@@ -183,25 +185,43 @@ const Sudoku = () => {
       >
         <FcPlus size={iconSize} />
       </Icon>
-
       <article className="sudoku__game">
         <section className="sudoku__game_controls">
-          <EditMode editMode={editMode} setEditMode={setEditMode} />
+          <Icon
+            tooltipPosition="top"
+            title="Candidate mode"
+            onClick={() => setEditMode(+!editMode)}
+            className={`${
+              isCandidateMode ? "sudoku__game_controls__option__selected" : ""
+            }`}
+          >
+            <BsPen />
+          </Icon>
           <StopWatchUI
             watch={watch}
             onPause={pauseGame}
             isGamePlayed={isGamePlayed}
           />
-          <Button
-            disabled={!isGamePlayed}
+          <Icon
+            tooltipPosition="top"
+            className=""
+            title="End Game"
             onClick={useCallback(() => {
               setCurrentDialog("END_GAME");
               setDialogShow(true);
             }, [])}
           >
-            End Game
-          </Button>
-          <UndoMove moveHistory={moveHistory} undoMove={undoMove} />
+            <IoMdCloseCircle />
+          </Icon>
+          <Icon
+            tooltipPosition="top"
+            className=""
+            disabled={isEmpty(moveHistory)}
+            title="Undo last move"
+            onClick={undoMove}
+          >
+            <AiOutlineRollback />
+          </Icon>
           <Mistakes mistakes={mistakes} />
         </section>
         <section className="sudoku__game__board">

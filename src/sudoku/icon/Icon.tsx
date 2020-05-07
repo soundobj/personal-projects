@@ -5,7 +5,7 @@ import "./Icon.css";
 interface Props {
   title: string;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
   children: any;
   disabled?: boolean;
   tooltipPosition?: "top" | "bottom" | "left" | "right"
@@ -14,7 +14,6 @@ interface Props {
 const Icon = (props: Props) => {
   const { title, onClick, children, tooltipPosition, disabled, className } = props;
   const position = tooltipPosition || "top"
-  console.error('@_className',className);
   return (
     <>
       <OverlayTrigger

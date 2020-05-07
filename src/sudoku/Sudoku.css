@@ -72,13 +72,23 @@
   display: flex;
   align-items: center;
   width: 100%;
-/* @TODO 500px should be a global to match sudoku game */
+/* 
+  @TODO 500px should be a global to match sudoku game
+  We are repeating the below properties accross the board and the controls.
+  is there a way to DRY this with vanilla CSS?
+*/
   max-width: 500px;
   margin: 0 auto;
+  padding: 10px;
 }
 
-.sudoku__game_controls * {
+.sudoku__game_controls > * {
   flex: 1 1 auto;
+}
+
+.sudoku__game_controls__option__selected {
+  border: solid 1px black;
+  border-radius: 4px;
 }
 
 .sudoku__game__board {

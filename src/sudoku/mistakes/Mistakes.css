@@ -1,0 +1,4 @@
+.sudoku__mistakes {
+    display: flex;
+    align-items: center;
+}
