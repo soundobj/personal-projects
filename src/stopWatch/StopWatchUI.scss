@@ -1,0 +1,8 @@
+.stopWatch {
+  display: flex;
+  align-items: center;
+
+  &__timeElapsed {
+    min-width: 4.5rem;
+  }
+}

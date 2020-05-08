@@ -30,7 +30,22 @@ describe.only ('[stopWatch]',() => {
     jest.advanceTimersByTime(3775000); // 1 hour, 2 minutes and 55 seconds
     sw.stop()
     const expected = last(callback.mock.calls)[0]
-    expect(expected).toStrictEqual({"ISOString": "01:02:55", "elapsedTime": 3775000})
+    expect(expected).toStrictEqual({"ISOString": "1:02:55", "elapsedTime": 3775000})
     done()
   })
+
+  
+  it('friendly print the elapsed time in the stopWatch less than an hour only shows mm:ss', (done) => {
+    const callback = jest.fn();
+    const sw = stopWatch()
+    sw.setCallback(callback)
+    sw.start()
+    jest.advanceTimersByTime(120000); // 2 minutes
+    sw.stop()
+    const expected = last(callback.mock.calls)[0]
+    expect(expected).toStrictEqual({"ISOString": "02:00", "elapsedTime": 120000})
+    done()
+  })
+
+
 })

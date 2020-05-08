@@ -1,0 +1,21 @@
+.sudoku__menu__item {
+    margin: 0 auto;
+    border: none;
+
+    &__circle {
+        display: flex;
+        width: var(--menuItem);
+        height: var(--menuItem);
+        background: var(--warning);
+        border-radius: 50%;
+        align-items: center;
+            & > * {
+                margin: 0 auto;
+            }
+    }
+    
+    &__title {
+        letter-spacing: .2rem;
+        margin-left: .3rem;
+    }
+}

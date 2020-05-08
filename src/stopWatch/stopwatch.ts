@@ -15,7 +15,7 @@ export interface StopWatchCallbackPayload {
 
 export const initialTimeElapsed = {
   elapsedTime: 0,
-  ISOString: "00:00:00",
+  ISOString: "00:00",
 }
 
 /*
@@ -45,7 +45,13 @@ export const stopWatch = (): StopWatch => {
 
   const stop = () => clearInterval(timer);
   const getElapsedSeconds = () => elapsedTime * 1000;
-  const printElapsedTime = () => new Date(elapsedTime * 1000).toISOString().substr(11, 8);
+  const printElapsedTime = () => {
+    const timeEllpased = new Date(elapsedTime * 1000).toISOString()
+    if (elapsedTime * 1000 < 3600000) {
+      return timeEllpased.substr(14, 5);
+    }
+    return timeEllpased.substr(12, 7);
+  }
   const getElapsedTime = () => ({
     elapsedTime: elapsedTime * 1000,
     ISOString: printElapsedTime(),

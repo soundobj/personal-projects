@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Poiret One';
+  src: URL('../font/PoiretOne-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Poiret One', cursive;
+}
+
 .grid {
   display: grid;
   grid: repeat(9, auto) / repeat(9, auto);
@@ -94,3 +103,13 @@
 .sudoku__game__board {
   width: 100%;
 }
+
+.icon__small {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon {
+  width: 1.8rem;
+  height: 1.8rem;
+} 
