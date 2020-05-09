@@ -104,12 +104,78 @@ body {
   width: 100%;
 }
 
-.icon__small {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
 .icon {
   width: 1.8rem;
   height: 1.8rem;
-} 
+
+  &__small {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+ 
+  &__smaller {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+// @TODO see if we can use custom variables instead of sass vars
+$boardSize: 32rem;
+$gutter: 3rem;
+$menuItem: 2.5rem;
+
+.sudoku {
+  &__container {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    max-width: $boardSize + ($gutter * 2)
+  }
+
+  &__game {
+    margin-left: $gutter;
+    margin-right: $gutter;
+  }
+
+  &__nav {
+
+    &__right, &__left {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      margin-top: .5rem;
+    }
+
+    &__right {
+      margin-right: .5rem;
+      right:0;
+    }
+    
+    &__left {
+      margin-left: .5rem;
+      left: 0;
+    }
+  }
+
+  @media screen and (max-width: $boardSize + ($gutter * 2)) {
+    &__container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex: 1 1 auto; 
+    }
+    &__nav {
+
+      &__right, &__left {
+        position: relative;
+        flex-direction: row;
+        margin: 0 auto;
+        flex: 1 1 auto;
+      }
+    }
+
+    &__game {
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+}

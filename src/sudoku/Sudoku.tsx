@@ -5,6 +5,9 @@ import { GoPlus } from "react-icons/go";
 import { GiTrashCan } from "react-icons/gi";
 import { FaPencilAlt } from "react-icons/fa";
 import { MdHistory } from "react-icons/md";
+import { GrHelp } from "react-icons/gr";
+import { BsController } from "react-icons/bs";
+import { RiSunLine } from "react-icons/ri";
 
 import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch from "../stopWatch/stopWatch";
@@ -196,6 +199,16 @@ const Sudoku = () => {
             icon={<GoPlus className="icon__small" />}
             onClick={showGameModal}
           />
+          <MenuItem
+            title="help"
+            icon={<GrHelp className="icon__smaller" />}
+            onClick={noop}
+          />
+          <MenuItem
+            title="keys"
+            icon={<BsController className="icon__small" />}
+            onClick={noop}
+          />
         </nav>
         <nav className="sudoku__nav__right">
           <MenuItem
@@ -204,9 +217,14 @@ const Sudoku = () => {
             onClick={showEndGameModal}
           />
           <MenuItem
-            title="fail"
+            title="fails"
             icon={<Mistakes mistakes={mistakes} />}
             bgClass={MistakesTypes[mistakes]}
+          />
+          <MenuItem
+            title="theme"
+            icon={<RiSunLine className="icon__small" />}
+            onClick={noop}
           />
         </nav>
         <article className="sudoku__game">

@@ -1,6 +1,10 @@
 .sudoku__menu__item {
     margin: 0 auto;
     border: none;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: .5rem;
 
     &__circle {
         display: flex;
@@ -12,10 +16,5 @@
             & > * {
                 margin: 0 auto;
             }
-    }
-    
-    &__title {
-        letter-spacing: .2rem;
-        margin-left: .3rem;
     }
 }
