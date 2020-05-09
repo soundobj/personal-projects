@@ -1,12 +1,16 @@
 import React, { useReducer, useCallback, useState } from "react";
 import { noop, isEmpty } from "lodash";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { GoPlus } from "react-icons/go";
+import { GiTrashCan } from "react-icons/gi";
+import { FaPencilAlt } from "react-icons/fa";
+import { MdHistory } from "react-icons/md";
 
 import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch from "../stopWatch/stopWatch";
 
 import { sudokuReducer, initialState, Actions, Dialogs } from "./lib/reducer";
-import { GameLevel, Coordinate, MoveTypes, ALLOWED_MISTAKES } from "./lib/definitions";
+import { GameLevel, Coordinate, MoveTypes } from "./lib/definitions";
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
 import KeyboardInput from "./keyboadInput/KeyboardInput";
@@ -17,21 +21,15 @@ import GameOverModal from "./gameOverModal/GameOverModal";
 import GameCompletedModal from "./gameCompletedModal/GameCompletedModal";
 import Mistakes, { MistakesTypes } from "./mistakes/Mistakes";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
-import Menu from "./menu/Menu";
-import { GoPlus } from "react-icons/go";
-import { GiTrashCan } from "react-icons/gi";
-import Icon from "./icon/Icon";
-import { FaPencilAlt } from "react-icons/fa";
-import { MdHistory } from "react-icons/md";
 import MenuItem from "./menuItem/MenuItem";
+import Icon from "./icon/Icon";
+import "reset-css";
+import "./vars.css";
+import "./Sudoku.scss";
 
 // dev only stubs
 import * as stateStub from "./lib/stubs/state-stub.json";
 // import * as stateStub from './stubs/almostComplete.json'
-
-import "reset-css";
-import "./vars.css";
-import "./Sudoku.scss";
 
 const watch = stopWatch();
 
@@ -41,8 +39,6 @@ const Sudoku = () => {
   // @TODO: remove temp stub
   // @ts-ignore
   const [state, dispatch] = useReducer(sudokuReducer, stateStub.default);
-  const iconSize = 50;
-
   const [dialogShow, setDialogShow] = useState(false);
 
   const onHide = useCallback(() => {
@@ -176,8 +172,6 @@ const Sudoku = () => {
     setCurrentDialog("END_GAME");
     setDialogShow(true);
   }, []);
-
-
 
   return (
     <>
