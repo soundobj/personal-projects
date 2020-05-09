@@ -26,7 +26,7 @@ import { MdHistory } from "react-icons/md";
 import MenuItem from "./menuItem/MenuItem";
 
 // dev only stubs
-import * as stateStub from "./stubs/state-stub.json";
+import * as stateStub from "./lib/stubs/state-stub.json";
 // import * as stateStub from './stubs/almostComplete.json'
 
 import "reset-css";

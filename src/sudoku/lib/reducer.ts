@@ -29,7 +29,7 @@ import {
   getEnumValues,
 } from "./utils";
 import { getCell, filterOutCoordinate, cellIsAvailable, filterByCellCoordinate } from './board'
-import * as emptyGame from '../stubs/emptyGame.json'
+import * as emptyGame from './stubs/emptyGame.json'
 
 export type Dialogs = 'NEW_GAME' | 'END_GAME' | 'GAME_OVER' | 'GAME_FINISHED'
 export interface State {

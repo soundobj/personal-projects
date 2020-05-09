@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Cell, Coordinate } from "../lib/definitions";
-import BoardCell from "../cell/Cell";
+import { Cell as CellProps, Coordinate } from "../lib/definitions";
+import Cell from "../cell/Cell";
 
 interface Props {
-  game: Cell[][];
+  game: CellProps[][];
   selectCell: (coordinate: Coordinate) => void;
   isGamePaused: boolean
 }
@@ -14,10 +14,10 @@ const Board = (props: Props) => {
   return (
     <div className={`grid ${isGamePaused? 'game--paused' : ''}`}>
       {game &&
-        game.map((x: Cell[], indexX: number) => {
-          return x.map((y: Cell, indexY: number) => {
+        game.map((x: CellProps[], indexX: number) => {
+          return x.map((y: CellProps, indexY: number) => {
             return (
-              <BoardCell
+              <Cell
                 {...y}
                 key={`x${indexX}y${indexY}`}
                 selectCell={selectCell}
