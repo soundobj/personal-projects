@@ -6,6 +6,10 @@
   --mild: rgb(196, 183, 8);
   --medium: rgb(201, 141, 30);
   --warning: rgb(238, 54, 54);
+  /*  @TODO: these are replicated in sass,
+      need to find a way to use there inside sass and
+      remove the duplication
+  */
   --boardSize: 500px;
   --gutter: 3rem;
   --menuItem: 2.5rem

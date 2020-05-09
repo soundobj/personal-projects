@@ -79,16 +79,6 @@ body {
 
 .sudoku__game_controls {
   display: flex;
-  align-items: center;
-  width: 100%;
-/* 
-  @TODO 500px should be a global to match sudoku game
-  We are repeating the below properties accross the board and the controls.
-  is there a way to DRY this with vanilla CSS?
-*/
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 10px;
 }
 
 .sudoku__game_controls > * {
@@ -134,6 +124,11 @@ $menuItem: 2.5rem;
   &__game {
     margin-left: $gutter;
     margin-right: $gutter;
+
+    &__controls__option {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
   }
 
   &__nav {

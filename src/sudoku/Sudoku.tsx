@@ -237,7 +237,7 @@ const Sudoku = () => {
                 isCandidateMode ? "sudoku__game_controls__option__selected" : ""
               }`}
             >
-              <FaPencilAlt />
+              <FaPencilAlt className="sudoku__game__controls__option" />
             </Icon>
             <StopWatchUI
               watch={watch}
@@ -251,7 +251,7 @@ const Sudoku = () => {
               title="Undo last move"
               onClick={undoMove}
             >
-              <MdHistory />
+              <MdHistory className="sudoku__game__controls__option" />
             </Icon>
           </section>
           <section className="sudoku__game__board">
