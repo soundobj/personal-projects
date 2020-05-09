@@ -1,5 +1,5 @@
 import React from "react";
-import { ALLOWED_MISTAKES } from "../definitions";
+import { ALLOWED_MISTAKES } from "../lib/definitions";
 import "./Mistakes.scss";
 
 interface Props {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap'
 
-import { VALID_NUMBERS } from '../definitions'
+import { VALID_NUMBERS } from '../lib/definitions'
 import './Numbers.css'
 
 interface Props {

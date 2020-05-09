@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-import { GameLevel } from "../definitions";
+import { GameLevel } from "../lib/definitions";
 
 export interface Props {
   onHide: () => void;

@@ -3,7 +3,7 @@ import { pipe } from 'lodash/fp'
 import memoize from 'fast-memoize'
 import produce from 'immer'
 
-import { StopWatchCallbackPayload } from "../stopWatch/stopWatch";
+import { StopWatchCallbackPayload } from "../../stopWatch/stopWatch";
 
 import {
   MoveTypes,
@@ -29,7 +29,7 @@ import {
   getEnumValues,
 } from "./utils";
 import { getCell, filterOutCoordinate, cellIsAvailable, filterByCellCoordinate } from './board'
-import * as emptyGame from './stubs/emptyGame.json'
+import * as emptyGame from '../stubs/emptyGame.json'
 
 export type Dialogs = 'NEW_GAME' | 'END_GAME' | 'GAME_OVER' | 'GAME_FINISHED'
 export interface State {

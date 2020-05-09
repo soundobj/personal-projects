@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-bootstrap'
 import { isEmpty } from 'lodash'
 
-import { Move } from '../definitions'
+import { Move } from '../lib/definitions'
 
 interface Props {
   moveHistory: Move[],

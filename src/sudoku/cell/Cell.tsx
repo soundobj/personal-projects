@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 // import equal from 'fast-deep-equal/es6/react'
 
-import { Cell, Coordinate, MoveTypes } from "../definitions";
+import { Cell, Coordinate, MoveTypes } from "../lib/definitions";
 import Candidates from "./candidates/Candidates";
 import "./Cell.css";
 

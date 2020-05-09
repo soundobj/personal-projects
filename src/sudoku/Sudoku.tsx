@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch from "../stopWatch/stopWatch";
 
-import { sudokuReducer, initialState, Actions, Dialogs } from "./reducer";
-import { GameLevel, Coordinate, MoveTypes, ALLOWED_MISTAKES } from "./definitions";
+import { sudokuReducer, initialState, Actions, Dialogs } from "./lib/reducer";
+import { GameLevel, Coordinate, MoveTypes, ALLOWED_MISTAKES } from "./lib/definitions";
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
 import KeyboardInput from "./keyboadInput/KeyboardInput";

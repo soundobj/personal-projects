@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Cell, Coordinate } from "../definitions";
+import { Cell, Coordinate } from "../lib/definitions";
 import BoardCell from "../cell/Cell";
 
 interface Props {

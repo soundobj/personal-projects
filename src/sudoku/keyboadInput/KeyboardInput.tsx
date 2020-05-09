@@ -2,12 +2,12 @@ import React from "react";
 //@ts-ignore  @TODO: write missing typings for 3rd party dependency
 import KeyboardEventHandler from "react-keyboard-event-handler";
 
-import { VALID_NUMBERS, Direction, Cell, Coordinate } from "../definitions";
+import { VALID_NUMBERS, Direction, Cell, Coordinate } from "../lib/definitions";
 // import { navigateBoardNextAvailable as navigateBoard } from '../board'
 import {
   navigateBoardNextAvailableOverflow as navigateBoard,
   isValidMoveType,
-} from "../board";
+} from "../lib/board";
 
 interface Props {
   editMode: number;
