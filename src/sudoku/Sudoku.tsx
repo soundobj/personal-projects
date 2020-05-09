@@ -57,24 +57,29 @@ const Sudoku = () => {
       restartWatch();
     }
   }, []);
+
   const selectCell = useCallback(
     (coordinate: Coordinate) =>
       dispatch({ type: Actions.SELECT_CELL, payload: coordinate }),
     []
   );
+
   const startGame = useCallback(
     (gameLevel: string) =>
       dispatch({ type: Actions.START_GAME, payload: gameLevel }),
     []
   );
+
   const restartGame = useCallback(() => {
     dispatch({ type: Actions.RESTART_GAME });
     restartWatch();
   }, []);
+
   const resolveCell = useCallback(
     () => dispatch({ type: Actions.RESOLVE_CELL }),
     []
   );
+
   const setEditMode = useCallback(
     (editMode: MoveTypes) =>
       dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode }),
@@ -86,6 +91,7 @@ const Sudoku = () => {
       dispatch({ type: Actions.SET_CURRENT_DIALOG, payload: dialog }),
     []
   );
+
   const issueNumber = (number: number) => {
     dispatch({ type: Actions.ISSUE_NUMBER, payload: number });
     if (state.cellsToComplete === 1) {
@@ -95,12 +101,25 @@ const Sudoku = () => {
       });
     }
   };
+
   const undoMove = useCallback(() => dispatch({ type: Actions.UNDO_MOVE }), []);
+
   const pauseGame = useCallback(
     (payload: boolean) => dispatch({ type: Actions.PAUSE_GAME, payload }),
     []
   );
+
   const endGame = useCallback(() => dispatch({ type: Actions.END_GAME }), []);
+
+  const showGameModal = useCallback(() => {
+    setCurrentDialog("NEW_GAME");
+    setDialogShow(true);
+  }, []);
+
+  const showEndGameModal = useCallback(() => {
+    setCurrentDialog("END_GAME");
+    setDialogShow(true);
+  }, []);
 
   console.error("@state", state);
   const {
@@ -162,16 +181,6 @@ const Sudoku = () => {
     // dont use setShowGameOver() to avoid re-rendering the component
     showModal = true;
   }
-
-  const showGameModal = useCallback(() => {
-    setCurrentDialog("NEW_GAME");
-    setDialogShow(true);
-  }, []);
-
-  const showEndGameModal = useCallback(() => {
-    setCurrentDialog("END_GAME");
-    setDialogShow(true);
-  }, []);
 
   return (
     <>
@@ -239,7 +248,6 @@ const Sudoku = () => {
           </section>
         </article>
       </section>
-
       <KeyboardInput
         isGamePlayed={isGamePlayed}
         game={game}
