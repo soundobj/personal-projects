@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import "./EndGameModal.css";
 
 interface Props {
-  onEndGame: (payload: boolean) => void;
+  onCancelEndGame: () => void;
   onConfirmEndGame: () => void;
   onHide: () => void
 }
@@ -12,7 +12,7 @@ interface Props {
 export const EndGameModal= (
   props: Props
 ) => {
-  const { onConfirmEndGame, onHide, onEndGame } = props;
+  const { onConfirmEndGame, onHide, onCancelEndGame } = props;
   return (
     <>
       <span>Are you Sure?</span>
@@ -27,7 +27,7 @@ export const EndGameModal= (
       <Button
         onClick={() => {
           onHide();
-          onEndGame(false);
+          onCancelEndGame();
         }}
       >
         No

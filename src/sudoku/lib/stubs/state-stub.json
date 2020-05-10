@@ -1,6 +1,6 @@
 {
   "mistakes": 0,
-  "isGamePaused": false,
+  "isGamePaused": true,
   "isGamePlayed": true,
   "moveHistory": [],
   "editMode": 1,

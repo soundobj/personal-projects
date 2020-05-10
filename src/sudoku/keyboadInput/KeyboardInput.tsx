@@ -47,9 +47,13 @@ const KeyboardInput = (props: Props) => {
         "right",
         "up",
         "down",
+        "space",
       ]}
       onKeyEvent={(key: string) => {
-        // Toggle between the two only modes casting the opposite boolean that ! yields into it's digit counterpart using +
+        if ( key === "space") {
+          console.error('@_doing pause',);
+        }
+        // Toggle between modes negating the current model boolean and converting into number using +
         if (key === "c") {
           setEditMode(+!editMode);
         }

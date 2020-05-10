@@ -10,7 +10,7 @@ import { BsController } from "react-icons/bs";
 import { RiSunLine } from "react-icons/ri";
 
 import StopWatchUI from "../stopWatch/StopWatchUI";
-import stopWatch from "../stopWatch/stopWatch";
+import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
 
 import { sudokuReducer, initialState, Actions, Dialogs } from "./lib/reducer";
 import { GameLevel, Coordinate, MoveTypes } from "./lib/definitions";
@@ -36,6 +36,17 @@ import * as stateStub from "./lib/stubs/state-stub.json";
 
 const watch = stopWatch();
 
+export const handleWatchOnCloseModal = (
+  stopWatch: StopWatch,
+  isWatchRunning: boolean,
+  pauseGame: (bool: boolean) => void
+) => {
+  if (isWatchRunning) {
+    stopWatch.start()
+    pauseGame(false)
+  }
+};
+
 const Sudoku = () => {
   // @ts-ignore
   // const [state, dispatch] = useReducer(sudokuReducer, initialState)
@@ -43,6 +54,7 @@ const Sudoku = () => {
   // @ts-ignore
   const [state, dispatch] = useReducer(sudokuReducer, stateStub.default);
   const [dialogShow, setDialogShow] = useState(false);
+  const [isWatchRunning, setIsWatchRunning] = useState(false);
 
   const onHide = useCallback(() => {
     setDialogShow(false);
@@ -149,7 +161,7 @@ const Sudoku = () => {
       component: (
         <EndGameModal
           onHide={onHide}
-          onEndGame={pauseGame}
+          onCancelEndGame={() => { handleWatchOnCloseModal(watch, isWatchRunning, pauseGame) }}
           onConfirmEndGame={endGame}
         />
       ),
@@ -279,13 +291,12 @@ const Sudoku = () => {
       />
       <Dialog
         onEnter={() => {
+          setIsWatchRunning(watch.getIsRunning())
           watch.stop();
           pauseGame(true);
         }}
         onEscapeKeyDown={() => {
-          isGamePlayed && watch.start();
-          pauseGame(false);
-          // if user exits any modal without taking any action then reset the dialog to NEW_GAME
+          handleWatchOnCloseModal(watch, isWatchRunning, pauseGame)
           !isGamePlayed && setCurrentDialog("NEW_GAME");
         }}
         onHide={onHide}

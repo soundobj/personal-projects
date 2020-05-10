@@ -3,21 +3,26 @@ import { stopWatch } from './stopWatch'
 
 jest.useFakeTimers();
 
-describe.only ('[stopWatch]',() => {
+describe('[stopWatch]',() => {
   it('starts the timer, counts elapsed seconds, pauses the counter, continues after restart and clears the stopWatch when invoking clear()', (done) => {
     const callback = jest.fn();
     const sw = stopWatch()
     sw.setCallback(callback)
+    expect(sw.getIsRunning()).toBeFalsy()
     sw.start()
+    expect(sw.getIsRunning()).toBeTruthy()
     jest.advanceTimersByTime(3000);
     expect(sw.getElapsedSeconds()).toEqual(3000)
     sw.stop()
+    expect(sw.getIsRunning()).toBeFalsy()
     jest.advanceTimersByTime(3000);
     expect(sw.getElapsedSeconds()).toEqual(3000)
     sw.start()
+    expect(sw.getIsRunning()).toBeTruthy()
     jest.advanceTimersByTime(3000);
     expect(sw.getElapsedSeconds()).toEqual(6000)
     sw.clear()
+    expect(sw.getIsRunning()).toBeFalsy()
     expect(sw.getElapsedSeconds()).toEqual(0)
     done()
   })
@@ -34,7 +39,6 @@ describe.only ('[stopWatch]',() => {
     done()
   })
 
-  
   it('friendly print the elapsed time in the stopWatch less than an hour only shows mm:ss', (done) => {
     const callback = jest.fn();
     const sw = stopWatch()
@@ -46,6 +50,4 @@ describe.only ('[stopWatch]',() => {
     expect(expected).toStrictEqual({"ISOString": "02:00", "elapsedTime": 120000})
     done()
   })
-
-
 })
