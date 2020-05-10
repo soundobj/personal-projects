@@ -10,9 +10,11 @@
       need to find a way to use there inside sass and
       remove the duplication
   */
-  --boardSize: 500px;
+  --boardSize: 32rem;
   --gutter: 3rem;
-  --menuItem: 2.5rem
+  --menuItem: 2.5rem;
+  --gameControlsPadding: .2rem;
+  --backgroundColor: white;
 }
 
 .OK {

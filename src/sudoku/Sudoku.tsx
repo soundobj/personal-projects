@@ -242,16 +242,21 @@ const Sudoku = () => {
           />
         </nav>
         <article className="sudoku__game">
-          <section className="sudoku__game_controls">
+          <section className="sudoku__game__controls">
             <Icon
               tooltipPosition="top"
               title="Candidate mode"
               onClick={() => setEditMode(+!editMode)}
-              className={`${
-                isCandidateMode ? "sudoku__game_controls__option__selected" : ""
-              }`}
             >
-              <FaPencilAlt className="sudoku__game__controls__option" />
+              <div
+                className={`${
+                  isCandidateMode
+                    ? "sudoku__game__controls__option--selected"
+                    : "sudoku__game__controls__option__candidate"
+                }`}
+              >
+                <FaPencilAlt />
+              </div>
             </Icon>
             <StopWatchUI
               watch={watch}
@@ -294,9 +299,9 @@ const Sudoku = () => {
         pauseOrResumeGame={() => {
           pauseGame(!isGamePaused);
           if (isGamePaused) {
-            watch.start()
+            watch.start();
           } else {
-            watch.stop()
+            watch.stop();
           }
         }}
         undoMove={!isUndoDisabled ? undoMove : noop}

@@ -71,29 +71,6 @@ body {
   text-transform: capitalize;
 }
 
-.sudoku__game {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sudoku__game_controls {
-  display: flex;
-}
-
-.sudoku__game_controls > * {
-  flex: 1 1 auto;
-}
-
-.sudoku__game_controls__option__selected {
-  border: solid 1px black;
-  border-radius: 4px;
-}
-
-.sudoku__game__board {
-  width: 100%;
-}
-
 .icon {
   width: 1.8rem;
   height: 1.8rem;
@@ -108,7 +85,10 @@ body {
     height: 1rem;
   }
 }
-// @TODO see if we can use custom variables instead of sass vars
+/*  @TODO: these are replicated in sass,
+    need to find a way to use there inside sass and
+    remove the duplication
+*/
 $boardSize: 32rem;
 $gutter: 3rem;
 $menuItem: 2.5rem;
@@ -124,10 +104,35 @@ $menuItem: 2.5rem;
   &__game {
     margin-left: $gutter;
     margin-right: $gutter;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    &__controls {
+      display: flex;
+  
+      & > * {
+        flex: 1 1 auto;
+      }
+  
+      &__option {
+        width: 1.2rem;
+        height: 1.2rem;
 
-    &__controls__option {
-      width: 1.2rem;
-      height: 1.2rem;
+        &__candidate {
+          padding-bottom: .2rem;
+        }
+
+        
+        &--selected {
+          padding-bottom: .1rem;
+          border-bottom: solid .1rem black;
+        }
+      }
+    }
+
+    &__board {
+      width: 100%;
     }
   }
 
