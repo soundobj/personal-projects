@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CandidateMap, VALID_NUMBERS, SameAsSelected } from '../../lib/definitions'
-import './Candidates.css'
+import './Candidates.scss'
 
 interface Props {
   candidates: CandidateMap

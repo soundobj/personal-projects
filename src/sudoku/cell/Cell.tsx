@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import { Cell as CellProps, Coordinate, MoveTypes } from "../lib/definitions";
 import Candidates from "./candidates/Candidates";
-import "./Cell.css";
+import "./Cell.scss";
 
 interface Props extends CellProps {
   selectCell: (coordinate: Coordinate) => void;

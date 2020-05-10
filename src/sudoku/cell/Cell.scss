@@ -22,6 +22,11 @@
 
 .grid__item .content-inside {
   margin: 0 auto;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
 }
 
 .completed {
@@ -30,11 +35,6 @@
 
 .incorrect {
   color: var(--warning);
-}
-
-/* @TODO: use var for border padding so it can be reused for offseting the padding of the content when the border is toggled */
-.sudoku__cell--selected {
-  border: 3px var(--ok) solid;
 }
 
 .sudoku__cell--conflicting {
@@ -47,4 +47,8 @@
 
 .sudoku__cell--related {
   background-color: antiquewhite;
+}
+
+.sudoku__cell--selected {
+  background-color: #d6bd9c;
 }

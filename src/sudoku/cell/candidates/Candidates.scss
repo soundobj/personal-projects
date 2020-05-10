@@ -1,0 +1,24 @@
+.sudoku__cell__candidates {
+  display: grid;
+  grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
+  list-style: none;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0;
+
+  &__candidate {
+    padding: 3px;
+    color: var(--completed);
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 500px) {
+    & {
+      font-size: 0.3rem;
+    }
+  
+    &__candidate {
+      padding: 2px;
+    }
+  }
+}
