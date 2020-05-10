@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import { GiStopwatch } from "react-icons/gi";
 import { GrPause } from "react-icons/gr";
 import { GrResume } from "react-icons/gr";
 import Icon from "../sudoku/icon/Icon";
@@ -11,22 +9,21 @@ interface Props {
   watch: StopWatch;
   onPause: (payload: boolean) => void;
   isGamePlayed: boolean;
+  isGamePaused: boolean;
 }
 
 const StopWatchUI = (props: Props) => {
-  const { watch, onPause, isGamePlayed } = props;
+  const { watch, onPause, isGamePlayed, isGamePaused } = props;
   const [timeElapsed, setTimeElapsed] = useState(initialTimeElapsed);
-  const [isPaused, setisPaused] = useState(false);
   watch.setCallback(setTimeElapsed);
 
   return (
     <div className="stopWatch">
       <Icon
         disabled={!isGamePlayed}
-        title={isPaused ? "Resume" : "Pause"}
+        title={isGamePaused ? "Resume" : "Pause"}
         onClick={() => {
-          setisPaused(!isPaused);
-          if (isPaused) {
+          if (isGamePaused) {
             watch.start();
             onPause(false);
           } else {
@@ -35,7 +32,7 @@ const StopWatchUI = (props: Props) => {
           }
         }}
       >
-        {isPaused ? <GrResume /> : <GrPause />}
+        {isGamePaused ? <GrResume /> : <GrPause />}
       </Icon>
       <h5 className="stopWatch__timeElapsed">{timeElapsed.ISOString}</h5>
     </div>

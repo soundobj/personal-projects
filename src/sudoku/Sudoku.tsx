@@ -255,6 +255,7 @@ const Sudoku = () => {
               watch={watch}
               onPause={pauseGame}
               isGamePlayed={isGamePlayed}
+              isGamePaused={isGamePaused}
             />
             <Icon
               tooltipPosition="top"
@@ -288,15 +289,23 @@ const Sudoku = () => {
         resolveCell={resolveCell}
         selectCell={selectCell}
         issueNumber={issueNumber}
+        pauseOrResumeGame={() => {
+          pauseGame(!isGamePaused);
+          if (isGamePaused) {
+            watch.start()
+          } else {
+            watch.stop()
+          }
+        }}
       />
       <Dialog
         onEnter={() => {
-          setIsWatchRunning(watch.getIsRunning())
+          setIsWatchRunning(watch.getIsRunning());
           watch.stop();
           pauseGame(true);
         }}
         onEscapeKeyDown={() => {
-          handleWatchOnCloseModal(watch, isWatchRunning, pauseGame)
+          handleWatchOnCloseModal(watch, isWatchRunning, pauseGame);
           !isGamePlayed && setCurrentDialog("NEW_GAME");
         }}
         onHide={onHide}

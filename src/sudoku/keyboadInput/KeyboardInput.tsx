@@ -19,6 +19,7 @@ interface Props {
   selectedCell: Coordinate;
   cellsToComplete: number;
   isGamePlayed: boolean;
+  pauseOrResumeGame: () => void
 }
 
 const KeyboardInput = (props: Props) => {
@@ -32,6 +33,7 @@ const KeyboardInput = (props: Props) => {
     selectCell,
     issueNumber,
     isGamePlayed,
+    pauseOrResumeGame,
   } = props;
 
   if (!isGamePlayed) {
@@ -50,8 +52,8 @@ const KeyboardInput = (props: Props) => {
         "space",
       ]}
       onKeyEvent={(key: string) => {
-        if ( key === "space") {
-          console.error('@_doing pause',);
+        if (key === "space") {
+          pauseOrResumeGame()
         }
         // Toggle between modes negating the current model boolean and converting into number using +
         if (key === "c") {
