@@ -197,6 +197,8 @@ const Sudoku = () => {
     showModal = true;
   }
 
+  const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused
+
   return (
     <>
       <CssFeatureDetect
@@ -260,7 +262,7 @@ const Sudoku = () => {
             <Icon
               tooltipPosition="top"
               className=""
-              disabled={isEmpty(moveHistory)}
+              disabled={isUndoDisabled}
               title="Undo last move"
               onClick={undoMove}
             >
@@ -275,7 +277,7 @@ const Sudoku = () => {
             />
           </section>
           <section className="sudoku__game_footer">
-            {/* <Numbers issueNumber={issueNumber} isGamePlayed={isGamePlayed} /> */}
+            <Numbers issueNumber={issueNumber} isGamePlayed={isGamePlayed} />
           </section>
         </article>
       </section>
@@ -297,6 +299,7 @@ const Sudoku = () => {
             watch.stop()
           }
         }}
+        undoMove={!isUndoDisabled ? undoMove : noop}
       />
       <Dialog
         onEnter={() => {

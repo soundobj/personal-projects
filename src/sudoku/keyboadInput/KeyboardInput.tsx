@@ -20,6 +20,7 @@ interface Props {
   cellsToComplete: number;
   isGamePlayed: boolean;
   pauseOrResumeGame: () => void
+  undoMove: () => void
 }
 
 const KeyboardInput = (props: Props) => {
@@ -34,6 +35,7 @@ const KeyboardInput = (props: Props) => {
     issueNumber,
     isGamePlayed,
     pauseOrResumeGame,
+    undoMove
   } = props;
 
   if (!isGamePlayed) {
@@ -50,8 +52,12 @@ const KeyboardInput = (props: Props) => {
         "up",
         "down",
         "space",
+        "u",
       ]}
       onKeyEvent={(key: string) => {
+        if (key === "u") {
+          undoMove()
+        }
         if (key === "space") {
           pauseOrResumeGame()
         }
@@ -76,8 +82,6 @@ const KeyboardInput = (props: Props) => {
                 )
               );
           } else {
-            // if the board is not selected upon navigation shortcut input select the first cell
-            // @TODO select the first cell that is not filled in already.
             selectCell({ x: 0, y: 0 });
           }
         }
