@@ -251,8 +251,8 @@ const Sudoku = () => {
               <div
                 className={`${
                   isCandidateMode
-                    ? "sudoku__game__controls__option--selected"
-                    : "sudoku__game__controls__option__candidate"
+                    ? "sudoku__game__controls__candidate--selected"
+                    : "sudoku__game__controls__candidate"
                 }`}
               >
                 <FaPencilAlt />

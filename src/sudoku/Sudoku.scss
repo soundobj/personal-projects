@@ -110,24 +110,27 @@ $menuItem: 2.5rem;
   
     &__controls {
       display: flex;
+      align-items: flex-start;
   
       & > * {
         flex: 1 1 auto;
       }
-  
-      &__option {
-        width: 1.2rem;
-        height: 1.2rem;
 
-        &__candidate {
-          padding-bottom: .2rem;
-        }
+      &__candidate {
+        padding-bottom: .2rem;
 
-        
         &--selected {
           padding-bottom: .1rem;
           border-bottom: solid .1rem black;
         }
+      }
+
+      
+     
+  
+      &__option {
+        width: 1.2rem;
+        height: 1.2rem;
       }
     }
 
