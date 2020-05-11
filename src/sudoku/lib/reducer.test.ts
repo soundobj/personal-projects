@@ -1,6 +1,6 @@
-import { cloneDeep } from 'lodash'
+import { cloneDeep, isEmpty, flatMap } from 'lodash'
 import * as reducer from './reducer'
-import { Coordinate, NumberMap, MoveTypes, Move } from './definitions'
+import { Coordinate, NumberMap, MoveTypes, Move, Cell } from './definitions'
 import * as utilsTest from './utils.test'
 import * as utils from './utils'
 
@@ -164,7 +164,7 @@ describe('sudoku/reducer',() => {
       expect(state).toStrictEqual(expected)
     })
   })
-  describe('setSameNumberAsSelectedCells',() => {
+  describe('highlightSameNumberCellsAsSelectedCell',() => {
     it('sets sameAsSelected to true to all associated cells seen in the board by number or candidate', () => {
       const game = [
         utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: true, 2: false }),
@@ -196,14 +196,14 @@ describe('sudoku/reducer',() => {
         numberMap
       } as reducer.State
       const newState = cloneDeep(state)
-      const expected = reducer.setSameNumberAsSelectedCells(state, action)
+      const expected = reducer.highlightSameNumberCellsAsSelectedCell(state, action)
       // mutations after effect
       newState.game[0][1].sameAsSelected = { type: MoveTypes.NUMBER }
       newState.game[6][0].sameAsSelected = { type: MoveTypes.CANDIDATE,  candidate: 1}
       expect(newState).toStrictEqual(expected)
     })
   })
-  describe('removeSameNumberAsSelectedCells',() => {
+  describe('clearSameNumberHighlightedCells',() => {
     it('removes sameAsSelected prop from cells seen in the board', () => {
       const game = [
         utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: true, 2: false }),
@@ -233,7 +233,7 @@ describe('sudoku/reducer',() => {
       const newState = cloneDeep(state)
       newState.game[0][1].sameAsSelected = { type: MoveTypes.NUMBER }
       newState.game[6][0].sameAsSelected = { type: MoveTypes.CANDIDATE,  candidate: 1}
-      const expected = reducer.clearSameNumberAsSelectedCells(state)
+      const expected = reducer.clearSameNumberHighlightedCells(state)
       // mutations after effect
       delete newState.game[0][1].sameAsSelected
       delete newState.game[6][0].sameAsSelected
@@ -476,6 +476,51 @@ describe('sudoku/reducer',() => {
       state5.moveHistory.pop()
       expect(expected5).toStrictEqual(state5)
       expect(expected5?.moveHistory).toStrictEqual([])
+    })
+  })
+  describe('highlightSameNumberCellsAsSolution', () => {
+    const game = [
+      utilsTest.createBoardRow([9, 1, 2], 0, { 0: false, 1: true, 2: false }),
+      utilsTest.createBoardRow([3, 4, 5], 1, { 0: false, 1: false, 2: false }),
+      utilsTest.createBoardRow([6, 7, 8], 2, { 0: false, 1: false, 2: false }),
+      utilsTest.createBoardRow([5, 6, 1], 3, { 0: false, 1: false, 2: true }),
+      utilsTest.createBoardRow([8, 9, 6], 3, { 0: false, 1: false, 2: false }),
+      utilsTest.createBoardRow([4, 9, 7], 3, { 0: false, 1: false, 2: false }),
+      utilsTest.createBoardRow([1, 9, 4], 3, { 0: false, 1: false, 2: false }),
+    ];
+    const selectedCell = { x: 3, y: 2 }
+    game[6][0].candidates = {
+      1: { selected:false, entered: true },
+    }
+    const numberMap: NumberMap = {
+      1: {
+        count: 2,
+        coordinates: [{x:0, y:1}, selectedCell],
+        candidates: [{x:6, y:0}]
+      }
+    }
+    it('highlight the candidates or numbers in the board that match the correctly inputed number on a cell', () => {
+      const state = {
+        selectedCell,
+        game,
+        numberMap
+      } as reducer.State
+      const newState = cloneDeep(state)
+      const expected = reducer.highlightSameNumberCellsAsSolution(state, 1)
+      // mutations after effect
+      newState.game[0][1].sameAsSelected = { type: MoveTypes.NUMBER }
+      newState.game[6][0].sameAsSelected = { type: MoveTypes.CANDIDATE,  candidate: 1}
+      expect(newState).toStrictEqual(expected)
+    })
+    it('does nothing if the number entered does not match the cell solution', () => {
+      const state = {
+        selectedCell,
+        game,
+        numberMap
+      } as reducer.State
+      const expected = reducer.highlightSameNumberCellsAsSolution(state, 5)
+      const highlightedCells = flatMap(expected.game, x => x.filter(y => y.sameAsSelected))
+      expect(isEmpty(highlightedCells)).toBeTruthy()
     })
   })
 })
