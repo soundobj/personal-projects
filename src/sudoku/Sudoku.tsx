@@ -271,7 +271,9 @@ const Sudoku = () => {
               title="Undo last move"
               onClick={undoMove}
             >
-              <MdHistory className="sudoku__game__controls__option" />
+              <div className="sudoku__game__controls__undo">
+                <MdHistory className="sudoku__game__controls__option" />
+              </div>
             </Icon>
           </section>
           <section className="sudoku__game__board">

@@ -112,12 +112,12 @@ $menuItem: 2.5rem;
       display: flex;
       align-items: center;
       margin-top: .3rem;
-  
+      
       & > * {
         flex: 1 1 auto;
       }
 
-      &__candidate {
+      &__candidate, &__undo {
         padding-bottom: .2rem;
 
         &--selected {
@@ -126,9 +126,6 @@ $menuItem: 2.5rem;
         }
       }
 
-      
-     
-  
       &__option {
         width: 1.2rem;
         height: 1.2rem;
