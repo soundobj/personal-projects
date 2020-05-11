@@ -58,9 +58,6 @@ export const stopWatch = (): StopWatch => {
   const getElapsedSeconds = () => elapsedTime * 1000;
   const printElapsedTime = () => {
     const timeEllpased = new Date(elapsedTime * 1000).toISOString()
-    if (elapsedTime * 1000 < 3600000) {
-      return timeEllpased.substr(14, 5);
-    }
     return timeEllpased.substr(12, 7);
   }
   const getElapsedTime = () => ({

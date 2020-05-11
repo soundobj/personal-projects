@@ -110,7 +110,8 @@ $menuItem: 2.5rem;
   
     &__controls {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
+      margin-top: .3rem;
   
       & > * {
         flex: 1 1 auto;

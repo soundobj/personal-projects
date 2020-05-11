@@ -1,9 +1,27 @@
 .stopWatch {
   display: flex;
   align-items: center;
+  background-color: rgba(0,0,0,.075);
+  border-radius: .2rem;
+  border: none;
+
+  &__icon__container {
+    margin-right: .3rem;
+  }
 
   &__timeElapsed {
-    min-width: 4.5rem;
-    margin-top: .2rem;
+    margin-top: .1rem;
+    display: flex;
+    align-items: center;
+
+    &__digit {
+      width: .9rem;
+      display: block;
+    }
+
+    &__delimiter {
+      width: .3rem;
+      padding-bottom: .3rem;
+    }
   }
 }
