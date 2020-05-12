@@ -21,6 +21,12 @@ export const ALLOWED_MISTAKES = 3
 export const BOARD_SIZE = 81
 export const VALID_NUMBERS = [1,2,3,4,5,6,7,8,9]
 
+export enum LOCAL_STORAGE_KEYS {
+  STATS = "SUDOKU_GAME_STATS",
+  CURRENT_GAME = "SUDOKU_GAME_CURRENT_GAME",
+  CURRENT_GAME_ELAPSED_TIME = "SUDOKU_GAME_CURRENT_GAME_ELAPSED_TIME"
+}
+
 export interface Coordinate {
   x: number;
   y: number;

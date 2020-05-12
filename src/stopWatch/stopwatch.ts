@@ -6,6 +6,7 @@ export interface StopWatch {
   printElapsedTime: () => string
   setCallback: (c:(c:any)=> void) => void
   getElapsedTime: () => StopWatchCallbackPayload
+  setElapsedSeconds: (milliseconds: number) => void
   getIsRunning: () => boolean
 }
 
@@ -71,6 +72,8 @@ export const stopWatch = (): StopWatch => {
     return isRunning
   }
 
+  const setElapsedSeconds = (milliseconds: number) => elapsedTime = milliseconds / 1000
+
   return {
     start,
     stop,
@@ -79,6 +82,7 @@ export const stopWatch = (): StopWatch => {
     printElapsedTime,
     setCallback,
     getElapsedTime,
+    setElapsedSeconds,
     getIsRunning,
   };
 };

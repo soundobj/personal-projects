@@ -38,4 +38,11 @@ describe('[stopWatch]',() => {
     expect(expected).toStrictEqual({"ISOString": "1:02:55", "elapsedTime": 3775000})
     done()
   })
+
+  it('sets stopwatch elapsed time', () => {
+    const sw = stopWatch()
+    expect(sw.getElapsedSeconds()).toEqual(0)
+    sw.setElapsedSeconds(9000)
+    expect(sw.getElapsedSeconds()).toEqual(9000)
+  })
 })

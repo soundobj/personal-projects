@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback, useState } from "react";
+import React, { useReducer, useCallback, useState, useEffect } from "react";
 import { noop, isEmpty } from "lodash";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GoPlus } from "react-icons/go";
@@ -12,8 +12,9 @@ import { RiSunLine } from "react-icons/ri";
 import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
 
-import { sudokuReducer, initialState, Actions, Dialogs } from "./lib/reducer";
-import { GameLevel, Coordinate, MoveTypes } from "./lib/definitions";
+import { sudokuReducer, initialState, Actions, Dialogs, State } from "./lib/reducer";
+import { GameLevel, Coordinate, MoveTypes, LOCAL_STORAGE_KEYS } from "./lib/definitions";
+import { handleGameLocalStorage, onUnload } from './lib/helpers'
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
 import KeyboardInput from "./keyboadInput/KeyboardInput";
@@ -198,6 +199,15 @@ const Sudoku = () => {
   }
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused
+  
+  useEffect(() => {
+    window.addEventListener("beforeunload", onUnload(state, watch))
+    const stats = localStorage.getItem(LOCAL_STORAGE_KEYS.STATS)
+    const currentGame = localStorage.getItem(LOCAL_STORAGE_KEYS.CURRENT_GAME)
+    if (currentGame) {
+      dispatch({ type: Actions.LOAD_STORED_GAME, payload:currentGame })
+    }
+  }, [])
 
   return (
     <>

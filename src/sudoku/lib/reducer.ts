@@ -65,6 +65,7 @@ export interface State {
   restartGame: Cell[][];
   currentDialog: Dialogs;
   finishedTime: StopWatchCallbackPayload;
+  level?: GameLevel
 }
 
 export interface Action {
@@ -84,6 +85,7 @@ export enum Actions {
   SET_FINISHED_TIME,
   RESTART_GAME,
   SET_CURRENT_DIALOG,
+  LOAD_STORED_GAME,
 }
 
 export const initialState: State = {
@@ -93,8 +95,7 @@ export const initialState: State = {
   cellsToComplete: BOARD_SIZE,
   conflictingCells: [],
   selectedCellRelatedCells: [],
-  // @ts-ignore
-  game: emptyGame.default,
+  game: [[]],
   numberMap: {},
   moveHistory: [],
   isGamePaused: false,
@@ -110,6 +111,14 @@ const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates);
 
 export const sudokuReducer = (state: State, action: Action) => {
   switch (action.type) {
+    case Actions.LOAD_STORED_GAME: {
+      if (typeof action.payload === 'string') {
+        const storedGameString: string = action.payload;
+        console.error("@_LOAD_STORED_GAME", storedGameString);
+        // return JSON.parse(storedGameString);
+        return state
+      }
+    }
     case Actions.SET_CURRENT_DIALOG: {
       const dialog: Dialogs = action.payload;
       return { ...state, currentDialog: dialog };
