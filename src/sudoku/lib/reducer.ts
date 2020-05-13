@@ -112,11 +112,9 @@ const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates);
 export const sudokuReducer = (state: State, action: Action) => {
   switch (action.type) {
     case Actions.LOAD_STORED_GAME: {
-      if (typeof action.payload === 'string') {
-        const storedGameString: string = action.payload;
-        console.error("@_LOAD_STORED_GAME", storedGameString);
-        // return JSON.parse(storedGameString);
-        return state
+      if (action.payload) {
+        console.error("@_LOAD_STORED_GAME", action.payload);
+        return action.payload
       }
     }
     case Actions.SET_CURRENT_DIALOG: {

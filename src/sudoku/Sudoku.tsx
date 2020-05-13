@@ -13,8 +13,8 @@ import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
 
 import { sudokuReducer, initialState, Actions, Dialogs, State } from "./lib/reducer";
-import { GameLevel, Coordinate, MoveTypes, LOCAL_STORAGE_KEYS } from "./lib/definitions";
-import { handleGameLocalStorage, onUnload } from './lib/helpers'
+import { GameLevel, Coordinate, MoveTypes } from "./lib/definitions";
+import { localStorageOnMount, stateContainer } from './lib/localStorage'
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
 import KeyboardInput from "./keyboadInput/KeyboardInput";
@@ -36,6 +36,7 @@ import * as stateStub from "./lib/stubs/state-stub.json";
 // import * as stateStub from './stubs/almostComplete.json'
 
 const watch = stopWatch();
+const container = stateContainer();
 
 export const handleWatchOnCloseModal = (
   stopWatch: StopWatch,
@@ -56,6 +57,7 @@ const Sudoku = () => {
   const [state, dispatch] = useReducer(sudokuReducer, stateStub.default);
   const [dialogShow, setDialogShow] = useState(false);
   const [isWatchRunning, setIsWatchRunning] = useState(false);
+  container.set(state);
 
   const onHide = useCallback(() => {
     setDialogShow(false);
@@ -200,14 +202,7 @@ const Sudoku = () => {
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused
   
-  useEffect(() => {
-    window.addEventListener("beforeunload", onUnload(state, watch))
-    const stats = localStorage.getItem(LOCAL_STORAGE_KEYS.STATS)
-    const currentGame = localStorage.getItem(LOCAL_STORAGE_KEYS.CURRENT_GAME)
-    if (currentGame) {
-      dispatch({ type: Actions.LOAD_STORED_GAME, payload:currentGame })
-    }
-  }, [])
+  useEffect(localStorageOnMount(container, watch, dispatch), [])
 
   return (
     <>

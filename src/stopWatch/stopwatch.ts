@@ -17,7 +17,7 @@ export interface StopWatchCallbackPayload {
 
 export const initialTimeElapsed = {
   elapsedTime: 0,
-  ISOString: "00:00",
+  ISOString: "0:00:00",
 }
 
 /*
