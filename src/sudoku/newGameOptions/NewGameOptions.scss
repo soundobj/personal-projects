@@ -12,7 +12,7 @@ $gameLevelOptionPadding: 0.2rem;
     padding-bottom: 100%;
     position: relative;
 
-    background-color: hsla(211, 100%, 50%, 0.25);
+    background-color: var(--cta-primary);
     border: none;
     border-radius: 0.4rem;
     transition: ease 0.3s;

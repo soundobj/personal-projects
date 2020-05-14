@@ -1,6 +1,8 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
+import "./Dialog.scss"
+
 export type DialogContent = {
   header: string;
   component: JSX.Element;
@@ -30,7 +32,7 @@ const Dialog = (props: Props) => {
     centered
     dialogClassName={content.className}
   >
-    <Modal.Header closeButton onHide={onEscapeKeyDown}>
+    <Modal.Header closeButton onHide={onEscapeKeyDown} className="modal__header">
       <Modal.Title id="contained-modal-title-vcenter">
         {content.header}
       </Modal.Title>
@@ -39,14 +41,15 @@ const Dialog = (props: Props) => {
       {content.component}
     </Modal.Body>
     <Modal.Footer>
-      <Button
+      <button
+        className="modal__cancel"
         onClick={() => {
           onHide();
           onEscapeKeyDown();
         }}
       >
         Cancel
-      </Button>
+      </button>
     </Modal.Footer>
   </Modal>
   )

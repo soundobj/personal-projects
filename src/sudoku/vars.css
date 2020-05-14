@@ -15,6 +15,7 @@
   --menuItem: 2.5rem;
   --gameControlsPadding: .2rem;
   --backgroundColor: white;
+  --cta-primary: hsla(211, 100%, 50%, 0.25);
 }
 
 .OK {
