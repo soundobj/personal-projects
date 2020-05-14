@@ -202,7 +202,7 @@ const Sudoku = () => {
   }
 
   //dev remove
-  showModal = true;
+  // showModal = true;
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused
   
