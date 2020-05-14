@@ -1,7 +1,11 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
-export type DialogContent = { header: string; component: JSX.Element }
+export type DialogContent = {
+  header: string;
+  component: JSX.Element;
+  className?: string;
+};
 
 interface Props {
   onEnter: () => void
@@ -24,6 +28,7 @@ const Dialog = (props: Props) => {
     size="sm"
     aria-labelledby="contained-modal-title-vcenter"
     centered
+    dialogClassName={content.className}
   >
     <Modal.Header closeButton onHide={onEscapeKeyDown}>
       <Modal.Title id="contained-modal-title-vcenter">

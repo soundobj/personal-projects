@@ -158,6 +158,7 @@ const Sudoku = () => {
     NEW_GAME: {
       header: "Choose difficulty",
       component: <NewGameOptions onHide={onHide} onNewGame={newGame} />,
+      className: "newGameOptions__modal",
     },
     END_GAME: {
       header: "Are you sure?",
@@ -199,6 +200,9 @@ const Sudoku = () => {
     // dont use setShowGameOver() to avoid re-rendering the component
     showModal = true;
   }
+
+  //dev remove
+  // showModal = true;
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused
   

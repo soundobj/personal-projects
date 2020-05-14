@@ -1,5 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { GiDeadHead } from "react-icons/gi";
+import { GiBoneGnawer } from "react-icons/gi";
+import { GiDisintegrate } from "react-icons/gi";
+import { GiGrimReaper } from "react-icons/gi";
 import NewGameOptions, {
   Props as NewGameProps,
 } from "../newGameOptions/NewGameOptions";
@@ -12,7 +16,7 @@ const GameOverModal = (props: Props) => {
   const { onHide, onNewGame, onRestart } = props;
   return (
     <>
-      <span>You fucked up too many a time!!!</span>
+      <span>You fucked up too many a time!!! <GiDeadHead /> <GiBoneGnawer /> <GiDisintegrate /> <GiGrimReaper /></span>
       <span>Either</span>
       <Button
         onClick={() => {

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { GiShrug } from "react-icons/gi"
 
 import "./EndGameModal.css";
 
@@ -16,6 +17,7 @@ export const EndGameModal= (
   return (
     <>
       <span>Are you Sure?</span>
+      <GiShrug />
       <Button
         onClick={() => {
           onHide();
