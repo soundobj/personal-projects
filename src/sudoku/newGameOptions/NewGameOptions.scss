@@ -18,7 +18,7 @@ $gameLevelOptionPadding: 0.2rem;
     transition: ease 0.3s;
 
     &:hover &__icon {
-      animation: swing 1s ease;
+      animation: swing .9s ease;
       animation-iteration-count: 1;
     }
 
@@ -31,12 +31,10 @@ $gameLevelOptionPadding: 0.2rem;
       width: 80%;
       height: 80%;
       padding: 1rem;
-      animation: bounce 0.8s linear infinite;
     }
 
     &__text {
       background-color: white;
-      animation: slidein 0.8s linear 1;
       clip-path: polygon(
         0% 15%,
         15% 15%,
@@ -60,26 +58,34 @@ $gameLevelOptionPadding: 0.2rem;
   }
 }
 
+$firstBounce: 3.5px;
+$secondBounce: 1.5px;
+$thirdBounce: .5px;
+
+// $firstBounce: 5px;
+// $secondBounce: 3px;
+// $thirdBounce: 2px;
+
 @keyframes swing {
   15% {
-      -webkit-transform: translateY(5px);
-      transform: translateY(5px);
+      -webkit-transform: translateY($firstBounce);
+      transform: translateY($firstBounce);
   }
   30% {
-      -webkit-transform: translateY(-5px);
-      transform: translateY(-5px);
+      -webkit-transform: translateY(-$firstBounce);
+      transform: translateY(-$firstBounce);
   }
   50% {
-      -webkit-transform: translateY(3px);
-      transform: translateY(3px);
+      -webkit-transform: translateY($secondBounce);
+      transform: translateY($secondBounce);
   }
   65% {
-      -webkit-transform: translateY(-3px);
-      transform: translateY(-3px);
+      -webkit-transform: translateY(-$secondBounce);
+      transform: translateY(-$secondBounce);
   }
   80% {
-      -webkit-transform: translateY(2px);
-      transform: translateY(2px);
+      -webkit-transform: translateY(thirdBounce);
+      transform: translateY(thirdBounce);
   }
   100% {
       -webkit-transform: translateY(0);
