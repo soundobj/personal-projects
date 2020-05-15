@@ -91,6 +91,7 @@ const Sudoku = () => {
   const restartGame = useCallback(() => {
     dispatch({ type: Actions.RESTART_GAME });
     restartWatch();
+    setCurrentDialog("NEW_GAME")
   }, []);
 
   const resolveCell = useCallback(
@@ -201,6 +202,11 @@ const Sudoku = () => {
     showModal = true;
   }
 
+  if (!isGamePlayed) {
+    watch.clear()
+    watch.stop()
+  }
+ 
   //dev remove
   // showModal = true;
 

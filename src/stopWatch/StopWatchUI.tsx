@@ -14,7 +14,7 @@ interface Props {
 
 const StopWatchUI = (props: Props) => {
   const { watch, onPause, isGamePlayed, isGamePaused } = props;
-  const [timeElapsed, setTimeElapsed] = useState(initialTimeElapsed);
+  let [timeElapsed, setTimeElapsed] = useState(initialTimeElapsed);
   watch.setCallback(setTimeElapsed);
   // const timeElapsed = {
   //   ISOString: '0:00:00'
@@ -28,6 +28,10 @@ const StopWatchUI = (props: Props) => {
       watch.stop();
       onPause(true);
     }
+  }
+
+  if (!isGamePlayed) {
+    timeElapsed = initialTimeElapsed
   }
 
   return (
