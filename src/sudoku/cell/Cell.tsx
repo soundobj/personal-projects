@@ -31,7 +31,7 @@ const Cell = (props: Props): JSX.Element => {
   } = props;
   // useCountRenders(coordinate)
   return (
-    <div className="grid__item" onClick={() => selectCell(coordinate)}>
+    <div className="grid__item" onClick={() => selectCell(coordinate)} key={value}>
       <div
         className={`content ${related ? "sudoku__cell--related " : ""} ${
           selected ? "sudoku__cell--selected " : ""

@@ -1,4 +1,4 @@
-$gameLevelOptionPadding: 0.2rem;
+$gameLevelOptionPadding: .2rem;
 
 .gameLevel {
   display: grid;
@@ -14,8 +14,8 @@ $gameLevelOptionPadding: 0.2rem;
 
     background-color: var(--cta-primary);
     border: none;
-    border-radius: 0.4rem;
-    transition: ease 0.3s;
+    border-radius: .4rem;
+    transition: ease .3s;
 
     &:hover &__icon {
       animation: swing .9s ease;
@@ -24,7 +24,7 @@ $gameLevelOptionPadding: 0.2rem;
 
     &:hover {
       background-color: hsla(211, 97%, 23%, 0.534);
-      transition: ease 0.5s;
+      transition: ease .5s;
     }
 
     &__icon > svg {
@@ -49,7 +49,7 @@ $gameLevelOptionPadding: 0.2rem;
         15% 85%,
         0% 85%
       );
-      padding: 0.4rem 0;
+      padding: .4rem 0;
       margin: 0 auto;
       bottom: $gameLevelOptionPadding;
       font-weight: 600;
