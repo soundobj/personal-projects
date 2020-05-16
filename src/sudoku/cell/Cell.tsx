@@ -1,11 +1,14 @@
 import React, { useRef } from "react";
-
+// @ts-ignore
+import classnames from 'classnames'
 import { Cell as CellProps, Coordinate, MoveTypes } from "../lib/definitions";
+import { Transitions } from '../lib/reducer'
 import Candidates from "./candidates/Candidates";
 import "./Cell.scss";
 
 interface Props extends CellProps {
   selectCell: (coordinate: Coordinate) => void;
+  transition: Transitions
 }
 
 export const useCountRenders = (coordinate: Coordinate) => {
@@ -28,6 +31,7 @@ const Cell = (props: Props): JSX.Element => {
     conflicting,
     related,
     sameAsSelected,
+    transition
   } = props;
   // useCountRenders(coordinate)
   return (

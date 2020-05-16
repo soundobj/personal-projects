@@ -46,6 +46,11 @@ import {
 import * as emptyGame from "./stubs/emptyGame.json";
 
 export type Dialogs = "NEW_GAME" | "END_GAME" | "GAME_OVER" | "GAME_FINISHED";
+export enum Transitions {
+  "GAME_OVER",
+  "NEW_GAME",
+  "GAME_FINISHED",
+}
 export interface State {
   gameLevel?: GameLevel;
   mistakes: number;
@@ -65,7 +70,8 @@ export interface State {
   restartGame: Cell[][];
   currentDialog: Dialogs;
   finishedTime: StopWatchCallbackPayload;
-  level?: GameLevel
+  level?: GameLevel;
+  transition?: Transitions;
 }
 
 export interface Action {
@@ -86,6 +92,8 @@ export enum Actions {
   RESTART_GAME,
   SET_CURRENT_DIALOG,
   LOAD_STORED_GAME,
+  START_TRANSITION,
+  TRANSITION_ENDED,
 }
 
 export const initialState: State = {
@@ -111,10 +119,14 @@ const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates);
 
 export const sudokuReducer = (state: State, action: Action) => {
   switch (action.type) {
+    case Actions.TRANSITION_ENDED: {
+      console.error("@_TRANSITION_ENDED");
+      return handleTransitionEnded(state);
+    }
     case Actions.LOAD_STORED_GAME: {
       if (action.payload) {
         console.error("@_LOAD_STORED_GAME", action.payload);
-        return action.payload
+        return action.payload;
       }
     }
     case Actions.SET_CURRENT_DIALOG: {
@@ -172,6 +184,16 @@ export const sudokuReducer = (state: State, action: Action) => {
       throw new Error(`Unexpected Sudoku reducer action ${action.type}`);
   }
 };
+
+export const handleTransitionEnded = (state: State) => produce(state, (draft: State) => {
+  switch (draft.transition) {
+    case Transitions.GAME_OVER: {
+      draft.isGamePlayed = false;
+      draft.currentDialog = "GAME_OVER";
+      delete draft.transition
+    }
+  }
+});
 
 const restartGame = (state: State) =>
   produce(state, (draft: State) => {
@@ -284,7 +306,10 @@ const applyToListMinusCoordinate = (
     .filter(curry(filterOutCoordinate)(c))
     .forEach((coordinate: Coordinate) => handler(coordinate));
 
-export const highlightSameNumberCellsAsSelectedCell = (state: State, action: Action) =>
+export const highlightSameNumberCellsAsSelectedCell = (
+  state: State,
+  action: Action
+) =>
   produce(state, (draft: State) => {
     const { game, numberMap } = draft;
     const newCellToSelect = action.payload;
@@ -295,7 +320,11 @@ export const highlightSameNumberCellsAsSelectedCell = (state: State, action: Act
     selectSameNumbers(game, cell, numberMap);
   });
 
-const selectSameNumbers = (game: Cell[][], cell: Cell, numberMap: NumberMap) => {
+const selectSameNumbers = (
+  game: Cell[][],
+  cell: Cell,
+  numberMap: NumberMap
+) => {
   getEnumValues(MoveTypes).forEach((move: number) => {
     applyToListMinusCoordinate(
       numberMap[cell.solution][getMoveTypePropertyMap(move)],
@@ -313,7 +342,7 @@ export const highlightSameNumberCellsAsSolution = (
     const { game, selectedCell, numberMap } = draft;
     const cell = getCell(selectedCell, game);
     if (!isNumberSolution(number, cell)) {
-      return
+      return;
     }
     selectSameNumbers(game, cell, numberMap);
   });
@@ -419,8 +448,7 @@ export const maybeGameOver = (state: State, number: number) =>
     }
     cell.value = number;
     if (mistakes + 1 > ALLOWED_MISTAKES - 1) {
-      draft.isGamePlayed = false;
-      draft.currentDialog = "GAME_OVER";
+      draft.transition = Transitions.GAME_OVER
     }
     draft.mistakes++;
   });
