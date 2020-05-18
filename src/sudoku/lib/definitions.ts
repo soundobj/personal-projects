@@ -27,6 +27,14 @@ export enum LOCAL_STORAGE_KEYS {
   CURRENT_GAME_ELAPSED_TIME = "SUDOKU_GAME_CURRENT_GAME_ELAPSED_TIME"
 }
 
+export type Transitions = 'GAME_OVER' | 'NEW_GAME' | 'GAME_FINISHED';
+
+export const TransitionsIntervals: Record<Transitions, number> = {
+  "GAME_OVER": 1000,
+  "NEW_GAME": 2000,
+  "GAME_FINISHED": 2000,
+}
+
 export interface Coordinate {
   x: number;
   y: number;

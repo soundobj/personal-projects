@@ -25,6 +25,7 @@ import {
   NumberMap,
   VALID_NUMBERS,
   NumberMapPayload,
+  Transitions,
 } from "./definitions";
 import {
   generateBoard,
@@ -46,11 +47,7 @@ import {
 import * as emptyGame from "./stubs/emptyGame.json";
 
 export type Dialogs = "NEW_GAME" | "END_GAME" | "GAME_OVER" | "GAME_FINISHED";
-export enum Transitions {
-  "GAME_OVER",
-  "NEW_GAME",
-  "GAME_FINISHED",
-}
+
 export interface State {
   gameLevel?: GameLevel;
   mistakes: number;
@@ -187,7 +184,7 @@ export const sudokuReducer = (state: State, action: Action) => {
 
 export const handleTransitionEnded = (state: State) => produce(state, (draft: State) => {
   switch (draft.transition) {
-    case Transitions.GAME_OVER: {
+    case 'GAME_OVER': {
       draft.isGamePlayed = false;
       draft.currentDialog = "GAME_OVER";
       delete draft.transition
@@ -448,7 +445,7 @@ export const maybeGameOver = (state: State, number: number) =>
     }
     cell.value = number;
     if (mistakes + 1 > ALLOWED_MISTAKES - 1) {
-      draft.transition = Transitions.GAME_OVER
+      draft.transition = 'GAME_OVER'
     }
     draft.mistakes++;
   });

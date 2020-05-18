@@ -24,6 +24,7 @@
 
 .grid__item .content-inside {
   margin: 0 auto;
+  perspective: 2000px;
 
   h2 {
     font-size: 1.5rem;
@@ -54,4 +55,22 @@
 
 .sudoku__cell--selected {
   background-color: #d6bd9c;
+}
+
+
+
+.cell {
+  &__game-over {
+    &__rotate-forwards {
+      @extend %rotate-forwards;
+    }
+    
+    &__fall-from-bottom {
+      @extend %fall-from-bottom;
+    }
+    
+    &__rotate-out {
+      @extend %rotate-out;
+    }
+  }
 }

@@ -6,7 +6,7 @@ export type Transition = {
   selector: string;
 };
 
-const transitionHandler = (events: Transition[]): Promise<unknown> =>
+export const transitionHandler = (events: Transition[]): Promise<unknown> =>
   Promise.all(
     events.map((transition: Transition) => {
       const { event, selector } = transition;
@@ -22,10 +22,10 @@ const transitionHandler = (events: Transition[]): Promise<unknown> =>
     })
   );
 
-export default transitionHandler;
+export type BoardCellClasses = (string | undefined)[][]
 
-interface MapRandomItemToList {
-  list: (string | undefined)[]
+export interface MapRandomItemToList {
+  list: BoardCellClasses
   applied: string[]
 }
 
@@ -40,16 +40,18 @@ export const mapRandomItemToList = (
       applied: []
     }
   }
-  const appliedItems: Record<string, boolean> = {}
-  const _list = list.map(item => {
-    if (criteria(item)) {
-      const randomItem = items[random(0, list.length -1)]
-      appliedItems[randomItem] = true
-      return randomItem
-    } else {
-      return undefined
-    }
-  })
+  const appliedItems: Record<string, boolean> = {};
+  const _list = list.map((x) =>
+    x.map((item: any) => {
+      if (criteria(item)) {
+        const randomItem = items[random(0, list.length - 1)];
+        appliedItems[randomItem] = true;
+        return randomItem;
+      } else {
+        return undefined;
+      }
+    })
+  );
 
   return {
     list: _list,

@@ -1,4 +1,4 @@
-import React, { useReducer, useCallback, useState, useEffect } from "react";
+import React, { useReducer, useCallback, useState, useEffect, Dispatch } from "react";
 import { noop, isEmpty } from "lodash";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GoPlus } from "react-icons/go";
@@ -12,10 +12,10 @@ import { RiSunLine } from "react-icons/ri";
 import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
 
-import { sudokuReducer, initialState, Actions, Dialogs, State, Transitions } from "./lib/reducer";
-import { GameLevel, Coordinate, MoveTypes } from "./lib/definitions";
+import { sudokuReducer, initialState, Actions, Dialogs, State } from "./lib/reducer";
+import { GameLevel, Coordinate, MoveTypes, Transitions, TransitionsIntervals } from "./lib/definitions";
 import { localStorageOnMount, stateContainer } from './lib/localStorage'
-import transitionHandler from "./lib/transitionHandler";
+
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
 import KeyboardInput from "./keyboadInput/KeyboardInput";
@@ -215,16 +215,12 @@ const Sudoku = () => {
     watch.stop()
   }
 
-  if (typeof transition === "number") {
-    // move to the next tick so there is a chance for the DOM to be updated with the new classes
+  if (transition) {
+    const transitionInterval =  TransitionsIntervals[transition as Transitions]
     setTimeout(() => {
-      transitionHandler([
-        { event: "animationend", selector: ".sudoku__game--over" },
-      ]).then(() => {
-        console.error("@_transition ended");
+      console.error('@_moving after n seconds', transitionInterval);
         transitionEnded(transition);
-      });
-    }, 0);
+    }, transitionInterval);
   }
  
   //dev remove
@@ -317,6 +313,7 @@ const Sudoku = () => {
               selectCell={isGamePlayed ? selectCell : noop}
               isGamePaused={isGamePaused}
               transition={transition}
+              // onTransitionEnd={transitionEnded}
             />
           </section>
           <section className="sudoku__game_footer">

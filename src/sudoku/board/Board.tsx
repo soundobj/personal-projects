@@ -2,8 +2,7 @@ import React from "react";
 // @ts-ignore
 import classnames from 'classnames'
 
-import { Cell as CellProps, Coordinate } from "../lib/definitions";
-import { Transitions } from '../lib/reducer'
+import { Cell as CellProps, Coordinate, Transitions } from "../lib/definitions";
 
 import Cell from "../cell/Cell";
 
@@ -20,7 +19,7 @@ const Board = (props: Props) => {
     <div
       className={classnames("grid", {
         "game--paused": isGamePaused,
-        "sudoku__game--over": transition === Transitions.GAME_OVER,
+        "sudoku__game--over": transition === 'GAME_OVER',
       })}
     >
       {game &&
