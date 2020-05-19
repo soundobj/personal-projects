@@ -6,9 +6,7 @@ import React, {
 } from "react";
 import { noop, isEmpty } from "lodash";
 
-import { ReactComponent as Death } from "../assets/death.svg";
 import stopWatch from "../stopWatch/stopWatch";
-
 import { sudokuReducer, initialState } from "./lib/reducer";
 import {
   MoveTypes,
@@ -24,7 +22,7 @@ import KeyboardInput from "./keyboadInput/KeyboardInput";
 import Dialog, { DialogContent } from "./dialog/Dialog";
 import NewGameOptions from "./newGameOptions/NewGameOptions";
 import EndGameModal from "./endGameModal/EndGameModal";
-import GameOverModal from "./gameOverModal/GameOverModal";
+import GameOverModal, { GameOverHeader } from "./gameOverModal/GameOverModal";
 import GameCompletedModal from "./gameCompletedModal/GameCompletedModal";
 import GameControls from "./gameControls/GameControls";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
@@ -35,8 +33,8 @@ import "reset-css";
 import "./vars.css";
 import "./Sudoku.scss";
 
-import * as stateStub from "./lib/stubs/state-stub.json";
-// import * as stateStub from './stubs/almostComplete.json'
+// import * as stateStub from "./lib/stubs/state-stub.json";
+import * as stateStub from './lib/stubs/almostComplete.json'
 
 const watch = stopWatch();
 const container = stateContainer();
@@ -116,14 +114,7 @@ const Sudoku = () => {
       ),
     },
     GAME_OVER: {
-      header: (
-        <div className="sudoku__dialog__game-over__header">
-          <div className="sudoku__dialog__game-over__header__icon">
-            <Death />
-          </div>
-          <span>Game Over</span>
-        </div>
-      ),
+      header: <GameOverHeader />,
       component: (
         <GameOverModal
           onHide={onHide}
@@ -149,8 +140,7 @@ const Sudoku = () => {
     currentDialog === "GAME_OVER" ||
     (currentDialog === "GAME_FINISHED" && !isGamePlayed)
   ) {
-    // dont use setShowGameOver() to avoid re-rendering the component
-    showModal = true;
+    showModal = true; // dont use setShowGameOver() to avoid re-rendering the component
   }
 
   if (!isGamePlayed) {
@@ -161,14 +151,14 @@ const Sudoku = () => {
   if (transition) {
     const transitionInterval = TransitionsIntervals[transition as Transitions];
     setTimeout(() => {
-      console.error("@_moving after n seconds", transitionInterval);
+      console.error(`@transition ends in ${transitionInterval} milliseconds`);
       transitionEnded(transition);
     }, transitionInterval);
   }
 
   //dev remove
   // showModal = true;
-  // currentDialog = "GAME_COMPLETED";
+  // currentDialog = "GAME_OVER";
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
 
@@ -241,8 +231,7 @@ const Sudoku = () => {
           !isGamePlayed && actions.setCurrentDialog("NEW_GAME");
         }}
         onHide={onHide}
-        //@ts-ignore
-        content={dialogs[currentDialog]}
+        content={dialogs[currentDialog as Dialogs]}
         show={dialogShow || showModal}
       />
     </>
