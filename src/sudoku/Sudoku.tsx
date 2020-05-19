@@ -7,14 +7,8 @@ import React, {
 } from "react";
 import { noop, isEmpty } from "lodash";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { GoPlus } from "react-icons/go";
-import { GiTrashCan } from "react-icons/gi";
 import { FaPencilAlt } from "react-icons/fa";
 import { MdHistory } from "react-icons/md";
-import { GrHelp } from "react-icons/gr";
-import { BsController } from "react-icons/bs";
-import { RiSunLine } from "react-icons/ri";
-
 import { ReactComponent as Death } from "../assets/death.svg";
 import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
@@ -22,19 +16,19 @@ import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
 import {
   sudokuReducer,
   initialState,
-  Actions,
-  State,
+  // Actions,
+  // State,
 } from "./lib/reducer";
 import {
-  GameLevel,
-  Coordinate,
+  // GameLevel,
+  // Coordinate,
   MoveTypes,
   Transitions,
   TransitionsIntervals,
   Dialogs,
 } from "./lib/definitions";
 import { localStorageOnMount, stateContainer } from "./lib/localStorage";
-
+import sudokuActions from './lib/actions'
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
 import KeyboardInput from "./keyboadInput/KeyboardInput";
@@ -47,6 +41,7 @@ import Mistakes, { MistakesTypes } from "./mistakes/Mistakes";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
 import MenuItem from "./menuItem/MenuItem";
 import Icon from "./icon/Icon";
+import Nav from './nav/Nav'
 import "reset-css";
 import "./vars.css";
 import "./Sudoku.scss";
@@ -57,6 +52,8 @@ import * as stateStub from "./lib/stubs/state-stub.json";
 
 const watch = stopWatch();
 const container = stateContainer();
+const actions = sudokuActions();
+
 
 export const handleWatchOnCloseModal = (
   stopWatch: StopWatch,
@@ -75,94 +72,35 @@ const Sudoku = () => {
   // @TODO: remove temp stub
   // @ts-ignore
   const [state, dispatch] = useReducer(sudokuReducer, stateStub.default);
+  
+  actions.setDispatch(dispatch)
+  actions.setState(state)
+  actions.setWatch(watch)
+  container.set(state);
+
   const [dialogShow, setDialogShow] = useState(false);
   const [isWatchRunning, setIsWatchRunning] = useState(false);
-  container.set(state);
+
+  const newGame = useCallback(actions.newGame, []);
+  const selectCell = useCallback(actions.selectCell, []);
+  const setEditMode = useCallback(actions.setEditMode, []);
+  const transitionEnded = useCallback(actions.transitionEnded, []);
+  const undoMove = useCallback(actions.undoMove, []);
+  const pauseGame = useCallback(actions.pauseGame, []);
+  const endGame = useCallback(actions.endGame, []);
 
   const onHide = useCallback(() => {
     setDialogShow(false);
   }, []);
 
-  const restartWatch = () => {
-    watch.clear();
-    watch.start();
-    pauseGame(false);
-  };
-
-  const newGame = useCallback((gameLevel?: string) => {
-    if (gameLevel && GameLevel.hasOwnProperty(gameLevel)) {
-      startGame(gameLevel);
-      restartWatch();
-    }
-  }, []);
-
-  const selectCell = useCallback(
-    (coordinate: Coordinate) =>
-      dispatch({ type: Actions.SELECT_CELL, payload: coordinate }),
-    []
-  );
-
-  const startGame = useCallback(
-    (gameLevel: string) =>
-      dispatch({ type: Actions.START_GAME, payload: gameLevel }),
-    []
-  );
-
-  const restartGame = useCallback(() => {
-    dispatch({ type: Actions.RESTART_GAME });
-    restartWatch();
-    setCurrentDialog("NEW_GAME");
-  }, []);
-
-  const resolveCell = useCallback(
-    () => dispatch({ type: Actions.RESOLVE_CELL }),
-    []
-  );
-
-  const setEditMode = useCallback(
-    (editMode: MoveTypes) =>
-      dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode }),
-    []
-  );
-
-  const transitionEnded = useCallback(
-    (transition: Transitions) =>
-      dispatch({ type: Actions.TRANSITION_ENDED, payload: transition }),
-    []
-  );
-
-  const setCurrentDialog = useCallback(
-    (dialog: Dialogs) =>
-      dispatch({ type: Actions.SET_CURRENT_DIALOG, payload: dialog }),
-    []
-  );
-
-  const issueNumber = (number: number) => {
-    dispatch({ type: Actions.ISSUE_NUMBER, payload: number });
-    if (state.cellsToComplete === 1) {
-      dispatch({
-        type: Actions.SET_FINISHED_TIME,
-        payload: watch.getElapsedTime(),
-      });
-    }
-  };
-
-  const undoMove = useCallback(() => dispatch({ type: Actions.UNDO_MOVE }), []);
-
-  const pauseGame = useCallback(
-    (payload: boolean) => dispatch({ type: Actions.PAUSE_GAME, payload }),
-    []
-  );
-
-  const endGame = useCallback(() => dispatch({ type: Actions.END_GAME }), []);
-
   const showGameModal = useCallback(() => {
-    setCurrentDialog("NEW_GAME");
+    console.error('@_here',);
+    actions.setCurrentDialog("NEW_GAME");
     setDialogShow(true);
   }, []);
 
   const showEndGameModal = useCallback(() => {
-    setCurrentDialog("END_GAME");
+    actions.setCurrentDialog("END_GAME");
     setDialogShow(true);
   }, []);
 
@@ -181,6 +119,7 @@ const Sudoku = () => {
     transition,
     gameLevel,
   } = state;
+
   const isCandidateMode = editMode === MoveTypes.CANDIDATE;
 
   const dialogs: Record<Dialogs, DialogContent> = {
@@ -214,7 +153,7 @@ const Sudoku = () => {
         <GameOverModal
           onHide={onHide}
           onNewGame={newGame}
-          onRestart={restartGame}
+          onRestart={actions.restartGame}
         />
       ),
     },
@@ -253,8 +192,8 @@ const Sudoku = () => {
   }
 
   //dev remove
-  showModal = true;
-  currentDialog = "GAME_COMPLETED";
+  // showModal = true;
+  // currentDialog = "GAME_COMPLETED";
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
 
@@ -268,40 +207,7 @@ const Sudoku = () => {
         onDoesSupport={() => console.error("@does support")}
       />
       <section className="sudoku__container">
-        <nav className="sudoku__nav__left">
-          <MenuItem
-            title="new"
-            icon={<GoPlus className="icon__small" />}
-            onClick={showGameModal}
-          />
-          <MenuItem
-            title="help"
-            icon={<GrHelp className="icon__smaller" />}
-            onClick={noop}
-          />
-          <MenuItem
-            title="keys"
-            icon={<BsController className="icon__small" />}
-            onClick={noop}
-          />
-        </nav>
-        <nav className="sudoku__nav__right">
-          <MenuItem
-            title="end"
-            icon={<GiTrashCan className="icon" />}
-            onClick={showEndGameModal}
-          />
-          <MenuItem
-            title="fails"
-            icon={<Mistakes mistakes={mistakes} />}
-            bgClass={MistakesTypes[mistakes]}
-          />
-          <MenuItem
-            title="theme"
-            icon={<RiSunLine className="icon__small" />}
-            onClick={noop}
-          />
-        </nav>
+        <Nav showEndGameModal={showEndGameModal} showGameModal={showGameModal} mistakes={mistakes} />
         <article className="sudoku__game">
           <section className="sudoku__game__controls">
             <Icon
@@ -343,11 +249,10 @@ const Sudoku = () => {
               selectCell={isGamePlayed ? selectCell : noop}
               isGamePaused={isGamePaused}
               transition={transition}
-              // onTransitionEnd={transitionEnded}
             />
           </section>
           <section className="sudoku__game_footer">
-            <Numbers issueNumber={issueNumber} isGamePlayed={isGamePlayed} />
+            <Numbers issueNumber={actions.issueNumber} isGamePlayed={isGamePlayed} />
           </section>
         </article>
       </section>
@@ -358,9 +263,9 @@ const Sudoku = () => {
         cellsToComplete={cellsToComplete}
         editMode={editMode}
         setEditMode={setEditMode}
-        resolveCell={resolveCell}
+        resolveCell={actions.resolveCell}
         selectCell={selectCell}
-        issueNumber={issueNumber}
+        issueNumber={actions.issueNumber}
         pauseOrResumeGame={() => {
           pauseGame(!isGamePaused);
           if (isGamePaused) {
@@ -379,7 +284,7 @@ const Sudoku = () => {
         }}
         onEscapeKeyDown={() => {
           handleWatchOnCloseModal(watch, isWatchRunning, pauseGame);
-          !isGamePlayed && setCurrentDialog("NEW_GAME");
+          !isGamePlayed && actions.setCurrentDialog("NEW_GAME");
         }}
         onHide={onHide}
         //@ts-ignore

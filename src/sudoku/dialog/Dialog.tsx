@@ -23,6 +23,7 @@ const Dialog = (props: Props) => {
   const { onEscapeKeyDown, onHide, content } = props
   
   if (!content) {
+    console.error('@_no content',);
     return null
   }
 

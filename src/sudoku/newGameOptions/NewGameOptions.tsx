@@ -22,7 +22,7 @@ const NewGameOptions = (props: Props) => {
         return (
           <li>
             <button
-              key={`${item}`}
+              key={`game-option-${item}`}
               className="gameLevel__option"
               onClick={() => {
                 onHide();
