@@ -3,25 +3,17 @@ import React, {
   useCallback,
   useState,
   useEffect,
-  Dispatch,
 } from "react";
 import { noop, isEmpty } from "lodash";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { FaPencilAlt } from "react-icons/fa";
-import { MdHistory } from "react-icons/md";
+
 import { ReactComponent as Death } from "../assets/death.svg";
-import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
 
 import {
   sudokuReducer,
   initialState,
-  // Actions,
-  // State,
 } from "./lib/reducer";
 import {
-  // GameLevel,
-  // Coordinate,
   MoveTypes,
   Transitions,
   TransitionsIntervals,
@@ -37,23 +29,20 @@ import NewGameOptions from "./newGameOptions/NewGameOptions";
 import EndGameModal from "./endGameModal/EndGameModal";
 import GameOverModal from "./gameOverModal/GameOverModal";
 import GameCompletedModal from "./gameCompletedModal/GameCompletedModal";
-import Mistakes, { MistakesTypes } from "./mistakes/Mistakes";
+import GameControls from "./gameControls/GameControls";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
-import MenuItem from "./menuItem/MenuItem";
-import Icon from "./icon/Icon";
 import Nav from './nav/Nav'
 import "reset-css";
 import "./vars.css";
 import "./Sudoku.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-// dev only stubs
 import * as stateStub from "./lib/stubs/state-stub.json";
 // import * as stateStub from './stubs/almostComplete.json'
 
 const watch = stopWatch();
 const container = stateContainer();
 const actions = sudokuActions();
-
 
 export const handleWatchOnCloseModal = (
   stopWatch: StopWatch,
@@ -94,7 +83,6 @@ const Sudoku = () => {
   }, []);
 
   const showGameModal = useCallback(() => {
-    console.error('@_here',);
     actions.setCurrentDialog("NEW_GAME");
     setDialogShow(true);
   }, []);
@@ -210,38 +198,17 @@ const Sudoku = () => {
         <Nav showEndGameModal={showEndGameModal} showGameModal={showGameModal} mistakes={mistakes} />
         <article className="sudoku__game">
           <section className="sudoku__game__controls">
-            <Icon
-              tooltipPosition="top"
-              title="Candidate mode"
-              onClick={() => setEditMode(+!editMode)}
-            >
-              <div
-                className={`${
-                  isCandidateMode
-                    ? "sudoku__game__controls__candidate--selected"
-                    : "sudoku__game__controls__candidate"
-                }`}
-              >
-                <FaPencilAlt />
-              </div>
-            </Icon>
-            <StopWatchUI
+            <GameControls
+              setEditMode={setEditMode}
+              editMode={editMode}
               watch={watch}
-              onPause={pauseGame}
+              pauseGame={pauseGame}
               isGamePlayed={isGamePlayed}
               isGamePaused={isGamePaused}
-            />
-            <Icon
-              tooltipPosition="top"
-              className=""
-              disabled={isUndoDisabled}
-              title="Undo last move"
-              onClick={undoMove}
-            >
-              <div className="sudoku__game__controls__undo">
-                <MdHistory className="sudoku__game__controls__option" />
-              </div>
-            </Icon>
+              isUndoDisabled={isUndoDisabled}
+              isCandidateMode={isCandidateMode}
+              undoMove={undoMove}
+             />
           </section>
           <section className="sudoku__game__board">
             <Board
