@@ -1,12 +1,10 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { GiDeadHead } from "react-icons/gi";
-import { GiBoneGnawer } from "react-icons/gi";
-import { GiDisintegrate } from "react-icons/gi";
-import { GiGrimReaper } from "react-icons/gi";
 import NewGameOptions, {
   Props as NewGameProps,
 } from "../newGameOptions/NewGameOptions";
+
+import "./GameOverModal.scss";
 
 interface Props extends NewGameProps {
   onRestart: () => void;
@@ -16,20 +14,21 @@ const GameOverModal = (props: Props) => {
   const { onHide, onNewGame, onRestart } = props;
   return (
     <>
-      <span>You fucked up too many a time!!! <GiDeadHead /> <GiBoneGnawer /> <GiDisintegrate /> <GiGrimReaper /></span>
       <span>Either</span>
       <Button
+        className="sudoku__gameOver__modal__restart"
+        variant="link"
         onClick={() => {
           onHide();
           onRestart();
         }}
-      >
-        Restart again the bitch
-      </Button>
+      >Restart</Button>
       <span>Or choose a new game</span>
-      <NewGameOptions onHide={onHide} onNewGame={onNewGame} />
+      <div className="sudoku__gameOver__modal__newGame__options">
+        <NewGameOptions onHide={onHide} onNewGame={onNewGame} />
+      </div>
     </>
   );
 };
 
-export default GameOverModal
+export default GameOverModal;

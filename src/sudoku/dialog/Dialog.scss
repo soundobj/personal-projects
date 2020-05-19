@@ -7,9 +7,27 @@
 
   &__cancel {
     font-size: 1.2rem;
-    border-radius: .2rem;
-    padding: .4rem;
+    border-radius: 0.2rem;
+    padding: 0.4rem;
     background-color: var(--cta-primary);
     border: 0;
+  }
+}
+
+.sudoku {
+  &__dialog {
+    &__game-over {
+      &__header {
+        display: flex;
+        align-items: center;
+        &__icon {
+          margin-right: .5rem;
+          & > svg {
+            width: 2rem;
+            height: 100%;
+          }
+        }
+      }
+    }
   }
 }

@@ -4,7 +4,7 @@ import { Modal, Button } from 'react-bootstrap'
 import "./Dialog.scss"
 
 export type DialogContent = {
-  header: string;
+  header: string | JSX.Element ;
   component: JSX.Element;
   className?: string;
 };

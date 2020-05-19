@@ -1,4 +1,10 @@
-import React, { useReducer, useCallback, useState, useEffect, Dispatch } from "react";
+import React, {
+  useReducer,
+  useCallback,
+  useState,
+  useEffect,
+  Dispatch,
+} from "react";
 import { noop, isEmpty } from "lodash";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { GoPlus } from "react-icons/go";
@@ -9,12 +15,25 @@ import { GrHelp } from "react-icons/gr";
 import { BsController } from "react-icons/bs";
 import { RiSunLine } from "react-icons/ri";
 
+import { ReactComponent as Death } from "../assets/death.svg";
 import StopWatchUI from "../stopWatch/StopWatchUI";
 import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
 
-import { sudokuReducer, initialState, Actions, Dialogs, State } from "./lib/reducer";
-import { GameLevel, Coordinate, MoveTypes, Transitions, TransitionsIntervals } from "./lib/definitions";
-import { localStorageOnMount, stateContainer } from './lib/localStorage'
+import {
+  sudokuReducer,
+  initialState,
+  Actions,
+  Dialogs,
+  State,
+} from "./lib/reducer";
+import {
+  GameLevel,
+  Coordinate,
+  MoveTypes,
+  Transitions,
+  TransitionsIntervals,
+} from "./lib/definitions";
+import { localStorageOnMount, stateContainer } from "./lib/localStorage";
 
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
@@ -45,8 +64,8 @@ export const handleWatchOnCloseModal = (
   pauseGame: (bool: boolean) => void
 ) => {
   if (isWatchRunning) {
-    stopWatch.start()
-    pauseGame(false)
+    stopWatch.start();
+    pauseGame(false);
   }
 };
 
@@ -92,7 +111,7 @@ const Sudoku = () => {
   const restartGame = useCallback(() => {
     dispatch({ type: Actions.RESTART_GAME });
     restartWatch();
-    setCurrentDialog("NEW_GAME")
+    setCurrentDialog("NEW_GAME");
   }, []);
 
   const resolveCell = useCallback(
@@ -148,7 +167,7 @@ const Sudoku = () => {
   }, []);
 
   console.error("@state", state);
-  const {
+  let {
     game,
     selectedCell,
     cellsToComplete,
@@ -174,13 +193,22 @@ const Sudoku = () => {
       component: (
         <EndGameModal
           onHide={onHide}
-          onCancelEndGame={() => { handleWatchOnCloseModal(watch, isWatchRunning, pauseGame) }}
+          onCancelEndGame={() => {
+            handleWatchOnCloseModal(watch, isWatchRunning, pauseGame);
+          }}
           onConfirmEndGame={endGame}
         />
       ),
     },
     GAME_OVER: {
-      header: "Game Over",
+      header: (
+        <div className="sudoku__dialog__game-over__header">
+          <div className="sudoku__dialog__game-over__header__icon">
+            <Death />
+          </div>
+          <span>Game Over</span>
+        </div>
+      ),
       component: (
         <GameOverModal
           onHide={onHide}
@@ -211,24 +239,25 @@ const Sudoku = () => {
   }
 
   if (!isGamePlayed) {
-    watch.clear()
-    watch.stop()
+    watch.clear();
+    watch.stop();
   }
 
   if (transition) {
-    const transitionInterval =  TransitionsIntervals[transition as Transitions]
+    const transitionInterval = TransitionsIntervals[transition as Transitions];
     setTimeout(() => {
-      console.error('@_moving after n seconds', transitionInterval);
-        transitionEnded(transition);
+      console.error("@_moving after n seconds", transitionInterval);
+      transitionEnded(transition);
     }, transitionInterval);
   }
- 
+
   //dev remove
   // showModal = true;
+  // currentDialog = "GAME_FINISHED";
 
-  const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused
-  
-  useEffect(localStorageOnMount(container, watch, dispatch), [])
+  const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
+
+  useEffect(localStorageOnMount(container, watch, dispatch), []);
 
   return (
     <>
