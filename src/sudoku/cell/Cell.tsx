@@ -30,7 +30,7 @@ export const cellAnimations: Record<Transitions, string[]> = {
     "cell__game-over__fall-from-bottom",
     "cell__game-over__rotate-out",
   ],
-  ["GAME_FINISHED"]: [],
+  ["GAME_COMPLETED"]: [],
   ["NEW_GAME"]: [],
 };
 

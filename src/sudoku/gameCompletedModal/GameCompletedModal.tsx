@@ -1,26 +1,32 @@
 import React from "react";
-import NewGameOptions, {
-  Props as NewGameOptionsProps,
-} from "../newGameOptions/NewGameOptions";
 import { StopWatchCallbackPayload } from "../../stopWatch/stopWatch";
-import { GiMedallist } from "react-icons/gi";
-import { GiStrong } from "react-icons/gi";
+import { ReactComponent as Completed } from "../../assets/completed.svg";
 
-interface Props extends NewGameOptionsProps {
+import "./GameCompletedModal.scss"
+import { GameLevel } from "../lib/definitions";
+
+interface Props {
   finishedTime: StopWatchCallbackPayload;
+  gameLevel: GameLevel
 }
 
 const GameCompletedModal = (props: Props) => {
-  const { onHide, onNewGame, finishedTime } = props;
+  let { finishedTime, gameLevel } = props;
+  finishedTime = {
+    ISOString: '0:23:57',
+    elapsedTime: 23456
+  }
   return (
-    <>
-      <p>Congratulations!!</p>
-      <GiMedallist />
-      <GiStrong />
-      <p>Time to complete: {finishedTime.ISOString}</p>
-      <p>Start a new Game</p>
-      <NewGameOptions onHide={onHide} onNewGame={onNewGame} />
-    </>
+    <article className="sudoku__modal__game-completed">
+      <span className="sudoku__modal__game-completed__message">Congratulations!!</span>
+      <span className="sudoku__modal__game-completed__difficulty">Difficulty</span>
+      <span className="sudoku__modal__game-completed__game-level">{gameLevel}</span>
+      <span className="sudoku__modal__game-completed__time">Time</span>
+      <span className="sudoku__modal__game-completed__finished-time">{finishedTime.ISOString}</span>
+      <div className="sudoku__modal__game-completed__icon">
+        <Completed/>
+      </div>
+    </article>
   );
 };
 

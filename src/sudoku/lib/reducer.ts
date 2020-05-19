@@ -26,6 +26,7 @@ import {
   VALID_NUMBERS,
   NumberMapPayload,
   Transitions,
+  Dialogs,
 } from "./definitions";
 import {
   generateBoard,
@@ -45,8 +46,6 @@ import {
   filterByCellCoordinate,
 } from "./board";
 import * as emptyGame from "./stubs/emptyGame.json";
-
-export type Dialogs = "NEW_GAME" | "END_GAME" | "GAME_OVER" | "GAME_FINISHED";
 
 export interface State {
   gameLevel?: GameLevel;
@@ -428,7 +427,7 @@ export const isNumberSolution = (number: number, cell: Cell): boolean =>
 export const maybeFinishGame = (state: State) =>
   produce(state, (draft: State) => {
     if (draft.cellsToComplete === 0) {
-      draft.currentDialog = "GAME_FINISHED";
+      draft.currentDialog = "GAME_COMPLETED";
       draft.isGamePlayed = false;
     }
   });

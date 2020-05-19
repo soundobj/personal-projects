@@ -7,6 +7,7 @@ export type DialogContent = {
   header: string | JSX.Element ;
   component: JSX.Element;
   className?: string;
+  CTALabel?: string
 };
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
   onHide: () => void
   content: DialogContent
   show: boolean
+  CTALabel?: string
 }
 
 const Dialog = (props: Props) => {
@@ -48,7 +50,7 @@ const Dialog = (props: Props) => {
           onEscapeKeyDown();
         }}
       >
-        Cancel
+        {content.CTALabel || 'Cancel'}
       </button>
     </Modal.Footer>
   </Modal>

@@ -23,7 +23,6 @@ import {
   sudokuReducer,
   initialState,
   Actions,
-  Dialogs,
   State,
 } from "./lib/reducer";
 import {
@@ -32,6 +31,7 @@ import {
   MoveTypes,
   Transitions,
   TransitionsIntervals,
+  Dialogs,
 } from "./lib/definitions";
 import { localStorageOnMount, stateContainer } from "./lib/localStorage";
 
@@ -179,6 +179,7 @@ const Sudoku = () => {
     currentDialog,
     mistakes,
     transition,
+    gameLevel,
   } = state;
   const isCandidateMode = editMode === MoveTypes.CANDIDATE;
 
@@ -217,12 +218,12 @@ const Sudoku = () => {
         />
       ),
     },
-    GAME_FINISHED: {
+    GAME_COMPLETED: {
       header: "Game Completed",
+      CTALabel: "Close",
       component: (
         <GameCompletedModal
-          onHide={onHide}
-          onNewGame={newGame}
+          gameLevel={gameLevel}
           finishedTime={finishedTime}
         />
       ),
@@ -252,8 +253,8 @@ const Sudoku = () => {
   }
 
   //dev remove
-  // showModal = true;
-  // currentDialog = "GAME_FINISHED";
+  showModal = true;
+  currentDialog = "GAME_COMPLETED";
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
 
