@@ -99,7 +99,6 @@ const Sudoku = () => {
     NEW_GAME: {
       header: "Choose difficulty",
       component: <NewGameOptions onHide={onHide} onNewGame={newGame} />,
-      className: "newGameOptions__modal",
     },
     END_GAME: {
       header: "Are you sure?",
@@ -138,7 +137,7 @@ const Sudoku = () => {
   let showModal = false;
   if (
     currentDialog === "GAME_OVER" ||
-    (currentDialog === "GAME_FINISHED" && !isGamePlayed)
+    (currentDialog === "GAME_COMPLETED" && !isGamePlayed)
   ) {
     showModal = true; // dont use setShowGameOver() to avoid re-rendering the component
   }
