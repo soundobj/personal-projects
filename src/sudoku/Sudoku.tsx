@@ -7,12 +7,9 @@ import React, {
 import { noop, isEmpty } from "lodash";
 
 import { ReactComponent as Death } from "../assets/death.svg";
-import stopWatch, { StopWatch } from "../stopWatch/stopWatch";
+import stopWatch from "../stopWatch/stopWatch";
 
-import {
-  sudokuReducer,
-  initialState,
-} from "./lib/reducer";
+import { sudokuReducer, initialState } from "./lib/reducer";
 import {
   MoveTypes,
   Transitions,
@@ -20,7 +17,7 @@ import {
   Dialogs,
 } from "./lib/definitions";
 import { localStorageOnMount, stateContainer } from "./lib/localStorage";
-import sudokuActions from './lib/actions'
+import sudokuActions, { handleWatchOnCloseModal } from './lib/actions'
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
 import KeyboardInput from "./keyboadInput/KeyboardInput";
@@ -32,10 +29,11 @@ import GameCompletedModal from "./gameCompletedModal/GameCompletedModal";
 import GameControls from "./gameControls/GameControls";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
 import Nav from './nav/Nav'
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import "reset-css";
 import "./vars.css";
 import "./Sudoku.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import * as stateStub from "./lib/stubs/state-stub.json";
 // import * as stateStub from './stubs/almostComplete.json'
@@ -43,17 +41,6 @@ import * as stateStub from "./lib/stubs/state-stub.json";
 const watch = stopWatch();
 const container = stateContainer();
 const actions = sudokuActions();
-
-export const handleWatchOnCloseModal = (
-  stopWatch: StopWatch,
-  isWatchRunning: boolean,
-  pauseGame: (bool: boolean) => void
-) => {
-  if (isWatchRunning) {
-    stopWatch.start();
-    pauseGame(false);
-  }
-};
 
 const Sudoku = () => {
   // @ts-ignore

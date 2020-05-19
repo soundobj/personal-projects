@@ -83,3 +83,14 @@ const sudokuActions = () => {
 };
 
 export default sudokuActions
+
+export const handleWatchOnCloseModal = (
+  stopWatch: StopWatch,
+  isWatchRunning: boolean,
+  pauseGame: (bool: boolean) => void
+) => {
+  if (isWatchRunning) {
+    stopWatch.start();
+    pauseGame(false);
+  }
+};
