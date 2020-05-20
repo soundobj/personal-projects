@@ -101,7 +101,7 @@ const Sudoku = () => {
       component: <NewGameOptions onHide={onHide} onNewGame={newGame} />,
     },
     END_GAME: {
-      header: "Are you sure?",
+      header: "End Game",
       component: (
         <EndGameModal
           onHide={onHide}
@@ -157,7 +157,7 @@ const Sudoku = () => {
 
   //dev remove
   // showModal = true;
-  // currentDialog = "GAME_OVER";
+  // currentDialog = "END_GAME";
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
 
