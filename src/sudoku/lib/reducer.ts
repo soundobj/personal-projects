@@ -1,5 +1,5 @@
 import {
-  shuffle,
+shuffle,
   isEqual,
   isEmpty,
   differenceWith,
@@ -392,7 +392,8 @@ export const startGame = (state: State, level: GameLevel) =>
     draft.isGamePlayed = true;
     delete draft.finishedTime;
     draft.mistakes = 0;
-    draft.selectedCellRelatedCells = []
+    draft.selectedCellRelatedCells = [];
+    delete draft.selectedCell;
     // reset restart game clone
     draft.restartGameNumberMap = cloneDeep(numberMap);
     draft.restartCellsToComplete = draft.cellsToComplete;
