@@ -1,8 +1,8 @@
 .sudoku__controls__numbers {
   width: 100%;
-  
 
   & button {
-    // min-width: 38px;
+    width: 12.5%;
+    padding: 0.3rem 0;
   }
 }
