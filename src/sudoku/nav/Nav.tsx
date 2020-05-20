@@ -13,10 +13,11 @@ interface Props {
   showGameModal: () => void;
   showEndGameModal: () => void;
   mistakes: number;
+  isGamePlayed: boolean;
 }
 
 const Nav = (props: Props) => {
-  const { showEndGameModal, showGameModal, mistakes } = props;
+  const { showEndGameModal, showGameModal, mistakes, isGamePlayed } = props;
   return (
     <>
       <nav className="sudoku__nav__left">
@@ -38,6 +39,7 @@ const Nav = (props: Props) => {
       </nav>
       <nav className="sudoku__nav__right">
         <MenuItem
+          disabled={!isGamePlayed}
           title="end"
           icon={<GiTrashCan className="icon" />}
           onClick={showEndGameModal}

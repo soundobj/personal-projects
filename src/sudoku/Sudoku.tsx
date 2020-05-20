@@ -171,7 +171,12 @@ const Sudoku = () => {
         onDoesSupport={() => console.error("@does support")}
       />
       <section className="sudoku__container">
-        <Nav showEndGameModal={showEndGameModal} showGameModal={showGameModal} mistakes={mistakes} />
+        <Nav
+          showEndGameModal={showEndGameModal}
+          showGameModal={showGameModal}
+          mistakes={mistakes}
+          isGamePlayed={isGamePlayed}
+        />
         <article className="sudoku__game">
           <section className="sudoku__game__controls">
             <GameControls
@@ -184,7 +189,7 @@ const Sudoku = () => {
               isUndoDisabled={isUndoDisabled}
               isCandidateMode={isCandidateMode}
               undoMove={undoMove}
-             />
+            />
           </section>
           <section className="sudoku__game__board">
             <Board
@@ -195,7 +200,10 @@ const Sudoku = () => {
             />
           </section>
           <section className="sudoku__game_footer">
-            <Numbers issueNumber={actions.issueNumber} isGamePlayed={isGamePlayed} />
+            <Numbers
+              issueNumber={actions.issueNumber}
+              isGamePlayed={isGamePlayed}
+            />
           </section>
         </article>
       </section>
