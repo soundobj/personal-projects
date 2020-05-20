@@ -4,12 +4,14 @@
   list-style: none;
   font-size: 0.7rem;
   font-weight: 600;
-  padding: 0;
+  padding: 3px;
+  grid-column-gap: 3px;
 
   &__candidate {
     padding: 3px;
     color: var(--completed);
     font-weight: bold;
+    width: .8rem;
   }
 
   @media screen and (max-width: 500px) {
@@ -19,6 +21,7 @@
   
     &__candidate {
       padding: 2px;
+      width: .375rem;
     }
   }
 }
