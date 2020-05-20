@@ -199,7 +199,7 @@ const Sudoku = () => {
               transition={transition}
             />
           </section>
-          <section className="sudoku__game_footer">
+          <section className="sudoku__game__footer">
             <Numbers
               issueNumber={actions.issueNumber}
               isGamePlayed={isGamePlayed}

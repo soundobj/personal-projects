@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap'
 
 import { VALID_NUMBERS } from '../lib/definitions'
-import './Numbers.css'
+import './Numbers.scss'
 
 interface Props {
   issueNumber: (n: number) => void
@@ -14,7 +14,7 @@ const Numbers = (props: Props) => {
   return (
     <>
     <ButtonToolbar>
-    <ButtonGroup>
+    <ButtonGroup className="sudoku__controls__numbers">
       {VALID_NUMBERS.map((number: number) => (
         <Button
           key={`control${number}`}

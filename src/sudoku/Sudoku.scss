@@ -1,17 +1,12 @@
 @import './animations.scss';
 
-.foo-wrapper {
-  perspective: 2000px;
-}
-
-.foo {
-  @extend %rotate-forwards;
-  // animation: rotate-forwards 3s infinite;
-  // display: inline-block;
-  // opacity: 0;
-  // transform-origin: 50% 100%;
-  // transform: rotateX(180deg);
-}
+/*  @TODO: these are replicated in sass,
+    need to find a way to use there inside sass and
+    remove the duplication
+*/
+$boardSize: 32rem;
+$gutter: 3rem;
+$menuItem: 2.5rem;
 
 * {
   box-sizing: border-box;
@@ -30,9 +25,9 @@ body {
 .grid {
   display: grid;
   grid: repeat(9, auto) / repeat(9, auto);
-  max-width: 500px;
+  max-width: $boardSize + ($gutter * 2);
   margin: 0 auto;
-  padding: 10px;
+  padding: var(--board-padding);
 }
 
 .grid > div {
@@ -101,13 +96,6 @@ body {
     height: 1rem;
   }
 }
-/*  @TODO: these are replicated in sass,
-    need to find a way to use there inside sass and
-    remove the duplication
-*/
-$boardSize: 32rem;
-$gutter: 3rem;
-$menuItem: 2.5rem;
 
 .sudoku {
   &__container {
@@ -153,6 +141,13 @@ $menuItem: 2.5rem;
     }
 
     &__board {
+      width: 100%;
+    }
+
+    &__footer {
+      max-width: $boardSize + ($gutter * 2);
+      margin: 0 var(--board-padding);
+      padding: 0 var(--board-padding);
       width: 100%;
     }
   }
