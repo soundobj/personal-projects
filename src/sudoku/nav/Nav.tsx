@@ -6,8 +6,12 @@ import { GrHelp } from "react-icons/gr";
 import { BsController } from "react-icons/bs";
 import { RiSunLine } from "react-icons/ri";
 
+import { ReactComponent as Plus } from "../../assets/plus.svg";
+
 import MenuItem from "../menuItem/MenuItem";
 import Mistakes, { MistakesTypes } from "../mistakes/Mistakes";
+
+import "./Nav.scss"
 
 interface Props {
   showGameModal: () => void;
@@ -16,16 +20,30 @@ interface Props {
   isGamePlayed: boolean;
 }
 
+interface NavItemProps {
+  onClick: () => void
+  title: string
+  children: JSX.Element
+}
+
+const NavItem = (props: NavItemProps) => {
+  const { title, onClick, children } = props;
+  return (
+    <button className="sudoku__nav__item" onClick={onClick}>
+      <div className="sudoku__nav__item__icon">{children}</div>
+      <span className="sudoku__nav__item__text">{title}</span>
+    </button>
+  );
+};
+
 const Nav = (props: Props) => {
   const { showEndGameModal, showGameModal, mistakes, isGamePlayed } = props;
   return (
     <>
       <nav className="sudoku__nav__left">
-        <MenuItem
-          title="new"
-          icon={<GoPlus className="icon__small" />}
-          onClick={showGameModal}
-        />
+        <NavItem title="new" onClick={showGameModal}>
+          <Plus />
+        </NavItem>
         <MenuItem
           title="help"
           icon={<GrHelp className="icon__smaller" />}
