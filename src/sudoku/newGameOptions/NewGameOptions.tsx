@@ -20,9 +20,8 @@ const NewGameOptions = (props: Props) => {
     <ul className="gameLevel">
       {Object.keys(GameLevel).map((item: string, index: number) => {
         return (
-          <li>
+          <li key={`game-option-${item}`}>
             <button
-              key={`game-option-${item}`}
               className="gameLevel__option"
               onClick={() => {
                 onHide();

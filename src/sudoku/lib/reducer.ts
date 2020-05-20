@@ -98,7 +98,8 @@ export const initialState: State = {
   cellsToComplete: BOARD_SIZE,
   conflictingCells: [],
   selectedCellRelatedCells: [],
-  game: [[]],
+  //@ts-ignore
+  game: emptyGame.default,
   numberMap: {},
   moveHistory: [],
   isGamePaused: false,
@@ -391,6 +392,7 @@ export const startGame = (state: State, level: GameLevel) =>
     draft.isGamePlayed = true;
     delete draft.finishedTime;
     draft.mistakes = 0;
+    draft.selectedCellRelatedCells = []
     // reset restart game clone
     draft.restartGameNumberMap = cloneDeep(numberMap);
     draft.restartCellsToComplete = draft.cellsToComplete;

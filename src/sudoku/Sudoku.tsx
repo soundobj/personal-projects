@@ -42,10 +42,10 @@ const actions = sudokuActions();
 
 const Sudoku = () => {
   // @ts-ignore
-  // const [state, dispatch] = useReducer(sudokuReducer, initialState)
+  const [state, dispatch] = useReducer(sudokuReducer, initialState)
   // @TODO: remove temp stub
   // @ts-ignore
-  const [state, dispatch] = useReducer(sudokuReducer, stateStub.default);
+  // const [state, dispatch] = useReducer(sudokuReducer, stateStub.default);
   
   actions.setDispatch(dispatch)
   actions.setState(state)
