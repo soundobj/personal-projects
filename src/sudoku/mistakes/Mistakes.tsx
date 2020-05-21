@@ -9,22 +9,20 @@ interface Props {
   mistakes: number;
 }
 
-export const MistakesTypes = ["OK", "MILD", "MEDIUM", "WARNING"];
+const MistakesSeverity = ["OK", "MILD", "MEDIUM", "WARNING"];
 
 const Mistakes = (props: Props) => {
   const { mistakes } = props;
   return (
-    <div className="mistakes">
-      <div className={classnames("mistakes__icon", MistakesTypes[mistakes])}>
+    <article className="mistakes">
+      <figure className={classnames("mistakes__icon", MistakesSeverity[mistakes])}>
         <Shape />
-        <div className="mistakes__icon__content">
-          <span className="mistakes__number">{mistakes}</span>
-          <span className="mistakes__delimiter">/</span>
-          <span className="mistakes__total">{ALLOWED_MISTAKES}</span>
-        </div>
-      </div>
-      <span className="mistakes__footer">fails</span>
-    </div>
+        <h5 className="mistakes__content">
+          {mistakes}/{ALLOWED_MISTAKES}
+        </h5>
+      </figure>
+      <figcaption className="mistakes__footer">fails</figcaption>
+    </article>
   );
 };
 

@@ -1,9 +1,13 @@
 .sudoku__nav__item {
   border: 0;
   background-color: 0;
+  flex: 1 1 auto;
 
   &__icon > svg {
     width: var(--menuItem);
     height: 100%;
+    @media screen and(max-width: 350px) {
+      width: var(--menuItemSmall);
+    }
   }
 }

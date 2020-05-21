@@ -10,15 +10,10 @@
     & > svg {
       width: var(--menuItem);
       margin-bottom: -1px;
-    }
 
-    &__content {
-      position: absolute;
-      top: 25.5%;
-      left: 20%;
-      font-weight: 600;
-      color: white;
-      font-size: 0.9rem;
+      @media screen and(max-width: 350px) {
+        width: var(--menuItemSmall);
+      }
     }
 
     &.MILD > svg .st0 {
@@ -34,9 +29,19 @@
     }
   }
 
-  &__number,
-  &__total {
-    width: 0.7rem;
-    display: inline-block;
+  &__content {
+    position: absolute;
+    top: 20.5%;
+    left: 19%;
+    color: white;
+    font-weight: 900;
+    font-size: 1.2rem;
+    font-family: monospace;
+
+    @media screen and(max-width: 350px) {
+      font-size: 0.65rem;
+      top: 18.5%;
+      left: 26%;
+    }
   }
 }

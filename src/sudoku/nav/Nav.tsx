@@ -36,8 +36,10 @@ const NavItem = (props: NavItemProps) => {
       onClick={onClick}
       disabled={disabled}
     >
-      <div className="sudoku__nav__item__icon">{children}</div>
-      <span className="sudoku__nav__item__text">{title}</span>
+      <figure className="sudoku__nav__item__icon">
+        {children}
+        <figcaption className="sudoku__nav__item__text">{title}</figcaption>
+      </figure>
     </button>
   );
 };
