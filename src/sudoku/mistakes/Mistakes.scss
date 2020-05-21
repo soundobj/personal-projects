@@ -1,4 +1,42 @@
-.sudoku__mistakes {
-    display: flex;
-    align-items: center;
+.mistakes {
+  text-align: center;
+  position: relative;
+  margin-top: 1px;
+
+  &__icon {
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    & > svg {
+      width: var(--menuItem);
+      margin-bottom: -1px;
+    }
+
+    &__content {
+      position: absolute;
+      top: 25.5%;
+      left: 20%;
+      font-weight: 600;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    &.MILD > svg .st0 {
+      fill: var(--mild);
+    }
+
+    &.MEDIUM > svg .st0 {
+      fill: var(--medium);
+    }
+
+    &.WARNING > svg .st0 {
+      fill: var(--warning);
+    }
+  }
+
+  &__number,
+  &__total {
+    width: 0.7rem;
+    display: inline-block;
+  }
 }

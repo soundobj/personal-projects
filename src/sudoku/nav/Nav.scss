@@ -3,13 +3,7 @@
   background-color: 0;
 
   &__icon > svg {
-    min-height: 40px;
-    width: 2.5rem
+    width: var(--menuItem);
+    height: 100%;
   }
-
-  &__text {
-
-  }
-
-  
 }

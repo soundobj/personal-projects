@@ -1,17 +1,17 @@
 import React from "react";
 import { noop } from "lodash";
-import { GoPlus } from "react-icons/go";
-import { GiTrashCan } from "react-icons/gi";
-import { GrHelp } from "react-icons/gr";
-import { BsController } from "react-icons/bs";
-import { RiSunLine } from "react-icons/ri";
+// @ts-ignore
+import classnames from "classnames";
 
 import { ReactComponent as Plus } from "../../assets/plus.svg";
+import { ReactComponent as Bin } from "../../assets/bin.svg";
+import { ReactComponent as Sun } from "../../assets/sun.svg";
+import { ReactComponent as Help } from "../../assets/help.svg";
+import { ReactComponent as Controls } from "../../assets/controls.svg";
 
-import MenuItem from "../menuItem/MenuItem";
-import Mistakes, { MistakesTypes } from "../mistakes/Mistakes";
+import Mistakes from "../mistakes/Mistakes";
 
-import "./Nav.scss"
+import "./Nav.scss";
 
 interface Props {
   showGameModal: () => void;
@@ -21,15 +21,21 @@ interface Props {
 }
 
 interface NavItemProps {
-  onClick: () => void
-  title: string
-  children: JSX.Element
+  onClick: () => void;
+  title: string;
+  children: JSX.Element;
+  disabled?: boolean;
+  className?: string;
 }
 
 const NavItem = (props: NavItemProps) => {
-  const { title, onClick, children } = props;
+  const { title, onClick, children, disabled, className } = props;
   return (
-    <button className="sudoku__nav__item" onClick={onClick}>
+    <button
+      className={classnames("sudoku__nav__item", className)}
+      onClick={onClick}
+      disabled={disabled}
+    >
       <div className="sudoku__nav__item__icon">{children}</div>
       <span className="sudoku__nav__item__text">{title}</span>
     </button>
@@ -44,34 +50,25 @@ const Nav = (props: Props) => {
         <NavItem title="new" onClick={showGameModal}>
           <Plus />
         </NavItem>
-        <MenuItem
-          title="help"
-          icon={<GrHelp className="icon__smaller" />}
-          onClick={noop}
-        />
-        <MenuItem
-          title="keys"
-          icon={<BsController className="icon__small" />}
-          onClick={noop}
-        />
+        <NavItem className="help" title="help" onClick={noop}>
+          <Help />
+        </NavItem>
+        <NavItem title="keys" onClick={noop}>
+          <Controls />
+        </NavItem>
       </nav>
       <nav className="sudoku__nav__right">
-        <MenuItem
-          disabled={!isGamePlayed}
+        <NavItem
           title="end"
-          icon={<GiTrashCan className="icon" />}
           onClick={showEndGameModal}
-        />
-        <MenuItem
-          title="fails"
-          icon={<Mistakes mistakes={mistakes} />}
-          bgClass={MistakesTypes[mistakes]}
-        />
-        <MenuItem
-          title="theme"
-          icon={<RiSunLine className="icon__small" />}
-          onClick={noop}
-        />
+          disabled={!isGamePlayed}
+        >
+          <Bin />
+        </NavItem>
+        <Mistakes mistakes={mistakes} />
+        <NavItem title="theme" onClick={noop}>
+          <Sun />
+        </NavItem>
       </nav>
     </>
   );

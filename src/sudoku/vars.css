@@ -18,16 +18,3 @@
   --cta-primary: hsla(211, 100%, 50%, 0.25);
   --board-padding: 1rem;
 }
-
-.OK {
-  background-color: var(--ok);
-}
-.MILD {
-  background-color: var(--mild);
-}
-.MEDIUM {
-  background-color: var(--medium);
-}
-.WARNING {
-  background-color: var(--warning);
-}
