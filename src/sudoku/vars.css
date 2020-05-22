@@ -1,4 +1,13 @@
 :root {
+  --color-mode: 'light';
+  --color-dark: #141414;
+  --color-dark-alpha: rgba(0, 0, 0, 0.1);
+  --color-light: #efefef;
+  --color-light-alpha: rgba(255, 255, 255, 0.9);
+
+  --background: var(--color-light);
+  --text-color: var(--color-dark);
+
   font-size: 16px;
 
   --completed: black;
@@ -18,4 +27,20 @@
   --backgroundColor: white;
   --cta-primary: hsla(211, 100%, 50%, 0.25);
   --board-padding: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+
+  :root:not([theme-color-scheme]) {
+    --background: var(--color-dark);
+    --text-color: var(--color-light);
+  }
+}
+
+[theme-color-scheme="dark"] {
+  --background: var(--color-dark);
+  --text-color: var(--color-light);
 }

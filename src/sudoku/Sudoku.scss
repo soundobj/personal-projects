@@ -20,6 +20,9 @@ $menuItem: 2.5rem;
 
 body {
   font-family: 'Poiret One', cursive;
+  background: var(--background);
+  color: var(--text-color);
+  transition: background 300ms ease-in-out, color 200ms ease;
 }
 
 .grid {

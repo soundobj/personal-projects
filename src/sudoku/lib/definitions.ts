@@ -37,6 +37,13 @@ export const TransitionsIntervals: Record<Transitions, number> = {
 
 export type Dialogs = Transitions | 'END_GAME';
 
+export const ROOT_HTML_THEME_ATTRIBUTE = 'theme-color-scheme'
+export const COLOR_MODE_KEY = '--color-mode';
+export enum Themes {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
+
 export interface Coordinate {
   x: number;
   y: number;
