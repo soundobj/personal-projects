@@ -53,8 +53,16 @@ const KeyboardInput = (props: Props) => {
         "down",
         "space",
         "u",
+        "alt+left",
+        "alt+up",
+        "alt+down",
+        "alt+right",
       ]}
       onKeyEvent={(key: string) => {
+        if(key.includes("alt")) {
+          const direction = key.substr(key.indexOf('+') + 1).toUpperCase() as Direction
+          console.error('@_CMD', key, direction);
+        }
         if (key === "u") {
           undoMove()
         }
