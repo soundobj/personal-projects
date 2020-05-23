@@ -3,8 +3,8 @@ import React from "react";
 import classnames from 'classnames'
 
 import { Cell as CellProps, Coordinate, Transitions } from "../lib/definitions";
-
 import Cell from "../cell/Cell";
+import "./Board.scss"
 
 interface Props {
   game: CellProps[][];

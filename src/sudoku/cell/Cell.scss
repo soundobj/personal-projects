@@ -50,14 +50,12 @@
 }
 
 .sudoku__cell--related {
-  background-color: antiquewhite;
+  background-color: var(--boardRelatedCell)
 }
 
 .sudoku__cell--selected {
-  background-color: #d6bd9c;
+  background-color: var(--boardSelectedCell)
 }
-
-
 
 .cell {
   &__game-over {

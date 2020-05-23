@@ -4,7 +4,8 @@ import { noop } from "lodash";
 import classnames from "classnames";
 
 import { ReactComponent as Plus } from "../../assets/plus.svg";
-import { ReactComponent as Bin } from "../../assets/bin.svg";
+// import { ReactComponent as Bin } from "../../assets/bin.svg";
+import { ReactComponent as Bin } from "../../assets/recycling-bin-freepick-red.svg";
 import { ReactComponent as Help } from "../../assets/help.svg";
 import { ReactComponent as Controls } from "../../assets/controls.svg";
 

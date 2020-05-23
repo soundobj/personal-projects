@@ -6,6 +6,8 @@ import { StopWatch } from "../../stopWatch/stopWatch";
 import Icon from "../icon/Icon";
 import StopWatchUI from "../../stopWatch/StopWatchUI";
 
+import "./GameControls.scss"
+
 interface Props {
   setEditMode: (mode: number) => void;
   editMode: number;

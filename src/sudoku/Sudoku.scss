@@ -1,12 +1,6 @@
 @import './animations.scss';
+@import './sass-vars.scss';
 
-/*  @TODO: these are replicated in sass,
-    need to find a way to use there inside sass and
-    remove the duplication
-*/
-$boardSize: 32rem;
-$gutter: 3rem;
-$menuItem: 2.5rem;
 
 * {
   box-sizing: border-box;
@@ -23,54 +17,6 @@ body {
   background: var(--background);
   color: var(--text-color);
   transition: background 300ms ease-in-out, color 200ms ease;
-}
-
-.grid {
-  display: grid;
-  grid: repeat(9, auto) / repeat(9, auto);
-  max-width: $boardSize + ($gutter * 2);
-  margin: 0 auto;
-  padding: var(--board-padding);
-}
-
-.grid > div {
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-}
-
-/* outer bottom black line row */
-.grid > div:nth-last-child(-n+9) {
-  border-bottom: 1px solid black;
-}
-
-/* outer top black line row */
-.grid > div:nth-child(-n+9) {
-  border-top: 1px solid black;
-}
-
-/* 1st inner row */
-.grid > div:nth-child(n+19):nth-child(-n+27) {
-  border-bottom: 1px solid black;
-}
-
-/* 1cnd inner row */
-.grid > div:nth-child(n+46):nth-child(-n+54) {
-  border-bottom: 1px solid black;
-}
-
-/* two inner columns */
-.grid > div:nth-child(3n) {
-  border-right: 1px solid black;
-}
-
-/* outer right black line column */
-.grid > div:nth-child(9n) {
-  border-right: 1px solid black;
-}
-
-/* outer left black line column */
-.grid > div:nth-child(9n-8) {
-  border-left: 1px solid black;
 }
 
 .game--paused .content-inside {
@@ -118,30 +64,6 @@ body {
 
     &--over {
       @extend %shake;
-    }
-  
-    &__controls {
-      display: flex;
-      align-items: center;
-      margin-top: .3rem;
-      
-      & > * {
-        flex: 1 1 auto;
-      }
-
-      &__candidate, &__undo {
-        padding-bottom: .2rem;
-
-        &--selected {
-          padding-bottom: .1rem;
-          border-bottom: solid .1rem black;
-        }
-      }
-
-      &__option {
-        width: 1.2rem;
-        height: 1.2rem;
-      }
     }
 
     &__board {

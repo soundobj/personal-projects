@@ -9,6 +9,8 @@ import {
 } from "../lib/definitions";
 import { NavItem } from "../nav/Nav";
 
+import "./ThemeSelector.scss";
+
 export const getRootCSSProp = (prop: string): string => {
   let response = getComputedStyle(document.documentElement).getPropertyValue(
     prop
@@ -41,7 +43,7 @@ const ThemeSelector = () => {
         }
       }}
     >
-      {currentTheme === Themes.DARK ? <Moon /> : <Sun />}
+      {currentTheme === Themes.DARK ? <Moon className="sudoku__themeSelector__moon" /> : <Sun />}
     </NavItem>
   );
 };

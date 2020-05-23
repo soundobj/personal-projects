@@ -1,7 +1,17 @@
 %button {
+  background-color: var(--cta-primary);
+  border-color: var(--cta-primary-border);
+  color: var(--color-dark);
+  font-weight: 600;
   font-size: 1.2rem;
   border-radius: 0.2rem;
   padding: 0.4rem;
   background-color: var(--cta-primary);
-  border: 0;
+
+  &:hover {
+    background-color: var(--cta-primary-border);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      border-color: var(--cta-primary-border);
+  }
 }

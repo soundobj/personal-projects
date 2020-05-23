@@ -30,7 +30,7 @@ import Nav from './nav/Nav'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "reset-css";
-import "./vars.css";
+import "./vars.scss";
 import "./Sudoku.scss";
 
 // import * as stateStub from "./lib/stubs/state-stub.json";
