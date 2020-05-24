@@ -19,6 +19,10 @@ body {
   transition: background 300ms ease-in-out, color 200ms ease;
 }
 
+body, figcaption, button, .btn-primary {
+  font-weight: 600;
+}
+
 .game--paused .content-inside {
   visibility: hidden;
 }

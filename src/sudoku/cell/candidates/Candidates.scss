@@ -3,14 +3,12 @@
   grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
   list-style: none;
   font-size: 0.7rem;
-  font-weight: 600;
   padding: 1px;
   grid-column-gap: 3px;
 
   &__candidate {
     padding: 3px;
     color: var(--completed);
-    font-weight: bold;
     width: .8rem;
   }
 

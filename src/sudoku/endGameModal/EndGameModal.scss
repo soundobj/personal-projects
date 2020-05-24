@@ -1,11 +1,6 @@
 @import "../utils.scss";
 
 .sudoku__modal__endGame {
-
-  &__message {  
-    font-weight: 600;
-  }
-
   &__icon > svg {
     max-height: 12.3rem;
     width: 100%;

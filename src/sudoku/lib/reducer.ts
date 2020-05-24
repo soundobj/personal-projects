@@ -194,6 +194,7 @@ const restartGame = (state: State) =>
   produce(state, (draft: State) => {
     draft.cellsToComplete = draft.restartCellsToComplete;
     draft.numberMap = draft.restartGameNumberMap;
+    draft.moveHistory = [];
     draft.game = draft.restartGame;
     draft.isGamePlayed = true;
     draft.mistakes = 0;
@@ -389,6 +390,7 @@ export const startGame = (state: State, level: GameLevel) =>
     draft.game = game;
     draft.numberMap = numberMap;
     draft.isGamePlayed = true;
+    draft.moveHistory = [];
     delete draft.finishedTime;
     draft.mistakes = 0;
     draft.selectedCellRelatedCells = [];
