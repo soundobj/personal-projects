@@ -1,4 +1,5 @@
 @import "../utils.scss";
+@import "../vars.scss";
 
 .modal {
   &__header {
@@ -14,12 +15,26 @@
 
 .sudoku {
   &__dialog {
+    // bootstrap theme overrides
+    .modal-content {
+      background-color: var(--background);
+      .modal-header {
+        border-bottom: 1px solid var(--boardGrid);
+        .close {
+          color: var(--text-color);
+        }
+      }
+      .modal-footer {
+        border-top: 1px solid var(--boardGrid);
+      }
+    }
+    // game over modal graphic display
     &__game-over {
       &__header {
         display: flex;
         align-items: center;
         &__icon {
-          margin-right: .5rem;
+          margin-right: 0.5rem;
           & > svg {
             width: 2rem;
             height: 100%;

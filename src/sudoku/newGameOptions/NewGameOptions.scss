@@ -23,7 +23,7 @@ $gameLevelOptionPadding: .2rem;
     }
 
     &:hover {
-      background-color: hsla(211, 97%, 23%, 0.534);
+      background-color: var(--cta-primary-border);
       transition: ease .5s;
     }
 
@@ -60,10 +60,6 @@ $gameLevelOptionPadding: .2rem;
 $firstBounce: 3.5px;
 $secondBounce: 1.5px;
 $thirdBounce: .5px;
-
-// $firstBounce: 5px;
-// $secondBounce: 3px;
-// $thirdBounce: 2px;
 
 @keyframes swing {
   15% {

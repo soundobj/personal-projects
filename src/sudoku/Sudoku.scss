@@ -19,8 +19,9 @@ body {
   transition: background 300ms ease-in-out, color 200ms ease;
 }
 
-body, figcaption, button, .btn-primary {
+body, button, .btn-primary {
   font-weight: 600;
+  transition: color 300ms ease-in-out;
 }
 
 .game--paused .content-inside {
