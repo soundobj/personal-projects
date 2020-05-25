@@ -3,9 +3,9 @@ import React from "react";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 
 import { VALID_NUMBERS, Direction, Cell, Coordinate } from "../lib/definitions";
-// import { navigateBoardNextAvailable as navigateBoard } from '../board'
+import { navigateBoard } from '../lib/board'
 import {
-  navigateBoardNextAvailableOverflow as navigateBoard,
+  navigateBoardNextAvailableOverflow,
   isValidMoveType,
 } from "../lib/board";
 
@@ -76,22 +76,18 @@ const KeyboardInput = (props: Props) => {
         if (key === "s") {
           resolveCell();
         }
-        const directions: string[] = Object.values(Direction);
-        const move = key.toUpperCase();
-        if (directions.includes(move)) {
-          if (game && selectedCell) {
-            isValidMoveType(move) &&
-              selectCell(
-                navigateBoard(
-                  game,
-                  selectedCell,
-                  Direction[move],
-                  cellsToComplete
-                )
-              );
-          } else {
-            selectCell({ x: 0, y: 0 });
-          }
+        const move = key.toUpperCase() as Direction;
+        if (game && selectedCell) {
+          isValidMoveType(move) &&
+            selectCell(
+              navigateBoard(
+                game,
+                selectedCell,
+                Direction[move]
+              )
+            );
+        } else {
+          selectCell({ x: 0, y: 0 });
         }
         if (VALID_NUMBERS.map(String).includes(key)) {
           issueNumber(parseInt(key, 10));

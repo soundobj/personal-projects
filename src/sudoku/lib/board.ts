@@ -7,7 +7,8 @@ export const isValidMoveType = (value: string): value is keyof typeof Direction 
 }
 
 /*
-  navigates the board one cell at a time stopping at edges of the board
+  navigates the board one cell at a time stopping
+  folding to the opposite side of the board at edges of the board
 */
 export const navigateBoard = (
   board: Coordinable[][],
@@ -20,20 +21,24 @@ export const navigateBoard = (
   }
   switch (direction) {
     case Direction.LEFT: {
-      return !isEmpty(board[x][y - 1]) ?  board[x][y - 1].coordinate : currentPosition; 
+      return !isEmpty(board[x][y - 1])
+        ? board[x][y - 1].coordinate
+        : board[x][8].coordinate;
     }
     case Direction.RIGHT: {
-      return !isEmpty(board[x][y + 1]) ?  board[x][y + 1].coordinate : currentPosition; 
+      return !isEmpty(board[x][y + 1])
+        ? board[x][y + 1].coordinate
+        : board[x][0].coordinate;
     }
     case Direction.UP: {
       return !isEmpty(board[x - 1]) && !isEmpty(board[x - 1][y])
         ? board[x - 1][y].coordinate
-        : currentPosition;
+        : board[8][y].coordinate;
     }
     case Direction.DOWN: {
       return !isEmpty(board[x + 1]) && !isEmpty(board[x + 1][y])
         ? board[x + 1][y].coordinate
-        : currentPosition;
+        : board[0][y].coordinate;
     }
     default:
       return currentPosition;

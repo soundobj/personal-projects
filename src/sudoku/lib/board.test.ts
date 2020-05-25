@@ -20,40 +20,40 @@ describe('sudoku/boar',() => {
         utils.navigateBoard(board, { x: 0, y: 1 }, Direction.LEFT)
       ).toMatchObject({ x: 0, y: 0 });
     })
-    it('returns the same coordinate in the board if left direction is issued and we have reached the left most side of the board', () => {
+    it('returns the opposite coordinate in the board if left direction is issued and we have reached the left most side of the board', () => {
       expect(
         utils.navigateBoard(board, { x: 0, y: 0 }, Direction.LEFT)
-      ).toMatchObject({ x: 0, y: 0 });
+      ).toMatchObject({ x: 0, y: 8 });
     })
     it('returns the new coordinate in the board if right direction is issued', () => {
       expect(
         utils.navigateBoard(board, { x: 0, y: 4 }, Direction.RIGHT)
       ).toMatchObject({ x: 0, y: 5 });
     })
-    it('returns the same coordinate in the board if right direction is issued and we have reached the right most side of the board', () => {
+    it('returns the opposite coordinate in the board if right direction is issued and we have reached the right most side of the board', () => {
       expect(
         utils.navigateBoard(board, { x: 0, y: 8 }, Direction.RIGHT)
-      ).toMatchObject({ x: 0, y: 8 });
+      ).toMatchObject({ x: 0, y: 0 });
     })
     it('returns the new coordinate in the board if up direction is issued', () => {
       expect(
         utils.navigateBoard(board, { x: 2, y: 4 }, Direction.UP)
       ).toMatchObject({ x: 1, y: 4 });
     })
-    it('returns the same coordinate in the board if up direction is issued and we have reached the up most side of the board', () => {
+    it('returns the opposite coordinate in the board if up direction is issued and we have reached the up most side of the board', () => {
       expect(
         utils.navigateBoard(board, { x: 0, y: 0 }, Direction.UP)
-      ).toMatchObject({ x: 0, y: 0 });
+      ).toMatchObject({ x: 8, y: 0 });
     })
     it('returns the new coordinate in the board if down direction is issued', () => {
       expect(
         utils.navigateBoard(board, { x: 2, y: 4 }, Direction.DOWN)
       ).toMatchObject({ x: 3, y: 4 });
     })
-    it('returns the same coordinate in the board if down direction is issued and we have reached the down most side of the board', () => {
+    it('returns the opposite coordinate in the board if down direction is issued and we have reached the down most side of the board', () => {
       expect(
         utils.navigateBoard(board, { x: 8, y: 0 }, Direction.DOWN)
-      ).toMatchObject({ x: 8, y: 0 });
+      ).toMatchObject({ x: 0, y: 0 });
     })
     it('returns the start coordinate in the board if current position passed does not exist ', () => {
       expect(
