@@ -158,6 +158,7 @@ const Sudoku = () => {
   //dev remove
   // showModal = true;
   // currentDialog = "END_GAME";
+  console.error('@_cells to complete', cellsToComplete);
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
 

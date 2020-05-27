@@ -2,10 +2,17 @@ import React from "react";
 //@ts-ignore  @TODO: write missing typings for 3rd party dependency
 import KeyboardEventHandler from "react-keyboard-event-handler";
 
-import { VALID_NUMBERS, Direction, Cell, Coordinate } from "../lib/definitions";
-import { navigateBoard } from '../lib/board'
+import {
+  VALID_NUMBERS,
+  Direction,
+  Cell,
+  Coordinate,
+  MoveTypes,
+} from "../lib/definitions";
+import { navigateBoard } from "../lib/board";
 import {
   navigateBoardNextAvailableOverflow,
+  navigateBoardNextAvailable,
   isValidMoveType,
 } from "../lib/board";
 
@@ -19,8 +26,8 @@ interface Props {
   selectedCell: Coordinate;
   cellsToComplete: number;
   isGamePlayed: boolean;
-  pauseOrResumeGame: () => void
-  undoMove: () => void
+  pauseOrResumeGame: () => void;
+  undoMove: () => void;
 }
 
 const KeyboardInput = (props: Props) => {
@@ -35,12 +42,19 @@ const KeyboardInput = (props: Props) => {
     issueNumber,
     isGamePlayed,
     pauseOrResumeGame,
-    undoMove
+    undoMove,
   } = props;
+
+  const canMove = (direction: string) =>
+    game && selectedCell && isValidMoveType(direction);
+
+  const getDirection = (keyChord: string): Direction =>
+    keyChord.substr(keyChord.indexOf("+") + 1).toUpperCase() as Direction;
 
   if (!isGamePlayed) {
     return null;
   }
+
   return (
     <KeyboardEventHandler
       handleKeys={[
@@ -59,38 +73,47 @@ const KeyboardInput = (props: Props) => {
         "alt+right",
       ]}
       onKeyEvent={(key: string) => {
-        if(key.includes("alt")) {
-          const direction = key.substr(key.indexOf('+') + 1).toUpperCase() as Direction
-          console.error('@_CMD', key, direction);
+        if (key.includes("alt")) {
+          const direction = getDirection(key);
+          if (canMove(direction) && cellsToComplete > 0) {
+            selectCell(
+              navigateBoardNextAvailableOverflow(
+                game,
+                selectedCell,
+                Direction[direction]
+              )
+            );
+          }
+          return;
         }
         if (key === "u") {
-          undoMove()
+          undoMove();
+          return;
         }
         if (key === "space") {
-          pauseOrResumeGame()
+          pauseOrResumeGame();
+          return;
         }
         // Toggle between modes negating the current model boolean and converting into number using +
         if (key === "c") {
           setEditMode(+!editMode);
+          return;
         }
         if (key === "s") {
           resolveCell();
-        }
-        const move = key.toUpperCase() as Direction;
-        if (game && selectedCell) {
-          isValidMoveType(move) &&
-            selectCell(
-              navigateBoard(
-                game,
-                selectedCell,
-                Direction[move]
-              )
-            );
-        } else {
-          selectCell({ x: 0, y: 0 });
+          return;
         }
         if (VALID_NUMBERS.map(String).includes(key)) {
           issueNumber(parseInt(key, 10));
+          return;
+        }
+        const direction = key.toUpperCase() as Direction;
+        if (canMove(direction)) {
+          selectCell(navigateBoard(game, selectedCell, Direction[direction]));
+          return;
+        } else if (isValidMoveType(direction)) {
+          selectCell({ x: 0, y: 0 });
+          return;
         }
       }}
     />
