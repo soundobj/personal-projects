@@ -8,5 +8,10 @@
     @extend %button;
     width: 12.5%;
     padding: 0.3rem 0;
+
+    &:disabled {
+      background-color: var(--cta-primary-border);
+      cursor: unset;
+    }
   }
 }

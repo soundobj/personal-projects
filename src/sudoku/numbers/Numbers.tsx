@@ -1,35 +1,40 @@
-import React from 'react'
-import { Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap'
+import React from "react";
+import { Button, ButtonToolbar, ButtonGroup } from "react-bootstrap";
 
-import { VALID_NUMBERS } from '../lib/definitions'
-import './Numbers.scss'
+import { VALID_NUMBERS, NumberMap } from "../lib/definitions";
+import "./Numbers.scss";
 
 interface Props {
-  issueNumber: (n: number) => void
-  isGamePlayed: boolean
+  issueNumber: (n: number) => void;
+  isGamePlayed: boolean;
+  numberMap: NumberMap;
 }
 
 const Numbers = (props: Props) => {
-  const { issueNumber, isGamePlayed } = props
+  const { issueNumber, isGamePlayed, numberMap } = props;
+  const isNumberCompletedInBoard = (number: number) =>
+    numberMap[number].coordinates.length === 9;
   return (
     <>
-    <ButtonToolbar>
-    <ButtonGroup className="sudoku__controls__numbers">
-      {VALID_NUMBERS.map((number: number) => (
-        <Button
-          key={`control${number}`}
-          disabled={!isGamePlayed}
-          onClick={(e: React.SyntheticEvent) => { 
-            const target = e.target as HTMLElement;
-            target.blur();
-            issueNumber(number);
-          }}
-        >{number}</Button>
-      ))}
-    </ButtonGroup>
-  </ButtonToolbar>
-  </>
-  )
-}
+      <ButtonToolbar>
+        <ButtonGroup className="sudoku__controls__numbers">
+          {VALID_NUMBERS.map((number: number) => (
+            <Button
+              key={`control${number}`}
+              disabled={!isGamePlayed || isNumberCompletedInBoard(number)}
+              onClick={(e: React.SyntheticEvent) => {
+                const target = e.target as HTMLElement;
+                target.blur();
+                issueNumber(number);
+              }}
+            >
+              {number}
+            </Button>
+          ))}
+        </ButtonGroup>
+      </ButtonToolbar>
+    </>
+  );
+};
 
-export default Numbers
+export default Numbers;

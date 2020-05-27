@@ -91,6 +91,7 @@ const Sudoku = () => {
     mistakes,
     transition,
     gameLevel,
+    numberMap
   } = state;
 
   const isCandidateMode = editMode === MoveTypes.CANDIDATE;
@@ -204,6 +205,7 @@ const Sudoku = () => {
             <Numbers
               issueNumber={actions.issueNumber}
               isGamePlayed={isGamePlayed}
+              numberMap={numberMap}
             />
           </section>
         </article>
