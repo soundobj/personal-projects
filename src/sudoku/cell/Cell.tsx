@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { random } from "lodash";
 // @ts-ignore
 import classnames from "classnames";
+import equal from "fast-deep-equal";
 import {
   Cell as CellProps,
   Coordinate,
@@ -67,6 +68,7 @@ const Cell = (props: Props): JSX.Element => {
         })}
       >
         <div
+          key={`conflicting-cell-${Date.now()}`}
           className={classnames("content-inside", {
             "sudoku__cell--conflicting": conflicting,
             "sudoku__cell--same-as-selected":
@@ -94,4 +96,16 @@ const Cell = (props: Props): JSX.Element => {
   );
 };
 
-export default React.memo(Cell);
+export const shouldCellRender = (
+  prevProps: Props,
+  nextProps: Props
+): boolean => {
+  let eq = equal(prevProps, nextProps);
+  const isConflictingCell =
+    prevProps.conflicting === true &&
+    prevProps.conflicting === nextProps.conflicting;
+  return eq && isConflictingCell ? false : eq;
+};
+
+export default React.memo(Cell, shouldCellRender);
+

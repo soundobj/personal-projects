@@ -37,11 +37,11 @@
 
 .incorrect {
   color: var(--warning);
-  @extend %shake;
+  @extend %shakeWrongValue;
 }
 
 .sudoku__cell--conflicting {
-  color: var(--warning);
+  @extend %shakeConflict;
 }
 
 .sudoku__cell--same-as-selected {
