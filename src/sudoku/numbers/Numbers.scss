@@ -11,6 +11,7 @@
 
     &:disabled {
       background-color: var(--cta-primary-border);
+      border: none;
       cursor: unset;
     }
   }

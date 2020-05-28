@@ -108,4 +108,3 @@ export const shouldCellRender = (
 };
 
 export default React.memo(Cell, shouldCellRender);
-
