@@ -16,7 +16,9 @@ import "./Nav.scss";
 
 interface Props {
   showGameModal: () => void;
+  // showGameModal: any;
   showEndGameModal: () => void;
+  showShortcutsModal: () => void;
   mistakes: number;
   isGamePlayed: boolean;
 }
@@ -46,7 +48,7 @@ export const NavItem = (props: NavItemProps) => {
 };
 
 const Nav = (props: Props) => {
-  const { showEndGameModal, showGameModal, mistakes, isGamePlayed } = props;
+  const { showEndGameModal, showGameModal, mistakes, isGamePlayed, showShortcutsModal } = props;
   return (
     <>
       <nav className="sudoku__nav__left">
@@ -56,7 +58,7 @@ const Nav = (props: Props) => {
         <NavItem className="help" title="help" onClick={noop}>
           <Help />
         </NavItem>
-        <NavItem title="keys" onClick={noop}>
+        <NavItem title="keys" onClick={showShortcutsModal}>
           <Controls />
         </NavItem>
       </nav>

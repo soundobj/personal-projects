@@ -24,6 +24,7 @@ import NewGameOptions from "./newGameOptions/NewGameOptions";
 import EndGameModal from "./endGameModal/EndGameModal";
 import GameOverModal, { GameOverHeader } from "./gameOverModal/GameOverModal";
 import GameCompletedModal from "./gameCompletedModal/GameCompletedModal";
+import ShortcutsModal from "./shortcutsModal/ShortcutsModal";
 import GameControls from "./gameControls/GameControls";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
 import Nav from './nav/Nav'
@@ -67,13 +68,8 @@ const Sudoku = () => {
     setDialogShow(false);
   }, []);
 
-  const showGameModal = useCallback(() => {
-    actions.setCurrentDialog("NEW_GAME");
-    setDialogShow(true);
-  }, []);
-
-  const showEndGameModal = useCallback(() => {
-    actions.setCurrentDialog("END_GAME");
+  const openModal = useCallback((dialog: Dialogs) => {
+    actions.setCurrentDialog(dialog);
     setDialogShow(true);
   }, []);
 
@@ -133,14 +129,28 @@ const Sudoku = () => {
         />
       ),
     },
+    SHORTCUTS: {
+      header: "Keyboard Shortcuts",
+      CTALabel: "Close",
+      component: (
+        <ShortcutsModal />
+      ),
+    },
+    HELP: {
+      header: "Help",
+      CTALabel: "Close",
+      component: (
+        <ShortcutsModal />
+      ),
+    },
   };
 
-  let showModal = false;
+  let shouldShowModal = false;
   if (
     currentDialog === "GAME_OVER" ||
     (currentDialog === "GAME_COMPLETED" && !isGamePlayed)
   ) {
-    showModal = true; // dont use setShowGameOver() to avoid re-rendering the component
+    shouldShowModal = true; // dont use setShowGameOver() to avoid re-rendering the component
   }
 
   if (!isGamePlayed) {
@@ -157,9 +167,8 @@ const Sudoku = () => {
   }
 
   //dev remove
-  // showModal = true;
-  // currentDialog = "END_GAME";
-  console.error('@_cells to complete', cellsToComplete);
+  shouldShowModal = true;
+  currentDialog = "SHORTCUTS";  
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
 
@@ -174,8 +183,9 @@ const Sudoku = () => {
       />
       <section className="sudoku__container">
         <Nav
-          showEndGameModal={showEndGameModal}
-          showGameModal={showGameModal}
+          showEndGameModal={() => openModal("END_GAME")}
+          showGameModal={() => openModal("NEW_GAME")}
+          showShortcutsModal={() => openModal("SHORTCUTS")}
           mistakes={mistakes}
           isGamePlayed={isGamePlayed}
         />
@@ -242,7 +252,7 @@ const Sudoku = () => {
         }}
         onHide={onHide}
         content={dialogs[currentDialog as Dialogs]}
-        show={dialogShow || showModal}
+        show={dialogShow || shouldShowModal}
       />
     </>
   );

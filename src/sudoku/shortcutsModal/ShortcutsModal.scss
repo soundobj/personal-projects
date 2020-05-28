@@ -1,0 +1,29 @@
+@import "../vars.scss";
+
+%shortcut {
+  background-color: var(--cta-primary);
+}
+
+.sudoku__shortcuts {
+  &__move {
+    display: flex;
+    align-items: flex-end;
+    &__up-down {
+      display: flex;
+      flex-direction: column;
+    }
+
+    span {
+      @extend %shortcut;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: baseline;
+    
+    &__description {
+      flex-grow: 1;
+    }
+  }
+}
