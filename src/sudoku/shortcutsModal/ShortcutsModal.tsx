@@ -30,27 +30,51 @@ const MoveControls = () => (
   </article>
 );
 
+const SkipCompletedMoveControls = () => (
+  <div className="sudoku__shortcuts__move__skip__completed">
+    <span className="sudoku__shortcuts__key">option</span>
+    <span className="sudoku__shortcuts__plus">+</span>
+    <MoveControls />
+  </div>
+);
+
+interface KeyProps {
+  value: string;
+}
+
+const Key = (props: KeyProps) => (
+  <span className="sudoku__shortcuts__key">{props.value}</span>
+);
+
 const shortcuts: Props[] = [
-  { description: "Undo last Move", shortcut:"u" },
-  { description: "Pause game", shortcut: "space" },
-  { description: "Toggle candidate mode", shortcut: "c" },
+  { description: "Pause / Restart game", shortcut: <Key value="space" /> },
+  { description: "Toggle candidate mode", shortcut: <Key value="c" /> },
+  { description: "Undo last Move", shortcut: <Key value="u" /> },
   { description: "Navigation", shortcut: <MoveControls /> },
+  {
+    description: "Navigation skip completed",
+    shortcut: <SkipCompletedMoveControls />,
+  },
 ];
 
 const Item = (props: Props) => {
   const { description, shortcut } = props;
   return (
     <figure className="sudoku__shortcuts__item">
-      <figcaption className="sudoku__shortcuts__item__description">{description}</figcaption>
+      <figcaption className="sudoku__shortcuts__item__description">
+        {description}
+      </figcaption>
       {shortcut}
     </figure>
   );
 };
 
-const ShorCutsModal = () => {
-  return <article className="sudoku__sudoku__shortcuts">
-      <Item {...shortcuts[3]} />
-    </article>;
-};
+const ShorCutsModal = () => (
+  <article className="sudoku__sudoku__shortcuts">
+    {shortcuts.map((item: Props, index: number) => (
+      <Item key={`shortcut-${index}`} {...item} />
+    ))}
+  </article>
+);
 
 export default ShorCutsModal;

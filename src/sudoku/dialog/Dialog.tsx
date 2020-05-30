@@ -1,5 +1,7 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
+//@ts-ignore
+import classnames from 'classnames'
 
 import "./Dialog.scss"
 
@@ -23,7 +25,6 @@ const Dialog = (props: Props) => {
   const { onEscapeKeyDown, onHide, content } = props
   
   if (!content) {
-    console.error('@_no content',);
     return null
   }
 
@@ -33,7 +34,7 @@ const Dialog = (props: Props) => {
     size="sm"
     aria-labelledby="contained-modal-title-vcenter"
     centered
-    dialogClassName={content.className}
+    dialogClassName={classnames('sudoku__dialog', content.className)}
   >
     <Modal.Header closeButton onHide={onEscapeKeyDown} className="modal__header">
       <Modal.Title id="contained-modal-title-vcenter">

@@ -167,8 +167,8 @@ const Sudoku = () => {
   }
 
   //dev remove
-  shouldShowModal = true;
-  currentDialog = "SHORTCUTS";  
+  // shouldShowModal = true;
+  // currentDialog = "SHORTCUTS";  
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
 
