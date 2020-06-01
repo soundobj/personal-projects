@@ -18,6 +18,8 @@
     // bootstrap theme overrides
     .modal-content {
       background-color: var(--background);
+      max-width: 18.75rem;
+      margin: 0 auto;
       .modal-header {
         border-bottom: 1px solid var(--boardGrid);
         .close {
