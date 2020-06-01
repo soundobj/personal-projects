@@ -1,7 +1,10 @@
+@import '../utils.scss';
+
 .mistakes {
   text-align: center;
   position: relative;
   margin-top: 1px;
+  @extend %bottomNavSpacing;
 
   &__icon {
     padding-bottom: 2px;

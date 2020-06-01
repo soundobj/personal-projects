@@ -1,8 +1,11 @@
+@import '../utils.scss';
+
 .sudoku__nav__item {
   border: 0;
   background: none;
   background-color: 0;
   flex: 1 1 auto;
+  @extend %bottomNavSpacing;
 
   &__icon > svg {
     width: var(--menuItem);
@@ -14,5 +17,9 @@
 
   &__text {
     color: var(--text-color);
+  }
+
+  &:focus {
+    outline: 1px dashed var(--cta-primary-border);
   }
 }

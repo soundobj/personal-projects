@@ -16,7 +16,6 @@ import "./Nav.scss";
 
 interface Props {
   showGameModal: () => void;
-  // showGameModal: any;
   showEndGameModal: () => void;
   showShortcutsModal: () => void;
   mistakes: number;

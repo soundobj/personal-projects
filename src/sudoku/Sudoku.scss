@@ -8,7 +8,7 @@
 @font-face {
   font-family: "Poiret One";
   src: URL("../font/PoiretOne-Regular.ttf") format("truetype");
-  font-display: optional;
+  // font-display: optional;
 }
 
 body {
@@ -111,7 +111,7 @@ button,
     }
   }
 
-  @media screen and (max-width: $boardSize + ($gutter * 2)) {
+  @media screen and (max-width: $boardSize + $gutter) {
     &__container {
       display: flex;
       flex-direction: row;
