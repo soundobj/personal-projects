@@ -13,6 +13,9 @@ import {
   Transitions,
   TransitionsIntervals,
   Dialogs,
+  ROOT_HTML_THEME_ATTRIBUTE,
+  LOCAL_STORAGE_KEYS,
+  Themes,
 } from "./lib/definitions";
 import { localStorageOnMount, stateContainer } from "./lib/localStorage";
 import sudokuActions, { handleWatchOnCloseModal } from './lib/actions'
@@ -28,6 +31,7 @@ import ShortcutsModal from "./shortcutsModal/ShortcutsModal";
 import GameControls from "./gameControls/GameControls";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
 import Nav from './nav/Nav'
+import { setRootCSSProp } from "./themeSelector/ThemeSelector";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "reset-css";
@@ -63,6 +67,7 @@ const Sudoku = () => {
   const undoMove = useCallback(actions.undoMove, []);
   const pauseGame = useCallback(actions.pauseGame, []);
   const endGame = useCallback(actions.endGame, []);
+  const setTheme = useCallback(actions.setTheme, []);
 
   const onHide = useCallback(() => {
     setDialogShow(false);
@@ -87,8 +92,11 @@ const Sudoku = () => {
     mistakes,
     transition,
     gameLevel,
-    numberMap
+    numberMap,
+    theme,
   } = state;
+
+  setRootCSSProp(ROOT_HTML_THEME_ATTRIBUTE, localStorage.getItem(LOCAL_STORAGE_KEYS.THEME) || Themes.LIGHT);
 
   const isCandidateMode = editMode === MoveTypes.CANDIDATE;
 
@@ -188,6 +196,8 @@ const Sudoku = () => {
           showShortcutsModal={() => openModal("SHORTCUTS")}
           mistakes={mistakes}
           isGamePlayed={isGamePlayed}
+          theme={theme}
+          setTheme={setTheme}
         />
         <article className="sudoku__game">
           <section className="sudoku__game__controls">

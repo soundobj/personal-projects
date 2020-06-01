@@ -4,13 +4,13 @@ import { noop } from "lodash";
 import classnames from "classnames";
 
 import { ReactComponent as Plus } from "../../assets/plus.svg";
-// import { ReactComponent as Bin } from "../../assets/bin.svg";
 import { ReactComponent as Bin } from "../../assets/recycling-bin-freepick-red.svg";
 import { ReactComponent as Help } from "../../assets/help.svg";
 import { ReactComponent as Controls } from "../../assets/controls.svg";
 
 import Mistakes from "../mistakes/Mistakes";
-import ThemeSelector from "../themeSelector/ThemeSelector"
+import { Themes } from "../lib/definitions";
+import ThemeSelector from "../themeSelector/ThemeSelector";
 
 import "./Nav.scss";
 
@@ -20,6 +20,8 @@ interface Props {
   showShortcutsModal: () => void;
   mistakes: number;
   isGamePlayed: boolean;
+  theme: Themes;
+  setTheme: (theme: Themes) => void;
 }
 
 interface NavItemProps {
@@ -47,7 +49,15 @@ export const NavItem = (props: NavItemProps) => {
 };
 
 const Nav = (props: Props) => {
-  const { showEndGameModal, showGameModal, mistakes, isGamePlayed, showShortcutsModal } = props;
+  const {
+    showEndGameModal,
+    showGameModal,
+    mistakes,
+    isGamePlayed,
+    showShortcutsModal,
+    theme,
+    setTheme,
+  } = props;
   return (
     <>
       <nav className="sudoku__nav__left">
@@ -70,7 +80,7 @@ const Nav = (props: Props) => {
           <Bin />
         </NavItem>
         <Mistakes mistakes={mistakes} />
-        <ThemeSelector />
+        <ThemeSelector theme={theme} setTheme={setTheme} />
       </nav>
     </>
   );

@@ -27,6 +27,7 @@ import {
   NumberMapPayload,
   Transitions,
   Dialogs,
+  Themes,
 } from "./definitions";
 import {
   generateBoard,
@@ -67,6 +68,7 @@ export interface State {
   finishedTime: StopWatchCallbackPayload;
   level?: GameLevel;
   transition?: Transitions;
+  theme?: Themes
 }
 
 export interface Action {
@@ -88,6 +90,7 @@ export enum Actions {
   SET_CURRENT_DIALOG,
   LOAD_STORED_GAME,
   TRANSITION_ENDED,
+  SET_THEME,
 }
 
 export const initialState: State = {
@@ -114,6 +117,13 @@ const memGetRelatedCellsCoordinates = memoize(getRelatedCellsCoordinates);
 
 export const sudokuReducer = (state: State, action: Action) => {
   switch (action.type) {
+    case Actions.SET_THEME: {
+      const theme = action.payload;
+      if (!Object.values(Themes).includes(theme)) {
+        return state;
+      }
+      return { ...state, theme };
+    }
     case Actions.TRANSITION_ENDED: {
       console.error("@_TRANSITION_ENDED");
       return handleTransitionEnded(state);

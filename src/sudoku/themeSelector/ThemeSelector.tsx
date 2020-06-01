@@ -4,7 +4,7 @@ import { ReactComponent as Moon } from "../../assets/moon-vectors-market.svg";
 
 import {
   ROOT_HTML_THEME_ATTRIBUTE,
-  COLOR_MODE_KEY,
+  LOCAL_STORAGE_KEYS,
   Themes,
 } from "../lib/definitions";
 import { NavItem } from "../nav/Nav";
@@ -25,25 +25,34 @@ export const setRootCSSProp = (prop: string, value: string) => {
   document.documentElement.setAttribute(prop, value);
 };
 
-const ThemeSelector = () => {
-  const [currentTheme, setCurrentTheme] = useState(
-    getRootCSSProp(COLOR_MODE_KEY)
-  );
+interface Props {
+  theme?: Themes
+  setTheme: (theme: Themes) => void
+}
+
+const ThemeSelector = (props: Props) => {
+  const { theme, setTheme } = props
+
+  if (!theme) {
+    return null;
+  }
 
   return (
     <NavItem
       title="theme"
       onClick={() => {
-        if (currentTheme === Themes.DARK) {
+        if (theme === Themes.DARK) {
           setRootCSSProp(ROOT_HTML_THEME_ATTRIBUTE, Themes.LIGHT);
-          setCurrentTheme(Themes.LIGHT);
+          localStorage.setItem(LOCAL_STORAGE_KEYS.THEME, Themes.LIGHT)
+          setTheme(Themes.LIGHT);
         } else {
           setRootCSSProp(ROOT_HTML_THEME_ATTRIBUTE, Themes.DARK);
-          setCurrentTheme(Themes.DARK);
+          setTheme(Themes.DARK);
+          localStorage.setItem(LOCAL_STORAGE_KEYS.THEME, Themes.DARK)
         }
       }}
     >
-      {currentTheme === Themes.DARK ? <Moon className="sudoku__themeSelector__moon" /> : <Sun />}
+      {theme === Themes.DARK ? <Moon className="sudoku__themeSelector__moon" /> : <Sun />}
     </NavItem>
   );
 };

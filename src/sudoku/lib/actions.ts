@@ -1,20 +1,29 @@
-import { GameLevel, Coordinate, Dialogs, MoveTypes, Transitions} from "./definitions";
-import { Actions, State } from './reducer'
+import {
+  GameLevel,
+  Coordinate,
+  Dialogs,
+  MoveTypes,
+  Transitions,
+  Themes,
+} from "./definitions";
+import { Actions, State } from "./reducer";
 import { StopWatch } from "../../stopWatch/stopWatch";
 
-type Dispatch = (...args: any[]) => void
+type Dispatch = (...args: any[]) => void;
 
 const sudokuActions = () => {
   let dispatch: Dispatch;
   let state: State;
-  let watch: StopWatch
+  let watch: StopWatch;
 
   const setDispatch = (_dispatch: Dispatch) => (dispatch = _dispatch);
   const setState = (_state: State) => (state = _state);
   const setWatch = (_watch: StopWatch) => (watch = _watch);
 
-  const startGame = (gameLevel: string) => dispatch({ type: Actions.START_GAME, payload: gameLevel });
-  const pauseGame = (payload: boolean) => dispatch({ type: Actions.PAUSE_GAME, payload })
+  const startGame = (gameLevel: string) =>
+    dispatch({ type: Actions.START_GAME, payload: gameLevel });
+  const pauseGame = (payload: boolean) =>
+    dispatch({ type: Actions.PAUSE_GAME, payload });
 
   const restartWatch = () => {
     watch.clear();
@@ -27,27 +36,27 @@ const sudokuActions = () => {
       startGame(gameLevel);
       restartWatch();
     }
-  }
+  };
 
   const selectCell = (coordinate: Coordinate) =>
-  dispatch({ type: Actions.SELECT_CELL, payload: coordinate })
+    dispatch({ type: Actions.SELECT_CELL, payload: coordinate });
 
   const restartGame = () => {
     dispatch({ type: Actions.RESTART_GAME });
     restartWatch();
     setCurrentDialog("NEW_GAME");
-  }
+  };
 
   const setCurrentDialog = (dialog: Dialogs) =>
-  dispatch({ type: Actions.SET_CURRENT_DIALOG, payload: dialog })
+    dispatch({ type: Actions.SET_CURRENT_DIALOG, payload: dialog });
 
-  const resolveCell = () => dispatch({ type: Actions.RESOLVE_CELL })
+  const resolveCell = () => dispatch({ type: Actions.RESOLVE_CELL });
 
   const setEditMode = (editMode: MoveTypes) =>
     dispatch({ type: Actions.SET_EDIT_MODE, payload: editMode });
 
   const transitionEnded = (transition: Transitions) =>
-  dispatch({ type: Actions.TRANSITION_ENDED, payload: transition })
+    dispatch({ type: Actions.TRANSITION_ENDED, payload: transition });
 
   const issueNumber = (number: number) => {
     dispatch({ type: Actions.ISSUE_NUMBER, payload: number });
@@ -59,8 +68,10 @@ const sudokuActions = () => {
     }
   };
 
-  const undoMove = () => dispatch({ type: Actions.UNDO_MOVE })
-  const endGame = () => dispatch({ type: Actions.END_GAME })
+  const undoMove = () => dispatch({ type: Actions.UNDO_MOVE });
+  const endGame = () => dispatch({ type: Actions.END_GAME });
+  const setTheme = (theme: Themes) =>
+    dispatch({ type: Actions.SET_THEME, payload: theme });
 
   return {
     setDispatch,
@@ -79,10 +90,11 @@ const sudokuActions = () => {
     issueNumber,
     undoMove,
     endGame,
+    setTheme,
   };
 };
 
-export default sudokuActions
+export default sudokuActions;
 
 export const handleWatchOnCloseModal = (
   stopWatch: StopWatch,
