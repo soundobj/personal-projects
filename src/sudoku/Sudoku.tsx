@@ -12,12 +12,9 @@ import {
   MoveTypes,
   Transitions,
   TransitionsIntervals,
-  Dialogs,
-  ROOT_HTML_THEME_ATTRIBUTE,
-  LOCAL_STORAGE_KEYS,
-  Themes,
+  Dialogs
 } from "./lib/definitions";
-import { localStorageOnMount, stateContainer } from "./lib/localStorage";
+import { localStorageOnMount, stateContainer, setUserTheme } from "./lib/localStorage";
 import sudokuActions, { handleWatchOnCloseModal } from './lib/actions'
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
@@ -31,7 +28,7 @@ import ShortcutsModal from "./shortcutsModal/ShortcutsModal";
 import GameControls from "./gameControls/GameControls";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
 import Nav from './nav/Nav'
-import { setRootCSSProp } from "./themeSelector/ThemeSelector";
+
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "reset-css";
@@ -96,7 +93,7 @@ const Sudoku = () => {
     theme,
   } = state;
 
-  setRootCSSProp(ROOT_HTML_THEME_ATTRIBUTE, localStorage.getItem(LOCAL_STORAGE_KEYS.THEME) || Themes.LIGHT);
+  setUserTheme()
 
   const isCandidateMode = editMode === MoveTypes.CANDIDATE;
 

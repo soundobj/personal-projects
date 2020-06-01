@@ -5,6 +5,7 @@ import {
   Themes,
 } from "./definitions";
 import { State, Action, Actions } from "./reducer";
+import { setRootCSSProp } from "../themeSelector/ThemeSelector";
 
 export const handleGameLocalStorage = (
   container: StateContainer,
@@ -73,3 +74,9 @@ export const stateContainer = (): StateContainer => {
 export const getUserTheme = (): string =>
   document.documentElement.getAttribute(ROOT_HTML_THEME_ATTRIBUTE) ||
   Themes.LIGHT;
+
+export const setUserTheme = () =>
+  setRootCSSProp(
+    ROOT_HTML_THEME_ATTRIBUTE,
+    localStorage.getItem(LOCAL_STORAGE_KEYS.THEME) || Themes.LIGHT
+  );  
