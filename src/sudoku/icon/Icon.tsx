@@ -21,9 +21,9 @@ const Icon = (props: Props) => {
         placement={position}
         overlay={<Tooltip id={`tooltip-${position}`}>{title}</Tooltip>}
       >
-        <Button disabled={disabled} variant="link" onClick={onClick} className={className}>
+        <button disabled={disabled} onClick={onClick} className={className}>
           {children}
-        </Button>
+        </button>
       </OverlayTrigger>
     </>
   );

@@ -2,33 +2,40 @@
 
 .sudoku__game__controls {
   display: flex;
-  align-items: center;
-  margin-top: 0.3rem;
+  align-items: baseline;
+  margin-top: 0.35rem;
+  min-height: 2.2rem;
 
   & > * {
     flex: 1 1 auto;
   }
 
-  &__candidate,
-  &__undo {
-    padding-bottom: 0.4rem;
-
-    &--selected {
-      padding-bottom: 0.3rem;
-      border-bottom: solid 0.1rem var(--text-color);
-    }
+  &__candidate--selected {
+    border-bottom: solid 0.1rem var(--text-color);
   }
 
-  &__option {
-    width: 1.2rem;
-    height: 1.2rem;
+  &__candidate > svg,
+  &__candidate--selected > svg {
+    padding: 0.2rem;
+    margin-bottom: 2px;
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  &__undo > svg {
+    margin-bottom: 2px;
+    width: 1.9rem;
+    height: 1.9rem;
   }
 
   &__candidate > svg,
   &__candidate--selected > svg,
   &__undo > svg {
-    width: 1.7rem;
-    height: 1.7rem;
     color: var(--cta-primary);
+  }
+
+  button {
+    border: 0;
+    background-color: inherit;
   }
 }

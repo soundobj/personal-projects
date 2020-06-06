@@ -3,17 +3,17 @@
 .stopWatch {
   display: flex;
   align-items: center;
-  background-color: var(--cta-primary);
+  background-color: var(--cta-primary) !important;
   border-radius: .2rem;
-  margin: 0 1.3rem;
   border: 1px solid var(--cta-primary-border);
+  margin: 0 1.55rem;
+  padding-bottom: .2rem;
 
   &__icon__container {
     margin-right: .3rem;
   }
 
   &__timeElapsed {
-    margin-top: .1rem;
     display: flex;
     align-items: center;
 
