@@ -20,6 +20,6 @@
   }
 
   &:focus {
-    outline: 1px dashed var(--cta-primary-border);
+    @extend %focus;
   }
 }

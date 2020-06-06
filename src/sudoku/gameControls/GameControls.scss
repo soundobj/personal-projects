@@ -1,4 +1,5 @@
 @import "../vars.scss";
+@import "../utils.scss";
 
 .sudoku__game__controls {
   display: flex;
@@ -37,5 +38,9 @@
   button {
     border: 0;
     background-color: inherit;
+
+    &:focus {
+      @extend %focus;
+    }
   }
 }

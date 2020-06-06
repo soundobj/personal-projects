@@ -19,3 +19,7 @@
   margin-bottom: .5rem;
   padding-bottom: .2rem;
 }
+
+%focus {
+  outline: 1px dashed var(--cta-primary-border);
+} 
