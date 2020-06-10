@@ -168,6 +168,9 @@ const Sudoku = () => {
     setTimeout(() => {
       console.error(`@transition ends in ${transitionInterval} milliseconds`);
       transitionEnded(transition);
+      if (transition === "NEW_GAME") {
+        watch.start();
+      }
     }, transitionInterval);
   }
 

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GrPause } from "react-icons/gr";
 import { GrResume } from "react-icons/gr";
-import Icon from "../sudoku/icon/Icon";
 import { StopWatch, initialTimeElapsed } from "./stopWatch";
 import "./StopWatchUI.scss";
 
@@ -16,9 +15,6 @@ const StopWatchUI = (props: Props) => {
   const { watch, onPause, isGamePlayed, isGamePaused } = props;
   let [timeElapsed, setTimeElapsed] = useState(initialTimeElapsed);
   watch.setCallback(setTimeElapsed);
-  // const timeElapsed = {
-  //   ISOString: '0:00:00'
-  // }
 
   const onClick = () => {
     if (isGamePaused) {
@@ -30,9 +26,9 @@ const StopWatchUI = (props: Props) => {
     }
   }
 
-  if (!isGamePlayed) {
-    timeElapsed = initialTimeElapsed
-  }
+  useEffect(() => {
+    setTimeElapsed(initialTimeElapsed);
+  }, [isGamePlayed]);
 
   return (
     <button className="stopWatch" onClick={onClick} disabled={!isGamePlayed}>

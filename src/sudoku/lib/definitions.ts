@@ -32,7 +32,7 @@ export type Transitions = 'GAME_OVER' | 'NEW_GAME' | 'GAME_COMPLETED';
 
 export const TransitionsIntervals: Record<Transitions, number> = {
   "GAME_OVER": 1000,
-  "NEW_GAME": 2000,
+  "NEW_GAME": 500,
   "GAME_COMPLETED": 1000,
 }
 

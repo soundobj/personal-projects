@@ -197,6 +197,10 @@ export const handleTransitionEnded = (state: State) => produce(state, (draft: St
       draft.currentDialog = "GAME_OVER";
       delete draft.transition
     }
+    case 'NEW_GAME': {
+      draft.isGamePlayed = true;
+      delete draft.transition
+    }
   }
 });
 
@@ -399,12 +403,13 @@ export const startGame = (state: State, level: GameLevel) =>
     draft.gameLevel = level;
     draft.game = game;
     draft.numberMap = numberMap;
-    draft.isGamePlayed = true;
+    draft.isGamePlayed = false;
     draft.moveHistory = [];
     delete draft.finishedTime;
     draft.mistakes = 0;
     draft.selectedCellRelatedCells = [];
     delete draft.selectedCell;
+    draft.transition = "NEW_GAME"
     // reset restart game clone
     draft.restartGameNumberMap = cloneDeep(numberMap);
     draft.restartCellsToComplete = draft.cellsToComplete;
