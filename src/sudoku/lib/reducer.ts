@@ -234,9 +234,13 @@ const undoCellInput = (state: State) =>
     const previousCellMove = backwardsSearch
       .reverse()
       .find(curry(filterByCellCoordinate)(coordinate));
-    if (previousCellMove) {
+    if (previousCellMove && previousCellMove.type === MoveTypes.NUMBER) {
       game[coordinate.x][coordinate.y].value = previousCellMove.value;
     } else {
+      /* 
+        delete the cell value so its becomes empty 
+        or the previously entered candidates are shown
+      */
       delete game[coordinate.x][coordinate.y].value;
     }
   });
@@ -261,6 +265,7 @@ const toggleCandidate = (
 
 const undoCellCandidate = (state: State) =>
   produce(state, (draft: State) => {
+    console.error('@_ undoCellCandidate',);
     const { moveHistory, game, numberMap } = draft;
     const lastMove: Move = moveHistory[moveHistory.length - 1];
     toggleCandidate(game, numberMap, lastMove.value, lastMove.coordinate);
