@@ -165,7 +165,10 @@ export const sudokuReducer = (state: State, action: Action) => {
     }
     case Actions.SET_EDIT_MODE: {
       const editMode: MoveTypes = action.payload;
-      return { ...state, editMode };
+      return pipe(clearConflictingCells, (state: State) => ({
+        ...state,
+        editMode,
+      }))(state);
     }
     case Actions.ISSUE_NUMBER: {
       return state.editMode === MoveTypes.NUMBER
@@ -574,6 +577,7 @@ export const clearConflictingCells = (state: State) =>
       conflictingCells.forEach((c: Coordinate) => {
         delete game[c.x][c.y].conflicting;
       });
+      draft.conflictingCells = []
   });
 
 export const setCandidateConflicts = (state: State, conflicts: Coordinate[]) =>
