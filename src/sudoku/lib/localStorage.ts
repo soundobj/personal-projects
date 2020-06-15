@@ -42,12 +42,13 @@ export const localStorageOnMount = (
     LOCAL_STORAGE_KEYS.CURRENT_GAME_ELAPSED_TIME
   );
   if (currentGame && currentGameElapsedTime) {
+    const game: State = JSON.parse(currentGame)
     dispatch({
       type: Actions.LOAD_STORED_GAME,
-      payload: JSON.parse(currentGame),
+      payload: game,
     });
     watch.setElapsedSeconds(JSON.parse(currentGameElapsedTime));
-    watch.start();
+    !game.isGamePaused && watch.start();
   }
 };
 
