@@ -1,27 +1,25 @@
-import typeAhead, { ResultsFetcherResponse, TypeAheadResults } from './typeAhead'
+import typeAhead from './typeAhead'
 
 describe('typeAhead', () => {
-  const fetcher = jest.fn((query: string): ResultsFetcherResponse => {
+  const fetcher = jest.fn((query: string): Promise<string[]> => {
     return new Promise((resolve) => {
-      resolve({
-        [query]: query
-      })
+      resolve([query])
     })
   })
-  const t = typeAhead(fetcher)
+  const t = typeAhead<string>(fetcher)
   it('takes a Promise as argument to fetch results', () => {
-    return t.fetchResults("foo").then((data: TypeAheadResults) => {
-      expect(data).toMatchObject({"foo": "foo"})
+    return t.fetchResults("foo").then((data: string[]) => {
+      expect(data).toMatchObject(["foo"])
     })
   })
   it('stores previous suggsestions in cache', () => {
-    return t.fetchResults("foo").then((data: TypeAheadResults) => {
-      expect(data).toMatchObject({"foo": "foo"})
+    return t.fetchResults("foo").then((data: string[]) => {
+      expect(data).toMatchObject(["foo"])
       expect(fetcher).toHaveBeenCalledTimes(1)
     })
   })
   it('does nothing if a query is less than the min query params', () => {
-    return t.fetchResults("fo").then((data: TypeAheadResults) => {
+    return t.fetchResults("fo").then((data: string[]) => {
       expect(data).toBeUndefined()
     })
   })
