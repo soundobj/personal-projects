@@ -1,5 +1,4 @@
-import { concat } from 'lodash';
-import { Dictionary } from '../../typeAhead/typeAhead';
+import { concat } from 'lodash';  
 var items = require("../items.json");
 
 export const getFoodDictionary = () => concat(items.fruits, items.vegetables).sort();

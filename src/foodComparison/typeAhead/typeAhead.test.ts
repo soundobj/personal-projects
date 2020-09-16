@@ -6,18 +6,7 @@ describe('typeAhead', () => {
       resolve([query])
     })
   })
-  const t = typeAhead<string>(fetcher)
-  it('takes a Promise as argument to fetch results', () => {
-    return t.fetchResults("foo").then((data: string[]) => {
-      expect(data).toMatchObject(["foo"])
-    })
-  })
-  it('stores previous suggsestions in cache', () => {
-    return t.fetchResults("foo").then((data: string[]) => {
-      expect(data).toMatchObject(["foo"])
-      expect(fetcher).toHaveBeenCalledTimes(1)
-    })
-  })
+  const t = typeAhead<string[]>(fetcher)
   it('does nothing if a query is less than the min query params', () => {
     return t.fetchResults("fo").then((data: string[]) => {
       expect(data).toBeUndefined()
