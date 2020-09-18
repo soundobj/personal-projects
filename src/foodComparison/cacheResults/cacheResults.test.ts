@@ -12,7 +12,7 @@ describe('cacheResults', () => {
       expect(data).toMatchObject(["foo"])
     })
   })
-  it('stores previous suggsestions in cache', () => {
+  it('serves previously stored results from cache', () => {
     return t.fetchResults("foo").then((data: string[]) => {
       expect(data).toMatchObject(["foo"])
       expect(fetcher).toHaveBeenCalledTimes(1)
