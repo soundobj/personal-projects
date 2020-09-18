@@ -49,7 +49,7 @@ const addFoodNutrientsValues = (nutrients: any, food: any) =>
     }
   });
 
-const consumeFood = (food: string) =>
+const doFood = (food: string) =>
   getFoodItem(food)
     .then((value) => {
       addFoodNutrientsValues(nutrients, value);
@@ -58,7 +58,7 @@ const consumeFood = (food: string) =>
       console.error(`@_could not find item ${food}, error:`, e);
     });
 
-Promise.all(foodDictionary.map(consumeFood)).then(() => {
+Promise.all(foodDictionary.map(doFood)).then(() => {
   nutrients.map((n) => n.foods.sort(orderByValueDesc));
   fs.writeFile("../foodsByNutrient.json", prettyJSON(nutrients), (e) => {
     console.error("@_done, errors:", e);
