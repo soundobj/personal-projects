@@ -40,15 +40,13 @@ const nutrients: NutrientList[] = [...nutrientsSubset];
 const addFoodNutrientsValues = (nutrients: any, food: any) =>
   nutrients.map((nutrient: any) => {
     const foodItem = getFood(food);
-    const foodNutrients = foodItem.full_nutrients;
     const nutrientMatch = find(
-      foodNutrients,
+      foodItem.full_nutrients,
       (x) => x.attr_id === nutrient.attr_id
     );
     if (nutrientMatch) {
       nutrient.foods.push(nutrientFood(foodItem, nutrientMatch));
     }
-    return nutrient;
   });
 
 const consumeFood = (food: string) =>
