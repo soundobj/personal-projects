@@ -18,7 +18,7 @@ export interface NutrientList {
   usda_tag: string | null;
   type: string;
   VITAMIN?: string;
-  foods?: NutrientFood[];
+  foods: NutrientFood[];
 }
 
 export const nutrientValuePer100gr = (weight: number, value: number): number =>
@@ -35,7 +35,7 @@ export const nutrientFood = (food: Food, nutrient: Nutrient): NutrientFood => ({
 export const prettyJSON = (json: any): string => JSON.stringify(json, null, 2);
 
 const foodDictionary = getFoodDictionary();
-const nutrients: NutrientList[] = [...nutrientsSubset];
+const nutrients = [...nutrientsSubset] as NutrientList[];
 
 const addFoodNutrientsValues = (nutrients: any, food: any) =>
   nutrients.map((nutrient: any) => {
@@ -59,9 +59,7 @@ const consumeFood = (food: string) =>
     });
 
 Promise.all(foodDictionary.map(consumeFood)).then(() => {
-  nutrients.map(
-    (n) => Array.isArray(n.foods) && n.foods.sort(orderByValueDesc)
-  );
+  nutrients.map((n) => n.foods.sort(orderByValueDesc));
   fs.writeFile("../foodsByNutrient.json", prettyJSON(nutrients), (e) => {
     console.error("@_done, errors:", e);
   });
