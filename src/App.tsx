@@ -1,30 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Sudoku from './sudoku/Sudoku'
+import React from "react";
+import { Router as _Router, Route, Link } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
-function App() {
-  return (
-    <>
-    {/* <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div> */}
-    <Sudoku />
-    </>
-  );
+import Sudoku from "./sudoku/Sudoku";
+import FoodComposition from "./foodComparison/foodComposition/FoodComposition";
+
+import "./App.css";
+
+const history = createBrowserHistory()
+
+history.listen((location) => {
+  console.error('@_foo', location.pathname);
+})
+
+const Index = () => (
+  <ul>
+    <li>
+      <Link to="/sudoku">Sudoku</Link>
+    </li>
+    <li>
+      <Link to="/food">Food Comparison</Link>
+    </li>
+  </ul>
+);
+
+export const Router = () => {
+  return <_Router history={history}>
+    <Route exact path="/" component={Index} />
+    <Route path="/sudoku" component={Sudoku} />
+    <Route path="/food" component={FoodComposition} />
+  </_Router>
 }
-
-export default App;
