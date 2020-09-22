@@ -1,5 +1,5 @@
 import React from "react";
-import { Router as _Router, Route, Link } from "react-router-dom";
+import { Router, Route, Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import Sudoku from "./sudoku/Sudoku";
@@ -24,10 +24,10 @@ const Index = () => (
   </ul>
 );
 
-export const Router = () => {
-  return <_Router history={history}>
+export const App = () => {
+  return <Router history={history}>
     <Route exact path="/" component={Index} />
     <Route path="/sudoku" component={Sudoku} />
     <Route path="/food" component={FoodComposition} />
-  </_Router>
+  </Router>
 }
