@@ -7,11 +7,17 @@ import FoodComposition from "./foodComparison/foodComposition/FoodComposition";
 
 import "./App.css";
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
+const BODY_CLASS = "index"
 
-history.listen((location) => {
-  console.error('@_foo', location.pathname);
-})
+export const setBodyClassNameToRoute = () => {
+  document.querySelector("body")?.removeAttribute("class");
+  const pathname = window.location.pathname.split( '/' )[1] || BODY_CLASS; 
+  document.querySelector("body")?.classList?.add(pathname);
+}
+
+setBodyClassNameToRoute()
+history.listen(setBodyClassNameToRoute)
 
 const Index = () => (
   <ul>
@@ -25,9 +31,11 @@ const Index = () => (
 );
 
 export const App = () => {
-  return <Router history={history}>
-    <Route exact path="/" component={Index} />
-    <Route path="/sudoku" component={Sudoku} />
-    <Route path="/food" component={FoodComposition} />
-  </Router>
-}
+  return (
+    <Router history={history}>
+      <Route exact path="/" component={Index} />
+      <Route path="/sudoku" component={Sudoku} />
+      <Route path="/food" component={FoodComposition} />
+    </Router>
+  );
+};

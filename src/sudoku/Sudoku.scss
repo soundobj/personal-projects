@@ -11,14 +11,14 @@
   // font-display: optional;
 }
 
-body {
+body.sudoku {
   font-family: "Poiret One", cursive;
   background: var(--background);
   color: var(--text-color);
   transition: background 300ms ease-in-out, color 200ms ease;
 }
 
-body {
+body.sudoku {
   font-weight: 600;
   transition: color 300ms ease-in-out;
 }
