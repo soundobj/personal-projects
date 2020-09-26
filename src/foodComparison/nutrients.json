@@ -225,7 +225,7 @@
     "usda_nutr_desc": "Magnesium, Mg",
     "usda_sr_order": 5500,
     "api_name": "nf_mg",
-    "fda_daily_value": null,
+    "fda_daily_value": 350,
     "usda_tag": "MG",
     "name": "nf_mg"
   },
@@ -265,7 +265,7 @@
     "usda_nutr_desc": "Zinc, Zn",
     "usda_sr_order": 5900,
     "api_name": "nf_zn",
-    "fda_daily_value": null,
+    "fda_daily_value": 15,
     "usda_tag": "ZN",
     "name": "nf_zn"
   },
@@ -275,7 +275,7 @@
     "usda_nutr_desc": "Copper, Cu",
     "usda_sr_order": 6000,
     "api_name": "nf_cu",
-    "fda_daily_value": null,
+    "fda_daily_value": 2,
     "usda_tag": "CU",
     "name": "nf_cu"
   },
@@ -285,7 +285,7 @@
     "usda_nutr_desc": "Fluoride, F",
     "usda_sr_order": 6240,
     "api_name": "nf_fld",
-    "fda_daily_value": null,
+    "fda_daily_value": 3500,
     "usda_tag": "FLD",
     "name": "nf_fld"
   },
@@ -295,7 +295,7 @@
     "usda_nutr_desc": "Manganese, Mn",
     "usda_sr_order": 6100,
     "api_name": "nf_mn",
-    "fda_daily_value": null,
+    "fda_daily_value": 5,
     "usda_tag": "MN",
     "name": "nf_mn"
   },

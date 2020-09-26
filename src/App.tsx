@@ -8,11 +8,11 @@ import FoodComposition from "./foodComparison/foodComposition/FoodComposition";
 import "./App.css";
 
 const history = createBrowserHistory();
-const BODY_CLASS = "index"
+const ROOT_BODY_CLASS = "index"
 
 export const setBodyClassNameToRoute = () => {
   document.querySelector("body")?.removeAttribute("class");
-  const pathname = window.location.pathname.split( '/' )[1] || BODY_CLASS; 
+  const pathname = window.location.pathname.split( '/' )[1] || ROOT_BODY_CLASS; 
   document.querySelector("body")?.classList?.add(pathname);
 }
 
