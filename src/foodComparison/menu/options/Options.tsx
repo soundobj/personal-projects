@@ -10,19 +10,14 @@ export interface GroupedOption {
 
 export type Items = Record<string, string[]>;
 
-export const createGroupedOptions = (items: Items): GroupedOption[] =>
-  Object.keys(items).map<GroupedOption>((item: string) => {
-    const options = items[item].map<OptionType>((value: string) => {
-      return {
-        label: startCase(value),
-        value,
-      };
-    });
-    return {
-      label: startCase(item),
-      options,
-    };
-  });
+export const createGroupedOptions = (options: Items): GroupedOption[] =>
+  Object.keys(options).map<GroupedOption>((group: string) => ({
+    label: startCase(group),
+    options: options[group].map<OptionType>((value: string) => ({
+      label: startCase(value),
+      value,
+    })),
+  }));
 
 const groupStyles = {
   display: "flex",
