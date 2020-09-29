@@ -3,7 +3,7 @@ import { Router, Route, Link } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import Sudoku from "./sudoku/Sudoku";
-import FoodComposition from "./foodComparison/foodComposition/FoodComposition";
+import FoodCompare from "./foodComparison/foodCompare/FoodCompare";
 
 import "./App.css";
 
@@ -25,7 +25,7 @@ const Index = () => (
       <Link to="/sudoku">Sudoku</Link>
     </li>
     <li>
-      <Link to="/food">Food Comparison</Link>
+      <Link to="/foodCompare">Food Comparison</Link>
     </li>
   </ul>
 );
@@ -35,7 +35,7 @@ export const App = () => {
     <Router history={history}>
       <Route exact path="/" component={Index} />
       <Route path="/sudoku" component={Sudoku} />
-      <Route path="/food" component={FoodComposition} />
+      <Route path="/foodCompare" component={FoodCompare} />
     </Router>
   );
 };
