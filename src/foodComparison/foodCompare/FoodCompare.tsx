@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Creatable from "react-select/creatable";
 import { ValueType } from "react-select";
-import Menu, { isValidNewOption, OptionType } from "../menu/Menu";
+import Menu, { OptionType } from "../menu/Menu";
+import PieChart from "../pieChart/PieChart";
 import { createGroupedOptions, formatGroupLabel } from "../menu/options/Options";
 import items from '../items.json'
 
@@ -34,6 +35,7 @@ const FoodCompare = (props: Props) => {
           setSelectedOption(value);
         }}
       />
+      <PieChart values={[2,4,6,8]} width={960} height={500} id="apple" />
     </>
   );
 };
