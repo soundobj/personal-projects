@@ -1,12 +1,9 @@
 import fs from "fs";
 import { find } from "lodash";
 import nutrientsSubset from "../nutrients-subset.json";
-import getFoodItem, {
-  Nutrient,
-  getFood,
-} from "../getFoodItem/getFoodItem";
+import getFoodItem, { getFood } from "../getFoodItem/getFoodItem";
 import { getFoodDictionary } from "../typeAheadSuggestions/typeAheadsuggestions";
-import { FoodMainAttrs } from "../foodUtils/foodUtils";
+import { FoodMainAttrs, Nutrient } from "../foodUtils/foodUtils";
 
 interface NutrientFood {
   food_name: string;
@@ -27,7 +24,10 @@ export const nutrientValuePer100gr = (weight: number, value: number): number =>
 export const orderByValueDesc = (a: NutrientFood, b: NutrientFood) =>
   b.value - a.value;
 
-export const nutrientFood = (food: FoodMainAttrs, nutrient: Nutrient): NutrientFood => ({
+export const nutrientFood = (
+  food: FoodMainAttrs,
+  nutrient: Nutrient
+): NutrientFood => ({
   food_name: food.food_name,
   value: nutrientValuePer100gr(food.serving_weight_grams, nutrient.value),
 });

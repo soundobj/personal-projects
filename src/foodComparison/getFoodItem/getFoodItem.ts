@@ -1,16 +1,5 @@
 import { FoodPayload, FoodMainAttrs } from "../foodUtils/foodUtils";
 
-export interface Food {
-  full_nutrients: Nutrient[];
-  food_name: string;
-  serving_weight_grams: number;
-}
-
-export interface Nutrient {
-  attr_id: number;
-  value: number;
-}
-
 export const getFood = (food: FoodPayload): FoodMainAttrs => food.foods[0];
 
 export const spacesToHyphen = (text: string) => text.trim().replace(/ /g, "-");
@@ -21,8 +10,7 @@ export const getFilePath = (item: string) =>
 export const nutrientValuePer100gr = (weight: number, value: number): number =>
   (100 * value) / weight;
 
-// @TODO add type for the promise
-const getFoodItem = (item: string): Promise<any> =>
+const getFoodItem = (item: string): Promise<FoodPayload> =>
   import(
     `${
       process.env["REACT_APP_FOOD_COMPARISON_ROOT_FILE"]

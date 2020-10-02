@@ -1,6 +1,6 @@
 import { nutrientValuePer100gr } from "../scripts/nutrientMap";
 
-interface Nutrient {
+export interface Nutrient {
   attr_id: number;
   value: number;
 }
