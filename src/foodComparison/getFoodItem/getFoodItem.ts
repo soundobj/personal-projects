@@ -1,3 +1,5 @@
+import { FoodPayload, FoodMainAttrs } from "../foodUtils/foodUtils";
+
 export interface Food {
   full_nutrients: Nutrient[];
   food_name: string;
@@ -9,7 +11,7 @@ export interface Nutrient {
   value: number;
 }
 
-export const getFood = (json: any): Food => json?.foods[0] as Food;
+export const getFood = (food: FoodPayload): FoodMainAttrs => food.foods[0];
 
 export const spacesToHyphen = (text: string) => text.trim().replace(/ /g, "-");
 

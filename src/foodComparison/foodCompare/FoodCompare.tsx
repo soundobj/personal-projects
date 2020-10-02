@@ -1,28 +1,61 @@
 import React, { useState } from "react";
+import { isEmpty } from "lodash";
 import Creatable from "react-select/creatable";
 import { ValueType } from "react-select";
 import Menu, { OptionType } from "../menu/Menu";
 import PieChart from "../pieChart/PieChart";
-import { FoodPayload, getPieChartData } from "../foodUtils/foodUtils";
-import getFoodItem from "../getFoodItem/getFoodItem";
-import { createGroupedOptions, formatGroupLabel } from "../menu/options/Options";
-import items from '../items.json'
+import {
+  FoodPayload,
+  getPieChartData,
+  FoodMainAttrs,
+} from "../foodUtils/foodUtils";
+import getFoodItem, { getFood } from "../getFoodItem/getFoodItem";
+import {
+  createGroupedOptions,
+  formatGroupLabel,
+} from "../menu/options/Options";
+import items from "../items.json";
 
-interface Props {
-  
-}
+interface Props {}
 
-const grouped = createGroupedOptions(items)
+type SelectedFoodsState = Record<string, FoodMainAttrs>;
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+const grouped = createGroupedOptions(items);
+
+const handleSelectedFoods = (
+  userSelection: string[],
+  handler: (payload: SelectedFoodsState) => void
+) => {
+  if (isEmpty(userSelection)) {
+    handler({});
+    return;
+  }
+  Promise.all(
+    userSelection.map<Promise<FoodPayload>>((selection: string) =>
+      getFoodItem(selection)
+    )
+  ).then((foods: FoodPayload[]) => {
+    handler(createSelectedFoodState(foods));
+  });
+};
+
+const createSelectedFoodState = (foods: FoodPayload[]): SelectedFoodsState =>
+  foods.reduce<SelectedFoodsState>((acc, prev) => {
+    const food = getFood(prev);
+    acc[food.food_name] = food;
+    return acc;
+  }, {});
+
+const getUserSelectionValues = (
+  userSelection: ValueType<OptionType>
+): string[] =>
+  Array.isArray(userSelection)
+    ? userSelection.map<string>((x: OptionType) => x && x.value)
+    : [];
 
 const FoodCompare = (props: Props) => {
-  const [selectedOption, setSelectedOption] = useState<ValueType<OptionType>>(null);
-  const [selectedFoods, setSeletectFoods] = useState<Record<string, FoodPayload>>({})
+  const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>({});
+  console.error("@_selectedFoods", selectedFoods, Object.keys(selectedFoods));
 
   return (
     <>
@@ -34,17 +67,10 @@ const FoodCompare = (props: Props) => {
         // @ts-ignore
         formatGroupLabel={formatGroupLabel}
         onChange={(value: ValueType<OptionType>) => {
-          //@ts-ignore
-          console.error('@_changed', value);
-          setSelectedOption(value);
-          const val = Array.isArray(value) && value[0].value
-          getFoodItem(val).then((food: FoodPayload) => {
-            console.error('@_got food', food);
-            setSeletectFoods({[val]: food})
-          })
+          handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
-      <PieChart values={[2,4,6,8]} width={960} height={500} id="apple" />
+      <PieChart values={[2, 4, 6, 8]} width={960} height={500} id="apple" />
     </>
   );
 };

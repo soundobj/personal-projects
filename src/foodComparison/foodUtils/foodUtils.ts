@@ -5,7 +5,7 @@ interface Nutrient {
   value: number;
 }
 
-interface FoodMainAttrs {
+export interface FoodMainAttrs {
   nf_protein: number;
   nf_dietary_fiber: number;
   nf_saturated_fat: number;
@@ -14,6 +14,7 @@ interface FoodMainAttrs {
   nf_sugars: number;
   serving_weight_grams: number;
   full_nutrients: Nutrient[];
+  food_name: string;
 }
 
 export interface FoodPayload {

@@ -98,7 +98,7 @@ const PieChart = (props: Props) => {
     // }
 
     function arcTween(a) {
-      console.error("@_arcTween");
+      // console.error("@_arcTween");
       var i = d3.interpolate(this._current, a);
       this._current = i(0);
       return function (t) {
@@ -106,7 +106,7 @@ const PieChart = (props: Props) => {
       };
     }
     function arcTweenOut(a) {
-      console.error("@_arcTweenOut");
+      // console.error("@_arcTweenOut");  
       var i = d3.interpolate(this._current, {
         startAngle: Math.PI * 2,
         endAngle: Math.PI * 2,
