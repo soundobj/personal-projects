@@ -8,18 +8,12 @@ interface Props {
   values: number[];
   width: number;
   height: number;
-  // id: string;
   name: string;
 }
 
 const enterClockwise = {
   startAngle: 0,
   endAngle: 0,
-};
-
-const enterAntiClockwise = {
-  startAngle: Math.PI * 2,
-  endAngle: Math.PI * 2,
 };
 
 export const getRadius = (width: number, height: number) =>
@@ -29,29 +23,32 @@ const PieChart = (props: Props) => {
   const ref = useRef(null);
   const { values, width, height, name } = props;
   const radius = getRadius(width, height);
-  const [current, setCurrent] = useState(null)
+  const [currentChart, setCurrentChart] = useState(null);
+  const INNER_RADIUS = radius - 120;
+  const OUTER_RADIUS = radius - 10;
+
+  const arc = d3.arc().innerRadius(INNER_RADIUS).outerRadius(OUTER_RADIUS);
+
+  function arcTween(_arc) {
+    const interpolation = d3.interpolate(this._current, _arc);
+    this._current = interpolation(0);
+    return (item) => arc(interpolation(item));
+  }
 
   useEffect(() => {
-    console.error('@_ current', current);
-    let playStartAnimation = true;
+    let playLoadingAnimation = true;
 
-    if (current) {
-      console.error('@_ref', ref);
-      ref.current.innerHTML = '';
-      playStartAnimation = false;
+    if (currentChart) {
+      ref.current.innerHTML = "";
+      playLoadingAnimation = false;
     }
 
     const color = d3.schemeSet2;
     const pie = d3.pie().sort(null);
-    const arc = d3
-      .arc()
-      .innerRadius(radius - 120)
-      .outerRadius(radius - 10);
 
     const svg = d3
       .select(ref.current)
       .append("svg")
-      // .attr("id", "Donut-chart-render")
       .attr("width", "100%")
       .attr("height", "100%")
       .attr("viewBox", `${-width / 2} ${-height / 2} ${width} ${height}`)
@@ -62,9 +59,10 @@ const PieChart = (props: Props) => {
       .data(pie(values))
       .enter()
       .append("path")
-      .attr("fill", (d, i) => color[i])
-      .attr("d", arc(enterClockwise))
-      .each(function (d) {
+      .attr("fill", (d, i) => color[i]);
+
+    if (playLoadingAnimation) {
+      path.attr("d", arc(enterClockwise)).each(function (d) {
         this._current = {
           data: d.data,
           value: d.value,
@@ -72,67 +70,14 @@ const PieChart = (props: Props) => {
           endAngle: enterClockwise.endAngle,
         };
       });
-
-      // if (playStartAnimation) {
-        path.transition().duration(750).attrTween("d", arcTween);
-      // }
-
-    // d3.selectAll("input").on("change", change);
-
-    // function change() {
-    //   path = path.data(pie(dataset[this.value]));
-    //   path
-    //     .enter()
-    //     .append("path")
-    //     .attr("fill", function (d, i) {
-    //       return color(i);
-    //     })
-    //     .attr("d", arc(enterAntiClockwise))
-    //     .each(function (d) {
-    //       this._current = {
-    //         data: d.data,
-    //         value: d.value,
-    //         startAngle: enterAntiClockwise.startAngle,
-    //         endAngle: enterAntiClockwise.endAngle,
-    //       };
-    //     }); // store the initial values
-
-    //   path
-    //     .exit()
-    //     .transition()
-    //     .duration(750)
-    //     .attrTween("d", arcTweenOut)
-    //     .remove(); // now remove any redundant arcs
-
-    //   path.transition().duration(750).attrTween("d", arcTween); // redraw the arcs
-    // }
-
-    function arcTween(a) {
-      // console.error("@_arcTween");
-      var i = d3.interpolate(this._current, a);
-      this._current = i(0);
-      return function (t) {
-        return arc(i(t));
-      };
+      path.transition().duration(450).attrTween("d", arcTween);
+    } else {
+      path.attr(
+        "d",
+        d3.arc().innerRadius(INNER_RADIUS).outerRadius(OUTER_RADIUS)
+      );
     }
-    function arcTweenOut(a) {
-      // console.error("@_arcTweenOut");
-      var i = d3.interpolate(this._current, {
-        startAngle: Math.PI * 2,
-        endAngle: Math.PI * 2,
-        value: 0,
-      });
-      this._current = i(0);
-      return function (t) {
-        return arc(i(t));
-      };
-    }
-
-    setCurrent(name)
-    //CLEANUP
-    return function cleanup() {
-      // console.error("@_ cleanup");
-    };
+    setCurrentChart(name);
   }, [name]);
 
   return (
