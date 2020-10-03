@@ -1,8 +1,8 @@
 // @ts-nocheck
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 
-import "./PieChart.scss"
+import "./PieChart.scss";
 
 interface Props {
   values: number[];
@@ -29,12 +29,17 @@ const PieChart = (props: Props) => {
   const ref = useRef(null);
   const { values, width, height, name } = props;
   const radius = getRadius(width, height);
+  const [current, setCurrent] = useState(null)
 
   useEffect(() => {
-    // var dataset = {
-    //   apples: [0.31, 25.13, 4.37, 18.91, 0.47],
-    //   oranges: [20, 30, 10, 35, 5],
-    // };
+    console.error('@_ current', current);
+    let playStartAnimation = true;
+
+    if (current) {
+      console.error('@_ref', ref);
+      ref.current.innerHTML = '';
+      playStartAnimation = false;
+    }
 
     const color = d3.schemeSet2;
     const pie = d3.pie().sort(null);
@@ -68,7 +73,9 @@ const PieChart = (props: Props) => {
         };
       });
 
-    path.transition().duration(750).attrTween("d", arcTween);
+      // if (playStartAnimation) {
+        path.transition().duration(750).attrTween("d", arcTween);
+      // }
 
     // d3.selectAll("input").on("change", change);
 
@@ -109,7 +116,7 @@ const PieChart = (props: Props) => {
       };
     }
     function arcTweenOut(a) {
-      // console.error("@_arcTweenOut");  
+      // console.error("@_arcTweenOut");
       var i = d3.interpolate(this._current, {
         startAngle: Math.PI * 2,
         endAngle: Math.PI * 2,
@@ -120,6 +127,12 @@ const PieChart = (props: Props) => {
         return arc(i(t));
       };
     }
+
+    setCurrent(name)
+    //CLEANUP
+    return function cleanup() {
+      // console.error("@_ cleanup");
+    };
   }, [name]);
 
   return (

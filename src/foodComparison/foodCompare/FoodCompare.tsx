@@ -60,7 +60,7 @@ const getUserSelectionValues = (
 
 const FoodCompare = (props: Props) => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
-  console.error("@_selectedFoods", selectedFoods);
+  // console.error("@_selectedFoods", selectedFoods);
 
   return (
     <>
