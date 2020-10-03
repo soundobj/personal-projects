@@ -20,10 +20,11 @@ export const getRadius = (width: number, height: number) =>
   Math.min(width, height) / 2;
 
 const PieChart = (props: Props) => {
+  const [currentChart, setCurrentChart] = useState<string | undefined>(undefined);
   const ref = useRef(null);
+  
   const { values, width, height, name } = props;
   const radius = getRadius(width, height);
-  const [currentChart, setCurrentChart] = useState(null);
   const INNER_RADIUS = radius - 120;
   const OUTER_RADIUS = radius - 10;
 
