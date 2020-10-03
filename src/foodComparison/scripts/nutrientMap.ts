@@ -58,9 +58,11 @@ const doFood = (food: string) =>
       console.error(`@_could not find item ${food}, error:`, e);
     });
 
-Promise.all(foodDictionary.map(doFood)).then(() => {
-  nutrients.map((n) => n.foods.sort(orderByValueDesc));
-  fs.writeFile("../foodsByNutrient.json", prettyJSON(nutrients), (e) => {
-    console.error("@_done, errors:", e);
-  });
-});
+// @TODO: investigate why when running react this file gives a 
+// fs__WEBPACK_IMPORTED_MODULE_0___default.a.writeFile
+// Promise.all(foodDictionary.map(doFood)).then(() => {
+//   nutrients.map((n) => n.foods.sort(orderByValueDesc));
+//   fs.writeFile("../foodsByNutrient.json", prettyJSON(nutrients), (e) => {
+//     console.error("@_done, errors:", e);
+//   });
+// });
