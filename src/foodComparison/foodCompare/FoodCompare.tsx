@@ -4,6 +4,7 @@ import Creatable from "react-select/creatable";
 import { ValueType } from "react-select";
 import Menu, { OptionType } from "../menu/Menu";
 import PieChart from "../pieChart/PieChart";
+import FoodLegend from "../foodLegend/FoodLegend";
 import {
   FoodPayload,
   getPieChartData,
@@ -60,7 +61,6 @@ const getUserSelectionValues = (
 
 const FoodCompare = (props: Props) => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
-  // console.error("@_selectedFoods", selectedFoods);
 
   return (
     <>
@@ -76,11 +76,18 @@ const FoodCompare = (props: Props) => {
         }}
       />
       <div className="foodList">
-        {!isEmpty(selectedFoods) && selectedFoods.map((food: FoodMainAttrs) => (
-          <PieChart values={getPieChartData(food)} width={960} height={500} name={food.food_name} />
-        ))}
+        <FoodLegend />
+        {!isEmpty(selectedFoods) &&
+          selectedFoods.map((food: FoodMainAttrs) => (
+            <PieChart
+              key={food.food_name}
+              values={getPieChartData(food)}
+              width={960}
+              height={500}
+              name={food.food_name}
+            />
+          ))}
       </div>
-      {/* <PieChart values={[2, 4, 6, 8]} width={960} height={500} id="apple" /> */}
     </>
   );
 };

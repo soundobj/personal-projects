@@ -1,0 +1,19 @@
+.foodLegend {
+  display: flex;
+  flex-direction: column;
+
+  & dl {
+    display: flex;
+    margin-bottom: .3rem;
+  }
+
+  & dd {
+    margin-right: .3rem;
+    border: .1px solid rgb(197, 195, 195);
+  }
+  &__colour {
+    min-width: 15px;
+    min-height: 10px;
+    display: inline-block;
+  }
+}

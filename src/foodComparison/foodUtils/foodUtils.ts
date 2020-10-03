@@ -19,7 +19,7 @@ export interface FoodPayload {
   foods: FoodMainAttrs[];
 }
 
-interface PIE_CHART_ATTR {
+export interface PieCharttr {
   displayName: string;
   attr: string;
 }
@@ -55,7 +55,7 @@ export const VITAMINS = [
 
 export const getPieChartData = (food: FoodMainAttrs): number[] => {
 
-  return PIE_CHART_ATTRS.map<number>((attr: PIE_CHART_ATTR) =>
+  return PIE_CHART_ATTRS.map<number>((attr: PieCharttr) =>
     nutrientValuePer100gr(
       food.serving_weight_grams,
       food[attr.attr as FoodMainAttr]
