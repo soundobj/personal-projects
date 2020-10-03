@@ -3,7 +3,7 @@ import { find } from "lodash";
 import nutrientsSubset from "../nutrients-subset.json";
 import getFoodItem, { getFood } from "../getFoodItem/getFoodItem";
 import { getFoodDictionary } from "../typeAheadSuggestions/typeAheadsuggestions";
-import { FoodMainAttrs, Nutrient } from "../foodUtils/foodUtils";
+import { FoodMainAttrs, Nutrient, nutrientValuePer100gr } from "../foodUtils/foodUtils";
 
 interface NutrientFood {
   food_name: string;
@@ -18,8 +18,7 @@ export interface NutrientList {
   foods: NutrientFood[];
 }
 
-export const nutrientValuePer100gr = (weight: number, value: number): number =>
-  (100 * value) / weight;
+
 
 export const orderByValueDesc = (a: NutrientFood, b: NutrientFood) =>
   b.value - a.value;
@@ -58,11 +57,9 @@ const doFood = (food: string) =>
       console.error(`@_could not find item ${food}, error:`, e);
     });
 
-// @TODO: investigate why when running react this file gives a 
-// fs__WEBPACK_IMPORTED_MODULE_0___default.a.writeFile
-// Promise.all(foodDictionary.map(doFood)).then(() => {
-//   nutrients.map((n) => n.foods.sort(orderByValueDesc));
-//   fs.writeFile("../foodsByNutrient.json", prettyJSON(nutrients), (e) => {
-//     console.error("@_done, errors:", e);
-//   });
-// });
+Promise.all(foodDictionary.map(doFood)).then(() => {
+  nutrients.map((n) => n.foods.sort(orderByValueDesc));
+  fs.writeFile("../foodsByNutrient.json", prettyJSON(nutrients), (e) => {
+    console.error("@_done, errors:", e);
+  });
+});

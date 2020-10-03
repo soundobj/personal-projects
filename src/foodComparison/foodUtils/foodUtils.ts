@@ -1,5 +1,3 @@
-import { nutrientValuePer100gr } from "../scripts/nutrientMap";
-
 export interface Nutrient {
   attr_id: number;
   value: number;
@@ -25,6 +23,9 @@ interface PIE_CHART_ATTR {
   displayName: string;
   attr: string;
 }
+
+export const nutrientValuePer100gr = (weight: number, value: number): number =>
+  (100 * value) / weight;
 
 export const PIE_CHART_ATTRS = [
   { displayName: "Protein", attr: "nf_protein" },
