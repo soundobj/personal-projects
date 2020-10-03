@@ -52,8 +52,8 @@ export const VITAMINS = [
   320,323,328,401,430,578
 ]
 
-export const getPieChartData = (foodData: FoodPayload): number[] => {
-  const food = foodData.foods[0];
+export const getPieChartData = (food: FoodMainAttrs): number[] => {
+
   return PIE_CHART_ATTRS.map<number>((attr: PIE_CHART_ATTR) =>
     nutrientValuePer100gr(
       food.serving_weight_grams,

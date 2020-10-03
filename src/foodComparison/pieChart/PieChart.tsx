@@ -2,11 +2,14 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
+import "./PieChart.scss"
+
 interface Props {
   values: number[];
   width: number;
   height: number;
-  id: string;
+  // id: string;
+  name: string;
 }
 
 const enterClockwise = {
@@ -24,7 +27,7 @@ export const getRadius = (width: number, height: number) =>
 
 const PieChart = (props: Props) => {
   const ref = useRef(null);
-  const { values, width, height, id } = props;
+  const { values, width, height, name } = props;
   const radius = getRadius(width, height);
 
   useEffect(() => {
@@ -117,13 +120,13 @@ const PieChart = (props: Props) => {
         return arc(i(t));
       };
     }
-  }, []);
+  }, [name]);
 
   return (
-    <>
-      <p>pie</p>
+    <div className="chart">
+      <p>{name}</p>
       <div ref={ref}></div>
-    </>
+    </div>
   );
 };
 
