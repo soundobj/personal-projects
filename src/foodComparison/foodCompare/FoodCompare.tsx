@@ -16,6 +16,7 @@ import {
   formatGroupLabel,
 } from "../menu/options/Options";
 import items from "../items.json";
+import Nutrient from "../nutrient/Nutrient";
 
 import "./FoodCompare.scss";
 
@@ -75,6 +76,7 @@ const FoodCompare = (props: Props) => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
+      <Nutrient />
       <div className="foodList">
         <FoodLegend />
         {!isEmpty(selectedFoods) &&
