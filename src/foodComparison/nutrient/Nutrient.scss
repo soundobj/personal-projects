@@ -1,4 +1,8 @@
 .nutrient {
-  // background-color: yellowgreen;
-  // height: 20px;
+  &__name {
+    display: block;
+    text-align: center;
+    word-wrap: break-word;
+    padding: 5px 1em 0;
+  }
 }
