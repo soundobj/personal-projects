@@ -76,7 +76,11 @@ const FoodCompare = (props: Props) => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
-      <Nutrient />
+      <Nutrient
+        name="Iron"
+        GDA={{ value: 50, unit: "mg" }}
+        percentages={[70]}
+      />
       <div className="foodList">
         <FoodLegend />
         {!isEmpty(selectedFoods) &&

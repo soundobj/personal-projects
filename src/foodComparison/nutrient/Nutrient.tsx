@@ -3,24 +3,28 @@ import React from "react";
 import "../css/tools.scss";
 import "./Nutrient.scss";
 
-interface Props {}
+
+
+interface Props {
+  name: string;
+  GDA: { unit: string; value: number };
+  percentages: number[];
+}
 
 const Nutrient = (props: Props) => {
+  const { name, GDA, percentages } = props;
   return (
-    <article className="nutrient">
-      <header className="nutrient__name child">Iron</header>
-      <section className="outer">
-        <div className="inner">
-          <ul className="chart">
+    <article className="outer nutrient">
+      <div className="inner">
+        <header className="nutrient__name">{name}</header>
+        <ul className="chart">
+          {percentages.map((percentage) => (
             <li>
-              <span className="bar" style={{ height: "35%" }} title=""></span>
+              <span className="bar" style={{ height: `${percentage}%` }} />
             </li>
-            <li>
-              <span className="bar" style={{ height: "70%" }} title=""></span>
-            </li>
-          </ul>
-        </div>
-      </section>
+          ))}
+        </ul>
+      </div>
     </article>
   );
 };
