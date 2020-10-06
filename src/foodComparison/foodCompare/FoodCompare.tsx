@@ -29,7 +29,6 @@ interface FoodAndNutrients extends FoodMainAttrs {
   }
 }
 
-// type SelectedFoodsState = Record<string, FoodMainAttrs>;
 type SelectedFoodsState = FoodMainAttrs[];
 
 const grouped = createGroupedOptions(items);
@@ -38,10 +37,6 @@ const handleSelectedFoods = (
   userSelection: string[],
   handler: (payload: SelectedFoodsState) => void
 ) => {
-  // if (isEmpty(userSelection)) {
-  //   handler({});
-  //   return;
-  // }
   Promise.all(
     userSelection.map<Promise<FoodPayload>>((selection: string) =>
       getFoodItem(selection)
@@ -52,13 +47,6 @@ const handleSelectedFoods = (
     );
   });
 };
-
-// const createSelectedFoodState = (foods: FoodPayload[]): SelectedFoodsState =>
-//   foods.reduce<SelectedFoodsState>((acc, prev) => {
-//     const food = getFood(prev);
-//     acc[food.food_name] = food;
-//     return acc;
-//   }, {});
 
 const getUserSelectionValues = (
   userSelection: ValueType<OptionType>
