@@ -3,8 +3,6 @@ import React from "react";
 import "../css/tools.scss";
 import "./Nutrient.scss";
 
-
-
 interface Props {
   name: string;
   GDA: { unit: string; value: number };

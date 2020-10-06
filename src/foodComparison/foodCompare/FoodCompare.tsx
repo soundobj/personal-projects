@@ -17,10 +17,17 @@ import {
 } from "../menu/options/Options";
 import items from "../items.json";
 import Nutrient from "../nutrient/Nutrient";
+import { getNutrient, calcPercentage, NutrientAttrs, MINERALS } from "../foodUtils/foodUtils";
 
 import "./FoodCompare.scss";
 
-interface Props {}
+
+interface FoodAndNutrients extends FoodMainAttrs {
+  nutrients: {
+    minerals: number[],
+    vitamins: number[]
+  }
+}
 
 // type SelectedFoodsState = Record<string, FoodMainAttrs>;
 type SelectedFoodsState = FoodMainAttrs[];
@@ -60,7 +67,7 @@ const getUserSelectionValues = (
     ? userSelection.map<string>((x: OptionType) => x && x.value)
     : [];
 
-const FoodCompare = (props: Props) => {
+const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
 
   return (
