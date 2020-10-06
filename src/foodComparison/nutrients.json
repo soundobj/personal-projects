@@ -335,7 +335,7 @@
     "usda_nutr_desc": "Vitamin A, RAE",
     "usda_sr_order": 7420,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 900,
     "usda_tag": "VITA_RAE",
     "name": null
   },
@@ -385,7 +385,7 @@
     "usda_nutr_desc": "Vitamin D2 (ergocalciferol)",
     "usda_sr_order": 8710,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 50,
     "usda_tag": "ERGCAL",
     "name": null
   },
@@ -395,7 +395,7 @@
     "usda_nutr_desc": "Vitamin D3 (cholecalciferol)",
     "usda_sr_order": 8720,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 50,
     "usda_tag": "CHOCAL",
     "name": null
   },
@@ -405,7 +405,7 @@
     "usda_nutr_desc": "Vitamin D (D2 + D3)",
     "usda_sr_order": 8700,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 50,
     "usda_tag": "VITD",
     "name": null
   },
@@ -525,7 +525,7 @@
     "usda_nutr_desc": "Vitamin B-6",
     "usda_sr_order": 6800,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 1.6,
     "usda_tag": "VITB6A",
     "name": null
   },
@@ -545,7 +545,7 @@
     "usda_nutr_desc": "Vitamin B-12",
     "usda_sr_order": 7300,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 2.4,
     "usda_tag": "VITB12",
     "name": null
   },
@@ -585,7 +585,7 @@
     "usda_nutr_desc": "Vitamin K (phylloquinone)",
     "usda_sr_order": 8800,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 90,
     "usda_tag": "VITK1",
     "name": null
   },
@@ -595,7 +595,7 @@
     "usda_nutr_desc": "Folic acid",
     "usda_sr_order": 7000,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 400,
     "usda_tag": "FOLAC",
     "name": null
   },

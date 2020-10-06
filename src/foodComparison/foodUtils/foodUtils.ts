@@ -1,3 +1,4 @@
+import { curryRight } from "lodash";
 import _nutrients from "../nutrients.json";
 
 const nutrients: NutrientAttrs[] = _nutrients;
@@ -40,20 +41,14 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-export const nutrientValuePer100gr = (weight: number, value: number): number =>
-  (100 * value) / weight;
+export interface FoodNutrient {
+  name: string;
+  symbol?: string;
+  unit: string;
+  fda_daily_value: number;
+  percentages: number[];
+}
 
-export const calcPercentage = (partial: number, total: number) =>
-  (100 * partial) / total;
-
-export const getNutrient = (id: number) =>
-  nutrients.find((nutrient: NutrientAttrs) => nutrient.attr_id === id);
-
-export const getElement = (description: string): PeriodicElement => {
-  const [name, symbol] = description.split(", ");
-  return { name, symbol };
-};
-  
 export const PIE_CHART_ATTRS = [
   { displayName: "Protein", attr: "nf_protein" },
   { displayName: "Fiber", attr: "nf_dietary_fiber" },
@@ -71,6 +66,29 @@ type FoodMainAttr =
   | "nf_total_carbohydrate"
   | "nf_sugars";
 
+export const nutrientValuePer100gr = (weight: number, value: number): number =>
+  setFloatDecimals((100 * value) / weight);
+
+export const calcPercentage = (partial: number, total: number): number =>
+  setFloatDecimals((100 * partial) / total);
+
+export const setFloatDecimals = (
+  number: number,
+  decimals: number = 2
+): number => parseFloat(number.toFixed(decimals));
+
+export const getNutrient = (id: number) =>
+  nutrients.find((nutrient: NutrientAttrs) => nutrient.attr_id === id);
+
+export const getElement = (description: string): PeriodicElement => {
+  const [name, symbol] = description.split(", ");
+  return { name, symbol };
+};
+export const getVitaminName = (description: string): { name: string } => {
+  const [name] = description.split(",");
+  return { name: name.substring(name.length - 1) };
+};
+
 export const MINERALS = [301, 304, 305, 306, 307, 309, 312, 313, 315];
 
 // @TODO do veg or fruit have b12 578 or b6 415?
@@ -85,10 +103,35 @@ export const getPieChartData = (food: FoodMainAttrs): number[] => {
   );
 };
 
-// export const getNutrients = (): Promise<NutrientAttrs[]> =>
+export const getFoodNutrients = (
+  food: FoodMainAttrs,
+  nutrients: number[],
+  nameHandler: (name: string) => PeriodicElement | { name: string }
+): FoodNutrient[] => {
+  return nutrients.map<FoodNutrient>((n: number) => {
+    const nutrient = getNutrient(n);
+    if (!nutrient) {
+      return ({} as any) as FoodNutrient;
+    }
+    const foodNutrient = food.full_nutrients.find(
+      (x: Nutrient) => x.attr_id === nutrient.attr_id
+    );
+    const percentage = calcPercentage(
+      foodNutrient?.value || 0,
+      nutrient.fda_daily_value || 0
+    );
+    const output: FoodNutrient = {
+      ...nameHandler(nutrient?.usda_nutr_desc),
+      unit: nutrient.unit,
+      fda_daily_value: nutrient.fda_daily_value || 0,
+      percentages: [percentage],
+    };
 
-export const getMinerals = () => {};
+    return output;
+  });
+};
 
-export const getVitamins = () => {};
+export const getMinerals = curryRight(getFoodNutrients)(getElement);
+export const getVitamins = curryRight(getFoodNutrients)(getVitaminName);
 
 export const getFoodProfile = () => {};

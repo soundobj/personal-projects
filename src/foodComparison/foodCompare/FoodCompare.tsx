@@ -17,19 +17,17 @@ import {
 } from "../menu/options/Options";
 import items from "../items.json";
 import Nutrient from "../nutrient/Nutrient";
-import { getNutrient, calcPercentage, NutrientAttrs, MINERALS } from "../foodUtils/foodUtils";
+import { getMinerals, FoodNutrient } from "../foodUtils/foodUtils";
 
 import "./FoodCompare.scss";
 
 
 interface FoodAndNutrients extends FoodMainAttrs {
-  nutrients: {
-    minerals: number[],
-    vitamins: number[]
-  }
+  minerals: number[],
+  vitamins: number[]
 }
 
-type SelectedFoodsState = FoodMainAttrs[];
+type SelectedFoodsState = FoodAndNutrients[];
 
 const grouped = createGroupedOptions(items);
 
@@ -43,7 +41,13 @@ const handleSelectedFoods = (
     )
   ).then((foods: FoodPayload[]) => {
     handler(
-      foods.map<FoodMainAttrs>((x) => getFood(x))
+      foods.map<FoodAndNutrients>((x) => {
+        const food = getFood(x)
+        return { ...food, 
+          minerals: [],
+          vitamins: []
+        }
+      })
     );
   });
 };
@@ -57,7 +61,7 @@ const getUserSelectionValues = (
 
 const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
-
+console.error('@_selectedFoods', selectedFoods);
   return (
     <>
       <Creatable

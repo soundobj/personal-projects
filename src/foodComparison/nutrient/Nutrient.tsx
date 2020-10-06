@@ -1,15 +1,11 @@
 import React from "react";
 
+import { FoodNutrient } from "../foodUtils/foodUtils";
+
 import "../css/tools.scss";
 import "./Nutrient.scss";
 
-interface Props {
-  name: string;
-  GDA: { unit: string; value: number };
-  percentages: number[];
-}
-
-const Nutrient = (props: Props) => {
+const Nutrient = (props: FoodNutrient) => {
   const { name, GDA, percentages } = props;
   return (
     <article className="outer nutrient">
