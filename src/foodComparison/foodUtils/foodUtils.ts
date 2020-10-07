@@ -1,5 +1,7 @@
 import { curryRight } from "lodash";
+import produce from "immer";
 import _nutrients from "../nutrients.json";
+import { FoodAndNutrients } from "../foodCompare/FoodCompare";
 
 const nutrients: NutrientAttrs[] = _nutrients;
 
@@ -89,10 +91,10 @@ export const getVitaminName = (description: string): { name: string } => {
   return { name: name.substring(name.length - 1) };
 };
 
-export const MINERALS = [301, 304, 305, 306, 307, 309, 312, 313, 315];
+export const MINERALS = [301, 303, 304, 305, 306, 307, 309, 312, 313, 315];
 
-// @TODO do veg or fruit have b12 578 or b6 415?
-export const VITAMINS = [320, 323, 328, 401, 430, 578];
+// @TODO do veg or fruit have b12 578 or b6 415? D 328
+export const VITAMINS = [320, 401, 323, 430];
 
 export const getPieChartData = (food: FoodMainAttrs): number[] => {
   return PIE_CHART_ATTRS.map<number>((attr: PieCharttr) =>
@@ -135,3 +137,23 @@ export const getMinerals = curryRight(getFoodNutrients)(getElement);
 export const getVitamins = curryRight(getFoodNutrients)(getVitaminName);
 
 export const getFoodProfile = () => {};
+
+export const mergeFoodsNutrients = (
+  foodNutrients: FoodAndNutrients[]
+): FoodAndNutrients[] =>
+  produce(foodNutrients, (draft: FoodAndNutrients[]) => {
+    if (draft.length < 2) {
+      return foodNutrients;
+    }
+    draft[0].minerals.map<FoodNutrient>((mineral, index) => {
+      mineral.percentages.push(draft[1].minerals[index].percentages[0]);
+      return mineral;
+    });
+
+    draft[0].vitamins.map<FoodNutrient>((vitamins, index) => {
+      vitamins.percentages.push(draft[1].vitamins[index].percentages[0]);
+      return vitamins;
+    });
+
+    return draft;
+  });

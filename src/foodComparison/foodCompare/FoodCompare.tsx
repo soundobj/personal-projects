@@ -9,6 +9,12 @@ import {
   FoodPayload,
   getPieChartData,
   FoodMainAttrs,
+  FoodNutrient,
+  getVitamins,
+  getMinerals,
+  VITAMINS,
+  MINERALS,
+  mergeFoodsNutrients,
 } from "../foodUtils/foodUtils";
 import getFoodItem, { getFood } from "../getFoodItem/getFoodItem";
 import {
@@ -17,14 +23,12 @@ import {
 } from "../menu/options/Options";
 import items from "../items.json";
 import Nutrient from "../nutrient/Nutrient";
-import { getMinerals, FoodNutrient } from "../foodUtils/foodUtils";
 
 import "./FoodCompare.scss";
 
-
-interface FoodAndNutrients extends FoodMainAttrs {
-  minerals: number[],
-  vitamins: number[]
+export interface FoodAndNutrients extends FoodMainAttrs {
+  minerals: FoodNutrient[];
+  vitamins: FoodNutrient[];
 }
 
 type SelectedFoodsState = FoodAndNutrients[];
@@ -42,11 +46,12 @@ const handleSelectedFoods = (
   ).then((foods: FoodPayload[]) => {
     handler(
       foods.map<FoodAndNutrients>((x) => {
-        const food = getFood(x)
-        return { ...food, 
-          minerals: [],
-          vitamins: []
-        }
+        const food = getFood(x);
+        return {
+          ...food,
+          minerals: getMinerals(food, MINERALS),
+          vitamins: getVitamins(food, VITAMINS),
+        };
       })
     );
   });
@@ -61,7 +66,8 @@ const getUserSelectionValues = (
 
 const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
-console.error('@_selectedFoods', selectedFoods);
+  const foods = mergeFoodsNutrients(selectedFoods);
+  console.error("@foods", foods);
   return (
     <>
       <Creatable
@@ -75,25 +81,41 @@ console.error('@_selectedFoods', selectedFoods);
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
-      <Nutrient
-        name="Iron"
-        unit="mg"
-        fda_daily_value={50}
-        percentages={[70]}
-      />
-      <div className="foodList">
-        <FoodLegend />
-        {!isEmpty(selectedFoods) &&
-          selectedFoods.map((food: FoodMainAttrs) => (
-            <PieChart
-              key={food.food_name}
-              values={getPieChartData(food)}
-              width={960}
-              height={500}
-              name={food.food_name}
-            />
-          ))}
-      </div>
+
+      {/* <Nutrient name="Iron" unit="mg" fda_daily_value={50} percentages={[70]} /> */}
+      {isEmpty(foods) && <p>choose some food </p>}
+      {!isEmpty(foods) && (
+        <>
+          <div className="foodList">
+            <FoodLegend />
+            {foods.map((food: FoodMainAttrs) => (
+              <PieChart
+                key={food.food_name}
+                values={getPieChartData(food)}
+                width={960}
+                height={500}
+                name={food.food_name}
+              />
+            ))}
+          </div>
+          <h3>Minerals</h3>
+          <ul className="nutrientList">
+            {foods[0].minerals.map((mineral) => (
+              <li key={mineral.name} className="nutrientList__item">
+                <Nutrient  {...mineral} />
+              </li>
+            ))}
+          </ul>
+          <h3>Vitamins</h3>
+          <ul className="nutrientList">
+            {foods[0].vitamins.map((vitamin) => (
+              <li key={vitamin.name} className="nutrientList__item">
+                <Nutrient {...vitamin} />
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </>
   );
 };

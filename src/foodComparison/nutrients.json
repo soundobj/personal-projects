@@ -362,7 +362,7 @@
   {
     "attr_id": 323,
     "unit": "mg",
-    "usda_nutr_desc": "Vitamin E (alpha-tocopherol)",
+    "usda_nutr_desc": "Vitamin E, (alpha-tocopherol)",
     "usda_sr_order": 7900,
     "api_name": null,
     "fda_daily_value": 30,
@@ -402,7 +402,7 @@
   {
     "attr_id": 328,
     "unit": "µg",
-    "usda_nutr_desc": "Vitamin D (D2 + D3)",
+    "usda_nutr_desc": "Vitamin D, (D2 + D3)",
     "usda_sr_order": 8700,
     "api_name": null,
     "fda_daily_value": 50,
@@ -582,7 +582,7 @@
   {
     "attr_id": 430,
     "unit": "µg",
-    "usda_nutr_desc": "Vitamin K (phylloquinone)",
+    "usda_nutr_desc": "Vitamin K, (phylloquinone)",
     "usda_sr_order": 8800,
     "api_name": null,
     "fda_daily_value": 90,

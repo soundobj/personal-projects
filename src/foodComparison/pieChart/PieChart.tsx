@@ -82,7 +82,7 @@ const PieChart = (props: Props) => {
   }, [name]);
 
   return (
-    <div className="chart">
+    <div className="pieChart">
       <p>{name}</p>
       <div ref={ref}></div>
     </div>

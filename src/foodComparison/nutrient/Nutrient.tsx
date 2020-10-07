@@ -12,9 +12,12 @@ const Nutrient = (props: FoodNutrient) => {
       <div className="inner">
         <header className="nutrient__name">{name}</header>
         <ul className="chart">
-          {percentages.map((percentage) => (
-            <li>
-              <span className="bar" style={{ height: `${percentage}%` }} />
+          {percentages.map((percentage, index) => (
+            <li key={`${name}${index}`}>
+              <span
+                className="bar"
+                style={{ height: `${percentage > 100 ? 100 : percentage}%` }}
+              />
             </li>
           ))}
         </ul>
