@@ -62,7 +62,7 @@ const payload = {
     { attr_id: 341, value: 0 },
     { attr_id: 342, value: 0 },
     { attr_id: 343, value: 0 },
-    { attr_id: 401, value: 8.372 },
+    { attr_id: 401, value: 44.52 }, // LEMON STRENGHT
     { attr_id: 404, value: 0.0309 },
     { attr_id: 405, value: 0.0473 },
     { attr_id: 406, value: 0.1656 },
@@ -146,7 +146,7 @@ describe("foodComparison/foodUtils", () => {
           symbol: "Ca",
           unit: "mg",
           fda_daily_value: 1000,
-          percentages: [50],
+          percentages: [27.47],
         },
       ];
 
@@ -156,9 +156,9 @@ describe("foodComparison/foodUtils", () => {
 
   describe("getVitamins", () => {
     it("gets the minerals data percentages for a food", () => {
-      const vitamins = getVitamins(payload, [320]);
+      const vitamins = getVitamins(payload, [401]);
       const expected = [
-        { name: "A", unit: "µg", fda_daily_value: 900, percentages: [0.61] },
+        { name: "C", unit: "mg", fda_daily_value: 60, percentages: [40.77] },
       ];
       expect(vitamins).toMatchObject(expected)
     });

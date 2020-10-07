@@ -117,7 +117,7 @@ export const getFoodNutrients = (
       (x: Nutrient) => x.attr_id === nutrient.attr_id
     );
     const percentage = calcPercentage(
-      foodNutrient?.value || 0,
+      nutrientValuePer100gr(food.serving_weight_grams, foodNutrient?.value || 0) ,
       nutrient.fda_daily_value || 0
     );
     const output: FoodNutrient = {

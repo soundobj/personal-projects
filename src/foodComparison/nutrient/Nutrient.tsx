@@ -6,7 +6,7 @@ import "../css/tools.scss";
 import "./Nutrient.scss";
 
 const Nutrient = (props: FoodNutrient) => {
-  const { name, GDA, percentages } = props;
+  const { name, unit, fda_daily_value, percentages } = props;
   return (
     <article className="outer nutrient">
       <div className="inner">

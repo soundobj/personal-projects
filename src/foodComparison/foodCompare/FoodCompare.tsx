@@ -77,7 +77,8 @@ console.error('@_selectedFoods', selectedFoods);
       />
       <Nutrient
         name="Iron"
-        GDA={{ value: 50, unit: "mg" }}
+        unit="mg"
+        fda_daily_value={50}
         percentages={[70]}
       />
       <div className="foodList">
