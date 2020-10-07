@@ -81,8 +81,6 @@ const FoodCompare = () => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
-
-      {/* <Nutrient name="Iron" unit="mg" fda_daily_value={50} percentages={[70]} /> */}
       {isEmpty(foods) && <p>choose some food </p>}
       {!isEmpty(foods) && (
         <>

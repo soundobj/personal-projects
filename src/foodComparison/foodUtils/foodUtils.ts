@@ -88,13 +88,13 @@ export const getElement = (description: string): PeriodicElement => {
 };
 export const getVitaminName = (description: string): { name: string } => {
   const [name] = description.split(",");
-  return { name: name.substring(name.length - 1) };
+  return { name: name.split(' ')[1] };
 };
 
 export const MINERALS = [301, 303, 304, 305, 306, 307, 309, 312, 313, 315];
 
 // @TODO do veg or fruit have b12 578 or b6 415? D 328
-export const VITAMINS = [320, 401, 323, 430];
+export const VITAMINS = [320, 415, 401, 323, 430, 431];
 
 export const getPieChartData = (food: FoodMainAttrs): number[] => {
   return PIE_CHART_ATTRS.map<number>((attr: PieCharttr) =>
