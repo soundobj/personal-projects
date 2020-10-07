@@ -107,8 +107,8 @@ export const getFoodNutrients = (
   food: FoodMainAttrs,
   nutrients: number[],
   nameHandler: (name: string) => PeriodicElement | { name: string }
-): FoodNutrient[] => {
-  return nutrients.map<FoodNutrient>((n: number) => {
+): FoodNutrient[] =>
+  nutrients.map<FoodNutrient>((n: number) => {
     const nutrient = getNutrient(n);
     if (!nutrient) {
       return ({} as any) as FoodNutrient;
@@ -117,19 +117,19 @@ export const getFoodNutrients = (
       (x: Nutrient) => x.attr_id === nutrient.attr_id
     );
     const percentage = calcPercentage(
-      nutrientValuePer100gr(food.serving_weight_grams, foodNutrient?.value || 0) ,
+      nutrientValuePer100gr(
+        food.serving_weight_grams,
+        foodNutrient?.value || 0
+      ),
       nutrient.fda_daily_value || 0
     );
-    const output: FoodNutrient = {
+    return {
       ...nameHandler(nutrient?.usda_nutr_desc),
       unit: nutrient.unit,
       fda_daily_value: nutrient.fda_daily_value || 0,
       percentages: [percentage],
     };
-
-    return output;
   });
-};
 
 export const getMinerals = curryRight(getFoodNutrients)(getElement);
 export const getVitamins = curryRight(getFoodNutrients)(getVitaminName);
