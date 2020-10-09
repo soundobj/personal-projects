@@ -20,9 +20,8 @@ const encodeQuery = (tokens: string[]): string => tokens.join(SPACE_DELIMITER);
     does not play nicely with Promise.all;  the curried argument comes as '0' :(
     using a closure instead  
 */
-const fetchWikiPage = (type: string) => (item: string, index) => {
-  console.error("@_ itemout", index);
-  return new Promise((resolve) => {
+const fetchWikiPage = (type: string) => (item: string, index) =>
+  new Promise((resolve) => {
     // need to stagger the requests so wikipedia API does not think is a DOS attack
     setTimeout(() => {
       fetch(wikiAPIResquest(encodeQuery([type, ...item.split(" ")])), {
@@ -45,7 +44,6 @@ const fetchWikiPage = (type: string) => (item: string, index) => {
         });
     }, index * 3000);
   });
-};
 
 const fetchFruits = fetchWikiPage("fruit");
 const fetchVegetables = fetchWikiPage("vegetable");
