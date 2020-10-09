@@ -4,6 +4,7 @@ import Creatable from "react-select/creatable";
 import { ValueType } from "react-select";
 import Menu, { OptionType } from "../menu/Menu";
 import PieChart from "../pieChart/PieChart";
+import Info from "../info/Info";
 import FoodLegend from "../foodLegend/FoodLegend";
 import {
   FoodPayload,
@@ -68,6 +69,7 @@ const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
   const foods = mergeFoodsNutrients(selectedFoods);
   console.error("@foods", foods);
+
   return (
     <>
       <Creatable
@@ -93,14 +95,16 @@ const FoodCompare = () => {
                 width={960}
                 height={500}
                 name={food.food_name}
-              />
+              >
+                <Info name={food.food_name} />
+              </PieChart>
             ))}
           </div>
           <h3>Minerals</h3>
           <ul className="nutrientList">
             {foods[0].minerals.map((mineral) => (
               <li key={mineral.name} className="nutrientList__item">
-                <Nutrient  {...mineral} />
+                <Nutrient {...mineral} />
               </li>
             ))}
           </ul>

@@ -2,7 +2,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 
-import { ReactComponent as Info } from "../assets/information-button.svg";
 import "./PieChart.scss";
 
 interface Props {
@@ -10,6 +9,7 @@ interface Props {
   width: number;
   height: number;
   name: string;
+  children?: React.ReactNode;
 }
 
 const enterClockwise = {
@@ -21,10 +21,12 @@ export const getRadius = (width: number, height: number) =>
   Math.min(width, height) / 2;
 
 const PieChart = (props: Props) => {
-  const [currentChart, setCurrentChart] = useState<string | undefined>(undefined);
+  const [currentChart, setCurrentChart] = useState<string | undefined>(
+    undefined
+  );
   const ref = useRef(null);
-  
-  const { values, width, height, name } = props;
+
+  const { values, width, height, name, children } = props;
   const radius = getRadius(width, height);
   const INNER_RADIUS = radius - 120;
   const OUTER_RADIUS = radius - 10;
@@ -86,7 +88,7 @@ const PieChart = (props: Props) => {
     <div className="pieChart">
       <p>{name}</p>
       <div ref={ref} className="pieChart__container">
-        <Info className="pieChart__info" />
+        {children}
       </div>
     </div>
   );
