@@ -2,6 +2,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 
+import { ReactComponent as Info } from "../assets/information-button.svg";
 import "./PieChart.scss";
 
 interface Props {
@@ -84,7 +85,9 @@ const PieChart = (props: Props) => {
   return (
     <div className="pieChart">
       <p>{name}</p>
-      <div ref={ref}></div>
+      <div ref={ref} className="pieChart__container">
+        <Info className="pieChart__info" />
+      </div>
     </div>
   );
 };

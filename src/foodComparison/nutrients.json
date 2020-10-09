@@ -482,10 +482,10 @@
   {
     "attr_id": 404,
     "unit": "mg",
-    "usda_nutr_desc": "Thiamin",
+    "usda_nutr_desc": "Vitamin B1, Thiamin",
     "usda_sr_order": 6400,
     "api_name": null,
-    "fda_daily_value": null,
+    "fda_daily_value": 1400,
     "usda_tag": "THIA",
     "name": null
   },
@@ -592,7 +592,7 @@
   {
     "attr_id": 431,
     "unit": "µg",
-    "usda_nutr_desc": "Folate Folate,Folic acid",
+    "usda_nutr_desc": "Folate B9, Folic acid",
     "usda_sr_order": 7000,
     "api_name": null,
     "fda_daily_value": 400,

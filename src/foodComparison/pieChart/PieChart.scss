@@ -1,3 +1,14 @@
 .pieChart {
   margin: 0 auto;
+
+  &__container {
+    position: relative;
+  }
+
+  &__info {
+    width: 16%;
+    position: absolute;
+    top: 34.5%;
+    left: 42%;
+  }
 }

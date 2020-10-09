@@ -39,5 +39,5 @@ const fetchItem = (item) => {
       );
     });
 };
-
-itemsToFetch.forEach(fetchItem);
+console.error('@_attemp to run fetch items',);
+// itemsToFetch.forEach(fetchItem);
