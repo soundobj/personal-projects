@@ -1,19 +1,18 @@
-// @ts-nocheck
 import React, { useEffect, useState, useRef } from "react";
 import { Overlay, Popover } from "react-bootstrap";
 
 interface Props {
-  delay: number
-  onMouseEnter?: () => void
-  children: React.ReactNode
-  component: React.ReactNode
-  placement: "top" | "left" | "right" | "bottom"
+  delay: number;
+  onMouseEnter?: () => void;
+  children: React.ReactNode;
+  component: React.ReactNode;
+  placement: "top" | "left" | "right" | "bottom";
 }
 
 const PopoverStickOnHover = (props: Props) => {
   const { delay, onMouseEnter, children, component, placement } = props;
   const [showPopover, setShowPopover] = useState(false);
-  const childNode = useRef(null);
+  const childNode = useRef<React.ReactNode>(null);
   let setTimeoutConst: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
@@ -36,29 +35,32 @@ const PopoverStickOnHover = (props: Props) => {
     setShowPopover(false);
   };
 
-  const displayChild = React.Children.map(children, (child) =>
-    React.cloneElement(child, {
-      onMouseEnter: handleMouseEnter,
-      onMouseLeave: handleMouseLeave,
-      ref: (node) => {
-        childNode.current = node;
-        const { ref } = child;
-        if (typeof ref === "function") {
-          ref(node);
-        }
-      },
-    })
-  )[0];
+  // we decorate React.Children with functionality
+  const displayChild = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, {
+        onMouseEnter: handleMouseEnter,
+        onMouseLeave: handleMouseLeave,
+        ref: (node: React.ReactNode) => {
+          childNode.current = node;
+          //@ts-ignore
+          const { ref } = child;
+          if (typeof ref === "function") {
+            ref(node);
+          }
+        },
+      });
+    }
+  });
 
   return (
     <>
-      {displayChild} 
+      {displayChild?.length && displayChild[0]}
       <Overlay
         show={showPopover}
         placement={placement}
         // @ts-ignore
         target={childNode}
-        shouldUpdatePosition
       >
         <Popover
           onMouseEnter={() => {
@@ -72,6 +74,6 @@ const PopoverStickOnHover = (props: Props) => {
       </Overlay>
     </>
   );
-}
+};
 
 export default PopoverStickOnHover;
