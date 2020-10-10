@@ -1,17 +1,20 @@
+// @ts-nocheck
 import React, { useEffect, useState, useRef } from "react";
-import PropTypes from "prop-types";
 import { Overlay, Popover } from "react-bootstrap";
 
-function PopoverStickOnHover({
-  delay,
-  onMouseEnter,
-  children,
-  component,
-  placement,
-}) {
+interface Props {
+  delay: number
+  onMouseEnter?: () => void
+  children: React.ReactNode
+  component: React.ReactNode
+  placement: "top" | "left" | "right" | "bottom"
+}
+
+const PopoverStickOnHover = (props: Props) => {
+  const { delay, onMouseEnter, children, component, placement } = props;
   const [showPopover, setShowPopover] = useState(false);
   const childNode = useRef(null);
-  let setTimeoutConst = null;
+  let setTimeoutConst: ReturnType<typeof setTimeout>;
 
   useEffect(() => {
     return () => {
@@ -24,7 +27,7 @@ function PopoverStickOnHover({
   const handleMouseEnter = () => {
     setTimeoutConst = setTimeout(() => {
       setShowPopover(true);
-      onMouseEnter();
+      onMouseEnter && onMouseEnter();
     }, delay);
   };
 
@@ -53,6 +56,7 @@ function PopoverStickOnHover({
       <Overlay
         show={showPopover}
         placement={placement}
+        // @ts-ignore
         target={childNode}
         shouldUpdatePosition
       >
@@ -69,18 +73,5 @@ function PopoverStickOnHover({
     </>
   );
 }
-
-PopoverStickOnHover.propTypes = {
-  children: PropTypes.element.isRequired,
-  delay: PropTypes.number,
-  onMouseEnter: PropTypes.func,
-  component: PropTypes.node.isRequired,
-  placement: PropTypes.string.isRequired,
-};
-
-PopoverStickOnHover.defaultProps = {
-  delay: 0,
-  onMouseEnter: () => {},
-};
 
 export default PopoverStickOnHover;

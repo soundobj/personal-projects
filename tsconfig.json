@@ -17,7 +17,7 @@
     "jsx": "react",
     "strict": true,
     "isolatedModules": true,
-    // "module": "esnext"
+    "module": "esnext"
   },
   "include": [
     "src"
