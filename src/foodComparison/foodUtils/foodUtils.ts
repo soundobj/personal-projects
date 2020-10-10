@@ -162,19 +162,15 @@ export const mergeFoodsNutrients = (
     return draft;
   });
 
-export const calcWaterContentPercentage = (
-  food: FoodMainAttrs
-): number => {
+export const calcWaterContentPercentage = (food: FoodMainAttrs): number => {
   const partial = [
     "nf_total_fat",
     "nf_saturated_fat",
     "nf_total_carbohydrate",
     "nf_dietary_fiber",
     "nf_sugars",
-    "nf_protein"
-  ].reduce<number>((prev, cur) => {
-    //@ts-ignore
-    return prev += food[cur]
-  }, 0);
-  return Math.round(100 - calcPercentage(partial, food.serving_weight_grams))
+    "nf_protein",
+  //@ts-ignore
+  ].reduce<number>((prev, cur) => (prev += food[cur]), 0);
+  return Math.round(100 - calcPercentage(partial, food.serving_weight_grams));
 };

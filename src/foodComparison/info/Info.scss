@@ -4,3 +4,17 @@
   top: 34.5%;
   left: 42%;
 }
+
+.food {
+  &__info {
+    margin: 0 auto;
+    max-width: 250px;
+
+    &__image {
+      width: 100%;
+      max-width: 80px;
+      height: auto;
+      border: 1px solid lightgray;
+    }
+  }
+}

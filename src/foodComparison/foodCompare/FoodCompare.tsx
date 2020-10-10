@@ -26,6 +26,7 @@ import items from "../items.json";
 import Nutrient from "../nutrient/Nutrient";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import { ReactComponent as Icon } from "../assets/information-button.svg";
+import apple from "../foods/apple.json"
 
 import "./FoodCompare.scss";
 
@@ -103,9 +104,10 @@ const FoodCompare = () => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
+      <Info {...getFood(apple)} />
       {isEmpty(foods) && <p>choose some food </p>}
       {!isEmpty(foods) && (
-        <>
+        <> 
           <div className="foodList">
             <FoodLegend />
             {foods.map((food: FoodMainAttrs) => (
