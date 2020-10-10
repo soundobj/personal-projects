@@ -20,6 +20,8 @@ export interface FoodMainAttrs {
   serving_weight_grams: number;
   full_nutrients: Nutrient[];
   food_name: string;
+  nf_calories: number;
+  photo: { thumb: string };
 }
 
 export interface NutrientAttrs {
@@ -88,7 +90,7 @@ export const getElement = (description: string): PeriodicElement => {
 };
 export const getVitaminName = (description: string): { name: string } => {
   const [name] = description.split(",");
-  return { name: name.split(' ')[1] };
+  return { name: name.split(" ")[1] };
 };
 
 export const MINERALS = [301, 303, 304, 305, 306, 307, 309, 312, 313, 315];
@@ -159,3 +161,20 @@ export const mergeFoodsNutrients = (
 
     return draft;
   });
+
+export const calcWaterContentPercentage = (
+  food: FoodMainAttrs
+): number => {
+  const partial = [
+    "nf_total_fat",
+    "nf_saturated_fat",
+    "nf_total_carbohydrate",
+    "nf_dietary_fiber",
+    "nf_sugars",
+    "nf_protein"
+  ].reduce<number>((prev, cur) => {
+    //@ts-ignore
+    return prev += food[cur]
+  }, 0);
+  return Math.round(100 - calcPercentage(partial, food.serving_weight_grams))
+};

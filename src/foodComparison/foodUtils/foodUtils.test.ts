@@ -1,6 +1,12 @@
-import { getPieChartData, getMinerals, getVitamins } from "./foodUtils";
+import {
+  getPieChartData,
+  getMinerals,
+  getVitamins,
+  FoodMainAttrs,
+  calcWaterContentPercentage,
+} from "./foodUtils";
 
-const payload = {
+const payload = ({
   food_name: "apple",
   brand_name: null,
   serving_qty: 1,
@@ -121,19 +127,12 @@ const payload = {
     { attr_id: 645, value: 0.0127 },
     { attr_id: 646, value: 0.0928 },
   ],
-};
+} as any) as FoodMainAttrs;
 
 describe("foodComparison/foodUtils", () => {
   describe("getPieChartData", () => {
     it("gets the values for the pieChart", () => {
-      const expected = [
-        0.26,
-        2.4,
-        0.17,
-        0.03,
-        13.81,
-        10.39,
-      ];
+      const expected = [0.26, 2.4, 0.17, 0.03, 13.81, 10.39];
       expect(getPieChartData(payload)).toMatchObject(expected);
     });
   });
@@ -160,7 +159,13 @@ describe("foodComparison/foodUtils", () => {
       const expected = [
         { name: "C", unit: "mg", fda_daily_value: 60, percentages: [40.77] },
       ];
-      expect(vitamins).toMatchObject(expected)
+      expect(vitamins).toMatchObject(expected);
     });
+  });
+
+  describe("calculateWaterContentPercentage", () => {
+    it("gets the amount of water per 100 grms", () => {});
+      const res = calcWaterContentPercentage(payload);
+      expect(res).toEqual(73)
   });
 });

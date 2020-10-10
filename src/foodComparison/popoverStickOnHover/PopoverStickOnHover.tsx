@@ -35,7 +35,7 @@ const PopoverStickOnHover = (props: Props) => {
     setShowPopover(false);
   };
 
-  // we decorate React.Children with functionality
+  // decorate React.Children (hover target) with mouse event functionality
   const displayChild = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       return React.cloneElement(child, {

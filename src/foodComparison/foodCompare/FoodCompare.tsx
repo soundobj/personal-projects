@@ -24,6 +24,8 @@ import {
 } from "../menu/options/Options";
 import items from "../items.json";
 import Nutrient from "../nutrient/Nutrient";
+import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
+import { ReactComponent as Icon } from "../assets/information-button.svg";
 
 import "./FoodCompare.scss";
 
@@ -70,6 +72,24 @@ const FoodCompare = () => {
   const foods = mergeFoodsNutrients(selectedFoods);
   console.error("@foods", foods);
 
+  const PopOver = (props: FoodMainAttrs) => (
+    <PopoverStickOnHover
+      delay={500}
+      placement="bottom"
+      onMouseEnter={() => console.error("@_ enterMouse")}
+      component={<Info {...props} />}
+    >
+      <Icon
+        style={{
+          width: "16%",
+          position: "absolute",
+          left: "42%",
+          top: "34.5%",
+        }}
+      />
+    </PopoverStickOnHover>
+  );
+
   return (
     <>
       <Creatable
@@ -96,7 +116,7 @@ const FoodCompare = () => {
                 height={500}
                 name={food.food_name}
               >
-                <Info name={food.food_name} />
+                <PopOver {...food}  />
               </PieChart>
             ))}
           </div>
