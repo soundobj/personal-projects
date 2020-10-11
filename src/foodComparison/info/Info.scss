@@ -10,22 +10,47 @@
     margin: 0 auto;
     max-width: 250px;
 
+    // &__waterAndCalories {
+    //   display: flex;
+    //   margin-bottom: .5rem;
+
+    //   li:first-child {
+    //     margin-right: 1rem;
+    //   }
+    // }
+
     &__image {
       max-width: 80px;
       border: 1px solid lightgray;
     }
 
-    &__water {
-      position: relative;
-      &__img {
-        max-width: 40px;
-      }
-      &__percentage {
-        top: 60% !important;
-      }
-      &__legend {
-        text-align: center;
-      }
-    }
+  //   &__graphic {
+  //     position: relative;
+  //   }
+
+  //   &__water {
+  //     &__img {
+  //       max-width: 40px;
+  //     }
+  //     &__percentage {
+  //       top: 60% !important;
+  //     }
+  //     &__legend {
+  //       text-align: center;
+  //     }
+  //   }
+
+  //   &__calories {
+  //     &__img {
+  //       max-width: 50px;
+  //     }
+  //     &__percentage {
+  //       top: 70% !important;
+  //       left: 51% !important;
+  //     }
+  //     &__legend {
+  //       text-align: center;
+  //     }
+  //   }
   }
 }
