@@ -11,10 +11,21 @@
     max-width: 250px;
 
     &__image {
-      width: 100%;
       max-width: 80px;
-      height: auto;
       border: 1px solid lightgray;
+    }
+
+    &__water {
+      position: relative;
+      &__img {
+        max-width: 40px;
+      }
+      &__percentage {
+        top: 60% !important;
+      }
+      &__legend {
+        text-align: center;
+      }
     }
   }
 }

@@ -6,7 +6,8 @@ import {
   calcWaterContentPercentage,
 } from "../foodUtils/foodUtils";
 import { spacesToHyphen } from "../getFoodItem/getFoodItem";
-import foo from "../assets/image-placeholder.svg";
+import placeholder from "../assets/image-placeholder.svg";
+import drop from "../assets/drop.svg";
 
 import "./Info.scss";
 
@@ -15,6 +16,17 @@ type Module = {
 };
 
 const links: Record<string, string> = _wikilinks;
+
+const WaterGraphic = (props: {value: number}) => {
+  console.error('@_val',props.value);
+  return (<dl>
+    <dd className="food__info__water">
+        <img src={drop} className="food__info__water__img center fluid-img-ratio" />
+      <span className="food__info__water__percentage absolute-center">{`${props.value}%`}</span>
+    </dd>
+    <dt className="food__info__water__legend">water</dt>
+  </dl>)
+};
 
 const Info = (props: FoodMainAttrs) => {
   const [image, setImage] = useState<Module>();
@@ -38,16 +50,13 @@ const Info = (props: FoodMainAttrs) => {
       <Popover.Content>
         <section className="">
           <img
-            className="food__info__image"
-            src={(image && image.default) || foo}
+            className="food__info__image fluid-img-ratio"
+            src={(image && image.default) || placeholder}
             alt={food_name}
           />
           <ul>
             <li>
-              <dl>
-                <dd></dd>
-                <dt></dt>
-              </dl>
+              <WaterGraphic value={calcWaterContentPercentage(props)} />
             </li>
           </ul>
         </section>

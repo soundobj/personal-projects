@@ -29,6 +29,7 @@ import { ReactComponent as Icon } from "../assets/information-button.svg";
 import apple from "../foods/apple.json"
 
 import "./FoodCompare.scss";
+import "../css/tools.scss"
 
 export interface FoodAndNutrients extends FoodMainAttrs {
   minerals: FoodNutrient[];

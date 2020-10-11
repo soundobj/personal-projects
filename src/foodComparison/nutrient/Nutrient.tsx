@@ -2,7 +2,6 @@ import React from "react";
 
 import { FoodNutrient } from "../foodUtils/foodUtils";
 
-import "../css/tools.scss";
 import "./Nutrient.scss";
 
 const Nutrient = (props: FoodNutrient) => {
