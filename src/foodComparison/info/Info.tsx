@@ -9,6 +9,8 @@ import { spacesToHyphen } from "../getFoodItem/getFoodItem";
 import placeholder from "../assets/image-placeholder.svg";
 import drop from "../assets/drop.svg";
 import calories from "../assets/calories.svg";
+// import { ReactComponent as Coin } from '../assets/coin.svg';
+import  Coin  from "../coin/Coin";
 
 import "./Info.scss";
 
@@ -63,15 +65,16 @@ const Info = (props: FoodMainAttrs) => {
             <ul>
               {infoFields.map((item) => (
                 <li>
-                  <dd>
-                    <dl>{item.name}</dl>
+                  <dl>
+                    <dt>{item.name}</dt>
                     <dd>{item.value}</dd>
-                  </dd>
+                  </dl>
                 </li>
               ))}
             </ul>
           </div>
         </section>
+        <Coin />
         <footer>
           <a href={links[food_name]} target="new">
             find out more
