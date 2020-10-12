@@ -23,7 +23,7 @@ const Coin = (props: Props) => {
       xmlSpace="preserve"
       className="coin"
     >
-      <circle className="st0" cx="125" cy="120" r="115" />
+      <circle className="st0" cx="125" cy="125" r="120" />
       <text className="coin__value" transform="translate(70,150)">
         {value}
       </text>
