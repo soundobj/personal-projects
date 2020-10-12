@@ -7,9 +7,6 @@ import {
 } from "../foodUtils/foodUtils";
 import { spacesToHyphen } from "../getFoodItem/getFoodItem";
 import placeholder from "../assets/image-placeholder.svg";
-import drop from "../assets/drop.svg";
-import calories from "../assets/calories.svg";
-// import { ReactComponent as Coin } from '../assets/coin.svg';
 import  Coin  from "../coin/Coin";
 
 import "./Info.scss";
@@ -74,7 +71,8 @@ const Info = (props: FoodMainAttrs) => {
             </ul>
           </div>
         </section>
-        <Coin />
+        <Coin title="calories" value={90} caption="per 100gr" />
+        {/* <Coin2 /> */}
         <footer>
           <a href={links[food_name]} target="new">
             find out more
