@@ -71,7 +71,7 @@ const Info = (props: FoodMainAttrs) => {
             </ul>
           </div>
         </section>
-        <Coin title="calories" value={90} caption="per 100gr" />
+        <Coin title="calories" value={999} caption="per 100gr" fill="db4d29" />
         {/* <Coin2 /> */}
         <footer>
           <a href={links[food_name]} target="new">
