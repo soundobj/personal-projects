@@ -7,7 +7,8 @@ import {
 } from "../foodUtils/foodUtils";
 import { spacesToHyphen } from "../getFoodItem/getFoodItem";
 import placeholder from "../assets/image-placeholder.svg";
-import  Coin  from "../coin/Coin";
+import { ReactComponent as Wikipedia } from "../assets/wikipedia-logo.svg";
+import Coin from "../coin/Coin";
 
 import "./Info.scss";
 
@@ -71,8 +72,21 @@ const Info = (props: FoodMainAttrs) => {
             </ul>
           </div>
         </section>
-        <Coin title="calories" value={999} caption="per 100gr" fill="db4d29" />
-        {/* <Coin2 /> */}
+
+        <Coin title="calories" value={99} caption="per 100gr" />
+        <Coin
+          component={
+            <a
+              href="https://en.wikipedia.org/wiki/Apple"
+              target="new"
+              title={`go to wikipedia page for ${"apple"}`}
+              className="coin__wikiLogo"
+            >
+              <Wikipedia />
+            </a>
+          }
+        />
+
         <footer>
           <a href={links[food_name]} target="new">
             find out more

@@ -105,7 +105,9 @@ const FoodCompare = () => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
+      <div style={{maxWidth: "150px"}}>
       <Info {...getFood(apple)} />
+      </div>
       {isEmpty(foods) && <p>choose some food </p>}
       {!isEmpty(foods) && (
         <> 
