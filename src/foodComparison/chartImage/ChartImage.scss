@@ -1,23 +1,17 @@
-.clip {
+.chartImage__clip {
   clip-path: circle(42% at 50% 50%);
 }
 
-.wrap {
-  display: flex;
-  flex-direction: row;
-}
-
-.container {
+.triangleBorder {
   clip-path: circle(43% at 50% 49.5%);
   background-image: url("../assets/patterns/black-triangle-double.png");
 }
-.container1 {
+.squareBorder {
   clip-path: circle(45% at 50% 49.5%);
-  width: 500px;
   background-image: url("../assets/patterns/black-square.png");
 }
 
-.triangle-black-border-bottom {
+.triangle-border-bottom {
   border-image-slice: 0 0 15 0;
   border-image-width: 10px 0px 5px 0px;
   border-image-outset: 0px 0px 0px 0px;
@@ -25,7 +19,7 @@
   border-image-source: url("../assets/patterns/black-triangle-bg.jpg");
 }
 
-.square-black-border-bottom {
+.square-border-bottom {
   border-image-slice: 0 0 20 0;
   border-image-width: 0px 0px 5px 0px;
   border-image-outset: 0px 0px 0px 0px;
