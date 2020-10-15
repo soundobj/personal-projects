@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "Oswald";
+  src: URL("../assets/fonts/Oswald/static/Oswald-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: URL("../assets/fonts/Montserrat/Montserrat-Regular.ttf")
+    format("truetype");
+}
+
 .center {
   display: block;
   margin-left: auto;

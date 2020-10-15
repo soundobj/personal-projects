@@ -108,7 +108,7 @@ const FoodCompare = () => {
         }}
       />
 
-      <ChartImage food_name="lentil" />
+      <ChartImage food_name={!isEmpty(foods) && foods[0].food_name || "lentil"} />
       {/* <FoodImage food_name="lentil" /> */}
       {/* <div style={{maxWidth: "150px"}}>
       <PeriodicElement />
