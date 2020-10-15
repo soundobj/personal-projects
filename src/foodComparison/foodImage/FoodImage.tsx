@@ -7,11 +7,11 @@ type Module = {
   default: string;
 };
 
-interface Props extends Pick<FoodMainAttrs, "food_name"> {
+export interface FoodImageProps extends Pick<FoodMainAttrs, "food_name"> {
   className?: string;
 }
 
-const FoodImage = (props: Props) => {
+const FoodImage = (props: FoodImageProps) => {
   const [image, setImage] = useState<Module>();
   const { food_name, className } = props;
   useEffect(() => {
@@ -30,7 +30,7 @@ const FoodImage = (props: Props) => {
 
   return (
     <img
-      className={`${className || ""}fluid-img-ratio`}
+      className={`${className || ""} fluid-img-ratio`}
       src={(image && image.default) || placeholder}
       alt={food_name}
     />

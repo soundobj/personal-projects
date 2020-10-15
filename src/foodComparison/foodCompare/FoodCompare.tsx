@@ -26,10 +26,13 @@ import items from "../items.json";
 import Nutrient from "../nutrient/Nutrient";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import { ReactComponent as Icon } from "../assets/information-button.svg";
-import apple from "../foods/apple.json"
+import PeriodicElement from "../periodicElement/PeriodicElement";
+import ChartImage from "../chartImage/ChartImage";
+import FoodImage from "../foodImage/FoodImage";
 
+
+import "../css/tools.scss";
 import "./FoodCompare.scss";
-import "../css/tools.scss"
 
 export interface FoodAndNutrients extends FoodMainAttrs {
   minerals: FoodNutrient[];
@@ -69,28 +72,27 @@ const getUserSelectionValues = (
     ? userSelection.map<string>((x: OptionType) => x && x.value)
     : [];
 
+const PopOver = (props: FoodMainAttrs) => (
+  <PopoverStickOnHover
+    delay={500}
+    placement="bottom"
+    component={<Info {...props} />}
+  >
+    <Icon
+      style={{
+        width: "16%",
+        position: "absolute",
+        left: "42%",
+        top: "34.5%",
+      }}
+    />
+  </PopoverStickOnHover>
+);
+
 const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
   const foods = mergeFoodsNutrients(selectedFoods);
   console.error("@foods", foods);
-
-  const PopOver = (props: FoodMainAttrs) => (
-    <PopoverStickOnHover
-      delay={500}
-      placement="bottom"
-      onMouseEnter={() => console.error("@_ enterMouse")}
-      component={<Info {...props} />}
-    >
-      <Icon
-        style={{
-          width: "16%",
-          position: "absolute",
-          left: "42%",
-          top: "34.5%",
-        }}
-      />
-    </PopoverStickOnHover>
-  );
 
   return (
     <>
@@ -105,12 +107,15 @@ const FoodCompare = () => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
-      <div style={{maxWidth: "150px"}}>
-      <Info {...getFood(apple)} />
-      </div>
+
+      <ChartImage food_name="lentil" />
+      {/* <FoodImage food_name="lentil" /> */}
+      {/* <div style={{maxWidth: "150px"}}>
+      <PeriodicElement />
+      </div> */}
       {isEmpty(foods) && <p>choose some food </p>}
       {!isEmpty(foods) && (
-        <> 
+        <>
           <div className="foodList">
             <FoodLegend />
             {foods.map((food: FoodMainAttrs) => (
@@ -121,7 +126,7 @@ const FoodCompare = () => {
                 height={500}
                 name={food.food_name}
               >
-                <PopOver {...food}  />
+                <PopOver {...food} />
               </PieChart>
             ))}
           </div>
