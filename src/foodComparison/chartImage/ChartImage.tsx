@@ -7,7 +7,7 @@ const ChartImage = (props: FoodImageProps) => {
   const { food_name } = props;
   return (
     <div className="container">
-    <FoodImage food_name={food_name} className="clip" /> 
+      <FoodImage food_name={food_name} className="clip" /> 
     </div>
   )
 }

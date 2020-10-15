@@ -3,5 +3,7 @@
 }
 
 .container {
+  clip-path: circle(43% at 50% 49.5%);
   max-width: 500px;
+  background-image: url("../assets/patterns/green-circles.jpg");
 }
