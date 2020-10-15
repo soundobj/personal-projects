@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Popover } from "react-bootstrap";
 import _wikilinks from "../foodWikiLinks.json";
 import {
   FoodMainAttrs,
   calcWaterContentPercentage,
 } from "../foodUtils/foodUtils";
-import { spacesToHyphen } from "../getFoodItem/getFoodItem";
-import placeholder from "../assets/image-placeholder.svg";
+import FoodImage from "../foodImage/FoodImage";
 import { ReactComponent as Wikipedia } from "../assets/wikipedia-logo.svg";
 import Coin from "../coin/Coin";
 
@@ -19,7 +18,6 @@ type Module = {
 const links: Record<string, string> = _wikilinks;
 
 const Info = (props: FoodMainAttrs) => {
-  const [image, setImage] = useState<Module>();
   const { food_name, nf_calories, serving_weight_grams } = props;
 
   const infoFields = [
@@ -37,29 +35,13 @@ const Info = (props: FoodMainAttrs) => {
     },
   ];
 
-  useEffect(() => {
-    try {
-      import(
-        `${
-          process.env["REACT_APP_FOOD_COMPARISON_ROOT_FILE"]
-        }thumbs/${spacesToHyphen(food_name)}.jpg`
-      ).then((img: Module) => {
-        setImage(img);
-      });
-    } catch (error) {}
-  }, [food_name]);
-
   return (
     <article className="food__info">
       <Popover.Title as="h3">{food_name}</Popover.Title>
       <Popover.Content>
         <section className="">
           <div>
-            <img
-              className="food__info__image fluid-img-ratio"
-              src={(image && image.default) || placeholder}
-              alt={food_name}
-            />
+            <FoodImage food_name={food_name} className="food__info__image" />
             <ul>
               {infoFields.map((item) => (
                 <li>

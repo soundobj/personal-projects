@@ -53,7 +53,7 @@ const Coin = (props: Props) => {
       {caption && (
         <span className="absolute-center coin__caption">{caption}</span>
       )}
-      {component && <span className="absolute-center coin__component">{component}</span>}
+      {component && <span className="absolute-center">{component}</span>}
     </div>
   );
 };
