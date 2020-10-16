@@ -26,13 +26,15 @@ import items from "../items.json";
 import Nutrient from "../nutrient/Nutrient";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import { ReactComponent as Icon } from "../assets/information-button.svg";
-import PeriodicElement from "../periodicElement/PeriodicElement";
-import ChartImage from "../chartImage/ChartImage";
 import FoodImage from "../foodImage/FoodImage";
-
 
 import "../css/tools.scss";
 import "./FoodCompare.scss";
+
+export const LEGEND_CLASSES = [
+  "square-border-bottom",
+  "triangle-border-bottom",
+];
 
 export interface FoodAndNutrients extends FoodMainAttrs {
   minerals: FoodNutrient[];
@@ -108,25 +110,27 @@ const FoodCompare = () => {
         }}
       />
 
-      <ChartImage food_name={!isEmpty(foods) && foods[0].food_name || "lentil"} />
-      {/* <FoodImage food_name="lentil" /> */}
-      {/* <div style={{maxWidth: "150px"}}>
-      <PeriodicElement />
-      </div> */}
       {isEmpty(foods) && <p>choose some food </p>}
       {!isEmpty(foods) && (
         <>
           <div className="foodList">
             <FoodLegend />
-            {foods.map((food: FoodMainAttrs) => (
+            {foods.map((food: FoodMainAttrs, index: number) => (
               <PieChart
                 key={food.food_name}
                 values={getPieChartData(food)}
                 width={960}
                 height={500}
                 name={food.food_name}
+                legend={
+                  <div
+                    className={LEGEND_CLASSES[index]}
+                    style={{ width: "15%" }}
+                  />
+                }
               >
-                <PopOver {...food} />
+                <FoodImage food_name={food.food_name} className="foodCompare__chartImage" />
+                {/* <PopOver {...food} /> */}
               </PieChart>
             ))}
           </div>

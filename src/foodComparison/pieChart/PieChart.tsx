@@ -10,6 +10,7 @@ interface Props {
   height: number;
   name: string;
   children?: React.ReactNode;
+  legend?: React.ReactNode;
 }
 
 const enterClockwise = {
@@ -26,7 +27,7 @@ const PieChart = (props: Props) => {
   );
   const ref = useRef(null);
 
-  const { values, width, height, name, children } = props;
+  const { values, width, height, name, children, legend } = props;
   const radius = getRadius(width, height);
   const INNER_RADIUS = radius - 120;
   const OUTER_RADIUS = radius - 10;
@@ -86,10 +87,10 @@ const PieChart = (props: Props) => {
 
   return (
     <div className="pieChart">
-      <p>{name}</p>
       <div ref={ref} className="pieChart__container">
         {children}
       </div>
+      {legend && legend}
     </div>
   );
 };
