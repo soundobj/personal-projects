@@ -16,7 +16,7 @@
     margin-left: 1rem;
   }
   li:last-child {
-    margin-right:  1rem;
+    margin-right: 1rem;
   }
 }
 
@@ -39,18 +39,53 @@
   margin-top: -10px;
 }
 
-.triangle-border-bottom {
-  border-image-slice: 0 0 15 0;
-  border-image-width: 0 0 5px 0;
+// .triangle-border-bottom {
+//   border-image-slice: 0 0 15 0;
+//   border-image-width: 0 0 5px 0;
+//   border-image-repeat: repeat repeat;
+//   border-image-source: url("../assets/patterns/black-triangle-bg.jpg");
+//   @extend %pos;
+// }
+
+// .square-border-bottom {
+//   border-image-slice: 0 0 23 0;
+//   border-image-width: 0 0 6px 0;
+//   border-image-repeat: repeat repeat;
+//   border-image-source: url("../assets/patterns/black-square-bg.jpg");
+//   @extend %pos;
+// }
+
+.transparent-black-square {
+  border-image-slice: 17 0 8 0;
+  border-image-width: 0px 0px 6px 0px;
+  border-image-outset: 0px 0px 0px 0px;
   border-image-repeat: repeat repeat;
-  border-image-source: url("../assets/patterns/black-triangle-bg.jpg");
+  border-image-source: url("../assets/patterns/transparent-black-square-row.png");
   @extend %pos;
 }
 
-.square-border-bottom {
-  border-image-slice: 0 0 23 0;
-  border-image-width: 0 0 6px 0;
+.transparent-white-square {
+  border-image-slice: 17 0 8 0;
+  border-image-width: 0px 0px 6px 0px;
+  border-image-outset: 0px 0px 0px 0px;
   border-image-repeat: repeat repeat;
-  border-image-source: url("../assets/patterns/black-square-bg.jpg");
+  border-image-source: url("../assets/patterns/transparent-white-square-row.png");
+  @extend %pos;
+}
+.transparent-black-triangle {
+  border-image-slice: 17 0 8 0;
+  border-image-width: 0px 0px 6px 0px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: repeat repeat;
+  border-image-source: url("../assets/patterns/transparent-black-triangle-row.png");
+  @extend %pos;
+}
+
+.transparent-white-triangle {
+  border-image-slice: 17 0 8 0;
+  border-image-width: 0px 0px 6px 0px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: repeat repeat;
+  border-image-source: url("../assets/patterns/transparent-white-triangle-row.png");
   @extend %pos;
 }

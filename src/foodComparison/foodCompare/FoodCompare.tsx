@@ -33,8 +33,8 @@ import "./FoodCompare.scss";
 import PeriodicElement from "../periodicElement/PeriodicElement";
 
 export const LEGEND_CLASSES = [
-  "square-border-bottom",
-  "triangle-border-bottom",
+  "transparent-black-triangle",
+  "transparent-black-square",
 ];
 
 export interface FoodAndNutrients extends FoodMainAttrs {
