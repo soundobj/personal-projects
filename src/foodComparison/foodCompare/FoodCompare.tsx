@@ -30,6 +30,7 @@ import FoodImage from "../foodImage/FoodImage";
 
 import "../css/tools.scss";
 import "./FoodCompare.scss";
+import PeriodicElement from "../periodicElement/PeriodicElement";
 
 export const LEGEND_CLASSES = [
   "square-border-bottom",
@@ -91,6 +92,16 @@ const PopOver = (props: FoodMainAttrs) => (
   </PopoverStickOnHover>
 );
 
+const NutrientFooter = (props: { values: number[] }) => (
+  <ul className="nutrientFooter">
+    {props.values.map((item) => (
+      <li className="nutrientFooter__item">
+       {item}%
+      </li>
+    ))}
+  </ul>
+);
+
 const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
   const foods = mergeFoodsNutrients(selectedFoods);
@@ -109,8 +120,16 @@ const FoodCompare = () => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
-
-      {isEmpty(foods) && <p>choose some food </p>}
+      <PeriodicElement
+        name="iron"
+        element="Fe"
+        state="solid"
+        url="http://www.google.com"
+        backgroundColor="#0264B2"
+      >
+        <NutrientFooter values={[48, 8]} />
+      </PeriodicElement>
+      {isEmpty(foods) && <p>hoose some food </p>}
       {!isEmpty(foods) && (
         <>
           <div className="foodList">
@@ -129,7 +148,10 @@ const FoodCompare = () => {
                   />
                 }
               >
-                <FoodImage food_name={food.food_name} className="foodCompare__chartImage" />
+                <FoodImage
+                  food_name={food.food_name}
+                  className="foodCompare__chartImage"
+                />
                 {/* <PopOver {...food} /> */}
               </PieChart>
             ))}
