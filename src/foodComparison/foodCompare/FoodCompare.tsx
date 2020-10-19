@@ -105,21 +105,26 @@ const FoodCompare = () => {
 
   return (
     <div className="foodCompare__container">
-      <Creatable
-        components={{ Menu }}
-        isMulti
-        isValidNewOption={() => false}
-        options={grouped}
-        // @ts-ignore
-        formatGroupLabel={formatGroupLabel}
-        onChange={(value: ValueType<OptionType>) => {
-          handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
-        }}
-      />
+      <nav className="foodCompare__nav">
+        <Creatable
+          components={{ Menu }}
+          isMulti
+          isValidNewOption={() => false}
+          options={grouped}
+          // @ts-ignore
+          formatGroupLabel={formatGroupLabel}
+          onChange={(value: ValueType<OptionType>) => {
+            handleSelectedFoods(
+              getUserSelectionValues(value),
+              setSeletectFoods
+            );
+          }}
+        />
+      </nav>
       {isEmpty(foods) && <p>Choose some food </p>}
       {!isEmpty(foods) && (
         <>
-          <div className="foodList">
+          <main className="foodCompare__main">
             <FoodLegend />
             {foods.map((food: FoodMainAttrs, index: number) => (
               <PieChart
@@ -142,18 +147,19 @@ const FoodCompare = () => {
                 {/* <PopOver {...food} /> */}
               </PieChart>
             ))}
-          </div>
-          <h3>Minerals</h3>
-          <ul className="nutrientList">
-            {foods[0].minerals.map((mineral) => (
-              <li key={mineral.name} className="nutrientList__item">
-                <PeriodicElement {...mineral}>
-                  <NutrientFooter values={mineral.percentages} />
-                </PeriodicElement>
-              </li>
-            ))}
-          </ul>
-          {/* <h3>Vitamins</h3> 
+          </main>
+          <footer className="foodCompare__footer">
+            <h3>Minerals</h3>
+            <ul className="nutrientList">
+              {foods[0].minerals.map((mineral) => (
+                <li key={mineral.name} className="nutrientList__item">
+                  <PeriodicElement {...mineral}>
+                    <NutrientFooter values={mineral.percentages} />
+                  </PeriodicElement>
+                </li>
+              ))}
+            </ul>
+            {/* <h3>Vitamins</h3> 
            <ul className="nutrientList">
             {foods[0].vitamins.map((vitamin) => (
               <li key={vitamin.name} className="nutrientList__item">
@@ -161,6 +167,7 @@ const FoodCompare = () => {
               </li>
             ))}
           </ul> */}
+          </footer>
         </>
       )}
     </div>
