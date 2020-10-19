@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState } from "react";
 import { isEmpty } from "lodash";
 import Creatable from "react-select/creatable";
@@ -11,11 +12,12 @@ import {
   getPieChartData,
   FoodMainAttrs,
   FoodNutrient,
-  getVitamins,
+  // getVitamins,
   getMinerals,
   VITAMINS,
   MINERALS,
   mergeFoodsNutrients,
+  FoodPercentage,
 } from "../foodUtils/foodUtils";
 import getFoodItem, { getFood } from "../getFoodItem/getFoodItem";
 import {
@@ -39,7 +41,7 @@ export const LEGEND_CLASSES = [
 
 export interface FoodAndNutrients extends FoodMainAttrs {
   minerals: FoodNutrient[];
-  vitamins: FoodNutrient[];
+  // vitamins: FoodNutrient[];
 }
 
 type SelectedFoodsState = FoodAndNutrients[];
@@ -56,12 +58,14 @@ const handleSelectedFoods = (
     )
   ).then((foods: FoodPayload[]) => {
     handler(
+      //@ts-ignore
       foods.map<FoodAndNutrients>((x) => {
         const food = getFood(x);
         return {
           ...food,
+          // minerals: getMinerals(food, MINERALS),
           minerals: getMinerals(food, MINERALS),
-          vitamins: getVitamins(food, VITAMINS),
+          // vitamins: getVitamins(food, VITAMINS),
         };
       })
     );
@@ -92,12 +96,10 @@ const PopOver = (props: FoodMainAttrs) => (
   </PopoverStickOnHover>
 );
 
-const NutrientFooter = (props: { values: number[] }) => (
+const NutrientFooter = (props: { values: FoodPercentage[] }) => (
   <ul className="nutrientFooter">
     {props.values.map((item) => (
-      <li className="nutrientFooter__item">
-       {item}%
-      </li>
+      <li className="nutrientFooter__item">{item.percentage}%</li>
     ))}
   </ul>
 );
@@ -120,15 +122,15 @@ const FoodCompare = () => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
-      <PeriodicElement
+      {/* <PeriodicElement
         name="iron"
         element="Fe"
         state="solid"
         url="http://www.google.com"
-        backgroundColor="#0264B2"
+        color="#0264B2"
       >
         <NutrientFooter values={[48, 8]} />
-      </PeriodicElement>
+      </PeriodicElement> */}
       {isEmpty(foods) && <p>hoose some food </p>}
       {!isEmpty(foods) && (
         <>
@@ -160,18 +162,21 @@ const FoodCompare = () => {
           <ul className="nutrientList">
             {foods[0].minerals.map((mineral) => (
               <li key={mineral.name} className="nutrientList__item">
-                <Nutrient {...mineral} />
+                {/* @ts-ignore */}
+                <PeriodicElement {...mineral}>
+                  <NutrientFooter values={mineral.percentages} />
+                </PeriodicElement>
               </li>
             ))}
           </ul>
           <h3>Vitamins</h3>
-          <ul className="nutrientList">
+          {/* <ul className="nutrientList">
             {foods[0].vitamins.map((vitamin) => (
               <li key={vitamin.name} className="nutrientList__item">
                 <Nutrient {...vitamin} />
               </li>
             ))}
-          </ul>
+          </ul> */}
         </>
       )}
     </>

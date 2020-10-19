@@ -19,6 +19,8 @@
 
 .nutrientList {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   &__item {
     width: 100%;
