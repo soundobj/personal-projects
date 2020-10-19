@@ -16,7 +16,7 @@ const Link = (props: { children: React.ReactElement; url: string }) => (
 const PeriodicElement = (props: Props) => {
   const { name, element, state, url, color, children } = props;
   return (
-    <div className="outer">
+    <div className="outer periodicElement__wrapper">
       <div className="inner">
         <article className="periodicElement" style={{ backgroundColor: color }}>
           <Link url={url}>

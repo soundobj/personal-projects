@@ -1,0 +1,92 @@
+[
+  {
+    "id": 301,
+    "type": "Alkaline earth metal",
+    "color": "#0264B2",
+    "name": "Calcium",
+    "element": "Ca",
+    "state": "solid",
+    "url": "https://en.wikipedia.org/wiki/Calcium"
+  },
+  {
+    "id": 304,
+    "type": "Alkaline earth metal",
+    "color": "#0264B2",
+    "name": "Magnesium",
+    "element": "Mg",
+    "state": "solid",
+    "url": "https://en.wikipedia.org/wiki/Magnesium"
+  },
+  {
+    "id": 303,
+    "type": "Transition metal",
+    "color": "#522F92",
+    "name": "Iron",
+    "element": "Fe",
+    "state": "solid",
+    "url": "https://en.wikipedia.org/wiki/Iron"
+  },
+  {
+    "id": 309,
+    "type": "Transition metal",
+    "color": "#009B5A",
+    "name": "Zinc",
+    "element": "Zn",
+    "state": "solid",
+    "url": "https://en.wikipedia.org/wiki/Zinc"
+  },
+  {
+    "id": 312,
+    "type": "Transition metal",
+    "color": "#009B5A",
+    "name": "Copper",
+    "element": "Cu",
+    "state": "solid",
+    "url": "https://en.wikipedia.org/wiki/Copper"
+  },
+  {
+    "id": 315,
+    "type": "Transition metal",
+    "color": "#009B5A",
+    "name": "Manganese",
+    "element": "Mn",
+    "state": "solid",
+    "url": "https://en.wikipedia.org/wiki/Manganese"
+  },
+  {
+    "id": 305,
+    "type": "Other, non metal",
+    "color": "#C3DEA4",
+    "name": "Phosphorus",
+    "state": "solid",
+    "element": "P",
+    "url": "https://en.wikipedia.org/wiki/Phosphorus"
+  },
+  {
+    "id": 306,
+    "type": "Alkali, metal",
+    "color": "#009B5A",
+    "name": "Potassium",
+    "state": "solid",
+    "element": "K",
+    "url": "https://en.wikipedia.org/wiki/Potassium"
+  },
+  {
+    "id": 307,
+    "type": "Alkali, metal",
+    "color": "#009B5A",
+    "name": "Sodium",
+    "state": "solid",
+    "element": "Na",
+    "url": "https://en.wikipedia.org/wiki/Sodium"
+  },
+  {
+    "id": 313,
+    "type": "Halogen",
+    "color": "#FEDAB4",
+    "name": "Fluoride",
+    "state": "gas",
+    "element": "F",
+    "url": "https://en.wikipedia.org/wiki/Fluoride"
+  }
+]

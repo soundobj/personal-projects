@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React, { useState } from "react";
 import { isEmpty } from "lodash";
 import Creatable from "react-select/creatable";
@@ -11,10 +10,8 @@ import {
   FoodPayload,
   getPieChartData,
   FoodMainAttrs,
-  FoodNutrient,
-  // getVitamins,
+  PeriodicElementAndPercentages,
   getMinerals,
-  VITAMINS,
   MINERALS,
   mergeFoodsNutrients,
   FoodPercentage,
@@ -25,7 +22,6 @@ import {
   formatGroupLabel,
 } from "../menu/options/Options";
 import items from "../items.json";
-import Nutrient from "../nutrient/Nutrient";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import { ReactComponent as Icon } from "../assets/information-button.svg";
 import FoodImage from "../foodImage/FoodImage";
@@ -40,7 +36,7 @@ export const LEGEND_CLASSES = [
 ];
 
 export interface FoodAndNutrients extends FoodMainAttrs {
-  minerals: FoodNutrient[];
+  minerals: PeriodicElementAndPercentages[];
   // vitamins: FoodNutrient[];
 }
 
@@ -58,12 +54,10 @@ const handleSelectedFoods = (
     )
   ).then((foods: FoodPayload[]) => {
     handler(
-      //@ts-ignore
       foods.map<FoodAndNutrients>((x) => {
         const food = getFood(x);
         return {
           ...food,
-          // minerals: getMinerals(food, MINERALS),
           minerals: getMinerals(food, MINERALS),
           // vitamins: getVitamins(food, VITAMINS),
         };
@@ -99,7 +93,7 @@ const PopOver = (props: FoodMainAttrs) => (
 const NutrientFooter = (props: { values: FoodPercentage[] }) => (
   <ul className="nutrientFooter">
     {props.values.map((item) => (
-      <li className="nutrientFooter__item">{item.percentage}%</li>
+      <li className="nutrientFooter__item">{Math.round(item.percentage)}%</li>
     ))}
   </ul>
 );
@@ -110,7 +104,7 @@ const FoodCompare = () => {
   console.error("@foods", foods);
 
   return (
-    <>
+    <div className="foodCompare__container">
       <Creatable
         components={{ Menu }}
         isMulti
@@ -122,16 +116,7 @@ const FoodCompare = () => {
           handleSelectedFoods(getUserSelectionValues(value), setSeletectFoods);
         }}
       />
-      {/* <PeriodicElement
-        name="iron"
-        element="Fe"
-        state="solid"
-        url="http://www.google.com"
-        color="#0264B2"
-      >
-        <NutrientFooter values={[48, 8]} />
-      </PeriodicElement> */}
-      {isEmpty(foods) && <p>hoose some food </p>}
+      {isEmpty(foods) && <p>Choose some food </p>}
       {!isEmpty(foods) && (
         <>
           <div className="foodList">
@@ -162,15 +147,14 @@ const FoodCompare = () => {
           <ul className="nutrientList">
             {foods[0].minerals.map((mineral) => (
               <li key={mineral.name} className="nutrientList__item">
-                {/* @ts-ignore */}
                 <PeriodicElement {...mineral}>
                   <NutrientFooter values={mineral.percentages} />
                 </PeriodicElement>
               </li>
             ))}
           </ul>
-          <h3>Vitamins</h3>
-          {/* <ul className="nutrientList">
+          {/* <h3>Vitamins</h3> 
+           <ul className="nutrientList">
             {foods[0].vitamins.map((vitamin) => (
               <li key={vitamin.name} className="nutrientList__item">
                 <Nutrient {...vitamin} />
@@ -179,7 +163,7 @@ const FoodCompare = () => {
           </ul> */}
         </>
       )}
-    </>
+    </div>
   );
 };
 
