@@ -52,6 +52,7 @@ export interface PeriodicElement {
 export interface FoodPercentage {
   food: string;
   percentage: number;
+  nutrient: number;
 }
 
 interface Percentages {
@@ -132,7 +133,7 @@ export const getPercentage = (
     nutrientValuePer100gr(food.serving_weight_grams, foodNutrient?.value || 0),
     nutrient.fda_daily_value || 0
   );
-  return { food: name, percentage };
+  return { food: name, percentage, nutrient: foodNutrient?.attr_id || 0 };
 };
 
 export const getMinerals = (

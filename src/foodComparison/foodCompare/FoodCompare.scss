@@ -39,10 +39,16 @@ html, body {
   &__main {
     grid-area: main;
     display: flex;
+    flex-direction: column;
   }
 
   &__footer {
     grid-area: footer;
+  }
+
+  &__items {
+    display: flex;
+    flex-grow: 1;
   }
 }
 

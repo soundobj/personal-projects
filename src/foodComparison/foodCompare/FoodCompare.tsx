@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { isEmpty } from "lodash";
 import Creatable from "react-select/creatable";
 import { ValueType } from "react-select";
@@ -93,7 +93,12 @@ const PopOver = (props: FoodMainAttrs) => (
 const NutrientFooter = (props: { values: FoodPercentage[] }) => (
   <ul className="nutrientFooter">
     {props.values.map((item) => (
-      <li className="nutrientFooter__item">{Math.round(item.percentage)}%</li>
+      <li
+        className="nutrientFooter__item"
+        key={`${item.food}-${item.nutrient}`}
+      >
+        {Math.round(item.percentage)}%
+      </li>
     ))}
   </ul>
 );
@@ -103,10 +108,25 @@ const FoodCompare = () => {
   const foods = mergeFoodsNutrients(selectedFoods);
   console.error("@foods", foods);
 
+  const defaultValues = [
+    { label: "Kiwi", value: "kiwi" },
+    { label: "Peanut", value: "peanut" },
+  ];
+
+  useEffect(
+    () =>
+      handleSelectedFoods(
+        defaultValues.map((x) => x.value),
+        setSeletectFoods
+      ),
+    []
+  );
+
   return (
     <div className="foodCompare__container">
       <nav className="foodCompare__nav">
         <Creatable
+          defaultValue={defaultValues}
           components={{ Menu }}
           isMulti
           isValidNewOption={() => false}
@@ -114,6 +134,7 @@ const FoodCompare = () => {
           // @ts-ignore
           formatGroupLabel={formatGroupLabel}
           onChange={(value: ValueType<OptionType>) => {
+            console.error("@_val", value);
             handleSelectedFoods(
               getUserSelectionValues(value),
               setSeletectFoods
@@ -125,28 +146,31 @@ const FoodCompare = () => {
       {!isEmpty(foods) && (
         <>
           <main className="foodCompare__main">
+            <ul className="foodCompare__items">
+              {foods.map((food: FoodMainAttrs, index: number) => (
+                <li key={food.food_name}>
+                  <PieChart
+                    values={getPieChartData(food)}
+                    width={960}
+                    height={500}
+                    name={food.food_name}
+                    legend={
+                      <div
+                        className={LEGEND_CLASSES[index]}
+                        style={{ width: "15%" }}
+                      />
+                    }
+                  >
+                    <FoodImage
+                      food_name={food.food_name}
+                      className="foodCompare__chartImage"
+                    />
+                    {/* <PopOver {...food} /> */}
+                  </PieChart>
+                </li>
+              ))}
+            </ul>
             <FoodLegend />
-            {foods.map((food: FoodMainAttrs, index: number) => (
-              <PieChart
-                key={food.food_name}
-                values={getPieChartData(food)}
-                width={960}
-                height={500}
-                name={food.food_name}
-                legend={
-                  <div
-                    className={LEGEND_CLASSES[index]}
-                    style={{ width: "15%" }}
-                  />
-                }
-              >
-                <FoodImage
-                  food_name={food.food_name}
-                  className="foodCompare__chartImage"
-                />
-                {/* <PopOver {...food} /> */}
-              </PieChart>
-            ))}
           </main>
           <footer className="foodCompare__footer">
             <h3>Minerals</h3>
