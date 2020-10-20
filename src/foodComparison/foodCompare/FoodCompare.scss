@@ -12,9 +12,9 @@ html, body {
 .foodCompare {
   &__chartImage {
     position: absolute;
-    width: 29%;
-    left: 35.5%;
-    top: 22.5%;
+    width: 35%;
+    left: 32.5%;
+    top: 33.5%;
     clip-path: circle(42% at 50% 50%);
   }
 
@@ -53,6 +53,7 @@ html, body {
     li {
       width: 100%;
       height: auto;
+      margin: .5rem;
     } 
   }
 }

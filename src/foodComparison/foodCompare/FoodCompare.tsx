@@ -25,6 +25,7 @@ import items from "../items.json";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import { ReactComponent as Icon } from "../assets/information-button.svg";
 import FoodImage from "../foodImage/FoodImage";
+import { ReactComponent as INFO } from "../assets/info-medal.svg";
 
 import "../css/tools.scss";
 import "./FoodCompare.scss";
@@ -161,6 +162,14 @@ const FoodCompare = () => {
                       />
                     }
                   >
+                    <INFO
+                      style={{
+                        position: "absolute",
+                        width: "84%",
+                        top: "8%",
+                        left: "8%",
+                      }}
+                    />
                     <FoodImage
                       food_name={food.food_name}
                       className="foodCompare__chartImage"
