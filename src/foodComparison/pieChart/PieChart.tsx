@@ -29,10 +29,9 @@ const PieChart = (props: Props) => {
 
   const { values, width, height, name, children, legend } = props;
   const radius = getRadius(width, height);
-  const INNER_RADIUS = radius - 120;
-  const OUTER_RADIUS = radius - 80;
+  const INNER_RADIUS = radius - 50;
 
-  const arc = d3.arc().innerRadius(INNER_RADIUS).outerRadius(OUTER_RADIUS);
+  const arc = d3.arc().innerRadius(INNER_RADIUS).outerRadius(radius);
 
   function arcTween(_arc) {
     const interpolation = d3.interpolate(this._current, _arc);
@@ -79,7 +78,7 @@ const PieChart = (props: Props) => {
     } else {
       path.attr(
         "d",
-        d3.arc().innerRadius(INNER_RADIUS).outerRadius(OUTER_RADIUS)
+        d3.arc().innerRadius(INNER_RADIUS).outerRadius(radius)
       );
     }
     setCurrentChart(name);
