@@ -151,8 +151,8 @@ const FoodCompare = () => {
                 <li key={food.food_name}>
                   <PieChart
                     values={getPieChartData(food)}
-                    width={960}
-                    height={500}
+                    width={850}
+                    height={850}
                     name={food.food_name}
                     legend={
                       <div

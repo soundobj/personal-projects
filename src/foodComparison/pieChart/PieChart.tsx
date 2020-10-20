@@ -30,7 +30,7 @@ const PieChart = (props: Props) => {
   const { values, width, height, name, children, legend } = props;
   const radius = getRadius(width, height);
   const INNER_RADIUS = radius - 120;
-  const OUTER_RADIUS = radius - 10;
+  const OUTER_RADIUS = radius - 80;
 
   const arc = d3.arc().innerRadius(INNER_RADIUS).outerRadius(OUTER_RADIUS);
 
