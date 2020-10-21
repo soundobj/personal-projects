@@ -22,11 +22,11 @@
     }
     &__value {
       &:first-child {
-        border-right: solid 1px rgb(44, 44, 44);
-        padding-right: .3rem;
+        padding-right: 0.3rem;
       }
-      &:last-child {
-        padding-left: .3rem;
+      &:nth-child(2) {
+        border-left: solid 1px rgb(44, 44, 44);
+        padding-left: 0.3rem;
       }
     }
   }
