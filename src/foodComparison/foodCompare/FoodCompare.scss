@@ -3,10 +3,38 @@
   margin: 0 auto;
 }
 
-html, body {
+html,
+body {
   // required by grid for footer to stick
   width: 100%;
   height: 100%;
+}
+
+.react-select {
+  &__multi-value {
+    width: 50%;
+    height: 1.5rem;
+
+    &__label {
+      flex-grow: 1;
+      text-align: center;
+      font-family: "Oswald", sans-serif;
+      font-size: 100% !important;
+    }
+  }
+  &__value-container {
+    flex-wrap: nowrap !important;
+    padding: 2px 0 2px 8px !important;
+
+    & > div:nth-child(2) {
+      background-color: black;
+      font-weight: bold;
+
+      & > div {
+        color: white;
+      }
+    }
+  }
 }
 
 .foodCompare {
@@ -34,7 +62,7 @@ html, body {
 
   &__nav {
     grid-area: nav;
-    position: sticky;  
+    position: sticky;
     top: 0;
   }
 
@@ -56,8 +84,8 @@ html, body {
     li {
       width: 100%;
       height: auto;
-      margin: .5rem;
-    } 
+      margin: 0.5rem;
+    }
   }
 }
 

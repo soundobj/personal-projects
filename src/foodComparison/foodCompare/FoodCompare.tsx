@@ -129,6 +129,7 @@ const FoodCompare = () => {
           isMulti
           isValidNewOption={() => false}
           options={grouped}
+          classNamePrefix="react-select"
           // @ts-ignore
           formatGroupLabel={formatGroupLabel}
           onChange={(value: ValueType<OptionType>) => {
