@@ -2,13 +2,18 @@ import produce from "immer";
 import _nutrients from "../nutrients.json";
 import minerals from "../minerals.json";
 import vitamins from "../vitamins.json";
-import { FoodAndNutrients } from "../foodCompare/FoodCompare";
+import foodComposition from "../foodComposition.json";
 
 const nutrients: NutrientAttrs[] = _nutrients;
 
 export interface Nutrient {
   attr_id: number;
   value: number;
+}
+
+export interface FoodAndNutrients extends FoodMainAttrs {
+  minerals: PeriodicElementAndPercentages[];
+  // vitamins: FoodNutrient[];
 }
 
 export interface FoodMainAttrs {
@@ -73,15 +78,6 @@ export interface FoodNutrient {
   percentages: number[];
 }
 
-export const PIE_CHART_ATTRS = [
-  { displayName: "Protein", attr: "nf_protein" },
-  { displayName: "Fiber", attr: "nf_dietary_fiber" },
-  { displayName: "Fat", attr: "nf_total_fat" },
-  { displayName: "Saturated Fat", attr: "nf_saturated_fat" },
-  { displayName: "Carbohydrate", attr: "nf_total_carbohydrate" },
-  { displayName: "Sugar", attr: "nf_sugars" },
-];
-
 type FoodMainAttr =
   | "nf_protein"
   | "nf_dietary_fiber"
@@ -113,7 +109,7 @@ export const MINERALS = minerals.map<number>((item) => item.id);
 export const VITAMINS = vitamins.map<number>((item) => item.id);
 
 export const getPieChartData = (food: FoodMainAttrs): number[] => {
-  return PIE_CHART_ATTRS.map<number>((attr: PieCharttr) =>
+  return foodComposition.map<number>((attr: PieCharttr) =>
     nutrientValuePer100gr(
       food.serving_weight_grams,
       food[attr.attr as FoodMainAttr]
@@ -190,3 +186,21 @@ export const calcWaterContentPercentage = (food: FoodMainAttrs): number => {
   ].reduce<number>((prev, cur) => (prev += food[cur]), 0);
   return Math.round(100 - calcPercentage(partial, food.serving_weight_grams));
 };
+
+export interface LegendData {
+  title: string;
+  data: number[];
+  url: string;
+}
+
+export const getLegend = (foods: FoodAndNutrients[]): LegendData[] =>
+  foodComposition.map<LegendData>((item) => ({
+    title: item.displayName,
+    url: item.url,
+    data: foods.map<number>((food: FoodAndNutrients) =>
+      nutrientValuePer100gr(
+        food.serving_weight_grams,
+        food[item.attr as FoodMainAttr]
+      )
+    ),
+  }));

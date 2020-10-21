@@ -10,11 +10,12 @@ import {
   FoodPayload,
   getPieChartData,
   FoodMainAttrs,
-  PeriodicElementAndPercentages,
   getMinerals,
   MINERALS,
   mergeFoodsNutrients,
   FoodPercentage,
+  FoodAndNutrients,
+  getLegend,
 } from "../foodUtils/foodUtils";
 import getFoodItem, { getFood } from "../getFoodItem/getFoodItem";
 import {
@@ -36,10 +37,6 @@ export const LEGEND_CLASSES = [
   "transparent-black-square",
 ];
 
-export interface FoodAndNutrients extends FoodMainAttrs {
-  minerals: PeriodicElementAndPercentages[];
-  // vitamins: FoodNutrient[];
-}
 
 type SelectedFoodsState = FoodAndNutrients[];
 
@@ -135,7 +132,6 @@ const FoodCompare = () => {
           // @ts-ignore
           formatGroupLabel={formatGroupLabel}
           onChange={(value: ValueType<OptionType>) => {
-            console.error("@_val", value);
             handleSelectedFoods(
               getUserSelectionValues(value),
               setSeletectFoods
@@ -179,7 +175,7 @@ const FoodCompare = () => {
                 </li>
               ))}
             </ul>
-            <FoodLegend />
+            <FoodLegend legendData={getLegend(selectedFoods)} />
           </main>
           <footer className="foodCompare__footer">
             <h3>Minerals</h3>
