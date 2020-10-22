@@ -1,0 +1,38 @@
+[
+  {
+    "displayName": "Protein",
+    "attr": "nf_protein",
+    "url": "https://en.wikipedia.org/wiki/Protein_(nutrient)",
+    "fda_daily_value": 50
+  },
+  {
+    "displayName": "Fiber",
+    "attr": "nf_dietary_fiber",
+    "url": "https://en.wikipedia.org/wiki/Dietary_fiber",
+    "fda_daily_value": 25
+  },
+  {
+    "displayName": "Fat",
+    "attr": "nf_total_fat",
+    "url": "https://en.wikipedia.org/wiki/Fat",
+    "fda_daily_value": 65
+  },
+  {
+    "displayName": "Saturates",
+    "attr": "nf_saturated_fat",
+    "url": "https://en.wikipedia.org/wiki/Saturated_fat",
+    "fda_daily_value": 20
+  },
+  {
+    "displayName": "Carbs",
+    "attr": "nf_total_carbohydrate",
+    "url": "https://en.wikipedia.org/wiki/Carbohydrate",
+    "fda_daily_value": 300
+  },
+  {
+    "displayName": "Sugar", 
+    "attr": "nf_sugars",
+    "url": "https://en.wikipedia.org/wiki/Sugar",
+    "fda_daily_value": 25
+  }
+]

@@ -1,0 +1,79 @@
+$darkModeText: white;
+$darkModeFill: black;
+$darkModeInnerCircle: black;
+
+.FoodInfo {
+  font-family: "Oswald", sans-serif;
+  & > * {
+    position: absolute;
+    text-align: center;
+    width: 25%;
+    font-size: 1.5rem;
+  }
+  &__image {
+    width: 35%;
+    left: 32.5%;
+    top: 33.5%;
+    clip-path: circle(42% at 50% 50%);
+  }
+
+  &__medal {
+    width: 84%;
+    top: 8%;
+    left: 8%;
+  }
+
+  &__calories {
+    top: 28%;
+    left: 21%;
+  }
+
+  &__water {
+    top: 28%;
+    left: 54.5%;
+  }
+
+  &__water__percentage {
+    top: 31.7%;
+    left: 61.5%;
+    font-size: 0.7rem;
+  }
+
+  &__serving {
+    top: 62%;
+    left: 21%;
+  }
+
+  &__wikipedia {
+    left: 63%;
+    width: 10%;
+    top: 51%;
+  }
+
+  #inner_circle {
+    fill: white;
+  }
+
+  &.dark {
+    color: $darkModeText;
+
+    .cls-1, .cls-2, .cls-3, .cls-4 {
+      fill: $darkModeText;
+    }
+    .cls-1 {
+      fill: $darkModeFill;
+    }
+
+    .cls-3 {
+      stroke: $darkModeText;
+    }
+
+    #inner_circle {
+      fill: $darkModeInnerCircle;
+    }
+
+    .FoodInfo__wikipedia {
+      fill: $darkModeText;
+    }
+  }
+}

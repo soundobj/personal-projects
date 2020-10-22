@@ -23,10 +23,9 @@ import {
   formatGroupLabel,
 } from "../menu/options/Options";
 import items from "../items.json";
+import FoodInfo from "../foodInfo/FoodInfo";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import { ReactComponent as Icon } from "../assets/information-button.svg";
-import FoodImage from "../foodImage/FoodImage";
-import { ReactComponent as INFO } from "../assets/info-medal.svg";
 
 import "../css/tools.scss";
 import "./FoodCompare.scss";
@@ -36,7 +35,6 @@ export const LEGEND_CLASSES = [
   "transparent-black-triangle",
   "transparent-black-square",
 ];
-
 
 type SelectedFoodsState = FoodAndNutrients[];
 
@@ -152,25 +150,14 @@ const FoodCompare = () => {
                     width={850}
                     height={850}
                     name={food.food_name}
-                    legend={
-                      <div
-                        className={LEGEND_CLASSES[index]}
-                        style={{ width: "15%" }}
-                      />
-                    }
+                    // legend={
+                    //   <div
+                    //     className={LEGEND_CLASSES[index]}
+                    //     style={{ width: "15%" }}
+                    //   />
+                    // }
                   >
-                    <INFO
-                      style={{
-                        position: "absolute",
-                        width: "84%",
-                        top: "8%",
-                        left: "8%",
-                      }}
-                    />
-                    <FoodImage
-                      food_name={food.food_name}
-                      className="foodCompare__chartImage"
-                    />
+                    <FoodInfo food={food} className={index === 1 ? "dark" : ""} />
                     {/* <PopOver {...food} /> */}
                   </PieChart>
                 </li>

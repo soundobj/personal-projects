@@ -8,7 +8,7 @@ const FoodLegend = (props: { legendData: LegendData[] }) => {
   const { legendData } = props;
   return (
     <>
-      <h3>per 100 grams</h3>
+      <h3>Macronutrients grams per 100 gr</h3>
       <ul className="foodLegend">
         {legendData.map((item: LegendData, i: number) => (
           <li key={item.title} className="foodLegend__list">

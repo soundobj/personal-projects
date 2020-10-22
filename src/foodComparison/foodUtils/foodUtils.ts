@@ -2,7 +2,7 @@ import produce from "immer";
 import _nutrients from "../nutrients.json";
 import minerals from "../minerals.json";
 import vitamins from "../vitamins.json";
-import foodComposition from "../foodComposition.json";
+import macronutrients from "../macronutrients.json";
 
 const nutrients: NutrientAttrs[] = _nutrients;
 
@@ -87,7 +87,7 @@ type FoodMainAttr =
   | "nf_sugars";
 
 export const nutrientValuePer100gr = (weight: number, value: number): number =>
-  setFloatDecimals((100 * value) / weight);
+  Math.round(setFloatDecimals((100 * value) / weight));
 
 export const calcPercentage = (partial: number, total: number): number =>
   setFloatDecimals((100 * partial) / total);
@@ -109,7 +109,7 @@ export const MINERALS = minerals.map<number>((item) => item.id);
 export const VITAMINS = vitamins.map<number>((item) => item.id);
 
 export const getPieChartData = (food: FoodMainAttrs): number[] => {
-  return foodComposition.map<number>((attr: PieCharttr) =>
+  return macronutrients.map<number>((attr: PieCharttr) =>
     nutrientValuePer100gr(
       food.serving_weight_grams,
       food[attr.attr as FoodMainAttr]
@@ -177,7 +177,7 @@ export const mergeFoodsNutrients = (
 export const calcWaterContentPercentage = (food: FoodMainAttrs): number => {
   const partial = [
     "nf_total_fat",
-    "nf_saturated_fat",
+    // "nf_saturated_fat",
     "nf_total_carbohydrate",
     "nf_dietary_fiber",
     "nf_sugars",
@@ -194,7 +194,7 @@ export interface LegendData {
 }
 
 export const getLegend = (foods: FoodAndNutrients[]): LegendData[] =>
-  foodComposition.map<LegendData>((item) => ({
+  macronutrients.map<LegendData>((item) => ({
     title: item.displayName,
     url: item.url,
     data: foods.map<number>((food: FoodAndNutrients) =>

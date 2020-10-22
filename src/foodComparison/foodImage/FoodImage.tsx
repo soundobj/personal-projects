@@ -30,7 +30,7 @@ const FoodImage = (props: FoodImageProps) => {
 
   return (
     <img
-      className={`${className || ""} fluid-img-ratio`}
+      className={`${className || ""}`}
       src={(image && image.default) || placeholder}
       alt={food_name}
     />
