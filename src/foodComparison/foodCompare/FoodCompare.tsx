@@ -25,16 +25,11 @@ import {
 import items from "../items.json";
 import FoodInfo from "../foodInfo/FoodInfo";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
-import { ReactComponent as Icon } from "../assets/information-button.svg";
+import PeriodicElement from "../periodicElement/PeriodicElement";
 
 import "../css/tools.scss";
 import "./FoodCompare.scss";
-import PeriodicElement from "../periodicElement/PeriodicElement";
 
-export const LEGEND_CLASSES = [
-  "transparent-black-triangle",
-  "transparent-black-square",
-];
 
 type SelectedFoodsState = FoodAndNutrients[];
 
@@ -69,22 +64,15 @@ const getUserSelectionValues = (
     ? userSelection.map<string>((x: OptionType) => x && x.value)
     : [];
 
-const PopOver = (props: FoodMainAttrs) => (
-  <PopoverStickOnHover
-    delay={500}
-    placement="bottom"
-    component={<Info {...props} />}
-  >
-    <Icon
-      style={{
-        width: "16%",
-        position: "absolute",
-        left: "42%",
-        top: "34.5%",
-      }}
-    />
-  </PopoverStickOnHover>
-);
+// const PopOver = (props: FoodMainAttrs) => (
+//   <PopoverStickOnHover
+//     delay={500}
+//     placement="bottom"
+//     component={<Info {...props} />}
+//   >
+//     <p>target</p>
+//   </PopoverStickOnHover>
+// );
 
 const NutrientFooter = (props: { values: FoodPercentage[] }) => (
   <ul className="nutrientFooter">
@@ -150,15 +138,8 @@ const FoodCompare = () => {
                     width={850}
                     height={850}
                     name={food.food_name}
-                    // legend={
-                    //   <div
-                    //     className={LEGEND_CLASSES[index]}
-                    //     style={{ width: "15%" }}
-                    //   />
-                    // }
                   >
                     <FoodInfo food={food} className={index === 1 ? "dark" : ""} />
-                    {/* <PopOver {...food} /> */}
                   </PieChart>
                 </li>
               ))}
