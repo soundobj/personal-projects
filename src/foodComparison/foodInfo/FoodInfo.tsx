@@ -27,10 +27,10 @@ const FoodInfo = (props: Props) => {
       <span className="FoodInfo__serving">
         {Math.round(food.serving_weight_grams)}
       </span>
-      <span className="FoodInfo__water">
+      <div className="FoodInfo__water">
         {calcWaterContentPercentage(props.food)}
-      </span>
-      <span className="FoodInfo__water__percentage">%</span>
+        <span className="FoodInfo__water__percentage">%</span>
+      </div>
       <Wikipedia className="FoodInfo__wikipedia" />
     </article>
   );

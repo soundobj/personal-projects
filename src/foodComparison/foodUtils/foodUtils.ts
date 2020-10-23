@@ -187,20 +187,31 @@ export const calcWaterContentPercentage = (food: FoodMainAttrs): number => {
   return Math.round(100 - calcPercentage(partial, food.serving_weight_grams));
 };
 
-export interface LegendData {
-  title: string;
-  data: number[];
-  url: string;
+interface LegendValues {
+  fda_percentage: number;
+  weightPer100gr: number;
 }
 
-export const getLegend = (foods: FoodAndNutrients[]): LegendData[] =>
-  macronutrients.map<LegendData>((item) => ({
+export interface Legend {
+  title: string;
+  values: LegendValues[];
+  url: string;
+  fda_daily_value: number;
+}
+
+export const getLegend = (foods: FoodAndNutrients[]): Legend[] =>
+  macronutrients.map<Legend>((item) => ({
     title: item.displayName,
     url: item.url,
-    data: foods.map<number>((food: FoodAndNutrients) =>
-      nutrientValuePer100gr(
+    fda_daily_value: item.fda_daily_value,
+    values: foods.map<LegendValues>((food: FoodAndNutrients) => {
+      const weightPer100gr = nutrientValuePer100gr(
         food.serving_weight_grams,
         food[item.attr as FoodMainAttr]
-      )
-    ),
+      );
+      return {
+        fda_percentage: calcPercentage(weightPer100gr, item.fda_daily_value),
+        weightPer100gr,
+      };
+    }),
   }));
