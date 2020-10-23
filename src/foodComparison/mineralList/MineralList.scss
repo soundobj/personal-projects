@@ -1,0 +1,42 @@
+.NutrientFooter {
+  display: flex;
+  justify-content: space-between;
+
+  &__item {
+    font-size: 1rem;
+    &__percentage {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.MineralList {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex: 1 1 0;
+  margin-bottom: 2px;
+
+  &__item {
+    width: 10%;
+  }
+
+  & li:last-child {
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 870px) {
+    & {
+      flex-wrap: wrap;
+    }
+    &__item {
+      width: 20%;
+    }
+  }
+
+  @media screen and (max-width: 430px) {
+    &__item {
+      width: 25%;
+    }
+  }
+}

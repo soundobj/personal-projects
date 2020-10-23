@@ -4,7 +4,6 @@ import Creatable from "react-select/creatable";
 import { ValueType } from "react-select";
 import Menu, { OptionType } from "../menu/Menu";
 import PieChart from "../pieChart/PieChart";
-import Info from "../info/Info";
 import FoodLegend from "../foodLegend/FoodLegend";
 import {
   FoodPayload,
@@ -13,7 +12,6 @@ import {
   getMinerals,
   MINERALS,
   mergeFoodsNutrients,
-  FoodPercentage,
   FoodAndNutrients,
   getLegend,
 } from "../foodUtils/foodUtils";
@@ -25,7 +23,7 @@ import {
 import items from "../items.json";
 import FoodInfo from "../foodInfo/FoodInfo";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
-import PeriodicElement from "../periodicElement/PeriodicElement";
+import MineralList from "../mineralList/MineralList";
 
 import "../css/tools.scss";
 import "./FoodCompare.scss";
@@ -74,18 +72,6 @@ const getUserSelectionValues = (
 //   </PopoverStickOnHover>
 // );
 
-const NutrientFooter = (props: { values: FoodPercentage[] }) => (
-  <ul className="nutrientFooter">
-    {props.values.map((item) => (
-      <li
-        className="nutrientFooter__item"
-        key={`${item.food}-${item.nutrient}`}
-      >
-        {Math.round(item.percentage)}%
-      </li>
-    ))}
-  </ul>
-);
 
 const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
@@ -147,24 +133,7 @@ const FoodCompare = () => {
             <FoodLegend legendData={getLegend(selectedFoods)} />
           </main>
           <footer className="foodCompare__footer">
-            <h3>Minerals</h3>
-            <ul className="nutrientList">
-              {foods[0].minerals.map((mineral) => (
-                <li key={mineral.name} className="nutrientList__item">
-                  <PeriodicElement {...mineral}>
-                    <NutrientFooter values={mineral.percentages} />
-                  </PeriodicElement>
-                </li>
-              ))}
-            </ul>
-            {/* <h3>Vitamins</h3> 
-           <ul className="nutrientList">
-            {foods[0].vitamins.map((vitamin) => (
-              <li key={vitamin.name} className="nutrientList__item">
-                <Nutrient {...vitamin} />
-              </li>
-            ))}
-          </ul> */}
+            <MineralList foods={foods} />
           </footer>
         </>
       )}
