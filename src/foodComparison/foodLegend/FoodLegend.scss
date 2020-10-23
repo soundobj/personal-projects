@@ -7,11 +7,15 @@
   font-weight: 400;
   &__list {
     width: 100%;
+    margin-right: 2px;
+  }
+
+  & li:last-child {
+    margin-right: 0;
   }
 
   &__item {
     padding: 0.3rem 0.5rem;
-    margin-right: 2px;
     display: flex;
     &__values {
       display: flex;
@@ -42,23 +46,42 @@
     }
   }
 
-  @media screen and (max-width: 870px) {
+  @media screen and (min-width: 401px) and (max-width: 870px) {
     & {
       flex-wrap: wrap;
     }
 
-    &__list {
-      width: 33.3%;
+    &__item__value:nth-child(2) {
+      width: 32px;
     }
 
-    &__item__value {
-      width: 32px;
+    &__list {
+      width: calc(33.3% - 2px);
+    }
+
+    & li:nth-child(3n + 3) {
+      width: 33.3%;
+      margin-right: 0;
     }
   }
 
   @media screen and (max-width: 400px) {
+    & {
+      flex-wrap: wrap;
+    }
+
+    //@TODO: find a way to make li:nth-child(even) less generic so we dont need to override it at this level with !important
+    &__item__value:nth-child(2) {
+      width: 32px !important;
+    }
+
     &__list {
+      width: calc(50% - 2px);
+    }
+
+    & li:nth-child(even) {
       width: 50%;
+      margin-right: 0;
     }
   }
 }
