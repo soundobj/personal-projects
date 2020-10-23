@@ -43,9 +43,9 @@ $darkModeInnerCircle: black;
   }
 
   &__wikipedia {
-    left: 63.5%;
-    width: 7.5%;
-    top: 62%;
+    left: 61.5%;
+    width: 9%;
+    top: 61%;
   }
 
   #inner_circle {
@@ -71,7 +71,7 @@ $darkModeInnerCircle: black;
     }
 
     .FoodInfo__wikipedia {
-      fill: $darkModeText;
+      filter: invert(1);
     }
   }
 

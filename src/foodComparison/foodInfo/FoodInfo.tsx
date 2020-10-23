@@ -1,7 +1,7 @@
 import React from "react";
 import FoodImage from "../foodImage/FoodImage";
 import { ReactComponent as Medal } from "../assets/info-medal.svg";
-import { ReactComponent as Wikipedia } from "../assets/wikipedia-logo.svg";
+
 import {
   FoodMainAttrs,
   calcWaterContentPercentage,
@@ -31,7 +31,7 @@ const FoodInfo = (props: Props) => {
         {calcWaterContentPercentage(props.food)}
         <span className="FoodInfo__water__percentage">%</span>
       </div>
-      <span className="FoodInfo__wikipedia">W</span>
+      <img className="FoodInfo__wikipedia" src={process.env.PUBLIC_URL + '/foodCompare/wikipedia.png'} />
     </article>
   );
 };
