@@ -31,7 +31,7 @@ const FoodInfo = (props: Props) => {
         {calcWaterContentPercentage(props.food)}
         <span className="FoodInfo__water__percentage">%</span>
       </div>
-      <Wikipedia className="FoodInfo__wikipedia" />
+      <span className="FoodInfo__wikipedia">W</span>
     </article>
   );
 };
