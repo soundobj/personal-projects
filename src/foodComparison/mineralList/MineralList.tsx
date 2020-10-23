@@ -6,9 +6,9 @@ import "./MineralList.scss"
 
 const NutrientFooter = (props: { values: FoodPercentage[] }) => (
   <ul className="NutrientFooter">
-    {props.values.map((item) => (
+    {props.values.map((item, i) => (
       <li
-        className="NutrientFooter__item"
+        className={`NutrientFooter__item ${i === 1 ? 'dark' : ''}`}
         key={`${item.food}-${item.nutrient}`}
       >
         {Math.round(item.percentage)}

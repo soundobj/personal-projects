@@ -74,4 +74,10 @@ $darkModeInnerCircle: black;
       fill: $darkModeText;
     }
   }
+
+  @media screen and (max-width: 500px) {
+    & > * {
+      font-size: .8rem;
+    }
+  }
 }
