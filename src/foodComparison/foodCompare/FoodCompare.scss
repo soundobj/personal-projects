@@ -53,7 +53,7 @@ body {
 .foodCompare {
   &__container {
     @extend %pageContainer;
-    display: grid;
+    // display: grid; 
     height: 100%;
     grid-gap: 10px;
     grid-template-columns: 1fr;

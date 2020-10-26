@@ -24,10 +24,10 @@ import items from "../items.json";
 import FoodInfo from "../foodInfo/FoodInfo";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import MineralList from "../mineralList/MineralList";
+import SectionTitle from "../sectionTitle/SectionTitle";
 
 import "../css/tools.scss";
 import "./FoodCompare.scss";
-
 
 type SelectedFoodsState = FoodAndNutrients[];
 
@@ -72,6 +72,11 @@ const getUserSelectionValues = (
 //   </PopoverStickOnHover>
 // );
 
+const GDA = () => (
+  <>
+    percentage of <span title="Guideline Daily Amount">GDA</span> per 100 gr
+  </>
+);
 
 const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
@@ -116,6 +121,7 @@ const FoodCompare = () => {
       {!isEmpty(foods) && (
         <>
           <main className="foodCompare__main">
+            <SectionTitle content="Composition Ratio" />
             <ul className="foodCompare__items">
               {foods.map((food: FoodMainAttrs, index: number) => (
                 <li key={food.food_name}>
@@ -125,14 +131,31 @@ const FoodCompare = () => {
                     height={850}
                     name={food.food_name}
                   >
-                    <FoodInfo food={food} className={index === 1 ? "dark" : ""} />
+                    <FoodInfo
+                      food={food}
+                      className={index === 1 ? "dark" : ""}
+                    />
                   </PieChart>
                 </li>
               ))}
             </ul>
+            <SectionTitle
+              content={
+                <>
+                  Macronutrients: <GDA />
+                </>
+              }
+            />
             <FoodLegend legendData={getLegend(selectedFoods)} />
           </main>
           <footer className="foodCompare__footer">
+            <SectionTitle
+              content={
+                <>
+                  Minerals: <GDA />
+                </>
+              }
+            />
             <MineralList foods={foods} />
           </footer>
         </>
