@@ -4,13 +4,10 @@ import "./SectionTitle.scss";
 
 interface Props {
   content: string | React.ReactChild;
-
 }
 
-const SectionTitle = (props: Props) => { 
-
-  return (
+const SectionTitle = (props: Props) => (
   <h1 className="SectionTitle">{props.content}</h1>
-)};
+);
 
 export default SectionTitle;
