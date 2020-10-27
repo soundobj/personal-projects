@@ -189,5 +189,11 @@
     "usda_tag": "FIBTG",
     "type": "FIBER",
     "foods": []
+  },
+  {
+    "attr_id": 269,
+    "usda_tag": "SUGAR",
+    "type": "SUGAR",
+    "foods": []
   }
 ]

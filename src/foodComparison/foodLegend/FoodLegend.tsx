@@ -1,12 +1,13 @@
 import React from "react";
 import { schemeSet2 } from "d3";
-import { Legend } from "../foodUtils/foodUtils";
+import { Legend, get5FoodsHighOnNutrient } from "../foodUtils/foodUtils";
 import color from "color";
 
 import "./FoodLegend.scss";
 
 const FoodLegend = (props: { legendData: Legend[] }) => {
   const { legendData } = props;
+  console.error('@_ld', legendData, get5FoodsHighOnNutrient(legendData[0].attr_id));
   return (
     <ul className="foodLegend">
       {legendData.map((item: Legend, i: number) => (

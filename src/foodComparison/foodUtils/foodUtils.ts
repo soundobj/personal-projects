@@ -3,6 +3,8 @@ import _nutrients from "../nutrients.json";
 import minerals from "../minerals.json";
 import vitamins from "../vitamins.json";
 import macronutrients from "../macronutrients.json";
+import foodsByNutrient from "../foodsByNutrient.json";
+import { zip } from "lodash";
 
 const nutrients: NutrientAttrs[] = _nutrients;
 
@@ -52,6 +54,7 @@ export interface PeriodicElement {
   state: string;
   url: string;
   color: string;
+  id: number;
 }
 
 export interface FoodPercentage {
@@ -193,6 +196,7 @@ interface LegendValues {
 }
 
 export interface Legend {
+  attr_id: number;
   title: string;
   values: LegendValues[];
   url: string;
@@ -201,6 +205,7 @@ export interface Legend {
 
 export const getLegend = (foods: FoodAndNutrients[]): Legend[] =>
   macronutrients.map<Legend>((item) => ({
+    attr_id: item.attr_id,
     title: item.displayName,
     url: item.url,
     fda_daily_value: item.fda_daily_value,
@@ -225,3 +230,9 @@ export const getFilePath = (item: string) => `../foods/${item}.json`;
 export const getFoodItem = (item: string): Promise<FoodPayload> =>
   import(`../foods/${spacesToHyphen(item)}.json`);
   // import(getFilePath(spacesToHyphen(item)));
+
+export const get5FoodsHighOnNutrient = (nutrientId: number): string[] => {
+  const nutrient = foodsByNutrient.find((item) => item.attr_id === nutrientId)
+  // @ts-ignore
+  return nutrient?.foods.slice(0,5).map<string>((x) => x.food_name) || []
+}
