@@ -1,9 +1,8 @@
 import fs from "fs";
 import { find } from "lodash";
 import nutrientsSubset from "../nutrients-subset.json";
-import getFoodItem, { getFood } from "../getFoodItem/getFoodItem";
 import { getFoodDictionary } from "../typeAheadSuggestions/typeAheadsuggestions";
-import { FoodMainAttrs, Nutrient, nutrientValuePer100gr } from "../foodUtils/foodUtils";
+import { FoodMainAttrs, Nutrient, nutrientValuePer100gr, getFoodItem, getFood } from "../foodUtils/foodUtils";
 
 interface NutrientFood {
   food_name: string;

@@ -14,8 +14,10 @@ import {
   mergeFoodsNutrients,
   FoodAndNutrients,
   getLegend,
+  getFood,
+  getFoodItem
 } from "../foodUtils/foodUtils";
-import getFoodItem, { getFood } from "../getFoodItem/getFoodItem";
+
 import {
   createGroupedOptions,
   formatGroupLabel,

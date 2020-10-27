@@ -216,6 +216,12 @@ export const getLegend = (foods: FoodAndNutrients[]): Legend[] =>
     }),
   }));
 
-export const getFood = () => {
-  
-}
+export const getFood = (food: FoodPayload): FoodMainAttrs => food.foods[0];
+
+export const spacesToHyphen = (text: string) => text.trim().replace(/ /g, "-");
+
+export const getFilePath = (item: string) => `../foods/${item}.json`;
+
+export const getFoodItem = (item: string): Promise<FoodPayload> =>
+  import(`../foods/${spacesToHyphen(item)}.json`);
+  // import(getFilePath(spacesToHyphen(item)));

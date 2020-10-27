@@ -1,9 +1,10 @@
 import {
   getPieChartData,
   getMinerals,
-  getVitamins,
+  // getVitamins,
   FoodMainAttrs,
   calcWaterContentPercentage,
+  getFoodItem,
 } from "./foodUtils";
 
 const payload = ({
@@ -153,19 +154,32 @@ describe("foodComparison/foodUtils", () => {
     });
   });
 
-  describe("getVitamins", () => {
-    it("gets the minerals data percentages for a food", () => {
-      const vitamins = getVitamins(payload, [401]);
-      const expected = [
-        { name: "C", unit: "mg", fda_daily_value: 60, percentages: [40.77] },
-      ];
-      expect(vitamins).toMatchObject(expected);
-    });
-  });
+  // describe("getVitamins", () => {
+  //   it("gets the minerals data percentages for a food", () => {
+  //     const vitamins = getVitamins(payload, [401]);
+  //     const expected = [
+  //       { name: "C", unit: "mg", fda_daily_value: 60, percentages: [40.77] },
+  //     ];
+  //     expect(vitamins).toMatchObject(expected);
+  //   });
+  // });
 
   describe("calculateWaterContentPercentage", () => {
     it("gets the amount of water per 100 grms", () => {});
-      const res = calcWaterContentPercentage(payload);
-      expect(res).toEqual(73)
+    const res = calcWaterContentPercentage(payload);
+    expect(res).toEqual(73);
+  });
+
+  describe("getFoodItem", () => {
+    //@ts-ignore
+    getFilePath = jest.fn((item: string) => {
+      return `./${item}.json`;
+    });
+    it("dynamically imports food item json", () => {
+      return getFoodItem(" food item ").then((res) => {
+        //@ts-ignore
+        expect(res.default).toMatchObject({ foo: "bar" });
+      });
+    });
   });
 });
