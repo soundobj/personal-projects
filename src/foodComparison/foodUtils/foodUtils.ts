@@ -193,6 +193,7 @@ export const calcWaterContentPercentage = (food: FoodMainAttrs): number => {
 interface LegendValues {
   fda_percentage: number;
   weightPer100gr: number;
+  food_name: string;
 }
 
 export interface Legend {
@@ -217,6 +218,7 @@ export const getLegend = (foods: FoodAndNutrients[]): Legend[] =>
       return {
         fda_percentage: calcPercentage(weightPer100gr, item.fda_daily_value),
         weightPer100gr,
+        food_name: food.food_name
       };
     }),
   }));

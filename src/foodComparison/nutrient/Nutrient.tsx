@@ -4,6 +4,8 @@ import { FoodNutrient } from "../foodUtils/foodUtils";
 
 import "./Nutrient.scss";
 
+//@TODO: extract chart css component
+
 const Nutrient = (props: FoodNutrient) => {
   const { name, unit, fda_daily_value, percentages } = props;
   return (

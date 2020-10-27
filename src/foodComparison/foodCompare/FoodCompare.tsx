@@ -24,7 +24,6 @@ import {
 } from "../menu/options/Options";
 import items from "../items.json";
 import FoodInfo from "../foodInfo/FoodInfo";
-import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import MineralList from "../mineralList/MineralList";
 import SectionTitle from "../sectionTitle/SectionTitle";
 
@@ -63,16 +62,6 @@ const getUserSelectionValues = (
   Array.isArray(userSelection)
     ? userSelection.map<string>((x: OptionType) => x && x.value)
     : [];
-
-// const PopOver = (props: FoodMainAttrs) => (
-//   <PopoverStickOnHover
-//     delay={500}
-//     placement="bottom"
-//     component={<Info {...props} />}
-//   >
-//     <p>target</p>
-//   </PopoverStickOnHover>
-// );
 
 const GDA = () => (
   <>
