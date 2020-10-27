@@ -17,8 +17,6 @@ export interface NutrientList {
   foods: NutrientFood[];
 }
 
-
-
 export const orderByValueDesc = (a: NutrientFood, b: NutrientFood) =>
   b.value - a.value;
 
@@ -56,9 +54,9 @@ const doFood = (food: string) =>
       console.error(`@_could not find item ${food}, error:`, e);
     });
 
-// Promise.all(foodDictionary.map(doFood)).then(() => {
-//   nutrients.map((n) => n.foods.sort(orderByValueDesc));
-//   fs.writeFile("../foodsByNutrient.json", prettyJSON(nutrients), (e) => {
-//     console.error("@_done, errors:", e);
-//   });
-// });
+Promise.all(foodDictionary.map(doFood)).then(() => {
+  nutrients.map((n) => n.foods.sort(orderByValueDesc));
+  fs.writeFile("../foodsByNutrient.json", prettyJSON(nutrients), (e) => {
+    console.error("@_done, errors:", e);
+  });
+});
