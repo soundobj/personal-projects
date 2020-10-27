@@ -1,5 +1,4 @@
 import React from "react";
-import FoodImage from "../foodImage/FoodImage";
 import { ReactComponent as Medal } from "../assets/info-medal.svg";
 
 import {
@@ -20,7 +19,7 @@ const FoodInfo = (props: Props) => {
   return (
     <article className={`FoodInfo ${className || ""}`}>
       <Medal className="FoodInfo__medal" />
-      <FoodImage food_name={food.food_name} className="FoodInfo__image" />
+      <img src={`${process.env.PUBLIC_URL}/foodCompare/thumbs/${food.food_name}.jpg`} className="FoodInfo__image" />
       <span className="FoodInfo__calories">
         {nutrientValuePer100gr(food.serving_weight_grams, food.nf_calories)}
       </span>
