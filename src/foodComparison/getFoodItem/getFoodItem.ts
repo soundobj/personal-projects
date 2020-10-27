@@ -16,3 +16,4 @@ const getFoodItem = (item: string): Promise<FoodPayload> =>
   );
 
 export default getFoodItem;
+    

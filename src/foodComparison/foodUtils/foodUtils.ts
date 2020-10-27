@@ -215,3 +215,7 @@ export const getLegend = (foods: FoodAndNutrients[]): Legend[] =>
       };
     }),
   }));
+
+export const getFood = () => {
+  
+}
