@@ -42,19 +42,4 @@
       content: "***";
     }
   }
-
-  @media screen and (max-width: 870px) {
-    &__element {
-      font-size: 2.5rem;
-    }
-  }
-  @media screen and (max-width: 530px) {
-    &__element {
-      font-size: 1.5rem;
-    }
-
-    &__name {
-      font-size: .9rem;
-    }
-  }
 }
