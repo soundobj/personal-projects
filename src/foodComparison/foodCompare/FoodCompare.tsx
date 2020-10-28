@@ -15,7 +15,7 @@ import {
   FoodAndNutrients,
   getLegend,
   getFood,
-  getFoodItem
+  getFoodItem,
 } from "../foodUtils/foodUtils";
 
 import {
@@ -26,6 +26,7 @@ import items from "../items.json";
 import FoodInfo from "../foodInfo/FoodInfo";
 import MineralList from "../mineralList/MineralList";
 import SectionTitle from "../sectionTitle/SectionTitle";
+import ChooseFood from "../chooseFood/ChooseFood";
 
 import "../css/tools.scss";
 import "./FoodCompare.scss";
@@ -108,7 +109,7 @@ const FoodCompare = () => {
           }}
         />
       </nav>
-      {isEmpty(foods) && <p>Choose some food </p>}
+      {isEmpty(foods) && <ChooseFood />}
       {!isEmpty(foods) && (
         <>
           <main className="foodCompare__main">
