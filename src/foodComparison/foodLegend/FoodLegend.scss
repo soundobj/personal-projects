@@ -16,6 +16,7 @@
 
   &__item {
     padding: 0.3rem 0.5rem;
+    cursor: help;
     display: flex;
     &__values {
       display: flex;
@@ -27,7 +28,6 @@
       }
     }
     &__value {
-      cursor: help;
       font-size: 1rem;
       &:first-child {
         padding-right: 0.2rem;

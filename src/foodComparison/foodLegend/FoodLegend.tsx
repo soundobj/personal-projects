@@ -1,7 +1,7 @@
 import React from "react";
 import { schemeSet2 } from "d3";
 import color from "color";
-import { Legend, get5FoodsHighOnNutrient } from "../foodUtils/foodUtils";
+import { Legend, getNFoodsHighOnNutrient } from "../foodUtils/foodUtils";
 import PopoverStickOnHover from "../popoverStickOnHover/PopoverStickOnHover";
 import NutrientInfo from "../nutrientInfo/NutrientInfo";
 
@@ -9,11 +9,6 @@ import "./FoodLegend.scss";
 
 const FoodLegend = (props: { legendData: Legend[] }) => {
   const { legendData } = props;
-  console.error(
-    "@_ld",
-    legendData,
-    get5FoodsHighOnNutrient(legendData[0].attr_id)
-  );
   return (
     <ul className="foodLegend">
       {legendData.map((item: Legend, i: number) => (
@@ -21,25 +16,21 @@ const FoodLegend = (props: { legendData: Legend[] }) => {
           <PopoverStickOnHover
             delay={500}
             placement="top"
-            component={<NutrientInfo />}
+            component={
+              <NutrientInfo
+                info={item}
+                foods={getNFoodsHighOnNutrient(item.attr_id)}
+              />
+            }
           >
             <article
               className="foodLegend__item"
               style={{ backgroundColor: schemeSet2[i] }}
             >
-              <header className="foodLegend__item__title">
-                <a
-                  target="new"
-                  href={item.url}
-                  title={`find out more on ${item.title}`}
-                >
-                  {item.title}
-                </a>
-              </header>
+              <header className="foodLegend__item__title">{item.title}</header>
               <ul className="foodLegend__item__values">
                 {item.values.map((value, index) => (
                   <li
-                    title={`${value.weightPer100gr}gr of ${item.fda_daily_value}gr`}
                     className={`foodLegend__item__value ${
                       index === 1 && "dark"
                     }`}

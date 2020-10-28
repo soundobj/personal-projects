@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Overlay, Popover } from "react-bootstrap";
 
+import "./PopoverStickOnHover.scss"
+
 interface Props {
   delay: number;
   onMouseEnter?: () => void;

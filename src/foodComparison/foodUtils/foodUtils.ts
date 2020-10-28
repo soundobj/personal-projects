@@ -202,11 +202,13 @@ export interface Legend {
   values: LegendValues[];
   url: string;
   fda_daily_value: number;
+  unit: string;
 }
 
 export const getLegend = (foods: FoodAndNutrients[]): Legend[] =>
   macronutrients.map<Legend>((item) => ({
     attr_id: item.attr_id,
+    unit: item.unit,
     title: item.displayName,
     url: item.url,
     fda_daily_value: item.fda_daily_value,
@@ -233,8 +235,8 @@ export const getFoodItem = (item: string): Promise<FoodPayload> =>
   import(`../foods/${spacesToHyphen(item)}.json`);
   // import(getFilePath(spacesToHyphen(item)));
 
-export const get5FoodsHighOnNutrient = (nutrientId: number): string[] => {
+export const getNFoodsHighOnNutrient = (nutrientId: number, number: number = 4): string[] => {
   const nutrient = foodsByNutrient.find((item) => item.attr_id === nutrientId)
   // @ts-ignore
-  return nutrient?.foods.slice(0,5).map<string>((x) => x.food_name) || []
+  return nutrient?.foods.slice(0,number).map<string>((x) => x.food_name) || []
 }
