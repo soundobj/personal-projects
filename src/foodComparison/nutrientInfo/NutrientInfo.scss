@@ -23,25 +23,24 @@
         width: 33.3%;
         text-transform: capitalize;
 
-
         &.dark {
           color: white;
           background-color: black;
         }
       }
 
-      & th, & td {
-        padding: .3rem;
+      & th,
+      & td {
+        padding: 0.3rem;
       }
 
       & tr {
         border: 1px solid lightgray;
-        & td {
+        & td,
+        & th {
           border-left: 1px solid lightgray;
         }
       }
-
-      
     }
   }
 
@@ -50,7 +49,7 @@
 
     &__title {
       @extend %heading;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
     }
     &__list {
       display: grid;
