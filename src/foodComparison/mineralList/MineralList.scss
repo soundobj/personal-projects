@@ -33,4 +33,10 @@
   & li:last-child {
     margin-right: 0;
   }
+
+  @media screen and (max-width: 900px) {
+    & {
+      margin: 0 .5rem;
+    }
+  }
 }
