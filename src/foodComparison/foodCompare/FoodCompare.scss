@@ -53,33 +53,18 @@ body {
 .foodCompare {
   &__container {
     @extend %pageContainer;
-    // display: grid; 
     height: 100%;
-    grid-gap: 10px;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "nav"
-      "main"
-      "footer";
-
-    grid-template-rows: auto 1fr auto;
   }
 
   &__nav {
-    grid-area: nav;
     position: sticky;
     z-index: 1;
     top: 0;
   }
 
   &__main {
-    grid-area: main;
     display: flex;
     flex-direction: column;
-  }
-
-  &__footer {
-    grid-area: footer;
   }
 
   &__items {
@@ -93,44 +78,3 @@ body {
     }
   }
 }
-
-// %pos {
-//   margin: 0 auto;
-//   border: solid 10px;
-//   margin-top: -10px;
-// }
-
-// .transparent-black-square {
-//   border-image-slice: 17 0 8 0;
-//   border-image-width: 0px 0px 6px 0px;
-//   border-image-outset: 0px 0px 0px 0px;
-//   border-image-repeat: repeat repeat;
-//   border-image-source: url("../assets/patterns/transparent-black-square-row.png");
-//   @extend %pos;
-// }
-
-// .transparent-white-square {
-//   border-image-slice: 17 0 8 0;
-//   border-image-width: 0px 0px 6px 0px;
-//   border-image-outset: 0px 0px 0px 0px;
-//   border-image-repeat: repeat repeat;
-//   border-image-source: url("../assets/patterns/transparent-white-square-row.png");
-//   @extend %pos;
-// }
-// .transparent-black-triangle {
-//   border-image-slice: 17 0 8 0;
-//   border-image-width: 0px 0px 6px 0px;
-//   border-image-outset: 0px 0px 0px 0px;
-//   border-image-repeat: repeat repeat;
-//   border-image-source: url("../assets/patterns/transparent-black-triangle-row.png");
-//   @extend %pos;
-// }
-
-// .transparent-white-triangle {
-//   border-image-slice: 17 0 8 0;
-//   border-image-width: 0px 0px 6px 0px;
-//   border-image-outset: 0px 0px 0px 0px;
-//   border-image-repeat: repeat repeat;
-//   border-image-source: url("../assets/patterns/transparent-white-triangle-row.png");
-//   @extend %pos;
-// }

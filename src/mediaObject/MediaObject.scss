@@ -1,10 +1,21 @@
 .MediaObject {
+  display: flex;
+  padding: 1rem;
+  border: solid 1px lightgray;
+  margin: .2rem .5rem;
+  background-color: white;
+  border-radius: 3px;
   &__img {
+    width: 90px;
+    height: 90px;
+    margin-right: .5rem;
   }
 
   &__content {
     &__title {
       font-family: "Oswald", sans-serif;
+      font-size: 1.2rem;
+    margin-bottom: .3rem;
     }
     &__caption {
       font-family: "Montserrat", sans-serif;
