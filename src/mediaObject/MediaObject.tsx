@@ -4,7 +4,7 @@ import "./MediaObject.scss"
 export interface MediaObjectProps {
   thumb: string,
   title: string,
-  caption: string | Element,
+  caption: string | JSX.Element,
   link: string
 }
 

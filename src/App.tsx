@@ -20,7 +20,6 @@ export const setBodyClassNameToRoute = () => {
 setBodyClassNameToRoute();
 history.listen(setBodyClassNameToRoute);
 
-
 const projects = [
   {
     thumb: `${process.env.PUBLIC_URL}projects/food-compare.jpg`,
@@ -28,8 +27,8 @@ const projects = [
     caption: (
       <p>
         Compare fruits and vegetables nutrient composition: Leveraging the{" "}
-        <span title="https://developer.nutritionix.com/">Nutritionix API</span>, D3.js
-        and react-select
+        <span title="https://developer.nutritionix.com/">Nutritionix API</span>,
+        D3.js and react-select
       </p>
     ),
     link: "/foodCompare",
@@ -38,20 +37,19 @@ const projects = [
     thumb: `${process.env.PUBLIC_URL}projects/sudoku.jpg`,
     title: "Sudoku",
     caption:
-      "Classic puzzle game. Utilizes React Hooks, multiple difficulty levels and dark and light modes using CSS variables.",
+      "Classic puzzle game. Utilizes React Hooks, multiple difficulty levels and dark & light modes using CSS variables.",
     link: "/sudoku",
   },
 ];
 
-const Index = () => (
-  // @ts-ignore
-  <IndexPage projects={projects} />
-);
-
 export const App = () => {
   return (
     <Router history={history}>
-      <Route exact path="/" component={Index} />
+      <Route
+        exact
+        path="/"
+        component={() => <IndexPage projects={projects} />}
+      />
       <Route path="/sudoku" component={Sudoku} />
       <Route path="/foodCompare" component={FoodCompare} />
     </Router>
