@@ -1,0 +1,13 @@
+.MediaObject {
+  &__img {
+  }
+
+  &__content {
+    &__title {
+      font-family: "Oswald", sans-serif;
+    }
+    &__caption {
+      font-family: "Montserrat", sans-serif;
+    }
+  }
+}

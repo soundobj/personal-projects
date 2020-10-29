@@ -1,0 +1,26 @@
+
+@font-face {
+  font-family: "Pacifico";
+  src: URL("../font/Pacifico/Pacifico-Regular.ttf") format("truetype");
+}
+
+.IndexPage {
+  height: 100%;
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: auto 1fr auto;
+
+  &__header {
+    &__title {
+      font-family: "Poiret One", cursive;
+      font-size: 3rem;
+      font-weight: 600;
+    }
+  }
+
+  &__footer {
+    &__mail {
+      font-family: "Pacifico", cursive;
+    }
+  }
+}
