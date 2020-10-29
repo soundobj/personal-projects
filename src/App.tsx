@@ -20,6 +20,7 @@ export const setBodyClassNameToRoute = () => {
 setBodyClassNameToRoute();
 history.listen(setBodyClassNameToRoute);
 
+
 const projects = [
   {
     thumb: `${process.env.PUBLIC_URL}projects/food-compare.jpg`,
