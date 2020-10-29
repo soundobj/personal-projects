@@ -8,6 +8,7 @@ import {
 } from "./definitions";
 import { Actions, State } from "./reducer";
 import { StopWatch } from "../../stopWatch/stopWatch";
+import { getInitialBoardPosition } from "./utils";
 
 type Dispatch = (...args: any[]) => void;
 
@@ -34,6 +35,7 @@ const sudokuActions = () => {
   const newGame = (gameLevel?: string) => {
     if (gameLevel && GameLevel.hasOwnProperty(gameLevel)) {
       startGame(gameLevel);
+      selectCell(getInitialBoardPosition())
       restartWatch();
     }
   };

@@ -418,3 +418,5 @@ const _getEnumValues = <T>(_enum: T): number[] => {
 }
 
 export const getEnumValues = memoize(_getEnumValues)
+
+export const getInitialBoardPosition = () => ({ x: 4, y: 4 });

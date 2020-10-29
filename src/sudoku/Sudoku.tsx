@@ -29,14 +29,13 @@ import GameControls from "./gameControls/GameControls";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
 import Nav from './nav/Nav'
 
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "reset-css";
 import "./vars.scss";
 import "./Sudoku.scss";
 
 // import * as stateStub from "./lib/stubs/state-stub.json";
-import * as stateStub from './lib/stubs/almostComplete.json'
+// import * as stateStub from './lib/stubs/almostComplete.json'
 
 const watch = stopWatch();
 const container = stateContainer();
@@ -75,7 +74,7 @@ const Sudoku = () => {
     setDialogShow(true);
   }, []);
 
-  console.error("@state", state);
+  // console.error("@state", state);
   let {
     game,
     selectedCell,
@@ -166,17 +165,12 @@ const Sudoku = () => {
   if (transition) {
     const transitionInterval = TransitionsIntervals[transition as Transitions];
     setTimeout(() => {
-      console.error(`@transition ends in ${transitionInterval} milliseconds`);
       transitionEnded(transition);
       if (transition === "NEW_GAME") {
         watch.start();
       }
     }, transitionInterval);
   }
-
-  //dev remove
-  // shouldShowModal = true;
-  // currentDialog = "SHORTCUTS";  
 
   const isUndoDisabled: boolean = isEmpty(moveHistory) || isGamePaused;
 
