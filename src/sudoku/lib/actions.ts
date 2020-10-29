@@ -46,6 +46,7 @@ const sudokuActions = () => {
   const restartGame = () => {
     dispatch({ type: Actions.RESTART_GAME });
     restartWatch();
+    selectCell(getInitialBoardPosition())
     setCurrentDialog("NEW_GAME");
   };
 
