@@ -1,0 +1,18 @@
+@import "../vars.scss";
+@import "../utils.scss";
+
+.sudoku__controls__numbers {
+  width: 100%;
+
+  & button {
+    @extend %button;
+    width: 12.5%;
+    padding: 0.3rem 0;
+
+    &:disabled {
+      background-color: var(--cta-primary-border);
+      border: none;
+      cursor: unset;
+    }
+  }
+}

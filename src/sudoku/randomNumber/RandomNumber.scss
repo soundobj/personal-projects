@@ -1,0 +1,8 @@
+@import "../vars.scss";
+
+.sudoku__random__number {
+  text-align: center;
+  min-width: var(--boardFontSize);
+  display: inline-block;
+  font-size: var(--boardFontSize);
+}

@@ -1,0 +1,93 @@
+.foodLegend {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 0;
+  font-family: "Oswald", sans-serif;
+  color: white;
+  font-weight: 400;
+  &__list {
+    width: 100%;
+    margin-right: 2px;
+  }
+
+  & li:last-child {
+    margin-right: 0;
+  }
+
+  &__item {
+    padding: 0.3rem 0.5rem;
+    cursor: help;
+    display: flex;
+    &__values {
+      display: flex;
+    }
+    &__title {
+      flex-grow: 1;
+      a {
+        color: white;
+      }
+    }
+    &__value {
+      font-size: 1rem;
+      &:first-child {
+        padding-right: 0.2rem;
+      }
+      &:nth-child(2) {
+        padding-left: 0.2rem;
+      }
+
+      &__percentage {
+        font-size: 0.7rem;
+      }
+
+      &.dark {
+        color: black;
+      }
+    }
+  }
+
+  @media screen and (min-width: 401px) and (max-width: 870px) {
+    & {
+      flex-wrap: wrap;
+    }
+
+    &__item__value:nth-child(2) {
+      width: 32px;
+    }
+
+    &__list {
+      width: calc(33.3% - 2px);
+    }
+
+    & li:nth-child(3n + 3) {
+      width: 33.3%;
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    & {
+      flex-wrap: wrap;
+    }
+
+    //@TODO: find a way to make li:nth-child(even) less generic so we dont need to override it at this level with !important
+    &__item__value:nth-child(2) {
+      width: 32px !important;
+    }
+
+    &__list {
+      width: calc(50% - 2px);
+    }
+
+    & li:nth-child(even) {
+      width: 50%;
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    & {
+      margin: 0 .5rem;
+    }
+  }
+}

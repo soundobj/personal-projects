@@ -1,0 +1,7 @@
+@import "../vars.scss";
+
+.sudoku__themeSelector__moon {
+  &  .circle-area {
+    fill: var(--background);
+  }
+}

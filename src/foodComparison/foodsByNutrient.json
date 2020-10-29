@@ -1,0 +1,9571 @@
+[
+  {
+    "attr_id": 205,
+    "usda_tag": "CHOCDF",
+    "type": "CARBS",
+    "foods": [
+      {
+        "food_name": "date",
+        "value": 75
+      },
+      {
+        "food_name": "turmeric",
+        "value": 67
+      },
+      {
+        "food_name": "prune",
+        "value": 64
+      },
+      {
+        "food_name": "pepper",
+        "value": 64
+      },
+      {
+        "food_name": "tamarind",
+        "value": 63
+      },
+      {
+        "food_name": "cacao",
+        "value": 60
+      },
+      {
+        "food_name": "coconut",
+        "value": 52
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 49
+      },
+      {
+        "food_name": "wasabi",
+        "value": 46
+      },
+      {
+        "food_name": "garlic",
+        "value": 33
+      },
+      {
+        "food_name": "chickpea",
+        "value": 27
+      },
+      {
+        "food_name": "durian",
+        "value": 27
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 25
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 23
+      },
+      {
+        "food_name": "red bean",
+        "value": 23
+      },
+      {
+        "food_name": "banana",
+        "value": 23
+      },
+      {
+        "food_name": "bean",
+        "value": 23
+      },
+      {
+        "food_name": "peanut",
+        "value": 21
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 21
+      },
+      {
+        "food_name": "corn",
+        "value": 21
+      },
+      {
+        "food_name": "potato",
+        "value": 21
+      },
+      {
+        "food_name": "lentil",
+        "value": 20
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 19
+      },
+      {
+        "food_name": "fig",
+        "value": 19
+      },
+      {
+        "food_name": "ginger",
+        "value": 18
+      },
+      {
+        "food_name": "grape",
+        "value": 18
+      },
+      {
+        "food_name": "parsnip",
+        "value": 17
+      },
+      {
+        "food_name": "pea",
+        "value": 16
+      },
+      {
+        "food_name": "cherry",
+        "value": 16
+      },
+      {
+        "food_name": "black currant",
+        "value": 15
+      },
+      {
+        "food_name": "mango",
+        "value": 15
+      },
+      {
+        "food_name": "quince",
+        "value": 15
+      },
+      {
+        "food_name": "kiwi",
+        "value": 15
+      },
+      {
+        "food_name": "pear",
+        "value": 15
+      },
+      {
+        "food_name": "apple",
+        "value": 14
+      },
+      {
+        "food_name": "red currant",
+        "value": 14
+      },
+      {
+        "food_name": "guava",
+        "value": 14
+      },
+      {
+        "food_name": "orange",
+        "value": 13
+      },
+      {
+        "food_name": "pineapple",
+        "value": 13
+      },
+      {
+        "food_name": "tangerine",
+        "value": 13
+      },
+      {
+        "food_name": "raspberry",
+        "value": 12
+      },
+      {
+        "food_name": "artichoke",
+        "value": 12
+      },
+      {
+        "food_name": "clementine",
+        "value": 12
+      },
+      {
+        "food_name": "cranberry",
+        "value": 12
+      },
+      {
+        "food_name": "lime",
+        "value": 11
+      },
+      {
+        "food_name": "plum",
+        "value": 11
+      },
+      {
+        "food_name": "nectarine",
+        "value": 11
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 11
+      },
+      {
+        "food_name": "papaya",
+        "value": 11
+      },
+      {
+        "food_name": "horseradish",
+        "value": 11
+      },
+      {
+        "food_name": "pomelo",
+        "value": 10
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 10
+      },
+      {
+        "food_name": "peach",
+        "value": 10
+      },
+      {
+        "food_name": "mulberry",
+        "value": 10
+      },
+      {
+        "food_name": "onion",
+        "value": 10
+      },
+      {
+        "food_name": "avocado",
+        "value": 9
+      },
+      {
+        "food_name": "eggplant",
+        "value": 9
+      },
+      {
+        "food_name": "lemon",
+        "value": 9
+      },
+      {
+        "food_name": "swede",
+        "value": 9
+      },
+      {
+        "food_name": "watermelon",
+        "value": 8
+      },
+      {
+        "food_name": "melon",
+        "value": 8
+      },
+      {
+        "food_name": "green bean",
+        "value": 8
+      },
+      {
+        "food_name": "carrot",
+        "value": 8
+      },
+      {
+        "food_name": "strawberry",
+        "value": 8
+      },
+      {
+        "food_name": "soy bean",
+        "value": 8
+      },
+      {
+        "food_name": "leek",
+        "value": 8
+      },
+      {
+        "food_name": "broccoli",
+        "value": 7
+      },
+      {
+        "food_name": "star fruit",
+        "value": 7
+      },
+      {
+        "food_name": "spring onion",
+        "value": 7
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 7
+      },
+      {
+        "food_name": "dill",
+        "value": 7
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 7
+      },
+      {
+        "food_name": "kale",
+        "value": 6
+      },
+      {
+        "food_name": "olive",
+        "value": 6
+      },
+      {
+        "food_name": "cabbage",
+        "value": 6
+      },
+      {
+        "food_name": "celeriac",
+        "value": 6
+      },
+      {
+        "food_name": "okra",
+        "value": 5
+      },
+      {
+        "food_name": "caper",
+        "value": 5
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 5
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 5
+      },
+      {
+        "food_name": "turnip",
+        "value": 5
+      },
+      {
+        "food_name": "squash",
+        "value": 4
+      },
+      {
+        "food_name": "celery",
+        "value": 4
+      },
+      {
+        "food_name": "cucumber",
+        "value": 4
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 4
+      },
+      {
+        "food_name": "spinach",
+        "value": 4
+      },
+      {
+        "food_name": "asparagus",
+        "value": 4
+      },
+      {
+        "food_name": "radicchio",
+        "value": 4
+      },
+      {
+        "food_name": "tomato",
+        "value": 4
+      },
+      {
+        "food_name": "courgette",
+        "value": 3
+      },
+      {
+        "food_name": "lettuce",
+        "value": 3
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 3
+      },
+      {
+        "food_name": "radish",
+        "value": 3
+      },
+      {
+        "food_name": "zucchini",
+        "value": 3
+      },
+      {
+        "food_name": "watercress",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "attr_id": 204,
+    "usda_tag": "FAT",
+    "type": "FAT",
+    "foods": [
+      {
+        "food_name": "peanut",
+        "value": 50
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 36
+      },
+      {
+        "food_name": "coconut",
+        "value": 28
+      },
+      {
+        "food_name": "avocado",
+        "value": 15
+      },
+      {
+        "food_name": "olive",
+        "value": 11
+      },
+      {
+        "food_name": "wasabi",
+        "value": 11
+      },
+      {
+        "food_name": "cacao",
+        "value": 10
+      },
+      {
+        "food_name": "soy bean",
+        "value": 9
+      },
+      {
+        "food_name": "durian",
+        "value": 5
+      },
+      {
+        "food_name": "chickpea",
+        "value": 3
+      },
+      {
+        "food_name": "pepper",
+        "value": 3
+      },
+      {
+        "food_name": "turmeric",
+        "value": 3
+      },
+      {
+        "food_name": "corn",
+        "value": 2
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 1
+      },
+      {
+        "food_name": "bean",
+        "value": 1
+      },
+      {
+        "food_name": "horseradish",
+        "value": 1
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 1
+      },
+      {
+        "food_name": "kiwi",
+        "value": 1
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 1
+      },
+      {
+        "food_name": "guava",
+        "value": 1
+      },
+      {
+        "food_name": "dill",
+        "value": 1
+      },
+      {
+        "food_name": "caper",
+        "value": 1
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 1
+      },
+      {
+        "food_name": "raspberry",
+        "value": 1
+      },
+      {
+        "food_name": "red bean",
+        "value": 1
+      },
+      {
+        "food_name": "garlic",
+        "value": 1
+      },
+      {
+        "food_name": "tamarind",
+        "value": 1
+      },
+      {
+        "food_name": "ginger",
+        "value": 1
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "pomelo",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 605,
+    "usda_tag": "FATRN",
+    "type": "FAT",
+    "foods": [
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "avocado",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "chickpea",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "dill",
+        "value": 0
+      },
+      {
+        "food_name": "durian",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "olive",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "pepper",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "pomelo",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "soy bean",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "turmeric",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 606,
+    "usda_tag": "FASAT",
+    "type": "FAT",
+    "foods": [
+      {
+        "food_name": "coconut",
+        "value": 26
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 26
+      },
+      {
+        "food_name": "peanut",
+        "value": 8
+      },
+      {
+        "food_name": "avocado",
+        "value": 2
+      },
+      {
+        "food_name": "turmeric",
+        "value": 2
+      },
+      {
+        "food_name": "wasabi",
+        "value": 2
+      },
+      {
+        "food_name": "olive",
+        "value": 1
+      },
+      {
+        "food_name": "pepper",
+        "value": 1
+      },
+      {
+        "food_name": "soy bean",
+        "value": 1
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "cacao",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "chickpea",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "dill",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 645,
+    "usda_tag": "FAMS",
+    "type": "FAT",
+    "foods": [
+      {
+        "food_name": "peanut",
+        "value": 26
+      },
+      {
+        "food_name": "avocado",
+        "value": 10
+      },
+      {
+        "food_name": "olive",
+        "value": 8
+      },
+      {
+        "food_name": "wasabi",
+        "value": 4
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 3
+      },
+      {
+        "food_name": "soy bean",
+        "value": 2
+      },
+      {
+        "food_name": "dill",
+        "value": 1
+      },
+      {
+        "food_name": "coconut",
+        "value": 1
+      },
+      {
+        "food_name": "chickpea",
+        "value": 1
+      },
+      {
+        "food_name": "pepper",
+        "value": 1
+      },
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "turmeric",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 646,
+    "usda_tag": "FAPU",
+    "type": "FAT",
+    "foods": [
+      {
+        "food_name": "peanut",
+        "value": 10
+      },
+      {
+        "food_name": "soy bean",
+        "value": 5
+      },
+      {
+        "food_name": "wasabi",
+        "value": 4
+      },
+      {
+        "food_name": "avocado",
+        "value": 2
+      },
+      {
+        "food_name": "chickpea",
+        "value": 1
+      },
+      {
+        "food_name": "corn",
+        "value": 1
+      },
+      {
+        "food_name": "olive",
+        "value": 1
+      },
+      {
+        "food_name": "pepper",
+        "value": 1
+      },
+      {
+        "food_name": "turmeric",
+        "value": 1
+      },
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "dill",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 693,
+    "usda_tag": "FATRNM",
+    "type": "FAT",
+    "foods": [
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "pepper",
+        "value": 0
+      },
+      {
+        "food_name": "turmeric",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 695,
+    "usda_tag": "FATRNP",
+    "type": "FAT",
+    "foods": [
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 318,
+    "usda_tag": "VITA_IU",
+    "type": "VITAMIN",
+    "VITAMIN": "A",
+    "foods": [
+      {
+        "food_name": "sweet potato",
+        "value": 19218
+      },
+      {
+        "food_name": "carrot",
+        "value": 17033
+      },
+      {
+        "food_name": "kale",
+        "value": 13621
+      },
+      {
+        "food_name": "spinach",
+        "value": 10481
+      },
+      {
+        "food_name": "lettuce",
+        "value": 8710
+      },
+      {
+        "food_name": "dill",
+        "value": 7718
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 5755
+      },
+      {
+        "food_name": "melon",
+        "value": 3382
+      },
+      {
+        "food_name": "watercress",
+        "value": 3191
+      },
+      {
+        "food_name": "broccoli",
+        "value": 1548
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 1150
+      },
+      {
+        "food_name": "zucchini",
+        "value": 1117
+      },
+      {
+        "food_name": "courgette",
+        "value": 1117
+      },
+      {
+        "food_name": "squash",
+        "value": 1117
+      },
+      {
+        "food_name": "mango",
+        "value": 1082
+      },
+      {
+        "food_name": "asparagus",
+        "value": 1006
+      },
+      {
+        "food_name": "spring onion",
+        "value": 997
+      },
+      {
+        "food_name": "papaya",
+        "value": 950
+      },
+      {
+        "food_name": "tomato",
+        "value": 833
+      },
+      {
+        "food_name": "leek",
+        "value": 812
+      },
+      {
+        "food_name": "pea",
+        "value": 801
+      },
+      {
+        "food_name": "prune",
+        "value": 781
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 775
+      },
+      {
+        "food_name": "tangerine",
+        "value": 681
+      },
+      {
+        "food_name": "green bean",
+        "value": 633
+      },
+      {
+        "food_name": "guava",
+        "value": 624
+      },
+      {
+        "food_name": "watermelon",
+        "value": 569
+      },
+      {
+        "food_name": "pepper",
+        "value": 547
+      },
+      {
+        "food_name": "celery",
+        "value": 521
+      },
+      {
+        "food_name": "olive",
+        "value": 403
+      },
+      {
+        "food_name": "plum",
+        "value": 345
+      },
+      {
+        "food_name": "nectarine",
+        "value": 332
+      },
+      {
+        "food_name": "peach",
+        "value": 326
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 290
+      },
+      {
+        "food_name": "okra",
+        "value": 283
+      },
+      {
+        "food_name": "corn",
+        "value": 263
+      },
+      {
+        "food_name": "orange",
+        "value": 247
+      },
+      {
+        "food_name": "black currant",
+        "value": 230
+      },
+      {
+        "food_name": "avocado",
+        "value": 146
+      },
+      {
+        "food_name": "fig",
+        "value": 142
+      },
+      {
+        "food_name": "caper",
+        "value": 138
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 110
+      },
+      {
+        "food_name": "cucumber",
+        "value": 105
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 102
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 102
+      },
+      {
+        "food_name": "kiwi",
+        "value": 87
+      },
+      {
+        "food_name": "cabbage",
+        "value": 80
+      },
+      {
+        "food_name": "grape",
+        "value": 66
+      },
+      {
+        "food_name": "banana",
+        "value": 64
+      },
+      {
+        "food_name": "cherry",
+        "value": 64
+      },
+      {
+        "food_name": "cranberry",
+        "value": 63
+      },
+      {
+        "food_name": "star fruit",
+        "value": 61
+      },
+      {
+        "food_name": "pineapple",
+        "value": 58
+      },
+      {
+        "food_name": "apple",
+        "value": 54
+      },
+      {
+        "food_name": "lime",
+        "value": 50
+      },
+      {
+        "food_name": "durian",
+        "value": 44
+      },
+      {
+        "food_name": "red currant",
+        "value": 42
+      },
+      {
+        "food_name": "quince",
+        "value": 40
+      },
+      {
+        "food_name": "eggplant",
+        "value": 37
+      },
+      {
+        "food_name": "raspberry",
+        "value": 33
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 33
+      },
+      {
+        "food_name": "tamarind",
+        "value": 30
+      },
+      {
+        "food_name": "chickpea",
+        "value": 27
+      },
+      {
+        "food_name": "radicchio",
+        "value": 27
+      },
+      {
+        "food_name": "pear",
+        "value": 25
+      },
+      {
+        "food_name": "mulberry",
+        "value": 25
+      },
+      {
+        "food_name": "lemon",
+        "value": 22
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 13
+      },
+      {
+        "food_name": "artichoke",
+        "value": 13
+      },
+      {
+        "food_name": "strawberry",
+        "value": 12
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 12
+      },
+      {
+        "food_name": "date",
+        "value": 10
+      },
+      {
+        "food_name": "potato",
+        "value": 10
+      },
+      {
+        "food_name": "soy bean",
+        "value": 9
+      },
+      {
+        "food_name": "garlic",
+        "value": 9
+      },
+      {
+        "food_name": "lentil",
+        "value": 8
+      },
+      {
+        "food_name": "pomelo",
+        "value": 8
+      },
+      {
+        "food_name": "radish",
+        "value": 7
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 6
+      },
+      {
+        "food_name": "swede",
+        "value": 2
+      },
+      {
+        "food_name": "onion",
+        "value": 2
+      },
+      {
+        "food_name": "horseradish",
+        "value": 2
+      },
+      {
+        "food_name": "wasabi",
+        "value": 1
+      },
+      {
+        "food_name": "cacao",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "turmeric",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 320,
+    "usda_tag": "VITA_RAE",
+    "type": "VITAMIN",
+    "VITAMIN": "A",
+    "foods": [
+      {
+        "food_name": "sweet potato",
+        "value": 961
+      },
+      {
+        "food_name": "carrot",
+        "value": 852
+      },
+      {
+        "food_name": "kale",
+        "value": 681
+      },
+      {
+        "food_name": "spinach",
+        "value": 524
+      },
+      {
+        "food_name": "lettuce",
+        "value": 436
+      },
+      {
+        "food_name": "dill",
+        "value": 386
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 288
+      },
+      {
+        "food_name": "melon",
+        "value": 169
+      },
+      {
+        "food_name": "watercress",
+        "value": 160
+      },
+      {
+        "food_name": "broccoli",
+        "value": 77
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 58
+      },
+      {
+        "food_name": "zucchini",
+        "value": 56
+      },
+      {
+        "food_name": "squash",
+        "value": 56
+      },
+      {
+        "food_name": "courgette",
+        "value": 56
+      },
+      {
+        "food_name": "mango",
+        "value": 54
+      },
+      {
+        "food_name": "asparagus",
+        "value": 50
+      },
+      {
+        "food_name": "spring onion",
+        "value": 50
+      },
+      {
+        "food_name": "papaya",
+        "value": 47
+      },
+      {
+        "food_name": "tomato",
+        "value": 42
+      },
+      {
+        "food_name": "leek",
+        "value": 41
+      },
+      {
+        "food_name": "pea",
+        "value": 40
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 39
+      },
+      {
+        "food_name": "prune",
+        "value": 39
+      },
+      {
+        "food_name": "tangerine",
+        "value": 34
+      },
+      {
+        "food_name": "green bean",
+        "value": 32
+      },
+      {
+        "food_name": "guava",
+        "value": 31
+      },
+      {
+        "food_name": "watermelon",
+        "value": 28
+      },
+      {
+        "food_name": "pepper",
+        "value": 27
+      },
+      {
+        "food_name": "celery",
+        "value": 26
+      },
+      {
+        "food_name": "olive",
+        "value": 20
+      },
+      {
+        "food_name": "nectarine",
+        "value": 17
+      },
+      {
+        "food_name": "plum",
+        "value": 17
+      },
+      {
+        "food_name": "peach",
+        "value": 16
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 15
+      },
+      {
+        "food_name": "okra",
+        "value": 14
+      },
+      {
+        "food_name": "corn",
+        "value": 13
+      },
+      {
+        "food_name": "black currant",
+        "value": 12
+      },
+      {
+        "food_name": "orange",
+        "value": 12
+      },
+      {
+        "food_name": "fig",
+        "value": 7
+      },
+      {
+        "food_name": "avocado",
+        "value": 7
+      },
+      {
+        "food_name": "caper",
+        "value": 7
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 5
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 5
+      },
+      {
+        "food_name": "cucumber",
+        "value": 5
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 5
+      },
+      {
+        "food_name": "kiwi",
+        "value": 4
+      },
+      {
+        "food_name": "cabbage",
+        "value": 4
+      },
+      {
+        "food_name": "cranberry",
+        "value": 3
+      },
+      {
+        "food_name": "banana",
+        "value": 3
+      },
+      {
+        "food_name": "pineapple",
+        "value": 3
+      },
+      {
+        "food_name": "apple",
+        "value": 3
+      },
+      {
+        "food_name": "grape",
+        "value": 3
+      },
+      {
+        "food_name": "star fruit",
+        "value": 3
+      },
+      {
+        "food_name": "cherry",
+        "value": 3
+      },
+      {
+        "food_name": "raspberry",
+        "value": 2
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 2
+      },
+      {
+        "food_name": "tamarind",
+        "value": 2
+      },
+      {
+        "food_name": "durian",
+        "value": 2
+      },
+      {
+        "food_name": "lime",
+        "value": 2
+      },
+      {
+        "food_name": "eggplant",
+        "value": 2
+      },
+      {
+        "food_name": "red currant",
+        "value": 2
+      },
+      {
+        "food_name": "quince",
+        "value": 2
+      },
+      {
+        "food_name": "radicchio",
+        "value": 1
+      },
+      {
+        "food_name": "mulberry",
+        "value": 1
+      },
+      {
+        "food_name": "lemon",
+        "value": 1
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 1
+      },
+      {
+        "food_name": "potato",
+        "value": 1
+      },
+      {
+        "food_name": "strawberry",
+        "value": 1
+      },
+      {
+        "food_name": "pear",
+        "value": 1
+      },
+      {
+        "food_name": "artichoke",
+        "value": 1
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 1
+      },
+      {
+        "food_name": "chickpea",
+        "value": 1
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pomelo",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "soy bean",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "turmeric",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 323,
+    "usda_tag": "TOCPHA",
+    "type": "VITAMIN",
+    "VITAMIN": "E",
+    "foods": [
+      {
+        "food_name": "peanut",
+        "value": 5
+      },
+      {
+        "food_name": "turmeric",
+        "value": 4
+      },
+      {
+        "food_name": "wasabi",
+        "value": 3
+      },
+      {
+        "food_name": "olive",
+        "value": 2
+      },
+      {
+        "food_name": "avocado",
+        "value": 2
+      },
+      {
+        "food_name": "asparagus",
+        "value": 2
+      },
+      {
+        "food_name": "radicchio",
+        "value": 2
+      },
+      {
+        "food_name": "spinach",
+        "value": 2
+      },
+      {
+        "food_name": "cranberry",
+        "value": 1
+      },
+      {
+        "food_name": "guava",
+        "value": 1
+      },
+      {
+        "food_name": "kale",
+        "value": 1
+      },
+      {
+        "food_name": "kiwi",
+        "value": 1
+      },
+      {
+        "food_name": "leek",
+        "value": 1
+      },
+      {
+        "food_name": "mango",
+        "value": 1
+      },
+      {
+        "food_name": "nectarine",
+        "value": 1
+      },
+      {
+        "food_name": "mulberry",
+        "value": 1
+      },
+      {
+        "food_name": "parsnip",
+        "value": 1
+      },
+      {
+        "food_name": "peach",
+        "value": 1
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 1
+      },
+      {
+        "food_name": "pepper",
+        "value": 1
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 1
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 1
+      },
+      {
+        "food_name": "black currant",
+        "value": 1
+      },
+      {
+        "food_name": "raspberry",
+        "value": 1
+      },
+      {
+        "food_name": "broccoli",
+        "value": 1
+      },
+      {
+        "food_name": "spring onion",
+        "value": 1
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 1
+      },
+      {
+        "food_name": "tomato",
+        "value": 1
+      },
+      {
+        "food_name": "caper",
+        "value": 1
+      },
+      {
+        "food_name": "carrot",
+        "value": 1
+      },
+      {
+        "food_name": "watercress",
+        "value": 1
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "chickpea",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "soy bean",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 324,
+    "usda_tag": "VITD",
+    "type": "VITAMIN",
+    "VITAMIN": "D",
+    "foods": [
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "avocado",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "chickpea",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "dill",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "olive",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "pepper",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "soy bean",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "turmeric",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 325,
+    "usda_tag": "ERGCAL",
+    "type": "VITAMIN",
+    "VITAMIN": "D2",
+    "foods": []
+  },
+  {
+    "attr_id": 326,
+    "usda_tag": "CHOCAL",
+    "type": "VITAMIN",
+    "VITAMIN": "D3",
+    "foods": []
+  },
+  {
+    "attr_id": 328,
+    "usda_tag": "VITD",
+    "type": "VITAMIN",
+    "VITAMIN": "D",
+    "foods": [
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "avocado",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "chickpea",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "dill",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "olive",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "pepper",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "soy bean",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "turmeric",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 401,
+    "usda_tag": "VITC",
+    "type": "VITAMIN",
+    "VITAMIN": "C",
+    "foods": [
+      {
+        "food_name": "guava",
+        "value": 228
+      },
+      {
+        "food_name": "black currant",
+        "value": 181
+      },
+      {
+        "food_name": "kiwi",
+        "value": 93
+      },
+      {
+        "food_name": "dill",
+        "value": 85
+      },
+      {
+        "food_name": "broccoli",
+        "value": 65
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 62
+      },
+      {
+        "food_name": "pomelo",
+        "value": 61
+      },
+      {
+        "food_name": "papaya",
+        "value": 61
+      },
+      {
+        "food_name": "orange",
+        "value": 59
+      },
+      {
+        "food_name": "strawberry",
+        "value": 59
+      },
+      {
+        "food_name": "lemon",
+        "value": 53
+      },
+      {
+        "food_name": "clementine",
+        "value": 49
+      },
+      {
+        "food_name": "pineapple",
+        "value": 48
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 44
+      },
+      {
+        "food_name": "watercress",
+        "value": 43
+      },
+      {
+        "food_name": "red currant",
+        "value": 41
+      },
+      {
+        "food_name": "kale",
+        "value": 41
+      },
+      {
+        "food_name": "cabbage",
+        "value": 38
+      },
+      {
+        "food_name": "melon",
+        "value": 37
+      },
+      {
+        "food_name": "mango",
+        "value": 36
+      },
+      {
+        "food_name": "mulberry",
+        "value": 36
+      },
+      {
+        "food_name": "star fruit",
+        "value": 34
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 34
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 31
+      },
+      {
+        "food_name": "garlic",
+        "value": 31
+      },
+      {
+        "food_name": "lime",
+        "value": 29
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 28
+      },
+      {
+        "food_name": "tangerine",
+        "value": 27
+      },
+      {
+        "food_name": "raspberry",
+        "value": 26
+      },
+      {
+        "food_name": "horseradish",
+        "value": 25
+      },
+      {
+        "food_name": "swede",
+        "value": 25
+      },
+      {
+        "food_name": "durian",
+        "value": 20
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 20
+      },
+      {
+        "food_name": "spring onion",
+        "value": 19
+      },
+      {
+        "food_name": "okra",
+        "value": 16
+      },
+      {
+        "food_name": "quince",
+        "value": 15
+      },
+      {
+        "food_name": "radish",
+        "value": 15
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 14
+      },
+      {
+        "food_name": "cranberry",
+        "value": 14
+      },
+      {
+        "food_name": "tomato",
+        "value": 14
+      },
+      {
+        "food_name": "pea",
+        "value": 14
+      },
+      {
+        "food_name": "courgette",
+        "value": 13
+      },
+      {
+        "food_name": "zucchini",
+        "value": 13
+      },
+      {
+        "food_name": "parsnip",
+        "value": 13
+      },
+      {
+        "food_name": "turnip",
+        "value": 12
+      },
+      {
+        "food_name": "squash",
+        "value": 12
+      },
+      {
+        "food_name": "spinach",
+        "value": 10
+      },
+      {
+        "food_name": "green bean",
+        "value": 10
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 10
+      },
+      {
+        "food_name": "avocado",
+        "value": 10
+      },
+      {
+        "food_name": "potato",
+        "value": 10
+      },
+      {
+        "food_name": "plum",
+        "value": 10
+      },
+      {
+        "food_name": "banana",
+        "value": 9
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 8
+      },
+      {
+        "food_name": "radicchio",
+        "value": 8
+      },
+      {
+        "food_name": "asparagus",
+        "value": 8
+      },
+      {
+        "food_name": "watermelon",
+        "value": 8
+      },
+      {
+        "food_name": "artichoke",
+        "value": 7
+      },
+      {
+        "food_name": "peach",
+        "value": 7
+      },
+      {
+        "food_name": "cherry",
+        "value": 7
+      },
+      {
+        "food_name": "celery",
+        "value": 6
+      },
+      {
+        "food_name": "corn",
+        "value": 6
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 5
+      },
+      {
+        "food_name": "ginger",
+        "value": 5
+      },
+      {
+        "food_name": "nectarine",
+        "value": 5
+      },
+      {
+        "food_name": "apple",
+        "value": 5
+      },
+      {
+        "food_name": "onion",
+        "value": 5
+      },
+      {
+        "food_name": "pear",
+        "value": 4
+      },
+      {
+        "food_name": "carrot",
+        "value": 4
+      },
+      {
+        "food_name": "caper",
+        "value": 4
+      },
+      {
+        "food_name": "leek",
+        "value": 4
+      },
+      {
+        "food_name": "celeriac",
+        "value": 4
+      },
+      {
+        "food_name": "lettuce",
+        "value": 4
+      },
+      {
+        "food_name": "tamarind",
+        "value": 4
+      },
+      {
+        "food_name": "grape",
+        "value": 3
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 3
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 3
+      },
+      {
+        "food_name": "cucumber",
+        "value": 3
+      },
+      {
+        "food_name": "soy bean",
+        "value": 2
+      },
+      {
+        "food_name": "lentil",
+        "value": 2
+      },
+      {
+        "food_name": "fig",
+        "value": 2
+      },
+      {
+        "food_name": "eggplant",
+        "value": 1
+      },
+      {
+        "food_name": "chickpea",
+        "value": 1
+      },
+      {
+        "food_name": "turmeric",
+        "value": 1
+      },
+      {
+        "food_name": "bean",
+        "value": 1
+      },
+      {
+        "food_name": "olive",
+        "value": 1
+      },
+      {
+        "food_name": "red bean",
+        "value": 1
+      },
+      {
+        "food_name": "prune",
+        "value": 1
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 1
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "cacao",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      },
+      {
+        "food_name": "pepper",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 415,
+    "usda_tag": "VITB6A",
+    "type": "VITAMIN",
+    "VITAMIN": "B-6",
+    "foods": [
+      {
+        "food_name": "garlic",
+        "value": 1
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "avocado",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "chickpea",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "dill",
+        "value": 0
+      },
+      {
+        "food_name": "durian",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "olive",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "pepper",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "pomelo",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "soy bean",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "turmeric",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 430,
+    "usda_tag": "VITK1",
+    "type": "VITAMIN",
+    "VITAMIN": "K",
+    "foods": [
+      {
+        "food_name": "kale",
+        "value": 817
+      },
+      {
+        "food_name": "spinach",
+        "value": 494
+      },
+      {
+        "food_name": "radicchio",
+        "value": 255
+      },
+      {
+        "food_name": "watercress",
+        "value": 250
+      },
+      {
+        "food_name": "spring onion",
+        "value": 207
+      },
+      {
+        "food_name": "pepper",
+        "value": 164
+      },
+      {
+        "food_name": "broccoli",
+        "value": 141
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 140
+      },
+      {
+        "food_name": "cabbage",
+        "value": 109
+      },
+      {
+        "food_name": "lettuce",
+        "value": 103
+      },
+      {
+        "food_name": "prune",
+        "value": 60
+      },
+      {
+        "food_name": "asparagus",
+        "value": 51
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 48
+      },
+      {
+        "food_name": "green bean",
+        "value": 48
+      },
+      {
+        "food_name": "kiwi",
+        "value": 40
+      },
+      {
+        "food_name": "okra",
+        "value": 40
+      },
+      {
+        "food_name": "celery",
+        "value": 38
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 29
+      },
+      {
+        "food_name": "pea",
+        "value": 26
+      },
+      {
+        "food_name": "leek",
+        "value": 25
+      },
+      {
+        "food_name": "caper",
+        "value": 25
+      },
+      {
+        "food_name": "avocado",
+        "value": 21
+      },
+      {
+        "food_name": "soy bean",
+        "value": 19
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 16
+      },
+      {
+        "food_name": "cucumber",
+        "value": 16
+      },
+      {
+        "food_name": "grape",
+        "value": 15
+      },
+      {
+        "food_name": "artichoke",
+        "value": 15
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 14
+      },
+      {
+        "food_name": "carrot",
+        "value": 14
+      },
+      {
+        "food_name": "turmeric",
+        "value": 13
+      },
+      {
+        "food_name": "red currant",
+        "value": 11
+      },
+      {
+        "food_name": "red bean",
+        "value": 8
+      },
+      {
+        "food_name": "bean",
+        "value": 8
+      },
+      {
+        "food_name": "tomato",
+        "value": 8
+      },
+      {
+        "food_name": "raspberry",
+        "value": 8
+      },
+      {
+        "food_name": "mulberry",
+        "value": 8
+      },
+      {
+        "food_name": "plum",
+        "value": 6
+      },
+      {
+        "food_name": "cranberry",
+        "value": 5
+      },
+      {
+        "food_name": "fig",
+        "value": 5
+      },
+      {
+        "food_name": "pear",
+        "value": 4
+      },
+      {
+        "food_name": "zucchini",
+        "value": 4
+      },
+      {
+        "food_name": "courgette",
+        "value": 4
+      },
+      {
+        "food_name": "chickpea",
+        "value": 4
+      },
+      {
+        "food_name": "mango",
+        "value": 4
+      },
+      {
+        "food_name": "squash",
+        "value": 4
+      },
+      {
+        "food_name": "papaya",
+        "value": 3
+      },
+      {
+        "food_name": "peach",
+        "value": 3
+      },
+      {
+        "food_name": "melon",
+        "value": 3
+      },
+      {
+        "food_name": "guava",
+        "value": 3
+      },
+      {
+        "food_name": "eggplant",
+        "value": 3
+      },
+      {
+        "food_name": "date",
+        "value": 3
+      },
+      {
+        "food_name": "tamarind",
+        "value": 3
+      },
+      {
+        "food_name": "wasabi",
+        "value": 3
+      },
+      {
+        "food_name": "garlic",
+        "value": 2
+      },
+      {
+        "food_name": "lentil",
+        "value": 2
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 2
+      },
+      {
+        "food_name": "apple",
+        "value": 2
+      },
+      {
+        "food_name": "strawberry",
+        "value": 2
+      },
+      {
+        "food_name": "potato",
+        "value": 2
+      },
+      {
+        "food_name": "cherry",
+        "value": 2
+      },
+      {
+        "food_name": "nectarine",
+        "value": 2
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 1
+      },
+      {
+        "food_name": "radish",
+        "value": 1
+      },
+      {
+        "food_name": "banana",
+        "value": 1
+      },
+      {
+        "food_name": "parsnip",
+        "value": 1
+      },
+      {
+        "food_name": "pineapple",
+        "value": 1
+      },
+      {
+        "food_name": "onion",
+        "value": 1
+      },
+      {
+        "food_name": "olive",
+        "value": 1
+      },
+      {
+        "food_name": "horseradish",
+        "value": 1
+      },
+      {
+        "food_name": "lime",
+        "value": 1
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 578,
+    "usda_tag": "B12",
+    "type": "VITAMIN",
+    "VITAMIN": "B-12",
+    "foods": []
+  },
+  {
+    "attr_id": 203,
+    "usda_tag": "PROCNT",
+    "type": "PROTEIN",
+    "foods": [
+      {
+        "food_name": "peanut",
+        "value": 24
+      },
+      {
+        "food_name": "cacao",
+        "value": 20
+      },
+      {
+        "food_name": "soy bean",
+        "value": 18
+      },
+      {
+        "food_name": "turmeric",
+        "value": 10
+      },
+      {
+        "food_name": "pepper",
+        "value": 10
+      },
+      {
+        "food_name": "red bean",
+        "value": 9
+      },
+      {
+        "food_name": "lentil",
+        "value": 9
+      },
+      {
+        "food_name": "chickpea",
+        "value": 9
+      },
+      {
+        "food_name": "bean",
+        "value": 9
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 6
+      },
+      {
+        "food_name": "garlic",
+        "value": 6
+      },
+      {
+        "food_name": "pea",
+        "value": 5
+      },
+      {
+        "food_name": "corn",
+        "value": 3
+      },
+      {
+        "food_name": "artichoke",
+        "value": 3
+      },
+      {
+        "food_name": "dill",
+        "value": 3
+      },
+      {
+        "food_name": "guava",
+        "value": 3
+      },
+      {
+        "food_name": "potato",
+        "value": 3
+      },
+      {
+        "food_name": "coconut",
+        "value": 3
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 3
+      },
+      {
+        "food_name": "spinach",
+        "value": 3
+      },
+      {
+        "food_name": "tamarind",
+        "value": 3
+      },
+      {
+        "food_name": "asparagus",
+        "value": 2
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 2
+      },
+      {
+        "food_name": "broccoli",
+        "value": 2
+      },
+      {
+        "food_name": "avocado",
+        "value": 2
+      },
+      {
+        "food_name": "okra",
+        "value": 2
+      },
+      {
+        "food_name": "watercress",
+        "value": 2
+      },
+      {
+        "food_name": "date",
+        "value": 2
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 2
+      },
+      {
+        "food_name": "wasabi",
+        "value": 2
+      },
+      {
+        "food_name": "caper",
+        "value": 2
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 2
+      },
+      {
+        "food_name": "ginger",
+        "value": 2
+      },
+      {
+        "food_name": "prune",
+        "value": 2
+      },
+      {
+        "food_name": "green bean",
+        "value": 2
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 2
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 2
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 2
+      },
+      {
+        "food_name": "spring onion",
+        "value": 2
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 2
+      },
+      {
+        "food_name": "kale",
+        "value": 2
+      },
+      {
+        "food_name": "mango",
+        "value": 1
+      },
+      {
+        "food_name": "lemon",
+        "value": 1
+      },
+      {
+        "food_name": "banana",
+        "value": 1
+      },
+      {
+        "food_name": "courgette",
+        "value": 1
+      },
+      {
+        "food_name": "lettuce",
+        "value": 1
+      },
+      {
+        "food_name": "lime",
+        "value": 1
+      },
+      {
+        "food_name": "watermelon",
+        "value": 1
+      },
+      {
+        "food_name": "melon",
+        "value": 1
+      },
+      {
+        "food_name": "mulberry",
+        "value": 1
+      },
+      {
+        "food_name": "nectarine",
+        "value": 1
+      },
+      {
+        "food_name": "cucumber",
+        "value": 1
+      },
+      {
+        "food_name": "carrot",
+        "value": 1
+      },
+      {
+        "food_name": "olive",
+        "value": 1
+      },
+      {
+        "food_name": "onion",
+        "value": 1
+      },
+      {
+        "food_name": "orange",
+        "value": 1
+      },
+      {
+        "food_name": "zucchini",
+        "value": 1
+      },
+      {
+        "food_name": "parsnip",
+        "value": 1
+      },
+      {
+        "food_name": "durian",
+        "value": 1
+      },
+      {
+        "food_name": "peach",
+        "value": 1
+      },
+      {
+        "food_name": "eggplant",
+        "value": 1
+      },
+      {
+        "food_name": "fig",
+        "value": 1
+      },
+      {
+        "food_name": "celeriac",
+        "value": 1
+      },
+      {
+        "food_name": "pineapple",
+        "value": 1
+      },
+      {
+        "food_name": "plum",
+        "value": 1
+      },
+      {
+        "food_name": "celery",
+        "value": 1
+      },
+      {
+        "food_name": "pomelo",
+        "value": 1
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 1
+      },
+      {
+        "food_name": "grape",
+        "value": 1
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 1
+      },
+      {
+        "food_name": "turnip",
+        "value": 1
+      },
+      {
+        "food_name": "radicchio",
+        "value": 1
+      },
+      {
+        "food_name": "radish",
+        "value": 1
+      },
+      {
+        "food_name": "raspberry",
+        "value": 1
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 1
+      },
+      {
+        "food_name": "cherry",
+        "value": 1
+      },
+      {
+        "food_name": "red currant",
+        "value": 1
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 1
+      },
+      {
+        "food_name": "cabbage",
+        "value": 1
+      },
+      {
+        "food_name": "horseradish",
+        "value": 1
+      },
+      {
+        "food_name": "clementine",
+        "value": 1
+      },
+      {
+        "food_name": "squash",
+        "value": 1
+      },
+      {
+        "food_name": "star fruit",
+        "value": 1
+      },
+      {
+        "food_name": "strawberry",
+        "value": 1
+      },
+      {
+        "food_name": "swede",
+        "value": 1
+      },
+      {
+        "food_name": "black currant",
+        "value": 1
+      },
+      {
+        "food_name": "kiwi",
+        "value": 1
+      },
+      {
+        "food_name": "tangerine",
+        "value": 1
+      },
+      {
+        "food_name": "tomato",
+        "value": 1
+      },
+      {
+        "food_name": "leek",
+        "value": 1
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 301,
+    "usda_tag": "CA",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "pepper",
+        "value": 443
+      },
+      {
+        "food_name": "dill",
+        "value": 208
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 184
+      },
+      {
+        "food_name": "garlic",
+        "value": 181
+      },
+      {
+        "food_name": "turmeric",
+        "value": 168
+      },
+      {
+        "food_name": "spinach",
+        "value": 136
+      },
+      {
+        "food_name": "watercress",
+        "value": 120
+      },
+      {
+        "food_name": "soy bean",
+        "value": 102
+      },
+      {
+        "food_name": "olive",
+        "value": 88
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 86
+      },
+      {
+        "food_name": "okra",
+        "value": 77
+      },
+      {
+        "food_name": "tamarind",
+        "value": 74
+      },
+      {
+        "food_name": "spring onion",
+        "value": 72
+      },
+      {
+        "food_name": "kale",
+        "value": 72
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 65
+      },
+      {
+        "food_name": "peanut",
+        "value": 58
+      },
+      {
+        "food_name": "horseradish",
+        "value": 56
+      },
+      {
+        "food_name": "black currant",
+        "value": 55
+      },
+      {
+        "food_name": "chickpea",
+        "value": 49
+      },
+      {
+        "food_name": "cabbage",
+        "value": 48
+      },
+      {
+        "food_name": "green bean",
+        "value": 44
+      },
+      {
+        "food_name": "prune",
+        "value": 43
+      },
+      {
+        "food_name": "swede",
+        "value": 43
+      },
+      {
+        "food_name": "orange",
+        "value": 43
+      },
+      {
+        "food_name": "celery",
+        "value": 42
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 42
+      },
+      {
+        "food_name": "wasabi",
+        "value": 41
+      },
+      {
+        "food_name": "broccoli",
+        "value": 40
+      },
+      {
+        "food_name": "caper",
+        "value": 40
+      },
+      {
+        "food_name": "date",
+        "value": 39
+      },
+      {
+        "food_name": "mulberry",
+        "value": 39
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 38
+      },
+      {
+        "food_name": "tangerine",
+        "value": 37
+      },
+      {
+        "food_name": "parsnip",
+        "value": 37
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 36
+      },
+      {
+        "food_name": "red bean",
+        "value": 35
+      },
+      {
+        "food_name": "bean",
+        "value": 35
+      },
+      {
+        "food_name": "fig",
+        "value": 35
+      },
+      {
+        "food_name": "kiwi",
+        "value": 34
+      },
+      {
+        "food_name": "turnip",
+        "value": 33
+      },
+      {
+        "food_name": "lettuce",
+        "value": 33
+      },
+      {
+        "food_name": "lime",
+        "value": 33
+      },
+      {
+        "food_name": "red currant",
+        "value": 33
+      },
+      {
+        "food_name": "leek",
+        "value": 30
+      },
+      {
+        "food_name": "carrot",
+        "value": 30
+      },
+      {
+        "food_name": "clementine",
+        "value": 30
+      },
+      {
+        "food_name": "pea",
+        "value": 27
+      },
+      {
+        "food_name": "celeriac",
+        "value": 26
+      },
+      {
+        "food_name": "lemon",
+        "value": 26
+      },
+      {
+        "food_name": "radish",
+        "value": 25
+      },
+      {
+        "food_name": "raspberry",
+        "value": 25
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 25
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 24
+      },
+      {
+        "food_name": "asparagus",
+        "value": 23
+      },
+      {
+        "food_name": "onion",
+        "value": 22
+      },
+      {
+        "food_name": "squash",
+        "value": 22
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 22
+      },
+      {
+        "food_name": "artichoke",
+        "value": 21
+      },
+      {
+        "food_name": "papaya",
+        "value": 20
+      },
+      {
+        "food_name": "radicchio",
+        "value": 19
+      },
+      {
+        "food_name": "lentil",
+        "value": 19
+      },
+      {
+        "food_name": "courgette",
+        "value": 18
+      },
+      {
+        "food_name": "zucchini",
+        "value": 18
+      },
+      {
+        "food_name": "guava",
+        "value": 18
+      },
+      {
+        "food_name": "cucumber",
+        "value": 16
+      },
+      {
+        "food_name": "strawberry",
+        "value": 16
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 16
+      },
+      {
+        "food_name": "ginger",
+        "value": 16
+      },
+      {
+        "food_name": "potato",
+        "value": 15
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 15
+      },
+      {
+        "food_name": "pineapple",
+        "value": 13
+      },
+      {
+        "food_name": "cherry",
+        "value": 13
+      },
+      {
+        "food_name": "avocado",
+        "value": 12
+      },
+      {
+        "food_name": "quince",
+        "value": 11
+      },
+      {
+        "food_name": "coconut",
+        "value": 11
+      },
+      {
+        "food_name": "mango",
+        "value": 11
+      },
+      {
+        "food_name": "grape",
+        "value": 10
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 10
+      },
+      {
+        "food_name": "tomato",
+        "value": 10
+      },
+      {
+        "food_name": "pear",
+        "value": 9
+      },
+      {
+        "food_name": "melon",
+        "value": 9
+      },
+      {
+        "food_name": "cranberry",
+        "value": 8
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 8
+      },
+      {
+        "food_name": "watermelon",
+        "value": 7
+      },
+      {
+        "food_name": "eggplant",
+        "value": 6
+      },
+      {
+        "food_name": "nectarine",
+        "value": 6
+      },
+      {
+        "food_name": "durian",
+        "value": 6
+      },
+      {
+        "food_name": "plum",
+        "value": 6
+      },
+      {
+        "food_name": "apple",
+        "value": 6
+      },
+      {
+        "food_name": "peach",
+        "value": 6
+      },
+      {
+        "food_name": "banana",
+        "value": 5
+      },
+      {
+        "food_name": "pomelo",
+        "value": 4
+      },
+      {
+        "food_name": "corn",
+        "value": 3
+      },
+      {
+        "food_name": "star fruit",
+        "value": 3
+      },
+      {
+        "food_name": "cacao",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 304,
+    "usda_tag": "MG",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "turmeric",
+        "value": 208
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 183
+      },
+      {
+        "food_name": "peanut",
+        "value": 178
+      },
+      {
+        "food_name": "pepper",
+        "value": 171
+      },
+      {
+        "food_name": "tamarind",
+        "value": 92
+      },
+      {
+        "food_name": "spinach",
+        "value": 87
+      },
+      {
+        "food_name": "soy bean",
+        "value": 86
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 60
+      },
+      {
+        "food_name": "dill",
+        "value": 55
+      },
+      {
+        "food_name": "coconut",
+        "value": 51
+      },
+      {
+        "food_name": "chickpea",
+        "value": 48
+      },
+      {
+        "food_name": "date",
+        "value": 43
+      },
+      {
+        "food_name": "ginger",
+        "value": 43
+      },
+      {
+        "food_name": "artichoke",
+        "value": 42
+      },
+      {
+        "food_name": "red bean",
+        "value": 42
+      },
+      {
+        "food_name": "bean",
+        "value": 42
+      },
+      {
+        "food_name": "prune",
+        "value": 41
+      },
+      {
+        "food_name": "pea",
+        "value": 39
+      },
+      {
+        "food_name": "okra",
+        "value": 36
+      },
+      {
+        "food_name": "lentil",
+        "value": 36
+      },
+      {
+        "food_name": "caper",
+        "value": 33
+      },
+      {
+        "food_name": "durian",
+        "value": 30
+      },
+      {
+        "food_name": "avocado",
+        "value": 29
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 29
+      },
+      {
+        "food_name": "parsnip",
+        "value": 29
+      },
+      {
+        "food_name": "potato",
+        "value": 28
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 27
+      },
+      {
+        "food_name": "horseradish",
+        "value": 27
+      },
+      {
+        "food_name": "banana",
+        "value": 27
+      },
+      {
+        "food_name": "corn",
+        "value": 26
+      },
+      {
+        "food_name": "garlic",
+        "value": 25
+      },
+      {
+        "food_name": "black currant",
+        "value": 24
+      },
+      {
+        "food_name": "guava",
+        "value": 22
+      },
+      {
+        "food_name": "raspberry",
+        "value": 22
+      },
+      {
+        "food_name": "papaya",
+        "value": 21
+      },
+      {
+        "food_name": "watercress",
+        "value": 21
+      },
+      {
+        "food_name": "broccoli",
+        "value": 21
+      },
+      {
+        "food_name": "wasabi",
+        "value": 21
+      },
+      {
+        "food_name": "swede",
+        "value": 20
+      },
+      {
+        "food_name": "spring onion",
+        "value": 20
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 20
+      },
+      {
+        "food_name": "zucchini",
+        "value": 19
+      },
+      {
+        "food_name": "courgette",
+        "value": 19
+      },
+      {
+        "food_name": "mulberry",
+        "value": 18
+      },
+      {
+        "food_name": "kale",
+        "value": 18
+      },
+      {
+        "food_name": "green bean",
+        "value": 18
+      },
+      {
+        "food_name": "kiwi",
+        "value": 17
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 17
+      },
+      {
+        "food_name": "fig",
+        "value": 17
+      },
+      {
+        "food_name": "squash",
+        "value": 16
+      },
+      {
+        "food_name": "cabbage",
+        "value": 15
+      },
+      {
+        "food_name": "leek",
+        "value": 14
+      },
+      {
+        "food_name": "lettuce",
+        "value": 14
+      },
+      {
+        "food_name": "asparagus",
+        "value": 14
+      },
+      {
+        "food_name": "radicchio",
+        "value": 13
+      },
+      {
+        "food_name": "cucumber",
+        "value": 13
+      },
+      {
+        "food_name": "strawberry",
+        "value": 13
+      },
+      {
+        "food_name": "red currant",
+        "value": 13
+      },
+      {
+        "food_name": "celery",
+        "value": 12
+      },
+      {
+        "food_name": "tangerine",
+        "value": 12
+      },
+      {
+        "food_name": "melon",
+        "value": 12
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 12
+      },
+      {
+        "food_name": "pineapple",
+        "value": 12
+      },
+      {
+        "food_name": "celeriac",
+        "value": 12
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 12
+      },
+      {
+        "food_name": "tomato",
+        "value": 11
+      },
+      {
+        "food_name": "orange",
+        "value": 11
+      },
+      {
+        "food_name": "onion",
+        "value": 11
+      },
+      {
+        "food_name": "cherry",
+        "value": 11
+      },
+      {
+        "food_name": "eggplant",
+        "value": 11
+      },
+      {
+        "food_name": "mango",
+        "value": 10
+      },
+      {
+        "food_name": "radish",
+        "value": 10
+      },
+      {
+        "food_name": "carrot",
+        "value": 10
+      },
+      {
+        "food_name": "star fruit",
+        "value": 10
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 10
+      },
+      {
+        "food_name": "watermelon",
+        "value": 10
+      },
+      {
+        "food_name": "clementine",
+        "value": 10
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 9
+      },
+      {
+        "food_name": "turnip",
+        "value": 9
+      },
+      {
+        "food_name": "peach",
+        "value": 9
+      },
+      {
+        "food_name": "nectarine",
+        "value": 9
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 9
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 9
+      },
+      {
+        "food_name": "quince",
+        "value": 8
+      },
+      {
+        "food_name": "lemon",
+        "value": 8
+      },
+      {
+        "food_name": "grape",
+        "value": 7
+      },
+      {
+        "food_name": "plum",
+        "value": 7
+      },
+      {
+        "food_name": "pear",
+        "value": 7
+      },
+      {
+        "food_name": "pomelo",
+        "value": 6
+      },
+      {
+        "food_name": "lime",
+        "value": 6
+      },
+      {
+        "food_name": "cranberry",
+        "value": 6
+      },
+      {
+        "food_name": "apple",
+        "value": 5
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 4
+      },
+      {
+        "food_name": "olive",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "attr_id": 305,
+    "usda_tag": "P",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "peanut",
+        "value": 363
+      },
+      {
+        "food_name": "turmeric",
+        "value": 299
+      },
+      {
+        "food_name": "soy bean",
+        "value": 245
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 213
+      },
+      {
+        "food_name": "lentil",
+        "value": 180
+      },
+      {
+        "food_name": "chickpea",
+        "value": 168
+      },
+      {
+        "food_name": "pepper",
+        "value": 158
+      },
+      {
+        "food_name": "garlic",
+        "value": 153
+      },
+      {
+        "food_name": "bean",
+        "value": 138
+      },
+      {
+        "food_name": "red bean",
+        "value": 138
+      },
+      {
+        "food_name": "pea",
+        "value": 117
+      },
+      {
+        "food_name": "tamarind",
+        "value": 113
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 101
+      },
+      {
+        "food_name": "coconut",
+        "value": 100
+      },
+      {
+        "food_name": "corn",
+        "value": 77
+      },
+      {
+        "food_name": "artichoke",
+        "value": 73
+      },
+      {
+        "food_name": "potato",
+        "value": 70
+      },
+      {
+        "food_name": "prune",
+        "value": 69
+      },
+      {
+        "food_name": "parsnip",
+        "value": 69
+      },
+      {
+        "food_name": "broccoli",
+        "value": 67
+      },
+      {
+        "food_name": "dill",
+        "value": 66
+      },
+      {
+        "food_name": "celeriac",
+        "value": 66
+      },
+      {
+        "food_name": "date",
+        "value": 62
+      },
+      {
+        "food_name": "watercress",
+        "value": 60
+      },
+      {
+        "food_name": "black currant",
+        "value": 59
+      },
+      {
+        "food_name": "spinach",
+        "value": 56
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 56
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 54
+      },
+      {
+        "food_name": "asparagus",
+        "value": 54
+      },
+      {
+        "food_name": "swede",
+        "value": 53
+      },
+      {
+        "food_name": "avocado",
+        "value": 52
+      },
+      {
+        "food_name": "red currant",
+        "value": 44
+      },
+      {
+        "food_name": "guava",
+        "value": 40
+      },
+      {
+        "food_name": "radicchio",
+        "value": 40
+      },
+      {
+        "food_name": "durian",
+        "value": 39
+      },
+      {
+        "food_name": "mulberry",
+        "value": 38
+      },
+      {
+        "food_name": "zucchini",
+        "value": 37
+      },
+      {
+        "food_name": "spring onion",
+        "value": 37
+      },
+      {
+        "food_name": "courgette",
+        "value": 37
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 36
+      },
+      {
+        "food_name": "onion",
+        "value": 35
+      },
+      {
+        "food_name": "ginger",
+        "value": 34
+      },
+      {
+        "food_name": "kiwi",
+        "value": 34
+      },
+      {
+        "food_name": "cabbage",
+        "value": 33
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 33
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 32
+      },
+      {
+        "food_name": "okra",
+        "value": 32
+      },
+      {
+        "food_name": "horseradish",
+        "value": 31
+      },
+      {
+        "food_name": "lettuce",
+        "value": 30
+      },
+      {
+        "food_name": "carrot",
+        "value": 30
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 30
+      },
+      {
+        "food_name": "squash",
+        "value": 29
+      },
+      {
+        "food_name": "green bean",
+        "value": 29
+      },
+      {
+        "food_name": "raspberry",
+        "value": 29
+      },
+      {
+        "food_name": "kale",
+        "value": 28
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 27
+      },
+      {
+        "food_name": "nectarine",
+        "value": 26
+      },
+      {
+        "food_name": "turnip",
+        "value": 26
+      },
+      {
+        "food_name": "wasabi",
+        "value": 26
+      },
+      {
+        "food_name": "celery",
+        "value": 25
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 25
+      },
+      {
+        "food_name": "tomato",
+        "value": 24
+      },
+      {
+        "food_name": "strawberry",
+        "value": 24
+      },
+      {
+        "food_name": "cucumber",
+        "value": 24
+      },
+      {
+        "food_name": "orange",
+        "value": 23
+      },
+      {
+        "food_name": "banana",
+        "value": 22
+      },
+      {
+        "food_name": "clementine",
+        "value": 21
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 21
+      },
+      {
+        "food_name": "cherry",
+        "value": 21
+      },
+      {
+        "food_name": "tangerine",
+        "value": 20
+      },
+      {
+        "food_name": "peach",
+        "value": 20
+      },
+      {
+        "food_name": "radish",
+        "value": 20
+      },
+      {
+        "food_name": "grape",
+        "value": 20
+      },
+      {
+        "food_name": "lime",
+        "value": 18
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 18
+      },
+      {
+        "food_name": "quince",
+        "value": 17
+      },
+      {
+        "food_name": "leek",
+        "value": 17
+      },
+      {
+        "food_name": "pomelo",
+        "value": 17
+      },
+      {
+        "food_name": "plum",
+        "value": 16
+      },
+      {
+        "food_name": "lemon",
+        "value": 16
+      },
+      {
+        "food_name": "melon",
+        "value": 15
+      },
+      {
+        "food_name": "eggplant",
+        "value": 15
+      },
+      {
+        "food_name": "mango",
+        "value": 14
+      },
+      {
+        "food_name": "fig",
+        "value": 14
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 14
+      },
+      {
+        "food_name": "pear",
+        "value": 12
+      },
+      {
+        "food_name": "star fruit",
+        "value": 12
+      },
+      {
+        "food_name": "cranberry",
+        "value": 11
+      },
+      {
+        "food_name": "watermelon",
+        "value": 11
+      },
+      {
+        "food_name": "apple",
+        "value": 11
+      },
+      {
+        "food_name": "papaya",
+        "value": 10
+      },
+      {
+        "food_name": "caper",
+        "value": 10
+      },
+      {
+        "food_name": "pineapple",
+        "value": 8
+      },
+      {
+        "food_name": "olive",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "attr_id": 306,
+    "usda_tag": "K",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "turmeric",
+        "value": 2080
+      },
+      {
+        "food_name": "pepper",
+        "value": 1329
+      },
+      {
+        "food_name": "dill",
+        "value": 738
+      },
+      {
+        "food_name": "prune",
+        "value": 732
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 723
+      },
+      {
+        "food_name": "date",
+        "value": 656
+      },
+      {
+        "food_name": "peanut",
+        "value": 634
+      },
+      {
+        "food_name": "tamarind",
+        "value": 628
+      },
+      {
+        "food_name": "potato",
+        "value": 535
+      },
+      {
+        "food_name": "soy bean",
+        "value": 515
+      },
+      {
+        "food_name": "avocado",
+        "value": 485
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 475
+      },
+      {
+        "food_name": "spinach",
+        "value": 466
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 448
+      },
+      {
+        "food_name": "durian",
+        "value": 436
+      },
+      {
+        "food_name": "guava",
+        "value": 417
+      },
+      {
+        "food_name": "ginger",
+        "value": 415
+      },
+      {
+        "food_name": "bean",
+        "value": 405
+      },
+      {
+        "food_name": "red bean",
+        "value": 405
+      },
+      {
+        "food_name": "garlic",
+        "value": 401
+      },
+      {
+        "food_name": "lentil",
+        "value": 369
+      },
+      {
+        "food_name": "parsnip",
+        "value": 367
+      },
+      {
+        "food_name": "coconut",
+        "value": 361
+      },
+      {
+        "food_name": "banana",
+        "value": 358
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 350
+      },
+      {
+        "food_name": "watercress",
+        "value": 330
+      },
+      {
+        "food_name": "black currant",
+        "value": 322
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 317
+      },
+      {
+        "food_name": "kiwi",
+        "value": 312
+      },
+      {
+        "food_name": "swede",
+        "value": 305
+      },
+      {
+        "food_name": "radicchio",
+        "value": 302
+      },
+      {
+        "food_name": "broccoli",
+        "value": 293
+      },
+      {
+        "food_name": "chickpea",
+        "value": 291
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 288
+      },
+      {
+        "food_name": "artichoke",
+        "value": 286
+      },
+      {
+        "food_name": "celery",
+        "value": 284
+      },
+      {
+        "food_name": "spring onion",
+        "value": 276
+      },
+      {
+        "food_name": "red currant",
+        "value": 275
+      },
+      {
+        "food_name": "pea",
+        "value": 271
+      },
+      {
+        "food_name": "melon",
+        "value": 267
+      },
+      {
+        "food_name": "zucchini",
+        "value": 264
+      },
+      {
+        "food_name": "courgette",
+        "value": 264
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 262
+      },
+      {
+        "food_name": "lettuce",
+        "value": 247
+      },
+      {
+        "food_name": "horseradish",
+        "value": 246
+      },
+      {
+        "food_name": "tomato",
+        "value": 237
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 236
+      },
+      {
+        "food_name": "carrot",
+        "value": 235
+      },
+      {
+        "food_name": "radish",
+        "value": 233
+      },
+      {
+        "food_name": "fig",
+        "value": 232
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 230
+      },
+      {
+        "food_name": "kale",
+        "value": 228
+      },
+      {
+        "food_name": "asparagus",
+        "value": 224
+      },
+      {
+        "food_name": "cherry",
+        "value": 222
+      },
+      {
+        "food_name": "corn",
+        "value": 218
+      },
+      {
+        "food_name": "pomelo",
+        "value": 216
+      },
+      {
+        "food_name": "nectarine",
+        "value": 201
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 198
+      },
+      {
+        "food_name": "quince",
+        "value": 197
+      },
+      {
+        "food_name": "cabbage",
+        "value": 196
+      },
+      {
+        "food_name": "mulberry",
+        "value": 194
+      },
+      {
+        "food_name": "grape",
+        "value": 191
+      },
+      {
+        "food_name": "peach",
+        "value": 190
+      },
+      {
+        "food_name": "wasabi",
+        "value": 182
+      },
+      {
+        "food_name": "papaya",
+        "value": 182
+      },
+      {
+        "food_name": "turnip",
+        "value": 177
+      },
+      {
+        "food_name": "clementine",
+        "value": 177
+      },
+      {
+        "food_name": "squash",
+        "value": 177
+      },
+      {
+        "food_name": "celeriac",
+        "value": 173
+      },
+      {
+        "food_name": "mango",
+        "value": 168
+      },
+      {
+        "food_name": "onion",
+        "value": 166
+      },
+      {
+        "food_name": "orange",
+        "value": 166
+      },
+      {
+        "food_name": "tangerine",
+        "value": 166
+      },
+      {
+        "food_name": "plum",
+        "value": 157
+      },
+      {
+        "food_name": "strawberry",
+        "value": 153
+      },
+      {
+        "food_name": "raspberry",
+        "value": 151
+      },
+      {
+        "food_name": "cucumber",
+        "value": 147
+      },
+      {
+        "food_name": "green bean",
+        "value": 146
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 142
+      },
+      {
+        "food_name": "lemon",
+        "value": 138
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 135
+      },
+      {
+        "food_name": "okra",
+        "value": 135
+      },
+      {
+        "food_name": "star fruit",
+        "value": 133
+      },
+      {
+        "food_name": "eggplant",
+        "value": 123
+      },
+      {
+        "food_name": "pear",
+        "value": 116
+      },
+      {
+        "food_name": "watermelon",
+        "value": 112
+      },
+      {
+        "food_name": "pineapple",
+        "value": 109
+      },
+      {
+        "food_name": "apple",
+        "value": 107
+      },
+      {
+        "food_name": "lime",
+        "value": 102
+      },
+      {
+        "food_name": "leek",
+        "value": 87
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 80
+      },
+      {
+        "food_name": "cranberry",
+        "value": 80
+      },
+      {
+        "food_name": "caper",
+        "value": 40
+      },
+      {
+        "food_name": "olive",
+        "value": 8
+      }
+    ]
+  },
+  {
+    "attr_id": 307,
+    "usda_tag": "NA",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "wasabi",
+        "value": 3390
+      },
+      {
+        "food_name": "caper",
+        "value": 2348
+      },
+      {
+        "food_name": "olive",
+        "value": 735
+      },
+      {
+        "food_name": "horseradish",
+        "value": 420
+      },
+      {
+        "food_name": "peanut",
+        "value": 410
+      },
+      {
+        "food_name": "coconut",
+        "value": 285
+      },
+      {
+        "food_name": "celery",
+        "value": 91
+      },
+      {
+        "food_name": "spinach",
+        "value": 70
+      },
+      {
+        "food_name": "dill",
+        "value": 61
+      },
+      {
+        "food_name": "celeriac",
+        "value": 61
+      },
+      {
+        "food_name": "artichoke",
+        "value": 60
+      },
+      {
+        "food_name": "carrot",
+        "value": 58
+      },
+      {
+        "food_name": "watercress",
+        "value": 41
+      },
+      {
+        "food_name": "broccoli",
+        "value": 41
+      },
+      {
+        "food_name": "radish",
+        "value": 39
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 36
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 28
+      },
+      {
+        "food_name": "tamarind",
+        "value": 28
+      },
+      {
+        "food_name": "turmeric",
+        "value": 27
+      },
+      {
+        "food_name": "kale",
+        "value": 23
+      },
+      {
+        "food_name": "radicchio",
+        "value": 22
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 21
+      },
+      {
+        "food_name": "pepper",
+        "value": 20
+      },
+      {
+        "food_name": "garlic",
+        "value": 17
+      },
+      {
+        "food_name": "spring onion",
+        "value": 16
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 16
+      },
+      {
+        "food_name": "turnip",
+        "value": 16
+      },
+      {
+        "food_name": "melon",
+        "value": 16
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 15
+      },
+      {
+        "food_name": "asparagus",
+        "value": 14
+      },
+      {
+        "food_name": "ginger",
+        "value": 13
+      },
+      {
+        "food_name": "swede",
+        "value": 12
+      },
+      {
+        "food_name": "potato",
+        "value": 10
+      },
+      {
+        "food_name": "mulberry",
+        "value": 10
+      },
+      {
+        "food_name": "leek",
+        "value": 10
+      },
+      {
+        "food_name": "parsnip",
+        "value": 10
+      },
+      {
+        "food_name": "lettuce",
+        "value": 8
+      },
+      {
+        "food_name": "papaya",
+        "value": 8
+      },
+      {
+        "food_name": "cabbage",
+        "value": 8
+      },
+      {
+        "food_name": "chickpea",
+        "value": 7
+      },
+      {
+        "food_name": "avocado",
+        "value": 7
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 7
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 6
+      },
+      {
+        "food_name": "okra",
+        "value": 6
+      },
+      {
+        "food_name": "tomato",
+        "value": 5
+      },
+      {
+        "food_name": "quince",
+        "value": 4
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 4
+      },
+      {
+        "food_name": "pea",
+        "value": 3
+      },
+      {
+        "food_name": "courgette",
+        "value": 3
+      },
+      {
+        "food_name": "onion",
+        "value": 3
+      },
+      {
+        "food_name": "zucchini",
+        "value": 3
+      },
+      {
+        "food_name": "kiwi",
+        "value": 3
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 3
+      },
+      {
+        "food_name": "durian",
+        "value": 2
+      },
+      {
+        "food_name": "lime",
+        "value": 2
+      },
+      {
+        "food_name": "lentil",
+        "value": 2
+      },
+      {
+        "food_name": "lemon",
+        "value": 2
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 2
+      },
+      {
+        "food_name": "guava",
+        "value": 2
+      },
+      {
+        "food_name": "grape",
+        "value": 2
+      },
+      {
+        "food_name": "prune",
+        "value": 2
+      },
+      {
+        "food_name": "date",
+        "value": 2
+      },
+      {
+        "food_name": "star fruit",
+        "value": 2
+      },
+      {
+        "food_name": "cucumber",
+        "value": 2
+      },
+      {
+        "food_name": "cranberry",
+        "value": 2
+      },
+      {
+        "food_name": "black currant",
+        "value": 2
+      },
+      {
+        "food_name": "tangerine",
+        "value": 2
+      },
+      {
+        "food_name": "apple",
+        "value": 1
+      },
+      {
+        "food_name": "clementine",
+        "value": 1
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 1
+      },
+      {
+        "food_name": "orange",
+        "value": 1
+      },
+      {
+        "food_name": "green bean",
+        "value": 1
+      },
+      {
+        "food_name": "watermelon",
+        "value": 1
+      },
+      {
+        "food_name": "raspberry",
+        "value": 1
+      },
+      {
+        "food_name": "red bean",
+        "value": 1
+      },
+      {
+        "food_name": "corn",
+        "value": 1
+      },
+      {
+        "food_name": "red currant",
+        "value": 1
+      },
+      {
+        "food_name": "eggplant",
+        "value": 1
+      },
+      {
+        "food_name": "soy bean",
+        "value": 1
+      },
+      {
+        "food_name": "fig",
+        "value": 1
+      },
+      {
+        "food_name": "pear",
+        "value": 1
+      },
+      {
+        "food_name": "squash",
+        "value": 1
+      },
+      {
+        "food_name": "banana",
+        "value": 1
+      },
+      {
+        "food_name": "strawberry",
+        "value": 1
+      },
+      {
+        "food_name": "pineapple",
+        "value": 1
+      },
+      {
+        "food_name": "bean",
+        "value": 1
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 1
+      },
+      {
+        "food_name": "pomelo",
+        "value": 1
+      },
+      {
+        "food_name": "mango",
+        "value": 1
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "cacao",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 309,
+    "usda_tag": "ZN",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "turmeric",
+        "value": 5
+      },
+      {
+        "food_name": "peanut",
+        "value": 3
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 2
+      },
+      {
+        "food_name": "chickpea",
+        "value": 2
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 2
+      },
+      {
+        "food_name": "wasabi",
+        "value": 1
+      },
+      {
+        "food_name": "coconut",
+        "value": 1
+      },
+      {
+        "food_name": "corn",
+        "value": 1
+      },
+      {
+        "food_name": "dill",
+        "value": 1
+      },
+      {
+        "food_name": "garlic",
+        "value": 1
+      },
+      {
+        "food_name": "horseradish",
+        "value": 1
+      },
+      {
+        "food_name": "asparagus",
+        "value": 1
+      },
+      {
+        "food_name": "lentil",
+        "value": 1
+      },
+      {
+        "food_name": "avocado",
+        "value": 1
+      },
+      {
+        "food_name": "pea",
+        "value": 1
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 1
+      },
+      {
+        "food_name": "pepper",
+        "value": 1
+      },
+      {
+        "food_name": "radicchio",
+        "value": 1
+      },
+      {
+        "food_name": "red bean",
+        "value": 1
+      },
+      {
+        "food_name": "soy bean",
+        "value": 1
+      },
+      {
+        "food_name": "spinach",
+        "value": 1
+      },
+      {
+        "food_name": "bean",
+        "value": 1
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "durian",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "olive",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "pomelo",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 312,
+    "usda_tag": "CU",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "nutmeg",
+        "value": 1
+      },
+      {
+        "food_name": "pepper",
+        "value": 1
+      },
+      {
+        "food_name": "turmeric",
+        "value": 1
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "chickpea",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "coconut",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "dill",
+        "value": 0
+      },
+      {
+        "food_name": "durian",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "garlic",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "mulberry",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "olive",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "pea",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "peanut",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "pineapple",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "pomelo",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "quince",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "raspberry",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "soy bean",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 0
+      },
+      {
+        "food_name": "tamarind",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "avocado",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 313,
+    "usda_tag": "FLD",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "carrot",
+        "value": 48
+      },
+      {
+        "food_name": "spinach",
+        "value": 38
+      },
+      {
+        "food_name": "pepper",
+        "value": 34
+      },
+      {
+        "food_name": "asparagus",
+        "value": 22
+      },
+      {
+        "food_name": "peanut",
+        "value": 16
+      },
+      {
+        "food_name": "grape",
+        "value": 8
+      },
+      {
+        "food_name": "avocado",
+        "value": 7
+      },
+      {
+        "food_name": "radish",
+        "value": 6
+      },
+      {
+        "food_name": "prune",
+        "value": 4
+      },
+      {
+        "food_name": "broccoli",
+        "value": 4
+      },
+      {
+        "food_name": "strawberry",
+        "value": 4
+      },
+      {
+        "food_name": "peach",
+        "value": 4
+      },
+      {
+        "food_name": "apple",
+        "value": 3
+      },
+      {
+        "food_name": "pear",
+        "value": 2
+      },
+      {
+        "food_name": "plum",
+        "value": 2
+      },
+      {
+        "food_name": "cherry",
+        "value": 2
+      },
+      {
+        "food_name": "banana",
+        "value": 2
+      },
+      {
+        "food_name": "tomato",
+        "value": 2
+      },
+      {
+        "food_name": "watermelon",
+        "value": 2
+      },
+      {
+        "food_name": "melon",
+        "value": 1
+      },
+      {
+        "food_name": "cucumber",
+        "value": 1
+      },
+      {
+        "food_name": "cabbage",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "attr_id": 315,
+    "usda_tag": "MN",
+    "type": "MINERAL",
+    "foods": [
+      {
+        "food_name": "turmeric",
+        "value": 20
+      },
+      {
+        "food_name": "pepper",
+        "value": 13
+      },
+      {
+        "food_name": "lemongrass",
+        "value": 5
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 3
+      },
+      {
+        "food_name": "garlic",
+        "value": 2
+      },
+      {
+        "food_name": "peanut",
+        "value": 2
+      },
+      {
+        "food_name": "dill",
+        "value": 1
+      },
+      {
+        "food_name": "pea",
+        "value": 1
+      },
+      {
+        "food_name": "chickpea",
+        "value": 1
+      },
+      {
+        "food_name": "coconut",
+        "value": 1
+      },
+      {
+        "food_name": "pineapple",
+        "value": 1
+      },
+      {
+        "food_name": "raspberry",
+        "value": 1
+      },
+      {
+        "food_name": "soy bean",
+        "value": 1
+      },
+      {
+        "food_name": "spinach",
+        "value": 1
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 1
+      },
+      {
+        "food_name": "lime",
+        "value": 0
+      },
+      {
+        "food_name": "cherry",
+        "value": 0
+      },
+      {
+        "food_name": "apple",
+        "value": 0
+      },
+      {
+        "food_name": "clementine",
+        "value": 0
+      },
+      {
+        "food_name": "asparagus",
+        "value": 0
+      },
+      {
+        "food_name": "corn",
+        "value": 0
+      },
+      {
+        "food_name": "courgette",
+        "value": 0
+      },
+      {
+        "food_name": "cranberry",
+        "value": 0
+      },
+      {
+        "food_name": "cucumber",
+        "value": 0
+      },
+      {
+        "food_name": "date",
+        "value": 0
+      },
+      {
+        "food_name": "avocado",
+        "value": 0
+      },
+      {
+        "food_name": "durian",
+        "value": 0
+      },
+      {
+        "food_name": "eggplant",
+        "value": 0
+      },
+      {
+        "food_name": "fig",
+        "value": 0
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 0
+      },
+      {
+        "food_name": "ginger",
+        "value": 0
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 0
+      },
+      {
+        "food_name": "grape",
+        "value": 0
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 0
+      },
+      {
+        "food_name": "green bean",
+        "value": 0
+      },
+      {
+        "food_name": "guava",
+        "value": 0
+      },
+      {
+        "food_name": "horseradish",
+        "value": 0
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 0
+      },
+      {
+        "food_name": "kale",
+        "value": 0
+      },
+      {
+        "food_name": "kiwi",
+        "value": 0
+      },
+      {
+        "food_name": "leek",
+        "value": 0
+      },
+      {
+        "food_name": "lemon",
+        "value": 0
+      },
+      {
+        "food_name": "banana",
+        "value": 0
+      },
+      {
+        "food_name": "lentil",
+        "value": 0
+      },
+      {
+        "food_name": "lettuce",
+        "value": 0
+      },
+      {
+        "food_name": "artichoke",
+        "value": 0
+      },
+      {
+        "food_name": "mango",
+        "value": 0
+      },
+      {
+        "food_name": "melon",
+        "value": 0
+      },
+      {
+        "food_name": "nectarine",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "okra",
+        "value": 0
+      },
+      {
+        "food_name": "olive",
+        "value": 0
+      },
+      {
+        "food_name": "onion",
+        "value": 0
+      },
+      {
+        "food_name": "orange",
+        "value": 0
+      },
+      {
+        "food_name": "papaya",
+        "value": 0
+      },
+      {
+        "food_name": "parsnip",
+        "value": 0
+      },
+      {
+        "food_name": "black currant",
+        "value": 0
+      },
+      {
+        "food_name": "peach",
+        "value": 0
+      },
+      {
+        "food_name": "broccoli",
+        "value": 0
+      },
+      {
+        "food_name": "pear",
+        "value": 0
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 0
+      },
+      {
+        "food_name": "cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "plum",
+        "value": 0
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 0
+      },
+      {
+        "food_name": "pomelo",
+        "value": 0
+      },
+      {
+        "food_name": "potato",
+        "value": 0
+      },
+      {
+        "food_name": "prune",
+        "value": 0
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 0
+      },
+      {
+        "food_name": "radicchio",
+        "value": 0
+      },
+      {
+        "food_name": "radish",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 0
+      },
+      {
+        "food_name": "red currant",
+        "value": 0
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 0
+      },
+      {
+        "food_name": "carrot",
+        "value": 0
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 0
+      },
+      {
+        "food_name": "spring onion",
+        "value": 0
+      },
+      {
+        "food_name": "squash",
+        "value": 0
+      },
+      {
+        "food_name": "star fruit",
+        "value": 0
+      },
+      {
+        "food_name": "strawberry",
+        "value": 0
+      },
+      {
+        "food_name": "swede",
+        "value": 0
+      },
+      {
+        "food_name": "celeriac",
+        "value": 0
+      },
+      {
+        "food_name": "tangerine",
+        "value": 0
+      },
+      {
+        "food_name": "tomato",
+        "value": 0
+      },
+      {
+        "food_name": "celery",
+        "value": 0
+      },
+      {
+        "food_name": "turnip",
+        "value": 0
+      },
+      {
+        "food_name": "wasabi",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      },
+      {
+        "food_name": "zucchini",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 291,
+    "usda_tag": "FIBTG",
+    "type": "FIBER",
+    "foods": [
+      {
+        "food_name": "pepper",
+        "value": 25
+      },
+      {
+        "food_name": "turmeric",
+        "value": 23
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 21
+      },
+      {
+        "food_name": "cacao",
+        "value": 20
+      },
+      {
+        "food_name": "coconut",
+        "value": 10
+      },
+      {
+        "food_name": "date",
+        "value": 8
+      },
+      {
+        "food_name": "chickpea",
+        "value": 8
+      },
+      {
+        "food_name": "peanut",
+        "value": 8
+      },
+      {
+        "food_name": "lentil",
+        "value": 8
+      },
+      {
+        "food_name": "avocado",
+        "value": 7
+      },
+      {
+        "food_name": "raspberry",
+        "value": 7
+      },
+      {
+        "food_name": "prune",
+        "value": 7
+      },
+      {
+        "food_name": "bean",
+        "value": 6
+      },
+      {
+        "food_name": "soy bean",
+        "value": 6
+      },
+      {
+        "food_name": "artichoke",
+        "value": 6
+      },
+      {
+        "food_name": "pea",
+        "value": 6
+      },
+      {
+        "food_name": "wasabi",
+        "value": 6
+      },
+      {
+        "food_name": "red bean",
+        "value": 6
+      },
+      {
+        "food_name": "guava",
+        "value": 5
+      },
+      {
+        "food_name": "tamarind",
+        "value": 5
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 4
+      },
+      {
+        "food_name": "gooseberry",
+        "value": 4
+      },
+      {
+        "food_name": "durian",
+        "value": 4
+      },
+      {
+        "food_name": "red currant",
+        "value": 4
+      },
+      {
+        "food_name": "cranberry",
+        "value": 4
+      },
+      {
+        "food_name": "parsnip",
+        "value": 4
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 3
+      },
+      {
+        "food_name": "spring onion",
+        "value": 3
+      },
+      {
+        "food_name": "green bean",
+        "value": 3
+      },
+      {
+        "food_name": "banana",
+        "value": 3
+      },
+      {
+        "food_name": "horseradish",
+        "value": 3
+      },
+      {
+        "food_name": "lime",
+        "value": 3
+      },
+      {
+        "food_name": "caper",
+        "value": 3
+      },
+      {
+        "food_name": "kiwi",
+        "value": 3
+      },
+      {
+        "food_name": "lemon",
+        "value": 3
+      },
+      {
+        "food_name": "carrot",
+        "value": 3
+      },
+      {
+        "food_name": "broccoli",
+        "value": 3
+      },
+      {
+        "food_name": "pear",
+        "value": 3
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 3
+      },
+      {
+        "food_name": "eggplant",
+        "value": 3
+      },
+      {
+        "food_name": "fig",
+        "value": 3
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 3
+      },
+      {
+        "food_name": "star fruit",
+        "value": 3
+      },
+      {
+        "food_name": "okra",
+        "value": 3
+      },
+      {
+        "food_name": "olive",
+        "value": 3
+      },
+      {
+        "food_name": "garlic",
+        "value": 2
+      },
+      {
+        "food_name": "orange",
+        "value": 2
+      },
+      {
+        "food_name": "nectarine",
+        "value": 2
+      },
+      {
+        "food_name": "mulberry",
+        "value": 2
+      },
+      {
+        "food_name": "peach",
+        "value": 2
+      },
+      {
+        "food_name": "mango",
+        "value": 2
+      },
+      {
+        "food_name": "asparagus",
+        "value": 2
+      },
+      {
+        "food_name": "lettuce",
+        "value": 2
+      },
+      {
+        "food_name": "kale",
+        "value": 2
+      },
+      {
+        "food_name": "potato",
+        "value": 2
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 2
+      },
+      {
+        "food_name": "quince",
+        "value": 2
+      },
+      {
+        "food_name": "radish",
+        "value": 2
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 2
+      },
+      {
+        "food_name": "ginger",
+        "value": 2
+      },
+      {
+        "food_name": "papaya",
+        "value": 2
+      },
+      {
+        "food_name": "dill",
+        "value": 2
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 2
+      },
+      {
+        "food_name": "corn",
+        "value": 2
+      },
+      {
+        "food_name": "spinach",
+        "value": 2
+      },
+      {
+        "food_name": "clementine",
+        "value": 2
+      },
+      {
+        "food_name": "cherry",
+        "value": 2
+      },
+      {
+        "food_name": "strawberry",
+        "value": 2
+      },
+      {
+        "food_name": "swede",
+        "value": 2
+      },
+      {
+        "food_name": "celery",
+        "value": 2
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 2
+      },
+      {
+        "food_name": "tangerine",
+        "value": 2
+      },
+      {
+        "food_name": "cabbage",
+        "value": 2
+      },
+      {
+        "food_name": "turnip",
+        "value": 2
+      },
+      {
+        "food_name": "apple",
+        "value": 2
+      },
+      {
+        "food_name": "plum",
+        "value": 1
+      },
+      {
+        "food_name": "grape",
+        "value": 1
+      },
+      {
+        "food_name": "pomelo",
+        "value": 1
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 1
+      },
+      {
+        "food_name": "squash",
+        "value": 1
+      },
+      {
+        "food_name": "leek",
+        "value": 1
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 1
+      },
+      {
+        "food_name": "cucumber",
+        "value": 1
+      },
+      {
+        "food_name": "radicchio",
+        "value": 1
+      },
+      {
+        "food_name": "zucchini",
+        "value": 1
+      },
+      {
+        "food_name": "celeriac",
+        "value": 1
+      },
+      {
+        "food_name": "tomato",
+        "value": 1
+      },
+      {
+        "food_name": "courgette",
+        "value": 1
+      },
+      {
+        "food_name": "onion",
+        "value": 1
+      },
+      {
+        "food_name": "pineapple",
+        "value": 1
+      },
+      {
+        "food_name": "watercress",
+        "value": 1
+      },
+      {
+        "food_name": "melon",
+        "value": 1
+      },
+      {
+        "food_name": "watermelon",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "attr_id": 269,
+    "usda_tag": "SUGAR",
+    "type": "SUGAR",
+    "foods": [
+      {
+        "food_name": "date",
+        "value": 63
+      },
+      {
+        "food_name": "tamarind",
+        "value": 39
+      },
+      {
+        "food_name": "prune",
+        "value": 38
+      },
+      {
+        "food_name": "coconut",
+        "value": 37
+      },
+      {
+        "food_name": "jack fruit",
+        "value": 19
+      },
+      {
+        "food_name": "fig",
+        "value": 16
+      },
+      {
+        "food_name": "grape",
+        "value": 15
+      },
+      {
+        "food_name": "pomegranate",
+        "value": 14
+      },
+      {
+        "food_name": "mango",
+        "value": 14
+      },
+      {
+        "food_name": "cherry",
+        "value": 13
+      },
+      {
+        "food_name": "wasabi",
+        "value": 13
+      },
+      {
+        "food_name": "banana",
+        "value": 12
+      },
+      {
+        "food_name": "tangerine",
+        "value": 11
+      },
+      {
+        "food_name": "pear",
+        "value": 10
+      },
+      {
+        "food_name": "apple",
+        "value": 10
+      },
+      {
+        "food_name": "plum",
+        "value": 10
+      },
+      {
+        "food_name": "pineapple",
+        "value": 10
+      },
+      {
+        "food_name": "kiwi",
+        "value": 9
+      },
+      {
+        "food_name": "guava",
+        "value": 9
+      },
+      {
+        "food_name": "clementine",
+        "value": 9
+      },
+      {
+        "food_name": "orange",
+        "value": 9
+      },
+      {
+        "food_name": "melon",
+        "value": 8
+      },
+      {
+        "food_name": "horseradish",
+        "value": 8
+      },
+      {
+        "food_name": "papaya",
+        "value": 8
+      },
+      {
+        "food_name": "mulberry",
+        "value": 8
+      },
+      {
+        "food_name": "nectarine",
+        "value": 8
+      },
+      {
+        "food_name": "peach",
+        "value": 8
+      },
+      {
+        "food_name": "red currant",
+        "value": 7
+      },
+      {
+        "food_name": "grapefruit",
+        "value": 7
+      },
+      {
+        "food_name": "sweet potato",
+        "value": 6
+      },
+      {
+        "food_name": "watermelon",
+        "value": 6
+      },
+      {
+        "food_name": "pea",
+        "value": 6
+      },
+      {
+        "food_name": "chickpea",
+        "value": 5
+      },
+      {
+        "food_name": "onion",
+        "value": 5
+      },
+      {
+        "food_name": "parsnip",
+        "value": 5
+      },
+      {
+        "food_name": "strawberry",
+        "value": 5
+      },
+      {
+        "food_name": "peanut",
+        "value": 5
+      },
+      {
+        "food_name": "corn",
+        "value": 5
+      },
+      {
+        "food_name": "swede",
+        "value": 4
+      },
+      {
+        "food_name": "green bean",
+        "value": 4
+      },
+      {
+        "food_name": "star fruit",
+        "value": 4
+      },
+      {
+        "food_name": "raspberry",
+        "value": 4
+      },
+      {
+        "food_name": "cranberry",
+        "value": 4
+      },
+      {
+        "food_name": "cabbage",
+        "value": 3
+      },
+      {
+        "food_name": "eggplant",
+        "value": 3
+      },
+      {
+        "food_name": "turmeric",
+        "value": 3
+      },
+      {
+        "food_name": "nutmeg",
+        "value": 3
+      },
+      {
+        "food_name": "tomato",
+        "value": 3
+      },
+      {
+        "food_name": "lemon",
+        "value": 3
+      },
+      {
+        "food_name": "soy bean",
+        "value": 3
+      },
+      {
+        "food_name": "carrot",
+        "value": 3
+      },
+      {
+        "food_name": "turnip",
+        "value": 3
+      },
+      {
+        "food_name": "red cabbage",
+        "value": 3
+      },
+      {
+        "food_name": "bamboo shoot",
+        "value": 2
+      },
+      {
+        "food_name": "celery",
+        "value": 2
+      },
+      {
+        "food_name": "lentil",
+        "value": 2
+      },
+      {
+        "food_name": "okra",
+        "value": 2
+      },
+      {
+        "food_name": "cucumber",
+        "value": 2
+      },
+      {
+        "food_name": "brussels sprouts",
+        "value": 2
+      },
+      {
+        "food_name": "lime",
+        "value": 2
+      },
+      {
+        "food_name": "squash",
+        "value": 2
+      },
+      {
+        "food_name": "spring onion",
+        "value": 2
+      },
+      {
+        "food_name": "pumpkin",
+        "value": 2
+      },
+      {
+        "food_name": "cauliflower",
+        "value": 2
+      },
+      {
+        "food_name": "radish",
+        "value": 2
+      },
+      {
+        "food_name": "courgette",
+        "value": 2
+      },
+      {
+        "food_name": "leek",
+        "value": 2
+      },
+      {
+        "food_name": "ginger",
+        "value": 2
+      },
+      {
+        "food_name": "zucchini",
+        "value": 2
+      },
+      {
+        "food_name": "kale",
+        "value": 1
+      },
+      {
+        "food_name": "potato",
+        "value": 1
+      },
+      {
+        "food_name": "broccoli",
+        "value": 1
+      },
+      {
+        "food_name": "garlic",
+        "value": 1
+      },
+      {
+        "food_name": "pepper",
+        "value": 1
+      },
+      {
+        "food_name": "radicchio",
+        "value": 1
+      },
+      {
+        "food_name": "avocado",
+        "value": 1
+      },
+      {
+        "food_name": "artichoke",
+        "value": 1
+      },
+      {
+        "food_name": "lettuce",
+        "value": 1
+      },
+      {
+        "food_name": "asparagus",
+        "value": 1
+      },
+      {
+        "food_name": "rhubarb",
+        "value": 1
+      },
+      {
+        "food_name": "olive",
+        "value": 0
+      },
+      {
+        "food_name": "red bean",
+        "value": 0
+      },
+      {
+        "food_name": "spinach",
+        "value": 0
+      },
+      {
+        "food_name": "caper",
+        "value": 0
+      },
+      {
+        "food_name": "watercress",
+        "value": 0
+      },
+      {
+        "food_name": "bean",
+        "value": 0
+      },
+      {
+        "food_name": "cacao",
+        "value": 0
+      }
+    ]
+  }
+]

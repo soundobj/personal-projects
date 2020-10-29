@@ -1,0 +1,20 @@
+.sudoku__menu__item {
+    margin: 0 auto;
+    border: none;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: .5rem;
+
+    &__circle {
+        display: flex;
+        width: var(--menuItem);
+        height: var(--menuItem);
+        background: var(--warning);
+        border-radius: 50%;
+        align-items: center;
+            & > * {
+                margin: 0 auto;
+            }
+    }
+}

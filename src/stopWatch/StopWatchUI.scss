@@ -1,0 +1,30 @@
+@import "../sudoku/vars.scss";
+
+.stopWatch {
+  display: flex;
+  align-items: center;
+  background-color: var(--cta-primary) !important;
+  border-radius: .2rem;
+  border: 1px solid var(--cta-primary-border);
+  margin: 0 1.55rem;
+  padding-bottom: .2rem;
+
+  &__icon__container {
+    margin-right: .3rem;
+  }
+
+  &__timeElapsed {
+    display: flex;
+    align-items: center;
+
+    &__digit {
+      width: .9rem;
+      display: block;
+    }
+
+    &__delimiter {
+      width: .3rem;
+      padding-bottom: .3rem;
+    }
+  }
+}

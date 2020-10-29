@@ -1,0 +1,25 @@
+@import '../utils.scss';
+
+.sudoku__nav__item {
+  border: 0;
+  background: none;
+  background-color: 0;
+  flex: 1 1 auto;
+  @extend %bottomNavSpacing;
+
+  &__icon > svg {
+    width: var(--menuItem);
+    height: 100%;
+    @media screen and(max-width: 350px) {
+      width: var(--menuItemSmall);
+    }
+  }
+
+  &__text {
+    color: var(--text-color);
+  }
+
+  &:focus {
+    @extend %focus;
+  }
+}

@@ -1,0 +1,1472 @@
+[
+  {
+    "attr_id": 203,
+    "unit": "g",
+    "usda_nutr_desc": "Protein",
+    "usda_sr_order": 600,
+    "api_name": "nf_protein",
+    "fda_daily_value": 50,
+    "usda_tag": "PROCNT",
+    "name": "nf_protein"
+  },
+  {
+    "attr_id": 204,
+    "unit": "g",
+    "usda_nutr_desc": "Total lipid (fat)",
+    "usda_sr_order": 800,
+    "api_name": "nf_total_fat",
+    "fda_daily_value": 65,
+    "usda_tag": "FAT",
+    "name": "nf_total_fat"
+  },
+  {
+    "attr_id": 205,
+    "unit": "g",
+    "usda_nutr_desc": "Carbohydrate, by difference",
+    "usda_sr_order": 1100,
+    "api_name": "nf_total_carbohydrate",
+    "fda_daily_value": 300,
+    "usda_tag": "CHOCDF",
+    "name": "nf_total_carbohydrate"
+  },
+  {
+    "attr_id": 207,
+    "unit": "g",
+    "usda_nutr_desc": "Ash",
+    "usda_sr_order": 1000,
+    "api_name": "nf_ash",
+    "fda_daily_value": null,
+    "usda_tag": "ASH",
+    "name": "nf_ash"
+  },
+  {
+    "attr_id": 208,
+    "unit": "kcal",
+    "usda_nutr_desc": "Energy",
+    "usda_sr_order": 300,
+    "api_name": "nf_calories",
+    "fda_daily_value": 2000,
+    "usda_tag": "ENERC_KCAL",
+    "name": "nf_calories"
+  },
+  {
+    "attr_id": 209,
+    "unit": "g",
+    "usda_nutr_desc": "Starch",
+    "usda_sr_order": 2200,
+    "api_name": "nf_starch",
+    "fda_daily_value": null,
+    "usda_tag": "STARCH",
+    "name": "nf_starch"
+  },
+  {
+    "attr_id": 210,
+    "unit": "g",
+    "usda_nutr_desc": "Sucrose",
+    "usda_sr_order": 1600,
+    "api_name": "nf_sucs",
+    "fda_daily_value": null,
+    "usda_tag": "SUCS",
+    "name": "nf_sucs"
+  },
+  {
+    "attr_id": 211,
+    "unit": "g",
+    "usda_nutr_desc": "Glucose (dextrose)",
+    "usda_sr_order": 1700,
+    "api_name": "nf_glus",
+    "fda_daily_value": null,
+    "usda_tag": "GLUS",
+    "name": "nf_glus"
+  },
+  {
+    "attr_id": 212,
+    "unit": "g",
+    "usda_nutr_desc": "Fructose",
+    "usda_sr_order": 1800,
+    "api_name": "nf_frus",
+    "fda_daily_value": null,
+    "usda_tag": "FRUS",
+    "name": "nf_frus"
+  },
+  {
+    "attr_id": 213,
+    "unit": "g",
+    "usda_nutr_desc": "Lactose",
+    "usda_sr_order": 1900,
+    "api_name": "nf_lacs",
+    "fda_daily_value": null,
+    "usda_tag": "LACS",
+    "name": "nf_lacs"
+  },
+  {
+    "attr_id": 214,
+    "unit": "g",
+    "usda_nutr_desc": "Maltose",
+    "usda_sr_order": 2000,
+    "api_name": "nf_mals",
+    "fda_daily_value": null,
+    "usda_tag": "MALS",
+    "name": "nf_mals"
+  },
+  {
+    "attr_id": 221,
+    "unit": "g",
+    "usda_nutr_desc": "Alcohol, ethyl",
+    "usda_sr_order": 18200,
+    "api_name": "nf_alc",
+    "fda_daily_value": null,
+    "usda_tag": "ALC",
+    "name": "nf_alc"
+  },
+  {
+    "attr_id": 255,
+    "unit": "g",
+    "usda_nutr_desc": "Water",
+    "usda_sr_order": 100,
+    "api_name": "nf_water",
+    "fda_daily_value": null,
+    "usda_tag": "WATER",
+    "name": "nf_water"
+  },
+  {
+    "attr_id": 257,
+    "unit": "g",
+    "usda_nutr_desc": "Adjusted Protein",
+    "usda_sr_order": 700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": null,
+    "name": null
+  },
+  {
+    "attr_id": 262,
+    "unit": "mg",
+    "usda_nutr_desc": "Caffeine",
+    "usda_sr_order": 18300,
+    "api_name": "nf_caffn",
+    "fda_daily_value": null,
+    "usda_tag": "CAFFN",
+    "name": "nf_caffn"
+  },
+  {
+    "attr_id": 263,
+    "unit": "mg",
+    "usda_nutr_desc": "Theobromine",
+    "usda_sr_order": 18400,
+    "api_name": "nf_thebrn",
+    "fda_daily_value": null,
+    "usda_tag": "THEBRN",
+    "name": "nf_thebrn"
+  },
+  {
+    "attr_id": 268,
+    "unit": "kJ",
+    "usda_nutr_desc": "Energy",
+    "usda_sr_order": 400,
+    "api_name": "nf_enerc_kj",
+    "fda_daily_value": null,
+    "usda_tag": "ENERC_KJ",
+    "name": "nf_enerc_kj"
+  },
+  {
+    "attr_id": 269,
+    "unit": "g",
+    "usda_nutr_desc": "Sugars, total",
+    "usda_sr_order": 1500,
+    "api_name": "nf_sugars",
+    "fda_daily_value": null,
+    "usda_tag": "SUGAR",
+    "name": "nf_sugars"
+  },
+  {
+    "attr_id": 287,
+    "unit": "g",
+    "usda_nutr_desc": "Galactose",
+    "usda_sr_order": 2100,
+    "api_name": "nf_gals",
+    "fda_daily_value": null,
+    "usda_tag": "GALS",
+    "name": "nf_gals"
+  },
+  {
+    "attr_id": 291,
+    "unit": "g",
+    "usda_nutr_desc": "Fiber, total dietary",
+    "usda_sr_order": 1200,
+    "api_name": "nf_dietary_fiber",
+    "fda_daily_value": 25,
+    "usda_tag": "FIBTG",
+    "name": "nf_dietary_fiber"
+  },
+  {
+    "attr_id": 301,
+    "unit": "mg",
+    "usda_nutr_desc": "Calcium, Ca",
+    "usda_sr_order": 5300,
+    "api_name": "nf_calcium_dv",
+    "fda_daily_value": 1000,
+    "usda_tag": "CA",
+    "name": "nf_calcium_dv"
+  },
+  {
+    "attr_id": 303,
+    "unit": "mg",
+    "usda_nutr_desc": "Iron, Fe",
+    "usda_sr_order": 5400,
+    "api_name": "nf_iron_dv",
+    "fda_daily_value": 18,
+    "usda_tag": "FE",
+    "name": "nf_iron_dv"
+  },
+  {
+    "attr_id": 304,
+    "unit": "mg",
+    "usda_nutr_desc": "Magnesium, Mg",
+    "usda_sr_order": 5500,
+    "api_name": "nf_mg",
+    "fda_daily_value": 350,
+    "usda_tag": "MG",
+    "name": "nf_mg"
+  },
+  {
+    "attr_id": 305,
+    "unit": "mg",
+    "usda_nutr_desc": "Phosphorus, P",
+    "usda_sr_order": 5600,
+    "api_name": "nf_p",
+    "fda_daily_value": 1000,
+    "usda_tag": "P",
+    "name": "nf_p"
+  },
+  {
+    "attr_id": 306,
+    "unit": "mg",
+    "usda_nutr_desc": "Potassium, K",
+    "usda_sr_order": 5700,
+    "api_name": "nf_potassium",
+    "fda_daily_value": 3500,
+    "usda_tag": "K",
+    "name": "nf_potassium"
+  },
+  {
+    "attr_id": 307,
+    "unit": "mg",
+    "usda_nutr_desc": "Sodium, Na",
+    "usda_sr_order": 5800,
+    "api_name": "nf_sodium",
+    "fda_daily_value": 2400,
+    "usda_tag": "NA",
+    "name": "nf_sodium"
+  },
+  {
+    "attr_id": 309,
+    "unit": "mg",
+    "usda_nutr_desc": "Zinc, Zn",
+    "usda_sr_order": 5900,
+    "api_name": "nf_zn",
+    "fda_daily_value": 15,
+    "usda_tag": "ZN",
+    "name": "nf_zn"
+  },
+  {
+    "attr_id": 312,
+    "unit": "mg",
+    "usda_nutr_desc": "Copper, Cu",
+    "usda_sr_order": 6000,
+    "api_name": "nf_cu",
+    "fda_daily_value": 2,
+    "usda_tag": "CU",
+    "name": "nf_cu"
+  },
+  {
+    "attr_id": 313,
+    "unit": "µg",
+    "usda_nutr_desc": "Fluoride, F",
+    "usda_sr_order": 6240,
+    "api_name": "nf_fld",
+    "fda_daily_value": 3500,
+    "usda_tag": "FLD",
+    "name": "nf_fld"
+  },
+  {
+    "attr_id": 315,
+    "unit": "mg",
+    "usda_nutr_desc": "Manganese, Mn",
+    "usda_sr_order": 6100,
+    "api_name": "nf_mn",
+    "fda_daily_value": 5,
+    "usda_tag": "MN",
+    "name": "nf_mn"
+  },
+  {
+    "attr_id": 317,
+    "unit": "µg",
+    "usda_nutr_desc": "Selenium, Se",
+    "usda_sr_order": 6200,
+    "api_name": "nf_se",
+    "fda_daily_value": null,
+    "usda_tag": "SE",
+    "name": "nf_se"
+  },
+  {
+    "attr_id": 318,
+    "unit": "IU",
+    "usda_nutr_desc": "Vitamin A, IU",
+    "usda_sr_order": 7500,
+    "api_name": "nf_vitamin_a_dv",
+    "fda_daily_value": 5000,
+    "usda_tag": "VITA_IU",
+    "name": "nf_vitamin_a_dv"
+  },
+  {
+    "attr_id": 319,
+    "unit": "µg",
+    "usda_nutr_desc": "Retinol",
+    "usda_sr_order": 7430,
+    "api_name": "nf_retol",
+    "fda_daily_value": null,
+    "usda_tag": "RETOL",
+    "name": "nf_retol"
+  },
+  {
+    "attr_id": 320,
+    "unit": "µg",
+    "usda_nutr_desc": "Vitamin A, RAE",
+    "usda_sr_order": 7420,
+    "api_name": null,
+    "fda_daily_value": 900,
+    "usda_tag": "VITA_RAE",
+    "name": null
+  },
+  {
+    "attr_id": 321,
+    "unit": "µg",
+    "usda_nutr_desc": "Carotene, beta",
+    "usda_sr_order": 7440,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "CARTB",
+    "name": null
+  },
+  {
+    "attr_id": 322,
+    "unit": "µg",
+    "usda_nutr_desc": "Carotene, alpha",
+    "usda_sr_order": 7450,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "CARTA",
+    "name": null
+  },
+  {
+    "attr_id": 323,
+    "unit": "mg",
+    "usda_nutr_desc": "Vitamin E, (alpha-tocopherol)",
+    "usda_sr_order": 7900,
+    "api_name": null,
+    "fda_daily_value": 30,
+    "usda_tag": "TOCPHA",
+    "name": null
+  },
+  {
+    "attr_id": 324,
+    "unit": "IU",
+    "usda_nutr_desc": "Vitamin D",
+    "usda_sr_order": 8750,
+    "api_name": null,
+    "fda_daily_value": 400,
+    "usda_tag": "VITD",
+    "name": null
+  },
+  {
+    "attr_id": 325,
+    "unit": "µg",
+    "usda_nutr_desc": "Vitamin D2 (ergocalciferol)",
+    "usda_sr_order": 8710,
+    "api_name": null,
+    "fda_daily_value": 50,
+    "usda_tag": "ERGCAL",
+    "name": null
+  },
+  {
+    "attr_id": 326,
+    "unit": "µg",
+    "usda_nutr_desc": "Vitamin D3 (cholecalciferol)",
+    "usda_sr_order": 8720,
+    "api_name": null,
+    "fda_daily_value": 50,
+    "usda_tag": "CHOCAL",
+    "name": null
+  },
+  {
+    "attr_id": 328,
+    "unit": "µg",
+    "usda_nutr_desc": "Vitamin D, (D2 + D3)",
+    "usda_sr_order": 8700,
+    "api_name": null,
+    "fda_daily_value": 50,
+    "usda_tag": "VITD",
+    "name": null
+  },
+  {
+    "attr_id": 334,
+    "unit": "µg",
+    "usda_nutr_desc": "Cryptoxanthin, beta",
+    "usda_sr_order": 7460,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "CRYPX",
+    "name": null
+  },
+  {
+    "attr_id": 337,
+    "unit": "µg",
+    "usda_nutr_desc": "Lycopene",
+    "usda_sr_order": 7530,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "LYCPN",
+    "name": null
+  },
+  {
+    "attr_id": 338,
+    "unit": "µg",
+    "usda_nutr_desc": "Lutein + zeaxanthin",
+    "usda_sr_order": 7560,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "LUT+ZEA",
+    "name": null
+  },
+  {
+    "attr_id": 341,
+    "unit": "mg",
+    "usda_nutr_desc": "Tocopherol, beta",
+    "usda_sr_order": 8000,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "TOCPHB",
+    "name": null
+  },
+  {
+    "attr_id": 342,
+    "unit": "mg",
+    "usda_nutr_desc": "Tocopherol, gamma",
+    "usda_sr_order": 8100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "TOCPHG",
+    "name": null
+  },
+  {
+    "attr_id": 343,
+    "unit": "mg",
+    "usda_nutr_desc": "Tocopherol, delta",
+    "usda_sr_order": 8200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "TOCPHD",
+    "name": null
+  },
+  {
+    "attr_id": 401,
+    "unit": "mg",
+    "usda_nutr_desc": "Vitamin C, total ascorbic acid",
+    "usda_sr_order": 6300,
+    "api_name": "nf_vitamin_c_dv",
+    "fda_daily_value": 60,
+    "usda_tag": "VITC",
+    "name": "nf_vitamin_c_dv"
+  },
+  {
+    "attr_id": 404,
+    "unit": "mg",
+    "usda_nutr_desc": "Vitamin B1, Thiamin",
+    "usda_sr_order": 6400,
+    "api_name": null,
+    "fda_daily_value": 1400,
+    "usda_tag": "THIA",
+    "name": null
+  },
+  {
+    "attr_id": 405,
+    "unit": "mg",
+    "usda_nutr_desc": "Riboflavin",
+    "usda_sr_order": 6500,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "RIBF",
+    "name": null
+  },
+  {
+    "attr_id": 406,
+    "unit": "mg",
+    "usda_nutr_desc": "Niacin",
+    "usda_sr_order": 6600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "NIA",
+    "name": null
+  },
+  {
+    "attr_id": 410,
+    "unit": "mg",
+    "usda_nutr_desc": "Pantothenic acid",
+    "usda_sr_order": 6700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "PANTAC",
+    "name": null
+  },
+  {
+    "attr_id": 415,
+    "unit": "mg",
+    "usda_nutr_desc": "Vitamin B6",
+    "usda_sr_order": 6800,
+    "api_name": null,
+    "fda_daily_value": 1.6,
+    "usda_tag": "VITB6A",
+    "name": null
+  },
+  {
+    "attr_id": 417,
+    "unit": "µg",
+    "usda_nutr_desc": "Folate, total",
+    "usda_sr_order": 6900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "FOL",
+    "name": null
+  },
+  {
+    "attr_id": 418,
+    "unit": "µg",
+    "usda_nutr_desc": "Vitamin B-12",
+    "usda_sr_order": 7300,
+    "api_name": null,
+    "fda_daily_value": 2.4,
+    "usda_tag": "VITB12",
+    "name": null
+  },
+  {
+    "attr_id": 421,
+    "unit": "mg",
+    "usda_nutr_desc": "Choline, total",
+    "usda_sr_order": 7220,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "CHOLN",
+    "name": null
+  },
+  {
+    "attr_id": 428,
+    "unit": "µg",
+    "usda_nutr_desc": "Menaquinone-4",
+    "usda_sr_order": 8950,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "MK4",
+    "name": null
+  },
+  {
+    "attr_id": 429,
+    "unit": "µg",
+    "usda_nutr_desc": "Dihydrophylloquinone",
+    "usda_sr_order": 8900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "VITK1D",
+    "name": null
+  },
+  {
+    "attr_id": 430,
+    "unit": "µg",
+    "usda_nutr_desc": "Vitamin K, (phylloquinone)",
+    "usda_sr_order": 8800,
+    "api_name": null,
+    "fda_daily_value": 90,
+    "usda_tag": "VITK1",
+    "name": null
+  },
+  {
+    "attr_id": 431,
+    "unit": "µg",
+    "usda_nutr_desc": "Folate B9, Folic acid",
+    "usda_sr_order": 7000,
+    "api_name": null,
+    "fda_daily_value": 400,
+    "usda_tag": "FOLAC",
+    "name": null
+  },
+  {
+    "attr_id": 432,
+    "unit": "µg",
+    "usda_nutr_desc": "Folate, food",
+    "usda_sr_order": 7100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "FOLFD",
+    "name": null
+  },
+  {
+    "attr_id": 435,
+    "unit": "µg",
+    "usda_nutr_desc": "Folate, DFE",
+    "usda_sr_order": 7200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "FOLDFE",
+    "name": null
+  },
+  {
+    "attr_id": 454,
+    "unit": "mg",
+    "usda_nutr_desc": "Betaine",
+    "usda_sr_order": 7270,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "BETN",
+    "name": null
+  },
+  {
+    "attr_id": 501,
+    "unit": "g",
+    "usda_nutr_desc": "Tryptophan",
+    "usda_sr_order": 16300,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "TRP_G",
+    "name": null
+  },
+  {
+    "attr_id": 502,
+    "unit": "g",
+    "usda_nutr_desc": "Threonine",
+    "usda_sr_order": 16400,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "THR_G",
+    "name": null
+  },
+  {
+    "attr_id": 503,
+    "unit": "g",
+    "usda_nutr_desc": "Isoleucine",
+    "usda_sr_order": 16500,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "ILE_G",
+    "name": null
+  },
+  {
+    "attr_id": 504,
+    "unit": "g",
+    "usda_nutr_desc": "Leucine",
+    "usda_sr_order": 16600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "LEU_G",
+    "name": null
+  },
+  {
+    "attr_id": 505,
+    "unit": "g",
+    "usda_nutr_desc": "Lysine",
+    "usda_sr_order": 16700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "LYS_G",
+    "name": null
+  },
+  {
+    "attr_id": 506,
+    "unit": "g",
+    "usda_nutr_desc": "Methionine",
+    "usda_sr_order": 16800,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "MET_G",
+    "name": null
+  },
+  {
+    "attr_id": 507,
+    "unit": "g",
+    "usda_nutr_desc": "Cystine",
+    "usda_sr_order": 16900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "CYS_G",
+    "name": null
+  },
+  {
+    "attr_id": 508,
+    "unit": "g",
+    "usda_nutr_desc": "Phenylalanine",
+    "usda_sr_order": 17000,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "PHE_G",
+    "name": null
+  },
+  {
+    "attr_id": 509,
+    "unit": "g",
+    "usda_nutr_desc": "Tyrosine",
+    "usda_sr_order": 17100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "TYR_G",
+    "name": null
+  },
+  {
+    "attr_id": 510,
+    "unit": "g",
+    "usda_nutr_desc": "Valine",
+    "usda_sr_order": 17200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "VAL_G",
+    "name": null
+  },
+  {
+    "attr_id": 511,
+    "unit": "g",
+    "usda_nutr_desc": "Arginine",
+    "usda_sr_order": 17300,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "ARG_G",
+    "name": null
+  },
+  {
+    "attr_id": 512,
+    "unit": "g",
+    "usda_nutr_desc": "Histidine",
+    "usda_sr_order": 17400,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "HISTN_G",
+    "name": null
+  },
+  {
+    "attr_id": 513,
+    "unit": "g",
+    "usda_nutr_desc": "Alanine",
+    "usda_sr_order": 17500,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "ALA_G",
+    "name": null
+  },
+  {
+    "attr_id": 514,
+    "unit": "g",
+    "usda_nutr_desc": "Aspartic acid",
+    "usda_sr_order": 17600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "ASP_G",
+    "name": null
+  },
+  {
+    "attr_id": 515,
+    "unit": "g",
+    "usda_nutr_desc": "Glutamic acid",
+    "usda_sr_order": 17700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "GLU_G",
+    "name": null
+  },
+  {
+    "attr_id": 516,
+    "unit": "g",
+    "usda_nutr_desc": "Glycine",
+    "usda_sr_order": 17800,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "GLY_G",
+    "name": null
+  },
+  {
+    "attr_id": 517,
+    "unit": "g",
+    "usda_nutr_desc": "Proline",
+    "usda_sr_order": 17900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "PRO_G",
+    "name": null
+  },
+  {
+    "attr_id": 518,
+    "unit": "g",
+    "usda_nutr_desc": "Serine",
+    "usda_sr_order": 18000,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "SER_G",
+    "name": null
+  },
+  {
+    "attr_id": 521,
+    "unit": "g",
+    "usda_nutr_desc": "Hydroxyproline",
+    "usda_sr_order": 18100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "HYP",
+    "name": null
+  },
+  {
+    "attr_id": 539,
+    "unit": "g",
+    "usda_nutr_desc": "Sugars, added",
+    "usda_sr_order": null,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "SUGAR_ADD",
+    "name": null
+  },
+  {
+    "attr_id": 573,
+    "unit": "mg",
+    "usda_nutr_desc": "Vitamin E, added",
+    "usda_sr_order": 7920,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": null,
+    "name": null
+  },
+  {
+    "attr_id": 578,
+    "unit": "µg",
+    "usda_nutr_desc": "Vitamin B-12, added",
+    "usda_sr_order": 7340,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": null,
+    "name": null
+  },
+  {
+    "attr_id": 601,
+    "unit": "mg",
+    "usda_nutr_desc": "Cholesterol",
+    "usda_sr_order": 15700,
+    "api_name": "nf_cholesterol",
+    "fda_daily_value": 300,
+    "usda_tag": "CHOLE",
+    "name": "nf_cholesterol"
+  },
+  {
+    "attr_id": 605,
+    "unit": "g",
+    "usda_nutr_desc": "Fatty acids, total trans",
+    "usda_sr_order": 15400,
+    "api_name": "nf_trans_fatty_acid",
+    "fda_daily_value": null,
+    "usda_tag": "FATRN",
+    "name": "nf_trans_fatty_acid"
+  },
+  {
+    "attr_id": 606,
+    "unit": "g",
+    "usda_nutr_desc": "Fatty acids, total saturated",
+    "usda_sr_order": 9700,
+    "api_name": "nf_saturated_fat",
+    "fda_daily_value": 20,
+    "usda_tag": "FASAT",
+    "name": "nf_saturated_fat"
+  },
+  {
+    "attr_id": 607,
+    "unit": "g",
+    "usda_nutr_desc": "4:0",
+    "usda_sr_order": 9800,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F4D0",
+    "name": null
+  },
+  {
+    "attr_id": 608,
+    "unit": "g",
+    "usda_nutr_desc": "6:0",
+    "usda_sr_order": 9900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F6D0",
+    "name": null
+  },
+  {
+    "attr_id": 609,
+    "unit": "g",
+    "usda_nutr_desc": "8:0",
+    "usda_sr_order": 10000,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F8D0",
+    "name": null
+  },
+  {
+    "attr_id": 610,
+    "unit": "g",
+    "usda_nutr_desc": "10:0",
+    "usda_sr_order": 10100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F10D0",
+    "name": null
+  },
+  {
+    "attr_id": 611,
+    "unit": "g",
+    "usda_nutr_desc": "12:0",
+    "usda_sr_order": 10300,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F12D0",
+    "name": null
+  },
+  {
+    "attr_id": 612,
+    "unit": "g",
+    "usda_nutr_desc": "14:0",
+    "usda_sr_order": 10500,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F14D0",
+    "name": null
+  },
+  {
+    "attr_id": 613,
+    "unit": "g",
+    "usda_nutr_desc": "16:0",
+    "usda_sr_order": 10700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F16D0",
+    "name": null
+  },
+  {
+    "attr_id": 614,
+    "unit": "g",
+    "usda_nutr_desc": "18:0",
+    "usda_sr_order": 10900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D0",
+    "name": null
+  },
+  {
+    "attr_id": 615,
+    "unit": "g",
+    "usda_nutr_desc": "20:0",
+    "usda_sr_order": 11100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D0",
+    "name": null
+  },
+  {
+    "attr_id": 617,
+    "unit": "g",
+    "usda_nutr_desc": "18:1 undifferentiated",
+    "usda_sr_order": 12100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D1",
+    "name": null
+  },
+  {
+    "attr_id": 618,
+    "unit": "g",
+    "usda_nutr_desc": "18:2 undifferentiated",
+    "usda_sr_order": 13100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D2",
+    "name": null
+  },
+  {
+    "attr_id": 619,
+    "unit": "g",
+    "usda_nutr_desc": "18:3 undifferentiated",
+    "usda_sr_order": 13900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D3",
+    "name": null
+  },
+  {
+    "attr_id": 620,
+    "unit": "g",
+    "usda_nutr_desc": "20:4 undifferentiated",
+    "usda_sr_order": 14700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D4",
+    "name": null
+  },
+  {
+    "attr_id": 621,
+    "unit": "g",
+    "usda_nutr_desc": "22:6 n-3 (DHA)",
+    "usda_sr_order": 15300,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F22D6",
+    "name": null
+  },
+  {
+    "attr_id": 624,
+    "unit": "g",
+    "usda_nutr_desc": "22:0",
+    "usda_sr_order": 11200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F22D0",
+    "name": null
+  },
+  {
+    "attr_id": 625,
+    "unit": "g",
+    "usda_nutr_desc": "14:1",
+    "usda_sr_order": 11500,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F14D1",
+    "name": null
+  },
+  {
+    "attr_id": 626,
+    "unit": "g",
+    "usda_nutr_desc": "16:1 undifferentiated",
+    "usda_sr_order": 11700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F16D1",
+    "name": null
+  },
+  {
+    "attr_id": 627,
+    "unit": "g",
+    "usda_nutr_desc": "18:4",
+    "usda_sr_order": 14250,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D4",
+    "name": null
+  },
+  {
+    "attr_id": 628,
+    "unit": "g",
+    "usda_nutr_desc": "20:1",
+    "usda_sr_order": 12400,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D1",
+    "name": null
+  },
+  {
+    "attr_id": 629,
+    "unit": "g",
+    "usda_nutr_desc": "20:5 n-3 (EPA)",
+    "usda_sr_order": 15000,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D5",
+    "name": null
+  },
+  {
+    "attr_id": 630,
+    "unit": "g",
+    "usda_nutr_desc": "22:1 undifferentiated",
+    "usda_sr_order": 12500,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F22D1",
+    "name": null
+  },
+  {
+    "attr_id": 631,
+    "unit": "g",
+    "usda_nutr_desc": "22:5 n-3 (DPA)",
+    "usda_sr_order": 15200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F22D5",
+    "name": null
+  },
+  {
+    "attr_id": 636,
+    "unit": "mg",
+    "usda_nutr_desc": "Phytosterols",
+    "usda_sr_order": 15800,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "PHYSTR",
+    "name": null
+  },
+  {
+    "attr_id": 638,
+    "unit": "mg",
+    "usda_nutr_desc": "Stigmasterol",
+    "usda_sr_order": 15900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "STID7",
+    "name": null
+  },
+  {
+    "attr_id": 639,
+    "unit": "mg",
+    "usda_nutr_desc": "Campesterol",
+    "usda_sr_order": 16000,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "CAMD5",
+    "name": null
+  },
+  {
+    "attr_id": 641,
+    "unit": "mg",
+    "usda_nutr_desc": "Beta-sitosterol",
+    "usda_sr_order": 16200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "SITSTR",
+    "name": null
+  },
+  {
+    "attr_id": 645,
+    "unit": "g",
+    "usda_nutr_desc": "Fatty acids, total monounsaturated",
+    "usda_sr_order": 11400,
+    "api_name": "nf_monounsaturated_fat",
+    "fda_daily_value": null,
+    "usda_tag": "FAMS",
+    "name": "nf_monounsaturated_fat"
+  },
+  {
+    "attr_id": 646,
+    "unit": "g",
+    "usda_nutr_desc": "Fatty acids, total polyunsaturated",
+    "usda_sr_order": 12900,
+    "api_name": "nf_polyunsaturated_fat",
+    "fda_daily_value": null,
+    "usda_tag": "FAPU",
+    "name": "nf_polyunsaturated_fat"
+  },
+  {
+    "attr_id": 652,
+    "unit": "g",
+    "usda_nutr_desc": "15:0",
+    "usda_sr_order": 10600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F15D0",
+    "name": null
+  },
+  {
+    "attr_id": 653,
+    "unit": "g",
+    "usda_nutr_desc": "17:0",
+    "usda_sr_order": 10800,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F17D0",
+    "name": null
+  },
+  {
+    "attr_id": 654,
+    "unit": "g",
+    "usda_nutr_desc": "24:0",
+    "usda_sr_order": 11300,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F24D0",
+    "name": null
+  },
+  {
+    "attr_id": 662,
+    "unit": "g",
+    "usda_nutr_desc": "16:1 t",
+    "usda_sr_order": 11900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F16D1T",
+    "name": null
+  },
+  {
+    "attr_id": 663,
+    "unit": "g",
+    "usda_nutr_desc": "18:1 t",
+    "usda_sr_order": 12300,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D1T",
+    "name": null
+  },
+  {
+    "attr_id": 664,
+    "unit": "g",
+    "usda_nutr_desc": "22:1 t",
+    "usda_sr_order": 12700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": null,
+    "name": null
+  },
+  {
+    "attr_id": 665,
+    "unit": "g",
+    "usda_nutr_desc": "18:2 t not further defined",
+    "usda_sr_order": 13800,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": null,
+    "name": null
+  },
+  {
+    "attr_id": 666,
+    "unit": "g",
+    "usda_nutr_desc": "18:2 i",
+    "usda_sr_order": 13700,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": null,
+    "name": null
+  },
+  {
+    "attr_id": 669,
+    "unit": "g",
+    "usda_nutr_desc": "18:2 t,t",
+    "usda_sr_order": 13600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D2TT",
+    "name": null
+  },
+  {
+    "attr_id": 670,
+    "unit": "g",
+    "usda_nutr_desc": "18:2 CLAs",
+    "usda_sr_order": 13300,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D2CLA",
+    "name": null
+  },
+  {
+    "attr_id": 671,
+    "unit": "g",
+    "usda_nutr_desc": "24:1 c",
+    "usda_sr_order": 12800,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F24D1C",
+    "name": null
+  },
+  {
+    "attr_id": 672,
+    "unit": "g",
+    "usda_nutr_desc": "20:2 n-6 c,c",
+    "usda_sr_order": 14300,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D2CN6",
+    "name": null
+  },
+  {
+    "attr_id": 673,
+    "unit": "g",
+    "usda_nutr_desc": "16:1 c",
+    "usda_sr_order": 11800,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F16D1C",
+    "name": null
+  },
+  {
+    "attr_id": 674,
+    "unit": "g",
+    "usda_nutr_desc": "18:1 c",
+    "usda_sr_order": 12200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D1C",
+    "name": null
+  },
+  {
+    "attr_id": 675,
+    "unit": "g",
+    "usda_nutr_desc": "18:2 n-6 c,c",
+    "usda_sr_order": 13200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D2CN6",
+    "name": null
+  },
+  {
+    "attr_id": 676,
+    "unit": "g",
+    "usda_nutr_desc": "22:1 c",
+    "usda_sr_order": 12600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": null,
+    "name": null
+  },
+  {
+    "attr_id": 685,
+    "unit": "g",
+    "usda_nutr_desc": "18:3 n-6 c,c,c",
+    "usda_sr_order": 14100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D3CN6",
+    "name": null
+  },
+  {
+    "attr_id": 687,
+    "unit": "g",
+    "usda_nutr_desc": "17:1",
+    "usda_sr_order": 12000,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F17D1",
+    "name": null
+  },
+  {
+    "attr_id": 689,
+    "unit": "g",
+    "usda_nutr_desc": "20:3 undifferentiated",
+    "usda_sr_order": 14400,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D3",
+    "name": null
+  },
+  {
+    "attr_id": 693,
+    "unit": "g",
+    "usda_nutr_desc": "Fatty acids, total trans-monoenoic",
+    "usda_sr_order": 15500,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "FATRNM",
+    "name": null
+  },
+  {
+    "attr_id": 695,
+    "unit": "g",
+    "usda_nutr_desc": "Fatty acids, total trans-polyenoic",
+    "usda_sr_order": 15600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "FATRNP",
+    "name": null
+  },
+  {
+    "attr_id": 696,
+    "unit": "g",
+    "usda_nutr_desc": "13:0",
+    "usda_sr_order": 10400,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F13D0",
+    "name": null
+  },
+  {
+    "attr_id": 697,
+    "unit": "g",
+    "usda_nutr_desc": "15:1",
+    "usda_sr_order": 11600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F15D1",
+    "name": null
+  },
+  {
+    "attr_id": 851,
+    "unit": "g",
+    "usda_nutr_desc": "18:3 n-3 c,c,c (ALA)",
+    "usda_sr_order": 14000,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D3CN3",
+    "name": null
+  },
+  {
+    "attr_id": 852,
+    "unit": "g",
+    "usda_nutr_desc": "20:3 n-3",
+    "usda_sr_order": 14500,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D3N3",
+    "name": null
+  },
+  {
+    "attr_id": 853,
+    "unit": "g",
+    "usda_nutr_desc": "20:3 n-6",
+    "usda_sr_order": 14600,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D3N6",
+    "name": null
+  },
+  {
+    "attr_id": 855,
+    "unit": "g",
+    "usda_nutr_desc": "20:4 n-6",
+    "usda_sr_order": 14900,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F20D4N6",
+    "name": null
+  },
+  {
+    "attr_id": 856,
+    "unit": "g",
+    "usda_nutr_desc": "18:3i",
+    "usda_sr_order": 14200,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": null,
+    "name": null
+  },
+  {
+    "attr_id": 857,
+    "unit": "g",
+    "usda_nutr_desc": "21:5",
+    "usda_sr_order": 15100,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F21D5",
+    "name": null
+  },
+  {
+    "attr_id": 858,
+    "unit": "g",
+    "usda_nutr_desc": "22:4",
+    "usda_sr_order": 15160,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F22D4",
+    "name": null
+  },
+  {
+    "attr_id": 859,
+    "unit": "g",
+    "usda_nutr_desc": "18:1-11t (18:1t n-7)",
+    "usda_sr_order": 12310,
+    "api_name": null,
+    "fda_daily_value": null,
+    "usda_tag": "F18D1TN7",
+    "name": null
+  }
+]

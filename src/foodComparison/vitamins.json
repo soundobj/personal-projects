@@ -1,0 +1,38 @@
+[
+  {
+    "id": 320,
+    "name": "A",
+    "solubility": "fat",
+    "url": "https://en.wikipedia.org/wiki/Vitamin_A"
+  },
+  {
+    "id": 415,
+    "name": "B6",
+    "solubility": "water",
+    "url": "https://en.wikipedia.org/wiki/Vitamin_B6"
+  },
+  {
+    "id": 431,
+    "name": "B9",
+    "solubility": "water",
+    "url": "https://en.wikipedia.org/wiki/Vitamin_B9"
+  },
+  {
+    "id": 401,
+    "name": "C",
+    "solubility": "water",
+    "url": "https://en.wikipedia.org/wiki/Vitamin_C"
+  },
+  {
+    "id": 323,
+    "name": "E",
+    "solubility": "fat",
+    "url": "https://en.wikipedia.org/wiki/Vitamin_E"
+  },
+  {
+    "id": 430,
+    "name": "K",
+    "solubility": "fat",
+    "url": "https://en.wikipedia.org/wiki/Vitamin_K"
+  }
+]
