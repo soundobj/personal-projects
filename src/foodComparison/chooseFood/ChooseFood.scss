@@ -1,0 +1,22 @@
+#triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 200px solid #ece9e9;
+}
+
+.ChooseFood {
+  font-size: 3rem;
+  font-family: "Oswald", sans-serif;
+  -webkit-text-stroke: 1px white;
+}
+
+article.ChooseFood {
+  top: 25%;
+  color: rgb(24, 18, 18);
+}
+
+#triangle-up.absolute-center {
+  z-index: -1;
+}

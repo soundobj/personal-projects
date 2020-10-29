@@ -1,0 +1,60 @@
+.coin {
+  font-family: monospace;
+
+  &__circle {
+    fill: transparent;
+    stroke: #000000;
+    stroke-width: 10px;
+    fill: #db8e29;
+  }
+
+  &__top {
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+
+  &__value {
+    max-width: 70px;
+    font-size: 3rem;
+    fill: #db8e29;
+  }
+
+  &__caption {
+   font-size: 1rem;
+    white-space: nowrap;
+    font-weight: 600;
+    top: 77% !important;
+  }
+
+  &__wikiLogo {
+    top: 55% !important;
+    & > svg {
+      max-width: 80px;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  @media screen and (max-width: 400px) {
+    &__wrapper {
+      max-width: 60px;
+    }
+
+    &__value {
+      font-size: 1.5rem;
+    }
+
+    &__caption {
+      font-size: .5rem;
+    }
+
+    &__wikiLogo {
+      & > svg {
+        max-width: 35px;
+      }
+    }
+  }
+}

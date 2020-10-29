@@ -1,0 +1,51 @@
+@import "../vars.scss";
+@import "../utils.scss";
+
+
+%shortcut {
+  @extend %button;
+  padding: 0.2rem;
+  margin: 1px;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.sudoku__shortcuts {
+  &__move {
+    display: flex;
+    align-items: flex-end;
+    &__up-down {
+      display: flex;
+      flex-direction: column;
+    }
+
+    span {
+      @extend %shortcut;
+    }
+
+    &__skip__completed {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  &__plus {
+    font-size: 1.5rem;
+    margin: 0 .3rem;
+  }
+
+  &__key {
+    @extend %shortcut;
+    padding: .3rem .4.5rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: .5rem;
+
+    &__description {
+      flex-grow: 1;
+    }
+  }
+}

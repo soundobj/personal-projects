@@ -1,0 +1,74 @@
+@import '../animations.scss';
+@import '../vars.scss';
+
+.grid__item {
+  position: relative;
+  width: 100%;
+}
+.grid__item:before {
+  content: "";
+  height: 0;
+  display: inline-block;
+  padding-top: 100%;
+  width: 1px;
+  position: relative;
+}
+.grid__item .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: grid;
+  align-items: center;
+}
+
+.grid__item .content-inside {
+  margin: 0 auto;
+  perspective: 2000px;
+
+  h2 {
+    font-size: var(--boardFontSize);
+  }
+}
+
+.completed {
+  color: var(--completed);
+}
+
+.incorrect {
+  color: var(--warning);
+  @extend %shakeWrongValue;
+}
+
+.sudoku__cell--conflicting {
+  @extend %shakeConflict;
+}
+
+.sudoku__cell--same-as-selected {
+  color: var(--ok);
+}
+
+.sudoku__cell--related {
+  background-color: var(--boardRelatedCell)
+}
+
+.sudoku__cell--selected {
+  background-color: var(--boardSelectedCell)
+}
+
+.cell {
+  &__game-over {
+    &__rotate-forwards {
+      @extend %rotate-forwards;
+    }
+    
+    &__fall-from-bottom {
+      @extend %fall-from-bottom;
+    }
+    
+    &__rotate-out {
+      @extend %rotate-out;
+    }
+  }
+}

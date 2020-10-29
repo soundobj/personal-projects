@@ -1,0 +1,80 @@
+%pageContainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+html,
+body {
+  // required by grid for footer to stick
+  width: 100%;
+  height: 100%;
+}
+
+.react-select {
+  &__multi-value {
+    width: 50%;
+    height: 1.5rem;
+
+    &__label {
+      flex-grow: 1;
+      text-align: center;
+      font-family: "Oswald", sans-serif;
+      font-size: 100% !important;
+    }
+  }
+  &__value-container {
+    flex-wrap: nowrap !important;
+    padding: 2px 0 2px 8px !important;
+
+    & > div:nth-child(1) {
+      border: 1px solid black;
+      background-color: white;
+    }
+
+    & > .react-select__placeholder, .react-select__input {
+      border: none !important;
+    }
+
+    & > .css-b8ldur-Input {
+      background-color: unset !important;
+    }
+
+    & > div:nth-child(2) {
+      background-color: black;
+      font-weight: bold;
+
+      & > div {
+        color: white;
+      }
+    }
+  }
+}
+
+.foodCompare {
+  &__container {
+    @extend %pageContainer;
+    height: 100%;
+  }
+
+  &__nav {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__items {
+    display: flex;
+    flex-grow: 1;
+
+    li {
+      width: 100%;
+      height: auto;
+      margin: 0.5rem;
+    }
+  }
+}

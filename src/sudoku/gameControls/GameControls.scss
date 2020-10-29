@@ -1,0 +1,46 @@
+@import "../vars.scss";
+@import "../utils.scss";
+
+.sudoku__game__controls {
+  display: flex;
+  align-items: baseline;
+  margin-top: 0.35rem;
+  min-height: 2.2rem;
+
+  & > * {
+    flex: 1 1 auto;
+  }
+
+  &__candidate--selected {
+    border-bottom: solid 0.1rem var(--text-color);
+  }
+
+  &__candidate > svg,
+  &__candidate--selected > svg {
+    padding: 0.2rem;
+    margin-bottom: 2px;
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  &__undo > svg {
+    margin-bottom: 2px;
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  &__candidate > svg,
+  &__candidate--selected > svg,
+  &__undo > svg {
+    color: var(--cta-primary);
+  }
+
+  button {
+    border: 0;
+    background-color: inherit;
+
+    &:focus {
+      @extend %focus;
+    }
+  }
+}

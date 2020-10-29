@@ -1,0 +1,50 @@
+@import '../utils.scss';
+
+.mistakes {
+  text-align: center;
+  position: relative;
+  margin-top: 1px;
+  @extend %bottomNavSpacing;
+
+  &__icon {
+    padding-bottom: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    & > svg {
+      width: var(--menuItem);
+      margin-bottom: -1px;
+
+      @media screen and(max-width: 350px) {
+        width: var(--menuItemSmall);
+      }
+    }
+
+    &.MILD > svg .st0 {
+      fill: var(--mild);
+    }
+
+    &.MEDIUM > svg .st0 {
+      fill: var(--medium);
+    }
+
+    &.WARNING > svg .st0 {
+      fill: var(--warning);
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 20.5%;
+    left: 19%;
+    color: white;
+    font-weight: 900;
+    font-size: 1.2rem;
+    font-family: monospace;
+
+    @media screen and(max-width: 350px) {
+      font-size: 0.65rem;
+      top: 18.5%;
+      left: 26%;
+    }
+  }
+}

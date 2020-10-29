@@ -1,0 +1,199 @@
+[
+  {
+    "attr_id": 205,
+    "usda_tag": "CHOCDF",
+    "type": "CARBS",
+    "foods": []
+  },
+  {
+    "attr_id": 204,
+    "usda_tag": "FAT",
+    "type": "FAT",
+    "foods": []
+  },
+  {
+    "attr_id": 605,
+    "usda_tag": "FATRN",
+    "type": "FAT",
+    "foods": []
+  },
+  {
+    "attr_id": 606,
+    "usda_tag": "FASAT",
+    "type": "FAT",
+    "foods": []
+  },
+  {
+    "attr_id": 645,
+    "usda_tag": "FAMS",
+    "type": "FAT",
+    "foods": []
+  },
+  {
+    "attr_id": 646,
+    "usda_tag": "FAPU",
+    "type": "FAT",
+    "foods": []
+  },
+  {
+    "attr_id": 693,
+    "usda_tag": "FATRNM",
+    "type": "FAT",
+    "foods": []
+  },
+  {
+    "attr_id": 695,
+    "usda_tag": "FATRNP",
+    "type": "FAT",
+    "foods": []
+  },
+  {
+    "attr_id": 318,
+    "usda_tag": "VITA_IU",
+    "type": "VITAMIN",
+    "VITAMIN": "A",
+    "foods": []
+  },
+  {
+    "attr_id": 320,
+    "usda_tag": "VITA_RAE",
+    "type": "VITAMIN",
+    "VITAMIN": "A",
+    "foods": []
+  },
+  {
+    "attr_id": 323,
+    "usda_tag": "TOCPHA",
+    "type": "VITAMIN",
+    "VITAMIN": "E",
+    "foods": []
+  },
+  {
+    "attr_id": 324,
+    "usda_tag": "VITD",
+    "type": "VITAMIN",
+    "VITAMIN": "D",
+    "foods": []
+  },
+  {
+    "attr_id": 325,
+    "usda_tag": "ERGCAL",
+    "type": "VITAMIN",
+    "VITAMIN": "D2",
+    "foods": []
+  },
+  {
+    "attr_id": 326,
+    "usda_tag": "CHOCAL",
+    "type": "VITAMIN",
+    "VITAMIN": "D3",
+    "foods": []
+  },
+  {
+    "attr_id": 328,
+    "usda_tag": "VITD",
+    "type": "VITAMIN",
+    "VITAMIN": "D",
+    "foods": []
+  },
+  {
+    "attr_id": 401,
+    "usda_tag": "VITC",
+    "type": "VITAMIN",
+    "VITAMIN": "C",
+    "foods": []
+  },
+  {
+    "attr_id": 415,
+    "usda_tag": "VITB6A",
+    "type": "VITAMIN",
+    "VITAMIN": "B-6",
+    "foods": []
+  }, 
+  {
+    "attr_id": 430,
+    "usda_tag": "VITK1",
+    "type": "VITAMIN",
+    "VITAMIN": "K",
+    "foods": []
+  },
+  {
+    "attr_id": 578,
+    "usda_tag": "B12",
+    "type": "VITAMIN",
+    "VITAMIN": "B-12",
+    "foods": []
+  },
+  {
+    "attr_id": 203,
+    "usda_tag": "PROCNT",
+    "type": "PROTEIN",
+    "foods": []
+  },
+  {
+    "attr_id": 301,
+    "usda_tag": "CA",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 304,
+    "usda_tag": "MG",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 305,
+    "usda_tag": "P",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 306,
+    "usda_tag": "K",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 307,
+    "usda_tag": "NA",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 309,
+    "usda_tag": "ZN",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 312,
+    "usda_tag": "CU",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 313,
+    "usda_tag": "FLD",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 315,
+    "usda_tag": "MN",
+    "type": "MINERAL",
+    "foods": []
+  },
+  {
+    "attr_id": 291,
+    "usda_tag": "FIBTG",
+    "type": "FIBER",
+    "foods": []
+  },
+  {
+    "attr_id": 269,
+    "usda_tag": "SUGAR",
+    "type": "SUGAR",
+    "foods": []
+  }
+]

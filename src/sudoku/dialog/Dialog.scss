@@ -1,0 +1,48 @@
+@import "../utils.scss";
+@import "../vars.scss";
+
+.modal {
+  &__header {
+    & .close {
+      font-size: 3rem;
+    }
+  }
+
+  &__cancel {
+    @extend %button;
+  }
+}
+
+.sudoku {
+  &__dialog {
+    // bootstrap theme overrides
+    .modal-content {
+      background-color: var(--background);
+      max-width: 18.75rem;
+      margin: 0 auto;
+      .modal-header {
+        border-bottom: 1px solid var(--boardGrid);
+        .close {
+          color: var(--text-color);
+        }
+      }
+      .modal-footer {
+        border-top: 1px solid var(--boardGrid);
+      }
+    }
+    // game over modal graphic display
+    &__game-over {
+      &__header {
+        display: flex;
+        align-items: center;
+        &__icon {
+          margin-right: 0.5rem;
+          & > svg {
+            width: 2rem;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}

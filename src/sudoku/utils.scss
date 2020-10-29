@@ -1,0 +1,25 @@
+%button {
+  background-color: var(--cta-primary);
+  border-color: var(--cta-primary-border);
+  color: var(--color-dark);
+  font-size: 1.2rem;
+  border-radius: 0.2rem;
+  padding: 0.4rem;
+  background-color: var(--cta-primary);
+
+  &:hover {
+    background-color: var(--cta-primary-border);
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      border-color: var(--cta-primary-border);
+  }
+}
+
+%bottomNavSpacing {
+  margin-bottom: .5rem;
+  padding-bottom: .2rem;
+}
+
+%focus {
+  outline: 1px dashed var(--cta-primary-border);
+} 

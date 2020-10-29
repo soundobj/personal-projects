@@ -1,0 +1,79 @@
+$text-color: #e91e63;
+
+@font-face {
+  font-family: "Pacifico";
+  src: URL("../font/Pacifico/Pacifico-Regular.ttf") format("truetype");
+}
+
+.IndexPage {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  background-color: #d8ebf7;
+  &__header {
+    &__title {
+      margin: 1rem;
+      font-family: "Poiret One", cursive;
+      font-size: 4rem;
+      font-weight: 600;
+
+      color: mix(#fff, $text-color, 85%);
+      // font-size: calc(1em + 20vw) ;
+      font-weight: 900;
+      text-shadow: -0.0075em 0.0075em 0 mix(#fff, $text-color, 94%),
+        0.005em 0.005em 0 mix(#fff, $text-color, 60%),
+        0.01em 0.01em 0 mix(#fff, $text-color, 62%),
+        0.015em 0.015em mix(#fff, $text-color, 64%),
+        0.02em 0.02em 0 mix(#fff, $text-color, 66%),
+        0.025em 0.025em 0 mix(#fff, $text-color, 68%),
+        0.03em 0.03em 0 mix(#fff, $text-color, 70%),
+        0.035em 0.035em 0 mix(#fff, $text-color, 72%);
+    }
+  }
+
+  &__footer {
+    height: 70px;
+    background-color: mix(#fff, $text-color, 74%);
+    align-items: center;
+    display: flex;
+    &__mail {
+      font-family: "Pacifico", cursive;
+      text-align: center;
+      width: 100%;
+      font-size: 1.5rem;
+      text-decoration: underline;
+      color: black;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  &__projects {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+
+    &__item {
+      max-width: 400px;
+      &__link {
+        color: inherit;
+        &:hover {
+          text-decoration: none;
+          color: inherit;
+        }  
+      }
+    }
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

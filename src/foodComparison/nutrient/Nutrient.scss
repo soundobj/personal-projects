@@ -1,0 +1,17 @@
+.nutrient {
+  max-width: 200px;
+  max-height: 200px;
+  position: relative;
+
+  &__name {
+    display: block;
+    text-align: center;
+    word-wrap: break-word;
+    padding: 5px 1em 0;
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
