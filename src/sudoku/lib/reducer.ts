@@ -278,7 +278,6 @@ export const undoMove = (state: State) => {
   if (isEmpty(moveHistory)) {
     return;
   }
-  console.error('@_mh', moveHistory);
   switch (moveHistory[moveHistory.length - 1].type) {
     case MoveTypes.NUMBER:
       return undoCellInput(state);
