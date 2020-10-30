@@ -22,7 +22,7 @@ history.listen(setBodyClassNameToRoute);
 
 const projects = [
   {
-    thumb: `${process.env.PUBLIC_URL}projects/food-compare.jpg`,
+    thumb: `${process.env.PUBLIC_URL}/projects/food-compare.jpg`,
     title: "Food Comparison tool",
     caption: (
       <p>
@@ -34,7 +34,7 @@ const projects = [
     link: "/foodCompare",
   },
   {
-    thumb: `${process.env.PUBLIC_URL}projects/sudoku.jpg`,
+    thumb: `${process.env.PUBLIC_URL}/projects/sudoku.jpg`,
     title: "Sudoku",
     caption:
       "Classic puzzle game. Utilizes React Hooks, multiple difficulty levels and dark & light modes using CSS variables.",
