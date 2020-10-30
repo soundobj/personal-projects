@@ -65,7 +65,7 @@ export interface State {
   restartCellsToComplete: number;
   restartGame: Cell[][];
   currentDialog: Dialogs;
-  finishedTime: StopWatchCallbackPayload;
+  finishedTime?: StopWatchCallbackPayload;
   level?: GameLevel;
   transition?: Transitions;
   theme?: Themes;
@@ -414,7 +414,7 @@ export const startGame = (state: State, level: GameLevel) =>
     delete draft.finishedTime;
     draft.mistakes = 0;
     draft.selectedCellRelatedCells = [];
-    delete draft.selectedCell;
+    draft.selectedCell = {x: 0, y: 0}
     draft.transition = "NEW_GAME";
     // reset restart game clone
     draft.restartGameNumberMap = cloneDeep(numberMap);
