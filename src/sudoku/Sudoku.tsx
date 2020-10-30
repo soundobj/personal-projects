@@ -1,9 +1,4 @@
-import React, {
-  useReducer,
-  useCallback,
-  useState,
-  useEffect,
-} from "react";
+import React, { useReducer, useCallback, useState, useEffect } from "react";
 import { noop, isEmpty } from "lodash";
 
 import stopWatch from "../stopWatch/stopWatch";
@@ -12,10 +7,14 @@ import {
   MoveTypes,
   Transitions,
   TransitionsIntervals,
-  Dialogs
+  Dialogs,
 } from "./lib/definitions";
-import { localStorageOnMount, stateContainer, setUserTheme } from "./lib/localStorage";
-import sudokuActions, { handleWatchOnCloseModal } from './lib/actions'
+import {
+  localStorageOnMount,
+  stateContainer,
+  setUserTheme,
+} from "./lib/localStorage";
+import sudokuActions, { handleWatchOnCloseModal } from "./lib/actions";
 import Board from "./board/Board";
 import Numbers from "./numbers/Numbers";
 import KeyboardInput from "./keyboadInput/KeyboardInput";
@@ -27,7 +26,7 @@ import GameCompletedModal from "./gameCompletedModal/GameCompletedModal";
 import ShortcutsModal from "./shortcutsModal/ShortcutsModal";
 import GameControls from "./gameControls/GameControls";
 import CssFeatureDetect from "./cssFeatureDetect/CssFeatureDetect";
-import Nav from './nav/Nav'
+import Nav from "./nav/Nav";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "reset-css";
@@ -43,14 +42,14 @@ const actions = sudokuActions();
 
 const Sudoku = () => {
   // @ts-ignore
-  const [state, dispatch] = useReducer(sudokuReducer, initialState)
+  const [state, dispatch] = useReducer(sudokuReducer, initialState);
   // @TODO: remove temp stub
   // @ts-ignore
   // const [state, dispatch] = useReducer(sudokuReducer, stateStub.default);
-  
-  actions.setDispatch(dispatch)
-  actions.setState(state)
-  actions.setWatch(watch)
+
+  actions.setDispatch(dispatch);
+  actions.setState(state);
+  actions.setWatch(watch);
   container.set(state);
 
   const [dialogShow, setDialogShow] = useState(false);
@@ -92,7 +91,7 @@ const Sudoku = () => {
     theme,
   } = state;
 
-  setUserTheme()
+  setUserTheme();
 
   const isCandidateMode = editMode === MoveTypes.CANDIDATE;
 
@@ -127,25 +126,18 @@ const Sudoku = () => {
       header: "Game Completed",
       CTALabel: "Close",
       component: (
-        <GameCompletedModal
-          gameLevel={gameLevel}
-          finishedTime={finishedTime}
-        />
+        <GameCompletedModal gameLevel={gameLevel} finishedTime={finishedTime} />
       ),
     },
     SHORTCUTS: {
       header: "Keyboard Shortcuts",
       CTALabel: "Close",
-      component: (
-        <ShortcutsModal />
-      ),
+      component: <ShortcutsModal />,
     },
     HELP: {
       header: "Help",
       CTALabel: "Close",
-      component: (
-        <ShortcutsModal />
-      ),
+      component: <ShortcutsModal />,
     },
   };
 
@@ -252,8 +244,10 @@ const Sudoku = () => {
           pauseGame(true);
         }}
         onEscapeKeyDown={() => {
-          handleWatchOnCloseModal(watch, isWatchRunning, pauseGame);
-          !isGamePlayed && actions.setCurrentDialog("NEW_GAME");
+          if (currentDialog !== "GAME_OVER") {
+            handleWatchOnCloseModal(watch, isWatchRunning, pauseGame);
+            !isGamePlayed && actions.setCurrentDialog("NEW_GAME");
+          }
         }}
         onHide={onHide}
         content={dialogs[currentDialog as Dialogs]}
