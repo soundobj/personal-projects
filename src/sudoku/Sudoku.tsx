@@ -211,6 +211,7 @@ const Sudoku = () => {
             <Numbers
               issueNumber={actions.issueNumber}
               isGamePlayed={isGamePlayed}
+              isGamePaused={isGamePaused}
               numberMap={numberMap}
             />
           </section>

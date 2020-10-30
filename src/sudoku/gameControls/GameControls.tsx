@@ -35,8 +35,8 @@ const GameControls = (props: Props) => {
   return (
     <>
       <Icon
-        tooltipPosition="bottom"
-        title="Candidate mode"
+        tooltipPosition="top"
+        title={"Enter mode"}
         onClick={() => setEditMode(+!editMode)}
       >
         <div
@@ -56,7 +56,7 @@ const GameControls = (props: Props) => {
         isGamePaused={isGamePaused}
       />
       <Icon
-        tooltipPosition="bottom"
+        tooltipPosition="top"
         className=""
         disabled={isUndoDisabled}
         title="Undo last move"

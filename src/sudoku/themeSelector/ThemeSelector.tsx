@@ -33,10 +33,6 @@ interface Props {
 const ThemeSelector = (props: Props) => {
   const { theme, setTheme } = props
 
-  if (!theme) {
-    return null;
-  }
-
   return (
     <NavItem
       title="theme"

@@ -7,11 +7,12 @@ import "./Numbers.scss";
 interface Props {
   issueNumber: (n: number) => void;
   isGamePlayed: boolean;
+  isGamePaused: boolean;
   numberMap: NumberMap;
 }
 
 const Numbers = (props: Props) => {
-  const { issueNumber, isGamePlayed, numberMap } = props;
+  const { issueNumber, isGamePlayed, numberMap, isGamePaused } = props;
   const isNumberCompletedInBoard = (number: number) =>
     numberMap[number].coordinates.length === 9;
   return (
@@ -21,7 +22,7 @@ const Numbers = (props: Props) => {
           {VALID_NUMBERS.map((number: number) => (
             <Button
               key={`control${number}`}
-              disabled={!isGamePlayed || isNumberCompletedInBoard(number)}
+              disabled={!isGamePlayed || isNumberCompletedInBoard(number) || isGamePaused}
               onClick={(e: React.SyntheticEvent) => {
                 const target = e.target as HTMLElement;
                 target.blur();

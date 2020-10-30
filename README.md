@@ -2,7 +2,7 @@
 
 ### `yarn deploy`
 
-must run as root
+must run as root (sudo su)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
