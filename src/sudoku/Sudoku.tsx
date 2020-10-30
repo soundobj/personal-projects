@@ -245,6 +245,7 @@ const Sudoku = () => {
         undoMove={!isUndoDisabled ? undoMove : noop}
       />
       <Dialog
+        hideCloseButton={currentDialog === "GAME_OVER"}
         onEnter={() => {
           setIsWatchRunning(watch.getIsRunning());
           watch.stop();
