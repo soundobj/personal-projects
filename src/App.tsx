@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import Sudoku from "./sudoku/Sudoku";
@@ -21,27 +21,27 @@ const projects = [
         D3.js and react-select
       </p>
     ),
-    link: "/personal-projects/foodCompare/",
+    link: "/foodCompare",
   },
   {
     thumb: `${process.env.PUBLIC_URL}/projects/sudoku.jpg`,
     title: "Sudoku",
     caption:
       "Classic puzzle game. Utilizes React Hooks, multiple difficulty levels and dark & light modes using CSS variables.",
-    link: "/personal-projects/sudoku/",
+    link: "/sudoku",
   },
 ];
 
 export const App = () => {
   return (
-    <Router history={history}>
+    <HashRouter basename="/">
       <Route
         exact
-        path="/personal-projects"
+        path="/"
         component={() => <IndexPage projects={projects} />}
       />
-      <Route path="/personal-projects/sudoku/" component={Sudoku} />
-      <Route path="/personal-projects/foodCompare/" component={FoodCompare} />
-    </Router>
+      <Route path="/sudoku" component={Sudoku} />
+      <Route path="/foodCompare" component={FoodCompare} />
+    </HashRouter>
   );
 };
