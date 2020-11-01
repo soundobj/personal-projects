@@ -169,7 +169,7 @@ const Sudoku = () => {
   useEffect(localStorageOnMount(container, watch, dispatch), []);
 
   return (
-    <>
+    <article className="sudoku">
       <CssFeatureDetect
         feature="grid"
         onDoesNotSupport={() => console.error("@does not support")}
@@ -254,7 +254,7 @@ const Sudoku = () => {
         content={dialogs[currentDialog as Dialogs]}
         show={dialogShow || shouldShowModal}
       />
-    </>
+    </article>
   );
 };
 
