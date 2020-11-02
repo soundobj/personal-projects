@@ -111,7 +111,7 @@ const FoodCompare = () => {
       </nav>
       {isEmpty(foods) && <ChooseFood />}
       {!isEmpty(foods) && (
-        <>
+        <article className="foodCompare">
           <main className="foodCompare__main">
             <SectionTitle content="Composition Ratio" />
             <ul className="foodCompare__items">
@@ -150,7 +150,7 @@ const FoodCompare = () => {
             />
             <MineralList foods={foods} />
           </footer>
-        </>
+        </article>
       )}
     </div>
   );

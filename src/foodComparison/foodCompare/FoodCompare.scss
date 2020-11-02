@@ -77,4 +77,10 @@ body {
       margin: 0.5rem;
     }
   }
+
+  @media screen and (max-width: 900px) {
+    & {
+      margin: 0 .5rem;
+    }
+  }
 }
