@@ -1,6 +1,7 @@
 import React from "react";
+import classnames from "classnames"
 import { ReactComponent as Medal } from "../assets/info-medal.svg";
-import foodWikiLinks from "../foodWikiLinks.json";
+import _foodWikiLinks from "../foodWikiLinks.json";
 import {
   FoodMainAttrs,
   calcWaterContentPercentage,
@@ -10,11 +11,7 @@ import {
 
 import "./FoodInfo.scss";
 
-interface Props {
-  food: FoodMainAttrs;
-  className?: string;
-}
-
+const foodWikiLinks = _foodWikiLinks as Record<string, string>
 export const Image = (props: { className: string; food: string }) => {
   const { className, food } = props;
   return (
@@ -27,11 +24,16 @@ export const Image = (props: { className: string; food: string }) => {
   );
 };
 
+interface Props {
+  food: FoodMainAttrs;
+  classNames?: string[];
+}
+
 const FoodInfo = (props: Props) => {
-  const { food, className } = props;
+  const { food, classNames } = props;
   const waterPercentage = calcWaterContentPercentage(props.food)
   return (
-    <article className={`FoodInfo ${className || ""}`}>
+    <article className={classnames("FoodInfo", classNames)}>
       <Medal className="FoodInfo__medal" />
       <Image food={food.food_name} className="FoodInfo__image" />
       <span className="FoodInfo__calories">
@@ -44,10 +46,10 @@ const FoodInfo = (props: Props) => {
         {Math.sign(waterPercentage) > 0 ? waterPercentage : 0}
         <span className="FoodInfo__water__percentage">%</span>
       </div>
-      { /* @ts-ignore */ }
+
       <a href={foodWikiLinks[food.food_name]} target="new" className="FoodInfo__wikipedia">
         <img
-          className="FoodInfo__wikipedia__img"
+          className={classnames("FoodInfo__wikipedia__img", classNames)}
           src={process.env.PUBLIC_URL + "/foodCompare/wikipedia.png"}
         />
       </a>

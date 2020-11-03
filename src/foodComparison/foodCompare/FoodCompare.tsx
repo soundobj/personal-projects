@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { isEmpty } from "lodash";
+import classnames from "classnames";
 import Creatable from "react-select/creatable";
 import { ValueType } from "react-select";
 import Menu, { OptionType } from "../menu/Menu";
@@ -115,7 +116,7 @@ const FoodCompare = () => {
           <main className="foodCompare__main">
             <SectionTitle content="Composition Ratio" />
             <ul className="foodCompare__items">
-              {foods.map((food: FoodMainAttrs, index: number) => (
+              {foods.map((food: FoodMainAttrs, index: number, items) => (
                 <li key={food.food_name}>
                   <PieChart
                     values={getPieChartData(food)}
@@ -125,7 +126,10 @@ const FoodCompare = () => {
                   >
                     <FoodInfo
                       food={food}
-                      className={index === 1 ? "dark" : ""}
+                      classNames={classnames({
+                        dark: index === 1,
+                        single: items.length === 1,
+                      }).split(" ")}
                     />
                   </PieChart>
                 </li>
