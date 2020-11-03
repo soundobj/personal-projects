@@ -8,11 +8,11 @@ $darkModeInnerCircle: black;
     position: absolute;
     text-align: center;
     width: 25%;
-    font-size: 4vw;
+    font-size: calc(min(4vw, 2.5rem));
   }
 
   &.single > * {
-    font-size: 6vw;
+    font-size: calc(min(6vw, 2.5rem));
   }
 
   &__image {
@@ -52,10 +52,10 @@ $darkModeInnerCircle: black;
     left: 55%;
 
     &__img {
-      width: 5.5vw;
+      width: calc(min(5.5vw, 3.4rem));
 
       &.single {
-        width: 8vw;
+        width: calc(min(8vw, 3.4rem));
       }
     }
   }
