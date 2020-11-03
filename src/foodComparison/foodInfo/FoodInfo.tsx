@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactComponent as Medal } from "../assets/info-medal.svg";
-
+import foodWikiLinks from "../foodWikiLinks.json";
 import {
   FoodMainAttrs,
   calcWaterContentPercentage,
@@ -29,6 +29,7 @@ export const Image = (props: { className: string; food: string }) => {
 
 const FoodInfo = (props: Props) => {
   const { food, className } = props;
+  const waterPercentage = calcWaterContentPercentage(props.food)
   return (
     <article className={`FoodInfo ${className || ""}`}>
       <Medal className="FoodInfo__medal" />
@@ -40,13 +41,16 @@ const FoodInfo = (props: Props) => {
         {Math.round(food.serving_weight_grams)}
       </span>
       <div className="FoodInfo__water">
-        {calcWaterContentPercentage(props.food)}
+        {Math.sign(waterPercentage) > 0 ? waterPercentage : 0}
         <span className="FoodInfo__water__percentage">%</span>
       </div>
-      <img
-        className="FoodInfo__wikipedia"
-        src={process.env.PUBLIC_URL + "/foodCompare/wikipedia.png"}
-      />
+      { /* @ts-ignore */ }
+      <a href={foodWikiLinks[food.food_name]} target="new" className="FoodInfo__wikipedia">
+        <img
+          className="FoodInfo__wikipedia__img"
+          src={process.env.PUBLIC_URL + "/foodCompare/wikipedia.png"}
+        />
+      </a>
     </article>
   );
 };
