@@ -8,7 +8,6 @@
 @font-face {
   font-family: "Poiret One";
   src: URL("../font/PoiretOne-Regular.ttf") format("truetype");
-  // font-display: optional;
 }
 
 button,
@@ -48,7 +47,7 @@ button,
 }
 
 .sudoku {
-  font-family: "Poiret One", cursive;
+  font-family: var(--fontFamily);
   background: var(--background);
   color: var(--text-color);
   transition: background 300ms ease-in-out, color 200ms ease;

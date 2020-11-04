@@ -16,12 +16,15 @@
 .sudoku {
   &__dialog {
     // bootstrap theme overrides
+    font-family: var(--fontFamily); 
     .modal-content {
       background-color: var(--background);
       max-width: 18.75rem;
       margin: 0 auto;
+      color: var(--text-color);
       .modal-header {
         border-bottom: 1px solid var(--boardGrid);
+        align-items: center;
         .close {
           color: var(--text-color);
         }
