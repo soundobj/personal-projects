@@ -74,11 +74,10 @@ const GDA = () => (
 const FoodCompare = () => {
   const [selectedFoods, setSeletectFoods] = useState<SelectedFoodsState>([]);
   const foods = mergeFoodsNutrients(selectedFoods);
-  console.error("@foods", foods);
 
   const defaultValues = [
     { label: "Kiwi", value: "kiwi" },
-    { label: "Peanut", value: "peanut" },
+    { label: "Avocado", value: "avocado" },
   ];
 
   useEffect(

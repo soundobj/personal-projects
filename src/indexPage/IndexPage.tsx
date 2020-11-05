@@ -18,10 +18,20 @@ const IndexPage = (props: Props) => {
       <main className="IndexPage__main">
         <ul className="IndexPage__projects">
           {projects.map((project) => (
-            <li key={project.title}  className="IndexPage__projects__item">
-              <Link to={project.link} className="IndexPage__projects__item__link">
-                <MediaObject {...project} />
-              </Link>
+            <li key={project.title} className="IndexPage__projects__item">
+              {project.link && (
+                <Link
+                  to={project.link}
+                  className="IndexPage__projects__item__link"
+                >
+                  <MediaObject {...project} />
+                </Link>
+              )}
+              {project.url && (
+                <a href={project.url} target="new" className="IndexPage__externalLink">
+                  <MediaObject {...project} />
+                </a>
+              )}
             </li>
           ))}
         </ul>

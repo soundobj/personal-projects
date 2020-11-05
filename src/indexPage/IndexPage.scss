@@ -5,6 +5,11 @@ $text-color: #e91e63;
   src: URL("../font/Pacifico/Pacifico-Regular.ttf") format("truetype");
 }
 
+%plainLink {
+  text-decoration: none;
+  color: inherit;
+}
+
 .IndexPage {
   height: 100%;
   display: grid;
@@ -66,7 +71,7 @@ $text-color: #e91e63;
         &:hover {
           text-decoration: none;
           color: inherit;
-        }  
+        }
       }
     }
   }
@@ -75,5 +80,10 @@ $text-color: #e91e63;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__externalLink,
+  &__externalLink:hover {
+    @extend %plainLink;
   }
 }

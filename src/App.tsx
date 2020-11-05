@@ -30,6 +30,12 @@ const projects = [
       "Classic puzzle game. Utilizes React Hooks, multiple difficulty levels and dark & light modes using CSS variables.",
     link: "/sudoku",
   },
+  {
+    thumb: `${process.env.PUBLIC_URL}/GitHub-Mark-120px-plus.png`,
+    title: "Github",
+    caption: "Take a peek a some personal projects.",
+    url: "https://github.com/soundobj?tab=repositories",
+  },
 ];
 
 export const App = () => {
