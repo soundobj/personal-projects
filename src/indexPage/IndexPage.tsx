@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MediaObject, { MediaObjectProps } from "../mediaObject/MediaObject";
 
+
 import "./IndexPage.scss";
 
 interface Props {
