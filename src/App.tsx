@@ -3,6 +3,7 @@ import { HashRouter, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import Sudoku from "./sudoku/Sudoku";
+import Tetris from "./tetris/Tetris";
 import FoodCompare from "./foodComparison/foodCompare/FoodCompare";
 import IndexPage from "./indexPage/IndexPage";
 
@@ -31,6 +32,13 @@ const projects = [
     link: "/sudoku",
   },
   {
+    thumb: `${process.env.PUBLIC_URL}/projects/sudoku.jpg`,
+    title: "Tetris",
+    caption:
+      "Classic puzzle game. Utilizes React Hooks, multiple difficulty levels and dark & light modes using CSS variables.",
+    link: "/tetris",
+  },
+  {
     thumb: `${process.env.PUBLIC_URL}/GitHub-Mark-120px-plus.png`,
     title: "Github",
     caption: "Take a peek a some personal projects.",
@@ -48,6 +56,7 @@ export const App = () => {
       />
       <Route path="/sudoku" component={Sudoku} />
       <Route path="/foodCompare" component={FoodCompare} />
+      <Route path="/tetris" component={Tetris} />
     </HashRouter>
   );
 };
