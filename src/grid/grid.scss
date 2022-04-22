@@ -1,0 +1,69 @@
+@import "../../src/sudoku/sass-vars.scss";
+
+.grid1 {
+  display: grid;
+  grid: repeat(10, auto) / repeat(10, auto);
+  max-width: $boardSize + ($gutter * 2);
+  margin: 0 auto;
+  padding: var(--board-padding);
+
+  & > div {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+  }
+
+  // /* outer bottom black line row */
+  // & > div:nth-last-child(-n + 9) {
+  //   border-bottom: var(--boardGridWidth) solid var(--boardGridArea);
+  // }
+
+  // /* outer top black line row */
+  // & > div:nth-child(-n + 9) {
+  //   border-top: var(--boardGridWidth) solid var(--boardGridArea);
+  // }
+
+  // /* 1st inner row */
+  // & > div:nth-child(n + 19):nth-child(-n + 27) {
+  //   border-bottom: var(--boardGridWidth) solid var(--boardGridArea);
+  // }
+
+  // /* 1st inner row remove inner grid */
+  // & > div:nth-child(n + 28):nth-child(-n + 36) {
+  //   border-top: none;
+  // }
+
+  // /* remove 2cnd inner row */
+  // & > div:nth-child(n + 46):nth-child(-n + 54) {
+  //   border-bottom: var(--boardGridWidth) solid var(--boardGridArea);
+  // }
+
+  // /* remove 2cnd inner row inner grid */
+  // & > div:nth-child(n + 55):nth-child(-n + 63) {
+  //   border-top: none;
+  // }
+
+  // /* two inner columns */
+  // & > div:nth-child(3n) {
+  //   border-right: var(--boardGridWidth) solid var(--boardGridArea);
+  // }
+
+  // /* remove two inner columns */
+  // & > div:nth-child(3n + 1) {
+  //   border-left: none;
+  // }
+
+  // /* outer right black line column */
+  // & > div:nth-child(9n) {
+  //   border-right: var(--boardGridWidth) solid var(--boardGridArea);
+  // }
+
+  // /* outer left black line column */
+  // & > div:nth-child(9n-8) {
+  //   border-left: var(--boardGridWidth) solid var(--boardGridArea);
+  // }
+}
+
+.cell {
+  // border: 1px solid red;
+  aspect-ratio: 4 / 4;
+}
