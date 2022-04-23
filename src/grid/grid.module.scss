@@ -1,6 +1,6 @@
 @import "../../src/sudoku/sass-vars.scss";
 
-.grid1 {
+.grid {
   display: grid;
   grid: repeat(10, auto) / repeat(10, auto);
   max-width: $boardSize + ($gutter * 2);
@@ -66,4 +66,5 @@
 .cell {
   // border: 1px solid red;
   aspect-ratio: 4 / 4;
+  // max-width: 5px;
 }
