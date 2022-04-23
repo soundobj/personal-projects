@@ -1,5 +1,6 @@
-import { Coordinate } from "../../../sudoku/lib/definitions"
-import { Direction, Shape, Board, Tetrominoe } from "../../types"
+import { Coordinate } from "../../../sudoku/lib/definitions";
+import { Direction, Shape, Board, Tetrominoe } from "../../types";
+import { ROWS, COLUMNS } from '../../consts';
 
 export const randomEnum = <T>(anEnum: T): T[keyof T] => {
   const enumValues = Object.keys(anEnum)
@@ -64,4 +65,18 @@ export const getSshapeInitCoords = ():Coordinate[] => [
 
 export const moveShape = (direction: Direction, shape: Shape, board: Board ) => {
 
+}
+
+export const placeShape = (shape: Shape, board: Board) => {
+
+}
+
+export const generateBoard = (rows: number = ROWS, columns: number = COLUMNS): Board => {
+  const board = [];
+  for (let x = 0; x < rows; x++) {
+    for (let y = 0; y < columns; y++) {
+      board.push([{ coordinate: { x, y }}]);
+    }
+  }
+  return board;
 }

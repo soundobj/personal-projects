@@ -5,8 +5,7 @@ export interface Coordinate {
 
 export interface Cell {
   coordinate: Coordinate,
-  color?: Tetrominoe,
-  shape?: Shape,
+  color?: TetrominoeColor,
   isFilled?: boolean,
 }
 
