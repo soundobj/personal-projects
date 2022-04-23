@@ -10,8 +10,21 @@ export const randomEnum = <T>(anEnum: T): T[keyof T] => {
   return randomEnumValue;
 }
 
-export const initShape = (shape: Shape, board: Board) => {
-
+export const initShape = (shape: Shape) => {
+  switch (shape.kind) {
+    case Tetrominoe.I: getIshapeInitCoords();
+      break;
+    case Tetrominoe.O: getOshapeInitCoords();
+      break;
+    case Tetrominoe.T: getTshapeInitCoords();
+      break;
+    case Tetrominoe.L: getLshapeInitCoords();
+      break;
+    case Tetrominoe.S: getSshapeInitCoords();
+      break;
+    default:
+      break;
+  }
 }
 
 export const getIshapeInitCoords = ():Coordinate[] => [
