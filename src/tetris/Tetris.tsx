@@ -16,9 +16,10 @@ const Tetris = () => {
   watch.setCallback(setTimeElapsed);
 
   useEffect(() => {
-    setBoard(generateBoard());
+    const board = generateBoard();
+    setBoard(board);
     watch.start();
-  }, []);
+  }, []); // eslint-disable-line
 
   // board changes
   useEffect(() => {

@@ -35,7 +35,7 @@ export enum TetrominoeColor {
 }
 
 export interface Shape {
-  coordinates?: Coordinate[],
+  coordinates: Coordinate[],
   color: TetrominoeColor,
   kind: Tetrominoe,
   id?: number,
