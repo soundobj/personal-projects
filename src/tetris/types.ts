@@ -3,7 +3,7 @@ export interface Coordinate {
   y: number;
 }
 
-export interface Cell {
+export interface Cell { 
   coordinate: Coordinate,
   color?: TetrominoeColor,
   isFilled?: boolean,

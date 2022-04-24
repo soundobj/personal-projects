@@ -1,31 +1,12 @@
 import { Coordinate } from "../../../sudoku/lib/definitions";
-import { Direction, Shape, Board, Tetrominoe } from "../../types";
+import { Direction, Shape, Board, Tetrominoe, TetrominoeColor } from "../../types";
 import { ROWS, COLUMNS } from '../../consts';
 
 export const randomEnum = <T>(anEnum: T): T[keyof T] => {
-  const enumValues = Object.keys(anEnum)
-    .map(n => Number.parseInt(n))
-    .filter(n => !Number.isNaN(n)) as unknown as T[keyof T][]
-  const randomIndex = Math.floor(Math.random() * enumValues.length)
-  const randomEnumValue = enumValues[randomIndex]
+  const enumValues = Object.keys(anEnum) as unknown as T[keyof T][];
+  const randomIndex = Math.floor(Math.random() * enumValues.length);
+  const randomEnumValue = enumValues[randomIndex];
   return randomEnumValue;
-}
-
-export const initShape = (shape: Shape) => {
-  switch (shape.kind) {
-    case Tetrominoe.I: getIshapeInitCoords();
-      break;
-    case Tetrominoe.O: getOshapeInitCoords();
-      break;
-    case Tetrominoe.T: getTshapeInitCoords();
-      break;
-    case Tetrominoe.L: getLshapeInitCoords();
-      break;
-    case Tetrominoe.S: getSshapeInitCoords();
-      break;
-    default:
-      break;
-  }
 }
 
 export const getIshapeInitCoords = ():Coordinate[] => [
@@ -62,6 +43,20 @@ export const getSshapeInitCoords = ():Coordinate[] => [
   {x: 5, y: 0},
   {x: 6, y: 0},
 ];
+
+export const shapeInitCoordsMap = {
+  I: getIshapeInitCoords(),
+  O: getOshapeInitCoords(),
+  T: getTshapeInitCoords(),
+  L: getLshapeInitCoords(),
+  S: getSshapeInitCoords(),
+};
+
+export const generateShape = (shape: Tetrominoe): Shape => ({
+  coordinates: shapeInitCoordsMap[shape],
+  color: TetrominoeColor[shape],
+  kind: shape,
+});
 
 export const moveShape = (direction: Direction, shape: Shape, board: Board ) => {
 
