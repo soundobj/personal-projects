@@ -11,7 +11,7 @@ export interface Cell {
 
 export type Board = Cell[][];
 
-export enum Direction {
+export enum Move {
   UP = "UP",
   LEFT = "LEFT",
   DOWN = "DOWN",
@@ -39,4 +39,5 @@ export interface Shape {
   color: TetrominoeColor,
   kind: Tetrominoe,
   id?: number,
+  orientation: Move,
 }

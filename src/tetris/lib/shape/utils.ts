@@ -1,5 +1,5 @@
 import { Coordinate } from "../../../sudoku/lib/definitions";
-import { Direction, Shape, Board, Tetrominoe, TetrominoeColor, Cell } from "../../types";
+import { Move, Shape, Board, Tetrominoe, TetrominoeColor, Cell } from "../../types";
 import { ROWS, COLUMNS } from '../../consts';
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -57,11 +57,8 @@ export const generateShape = (shape: Tetrominoe): Shape => ({
   coordinates: shapeInitCoordsMap[shape],
   color: TetrominoeColor[shape],
   kind: shape,
+  orientation: Move.UP,
 });
-
-export const moveShape = (direction: Direction, shape: Shape, board: Board ) => {
-
-}
 
 export const placeShape = (shape: Shape, board: Board) => {
   const { coordinates, color } = shape;
