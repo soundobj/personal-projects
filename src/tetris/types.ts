@@ -39,5 +39,7 @@ export interface Shape {
   color: TetrominoeColor,
   kind: Tetrominoe,
   id?: number,
-  orientation: Move,
+  rotationIndex: number,
 }
+
+export type ShapeRotationOffsetTests = Coordinate[][];

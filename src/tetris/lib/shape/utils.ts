@@ -57,7 +57,7 @@ export const generateShape = (shape: Tetrominoe): Shape => ({
   coordinates: shapeInitCoordsMap[shape],
   color: TetrominoeColor[shape],
   kind: shape,
-  orientation: Move.UP,
+  rotationIndex: 0,
 });
 
 export const placeShape = (shape: Shape, board: Board) => {
