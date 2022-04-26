@@ -1,6 +1,6 @@
 import create, { StateCreator, SetState, GetState, StoreApi} from "zustand"
 // import { immer } from "zustand/middleware/immer"
-import { Board, Shape } from "../types"
+import { Shape } from "../types"
 
 // type Middleware<S> = (
 //   config: StateCreator<S>,
@@ -8,8 +8,8 @@ import { Board, Shape } from "../types"
 
 export interface TetrisState {
   shape: Shape | undefined,
-  board: Board | undefined,
-  setBoard: (board: Board) => void,
+  board: any | undefined,
+  setBoard: (board: any) => void,
   setShape: (shape: Shape) => void,
 }
 
@@ -17,5 +17,5 @@ export const useTetrisStore = create((set) => ({
   shape: undefined,
   setShape: (shape: Shape) => set((state: TetrisState) => ({ ...state, shape  })),
   board: undefined,
-  setBoard: (board: Board) => set((state: TetrisState) => ({ ...state, board  })),
+  setBoard: (board: any) => set((state: TetrisState) => ({ ...state, board  })),
 }));

@@ -3,14 +3,6 @@ export interface Coordinate {
   y: number;
 }
 
-export interface Cell { 
-  coordinate: Coordinate,
-  color?: TetrominoeColor,
-  isFilled?: boolean,
-}
-
-export type Board = Cell[][];
-
 export enum Move {
   UP = "UP",
   LEFT = "LEFT",
@@ -33,11 +25,7 @@ export enum TetrominoeColor {
   L = "#F8F9FA" ,
   S = "#44FF43" 
 }
-
 export interface Shape {
-  coordinates: Coordinate[],
-  color: TetrominoeColor,
-  kind: Tetrominoe,
-  id?: number,
-  rotationIndex: number,
+  matrix: number[][],
+  position: Coordinate;
 }

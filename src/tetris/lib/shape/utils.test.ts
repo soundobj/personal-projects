@@ -1,37 +1,106 @@
-import { generateBoard, generateShape, placeShape } from "./utils";
-import { Tetrominoe, Cell } from "../../types";
-import flaten from 'lodash/flatten';
+import {
+  createMatrix,
+  placeShapeM,
+  moveShapeM,
+  clearShape,
+} from "./utils";
+import { Move } from "../../types";
+import cloneDeep from 'lodash/cloneDeep';
+import { L } from '../../consts';
 
 describe("tetris shape utils", () => {
-  describe('generateBoard', () => {
-    it('generates a 2 row x 3 column Board', () => {
-      const expected = [
-        [{ coordinate: {x: 0, y: 0}}, { coordinate: {x: 0, y: 1}}, { coordinate: {x: 0, y: 2}}],
-        [{ coordinate: {x: 1, y: 0}}, { coordinate: {x: 1, y: 1}}, { coordinate: {x: 1, y: 2}}],
-      ];
-      const actual = generateBoard(2, 3);
-      expect(expected).toMatchObject(actual);
+  describe('placeShapeM', () => {
+    it('places a shape in the board', () => {
+      const l = cloneDeep(L);
+      const board = createMatrix(5, 5);
+      const actual = placeShapeM(board, l);
+      const expected = {
+        board: [
+          [0, 0, 2, 0, 0],
+          [0, 0, 2, 0, 0],
+          [0, 0, 2, 2, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ],
+        shape: {
+          matrix: [
+            [0, 2, 0],
+            [0, 2, 0],
+            [0, 2, 2],
+          ],
+          position: { x: 0, y: 1 }
+        },
+      };
+      expect(actual).toMatchObject(expected);
     });
   });
-  describe('placeShape', () => {
-    it('places a shape in the board', () => {
-      const board = generateBoard(5,10);
-      const shape = generateShape(Tetrominoe.L)
-      const nextBoard = placeShape(shape, board);
+  describe('clearShape', () => {
+    it('removes a shape from the board', () => {
+      const board = [
+        [0, 0, 2, 0, 0],
+        [0, 0, 2, 0, 0],
+        [0, 0, 2, 2, 0],
+        [0, 0, 0, 0, 0],
+        [0, 3, 0, 0, 0]
+      ];
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: { x: 0, y: 1 }
+      };
 
-      shape.coordinates.forEach((coordinate) => {
-        // sets correctly the color of the board cells
-        const { x, y } = coordinate;
-        expect(nextBoard[x][y].color).toBe(shape.color);
+      const expected = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 3, 0, 0, 0]
+      ]
+      const actual = clearShape(board, shape);
 
-        /// only sets the required cells
-        const cellsWithColor = flaten(nextBoard).filter((cell: Cell) => cell.color);
-        expect(cellsWithColor.length).toBe(shape.coordinates.length);
+      expect(actual).toMatchObject(expected);
+    });
+  });
+  describe('moveShape', () => {
+    it('moves a shape from the board in a downwards direction', () => {
+      const board = [
+        [0, 0, 2, 0, 0],
+        [0, 0, 2, 0, 0],
+        [0, 0, 2, 2, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ];
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: { x: 0, y: 1 }
+      };
 
-        // its pure
-        const origBoardCellsWithColor = flaten(board).filter((cell: Cell) => cell.color);
-        expect(origBoardCellsWithColor.length).toBe(0);
-      })
+      const expected = {
+        board: [
+          [0, 0, 0, 0, 0],
+          [0, 0, 2, 0, 0],
+          [0, 0, 2, 0, 0],
+          [0, 0, 2, 2, 0],
+          [0, 0, 0, 0, 0]
+        ],
+        shape: {
+          matrix: [
+            [0, 2, 0],
+            [0, 2, 0],
+            [0, 2, 2],
+          ],
+          position: { x: 1, y: 1 }
+        }
+      };
+      const actual = moveShapeM(board, shape, Move.DOWN);
+      expect(actual).toMatchObject(expected);
     });
   });
 });

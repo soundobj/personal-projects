@@ -12,6 +12,7 @@ $border: var(--boardGridWidth) solid var(--boardGridArea);
   & > div {
     border-top: $border;
     border-left: $border;
+    text-align: center;
   }
 
   // /* outer bottom black line row */

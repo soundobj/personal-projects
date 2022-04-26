@@ -1,5 +1,5 @@
 import { Coordinate } from "../../../sudoku/lib/definitions";
-import { Move, Shape, Board, Tetrominoe, TetrominoeColor, Cell } from "../../types";
+import { Move, Shape } from "../../types";
 import { ROWS, COLUMNS } from '../../consts';
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -10,81 +10,75 @@ export const randomEnum = <T>(anEnum: T): T[keyof T] => {
   return randomEnumValue;
 }
 
-export const getIshapeInitCoords = ():Coordinate[] => [
-  {x: 4, y: 0},
-  {x: 4, y: 1},
-  {x: 4, y: 2},
-  {x: 4, y: 3},
-];
+export const createMatrix = (rows: number = ROWS, columns: number = COLUMNS): number[][] => {
+  const matrix = [];
+  while (rows--) {
+      matrix.push(new Array(columns).fill(0));
+  }
+  return matrix;
+}
 
-export const getOshapeInitCoords = ():Coordinate[] => [
-  {x: 4, y: 0},
-  {x: 5, y: 0},
-  {x: 4, y: 1},
-  {x: 5, y: 1},
-];
+export const getMatrixCentre = (matrix: number[][]): number => matrix[0].length / 2 | 0;
 
-export const getTshapeInitCoords = ():Coordinate[] => [
-  {x: 4, y: 0},
-  {x: 5, y: 0},
-  {x: 6, y: 0},
-  {x: 5, y: 1},
-];
+export const placeShapeM = (matrix: number[][], shape: number[][]) => {
+  const boardMiddle = getMatrixCentre(matrix);
+  const shapeMiddle = getMatrixCentre(shape);
+  const y = boardMiddle - shapeMiddle;
+  const board = cloneDeep(matrix);
+  const position = { x: 0, y};
 
-export const getLshapeInitCoords = ():Coordinate[] => [
-  {x: 4, y: 0},
-  {x: 4, y: 1},
-  {x: 4, y: 2},
-  {x: 4, y: 3},
-];
+  shape.forEach((row, x) => {
+    row.forEach((value, y) => {
+      if (value !== 0) {
+          board[x + position.x][y + position.y] = value;
+      }
+    })
+  });
 
-export const getSshapeInitCoords = ():Coordinate[] => [
-  {x: 4, y: 1},
-  {x: 5, y: 1},
-  {x: 5, y: 0},
-  {x: 6, y: 0},
-];
-
-export const shapeInitCoordsMap = {
-  I: getIshapeInitCoords(),
-  O: getOshapeInitCoords(),
-  T: getTshapeInitCoords(),
-  L: getLshapeInitCoords(),
-  S: getSshapeInitCoords(),
+  return {
+    shape: {
+      matrix: cloneDeep(shape),
+      position,
+    },
+    board,
+  };
 };
 
-export const generateShape = (shape: Tetrominoe): Shape => ({
-  coordinates: shapeInitCoordsMap[shape],
-  color: TetrominoeColor[shape],
-  kind: shape,
-  rotationIndex: 0,
-});
-
-export const placeShape = (shape: Shape, board: Board) => {
-  const { coordinates, color } = shape;
-  const nextBoard: Board = cloneDeep(board);
-  console.log('coordinates', coordinates);
-  
-  coordinates.forEach((coordinate: Coordinate) => {
-    const { x, y } = coordinate;
-    nextBoard[x][y].color = color
+export const clearShape = (board: number[][], shape: Shape) => {
+  const { position } = shape;
+  const nextBoard = cloneDeep(board);
+  shape.matrix.forEach((row, x) => {
+    row.forEach((value, y) => {
+      if (value !== 0) {
+          nextBoard[x + position.x][y + position.y] = 0;
+      }
+    });
   });
   return nextBoard;
 }
 
-export const updateShapeLocation = (shape: Shape, coordiantes: Coordinate[]) => {
-
-}
-
-export const generateBoard = (rows: number = ROWS, columns: number = COLUMNS): Board => {
-  const board = [];
-  for (let x = 0; x < rows; x++) {
-    board.push([]);
-    for (let y = 0; y < columns; y++) {
-      const cell: Cell = { coordinate: { x, y } }
-       // @ts-ignore
-      board[x][y] = cell;
-    }
+export const moveShapeM = (matrix: number[][], shape: Shape, direction: Move = Move.DOWN) => {
+  const nextBoard = clearShape(matrix, shape);
+  const { position } = shape;
+  const nextPosition: Coordinate = { x: 0, y: 0};
+  if (direction === Move.DOWN) {
+    nextPosition.x = position.x + 1;
+    nextPosition.y = position.y;
   }
-  return board;
+  
+  shape.matrix.forEach((row, x) => {
+    row.forEach((value, y) => {
+      if (value !== 0) {
+          nextBoard[x + nextPosition.x][y + nextPosition.y] = value;
+      }
+    })
+  });
+
+  return {
+    shape: {
+      matrix: cloneDeep(shape.matrix),
+      position: nextPosition,
+    },
+    board: nextBoard,
+  };
 }
