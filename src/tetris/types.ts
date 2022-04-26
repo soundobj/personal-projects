@@ -41,5 +41,3 @@ export interface Shape {
   id?: number,
   rotationIndex: number,
 }
-
-export type ShapeRotationOffsetTests = Coordinate[][];
