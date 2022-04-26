@@ -106,7 +106,7 @@ export const isShapeColliding = (shape: Shape, board: number[][]): boolean => {
 
 export const rotateShape = (matrix: number[][], direction: Rotate): number[][] => {
   const nextMatrix = cloneDeep(matrix);
-  for (let y = 0; y < matrix.length; ++y) {
+  for (let y = 0; y < nextMatrix.length; ++y) {
     for (let x = 0; x < y; ++x) {
       [
         nextMatrix[x][y],
@@ -119,8 +119,8 @@ export const rotateShape = (matrix: number[][], direction: Rotate): number[][] =
   }
 
   return (direction === Rotate.CLOCKWISE)
-    ? matrix.map(row => row.reverse())
-    : matrix.reverse();
+    ? nextMatrix.map(row => row.reverse())
+    : nextMatrix.reverse();
 }
 
 export const rotateShapeInBounds = (shape: Shape, board: number[][], direction: Rotate): Game => {
