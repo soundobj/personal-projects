@@ -3,12 +3,14 @@ import {
   placeShape,
   moveShape,
   clearShape,
+  isShapeColliding,
+  rotateShape,
 } from "./utils";
-import { Move } from "../types";
+import { Move, Rotate } from "../types";
 import cloneDeep from 'lodash/cloneDeep';
 import { L } from '../consts';
 
-describe("tetris shape utils", () => {
+describe("tetris utils", () => {
   describe('placeShape', () => {
     it('places a shape in the board', () => {
       const l = cloneDeep(L);
@@ -100,6 +102,74 @@ describe("tetris shape utils", () => {
         }
       };
       const actual = moveShape(board, shape, Move.DOWN);
+      expect(actual).toMatchObject(expected);
+    });
+  });
+  describe('isShapeColliding', () => {
+    it('returns true if the shape is overlapping an existing tile', () => {
+      const board = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ];
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: { x: 0, y: 1 }
+      };
+      expect(isShapeColliding(shape, board)).toBe(true);
+    });
+    it('returns false if the shape is not overlapping an existing tile', () => {
+      const board = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0]
+      ];
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: { x: 0, y: 1 }
+      };
+      expect(isShapeColliding(shape, board)).toBe(false);
+    });
+  });
+  describe('rotateShape', () => {
+    it('rotates shape clockwise', () => {
+      const shape = [
+        [0, 2, 0],
+        [0, 2, 0],
+        [0, 2, 2],
+      ];
+      const expected = [
+        [0, 0, 0],
+        [2, 2, 2],
+        [2, 0, 0],
+      ]
+      const actual = rotateShape(shape, Rotate.CLOCKWISE);
+      expect(actual).toMatchObject(expected);
+    });
+    it('rotates shape anticlockwise', () => {
+      const shape = [
+        [0, 2, 0],
+        [0, 2, 0],
+        [0, 2, 2],
+      ];
+      const expected = [
+        [0, 0, 2],
+        [2, 2, 2],
+        [0, 0, 0],
+      ]
+      const actual = rotateShape(shape, Rotate.ANTI_CLOCKWISE);
       expect(actual).toMatchObject(expected);
     });
   });

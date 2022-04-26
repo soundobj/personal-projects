@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shape, Tetrominoe } from './types';
 import { randomEnum, createMatrix } from './lib/utils';
-import Grid from '../grid/Grid'
+import Grid from './grid/Grid'
 import stopWatch from "../stopWatch/stopWatch";
 import { useTetrisStore }  from './stores/tetrisStore';
 

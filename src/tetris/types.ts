@@ -29,3 +29,13 @@ export interface Shape {
   matrix: number[][],
   position: Coordinate;
 }
+
+export interface Game {
+  board: number[][],
+  shape: Shape,
+}
+
+export enum Rotate {
+  CLOCKWISE = "CLOCKWISE",
+  ANTI_CLOCKWISE = "ANTI_CLOCKWISE"
+}

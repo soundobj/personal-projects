@@ -1,4 +1,4 @@
-import { Move, Shape, Coordinate } from "../types";
+import { Move, Shape, Coordinate, Rotate, Game } from "../types";
 import { ROWS, COLUMNS } from '../consts';
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -12,7 +12,7 @@ export const randomEnum = <T>(anEnum: T): T[keyof T] => {
 export const createMatrix = (rows: number = ROWS, columns: number = COLUMNS): number[][] => {
   const matrix = [];
   while (rows--) {
-      matrix.push(new Array(columns).fill(0));
+    matrix.push(new Array(columns).fill(0));
   }
   return matrix;
 }
@@ -28,14 +28,14 @@ export const getShapeInitPosition = (matrix: number[][], shape: number[][]) => {
   };
 }
 
-export const placeShape = (matrix: number[][], shape: number[][]) => {
+export const placeShape = (matrix: number[][], shape: number[][]): Game => {
   const board = cloneDeep(matrix);
   const position = getShapeInitPosition(board, shape);
 
   shape.forEach((row, x) => {
     row.forEach((value, y) => {
       if (value !== 0) {
-          board[x + position.x][y + position.y] = value;
+        board[x + position.x][y + position.y] = value;
       }
     })
   });
@@ -55,7 +55,7 @@ export const clearShape = (board: number[][], shape: Shape) => {
   shape.matrix.forEach((row, x) => {
     row.forEach((value, y) => {
       if (value !== 0) {
-          nextBoard[x + position.x][y + position.y] = 0;
+        nextBoard[x + position.x][y + position.y] = 0;
       }
     });
   });
@@ -65,16 +65,16 @@ export const clearShape = (board: number[][], shape: Shape) => {
 export const moveShape = (matrix: number[][], shape: Shape, direction: Move = Move.DOWN) => {
   const nextBoard = clearShape(matrix, shape);
   const { position } = shape;
-  const nextPosition: Coordinate = { x: 0, y: 0};
+  const nextPosition: Coordinate = { x: 0, y: 0 };
   if (direction === Move.DOWN) {
     nextPosition.x = position.x + 1;
     nextPosition.y = position.y;
   }
-  
+
   shape.matrix.forEach((row, x) => {
     row.forEach((value, y) => {
       if (value !== 0) {
-          nextBoard[x + nextPosition.x][y + nextPosition.y] = value;
+        nextBoard[x + nextPosition.x][y + nextPosition.y] = value;
       }
     })
   });
@@ -86,4 +86,43 @@ export const moveShape = (matrix: number[][], shape: Shape, direction: Move = Mo
     },
     board: nextBoard,
   };
+}
+
+export const isShapeColliding = (shape: Shape, board: number[][]): boolean => {
+  const { matrix, position } = shape;
+  for (let x = 0; x < matrix.length; x++) {
+    for (let y = 0; y < matrix[x].length; y++) {
+      if (
+        matrix[y][x] !== 0
+        && (board[x + position.x]
+          && board[x + position.x][y + position.y]) !== 0
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+export const rotateShape = (matrix: number[][], direction: Rotate): number[][] => {
+  const nextMatrix = cloneDeep(matrix);
+  for (let y = 0; y < matrix.length; ++y) {
+    for (let x = 0; x < y; ++x) {
+      [
+        nextMatrix[x][y],
+        nextMatrix[y][x],
+      ] = [
+        nextMatrix[y][x],
+        nextMatrix[x][y],
+      ];
+    }
+  }
+
+  return (direction === Rotate.CLOCKWISE)
+    ? matrix.map(row => row.reverse())
+    : matrix.reverse();
+}
+
+export const rotateShapeInBounds = (shape: Shape, board: number[][], direction: Rotate): Game => {
+
 }
