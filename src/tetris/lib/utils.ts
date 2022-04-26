@@ -1,6 +1,5 @@
-import { Coordinate } from "../../../sudoku/lib/definitions";
-import { Move, Shape } from "../../types";
-import { ROWS, COLUMNS } from '../../consts';
+import { Move, Shape, Coordinate } from "../types";
+import { ROWS, COLUMNS } from '../consts';
 import cloneDeep from 'lodash/cloneDeep'
 
 export const randomEnum = <T>(anEnum: T): T[keyof T] => {
@@ -20,12 +19,18 @@ export const createMatrix = (rows: number = ROWS, columns: number = COLUMNS): nu
 
 export const getMatrixCentre = (matrix: number[][]): number => matrix[0].length / 2 | 0;
 
-export const placeShapeM = (matrix: number[][], shape: number[][]) => {
+export const getShapeInitPosition = (matrix: number[][], shape: number[][]) => {
   const boardMiddle = getMatrixCentre(matrix);
   const shapeMiddle = getMatrixCentre(shape);
-  const y = boardMiddle - shapeMiddle;
+  return {
+    x: 0,
+    y: boardMiddle - shapeMiddle
+  };
+}
+
+export const placeShape = (matrix: number[][], shape: number[][]) => {
   const board = cloneDeep(matrix);
-  const position = { x: 0, y};
+  const position = getShapeInitPosition(board, shape);
 
   shape.forEach((row, x) => {
     row.forEach((value, y) => {
@@ -57,7 +62,7 @@ export const clearShape = (board: number[][], shape: Shape) => {
   return nextBoard;
 }
 
-export const moveShapeM = (matrix: number[][], shape: Shape, direction: Move = Move.DOWN) => {
+export const moveShape = (matrix: number[][], shape: Shape, direction: Move = Move.DOWN) => {
   const nextBoard = clearShape(matrix, shape);
   const { position } = shape;
   const nextPosition: Coordinate = { x: 0, y: 0};

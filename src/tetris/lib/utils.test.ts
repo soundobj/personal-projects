@@ -1,19 +1,19 @@
 import {
   createMatrix,
-  placeShapeM,
-  moveShapeM,
+  placeShape,
+  moveShape,
   clearShape,
 } from "./utils";
-import { Move } from "../../types";
+import { Move } from "../types";
 import cloneDeep from 'lodash/cloneDeep';
-import { L } from '../../consts';
+import { L } from '../consts';
 
 describe("tetris shape utils", () => {
-  describe('placeShapeM', () => {
+  describe('placeShape', () => {
     it('places a shape in the board', () => {
       const l = cloneDeep(L);
       const board = createMatrix(5, 5);
-      const actual = placeShapeM(board, l);
+      const actual = placeShape(board, l);
       const expected = {
         board: [
           [0, 0, 2, 0, 0],
@@ -99,7 +99,7 @@ describe("tetris shape utils", () => {
           position: { x: 1, y: 1 }
         }
       };
-      const actual = moveShapeM(board, shape, Move.DOWN);
+      const actual = moveShape(board, shape, Move.DOWN);
       expect(actual).toMatchObject(expected);
     });
   });
