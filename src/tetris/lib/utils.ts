@@ -1,5 +1,5 @@
-import { Move, Shape, Coordinate, Rotate, Game } from "../types";
-import { ROWS, COLUMNS } from '../consts';
+import { Shape, Coordinate, Game, Direction, Tetrominoe } from "../types";
+import { ROWS, COLUMNS, SHAPES } from '../consts';
 import cloneDeep from 'lodash/cloneDeep'
 
 export const randomEnum = <T>(anEnum: T): T[keyof T] => {
@@ -28,27 +28,6 @@ export const getShapeInitPosition = (matrix: number[][], shape: number[][]) => {
   };
 }
 
-export const placeShape = (matrix: number[][], shape: number[][]): Game => {
-  const board = cloneDeep(matrix);
-  const position = getShapeInitPosition(board, shape);
-
-  shape.forEach((row, x) => {
-    row.forEach((value, y) => {
-      if (value !== 0) {
-        board[x + position.x][y + position.y] = value;
-      }
-    })
-  });
-
-  return {
-    shape: {
-      matrix: cloneDeep(shape),
-      position,
-    },
-    board,
-  };
-};
-
 export const clearShape = (board: number[][], shape: Shape) => {
   const { position } = shape;
   const nextBoard = cloneDeep(board);
@@ -62,13 +41,36 @@ export const clearShape = (board: number[][], shape: Shape) => {
   return nextBoard;
 }
 
-export const moveShape = (matrix: number[][], shape: Shape, direction: Move = Move.DOWN) => {
-  const nextBoard = clearShape(matrix, shape);
+export const initShape = (type: Tetrominoe, board: number[][]): Shape => {
+  const matrix = cloneDeep(SHAPES[type]);
+  return {
+    matrix,
+    position: getShapeInitPosition(board, matrix)
+  }
+};
+
+export const moveShape = (matrix: number[][], shape: Shape, direction?: Direction) => {
+  let nextBoard = matrix;
+  if (direction) {
+    nextBoard = clearShape(matrix, shape);
+  }
   const { position } = shape;
-  const nextPosition: Coordinate = { x: 0, y: 0 };
-  if (direction === Move.DOWN) {
-    nextPosition.x = position.x + 1;
-    nextPosition.y = position.y;
+  let nextPosition: Coordinate = { x: -1, y: -1 };
+
+  switch (direction) {
+    case Direction.DOWN:
+      nextPosition.x = position.x + 1;
+      nextPosition.y = position.y;
+      break;
+    case (Direction.CLOCKWISE || Direction.ANTI_CLOCKWISE):
+      nextPosition = position;
+      shape.matrix = rotateShape(shape.matrix, direction);
+      break;
+    default: {
+      nextPosition = getShapeInitPosition(nextBoard, shape.matrix);
+      break;
+    }
+
   }
 
   shape.matrix.forEach((row, x) => {
@@ -104,7 +106,7 @@ export const isShapeColliding = (shape: Shape, board: number[][]): boolean => {
   return false;
 }
 
-export const rotateShape = (matrix: number[][], direction: Rotate): number[][] => {
+export const rotateShape = (matrix: number[][], direction: Direction): number[][] => {
   const nextMatrix = cloneDeep(matrix);
   for (let y = 0; y < nextMatrix.length; ++y) {
     for (let x = 0; x < y; ++x) {
@@ -112,17 +114,37 @@ export const rotateShape = (matrix: number[][], direction: Rotate): number[][] =
         nextMatrix[x][y],
         nextMatrix[y][x],
       ] = [
-        nextMatrix[y][x],
-        nextMatrix[x][y],
-      ];
+          nextMatrix[y][x],
+          nextMatrix[x][y],
+        ];
     }
   }
 
-  return (direction === Rotate.CLOCKWISE)
+  return (direction === Direction.CLOCKWISE)
     ? nextMatrix.map(row => row.reverse())
     : nextMatrix.reverse();
 }
 
-export const rotateShapeInBounds = (shape: Shape, board: number[][], direction: Rotate): Game => {
+export const rotateShapeInBounds = (shape: Shape, board: number[][], direction: Direction): Game => {
+  // const originalShape = cloneDeep(shape);
+  // const originalBoard = cloneDeep(board);
+  // const { matrix } = shape;
+  // let offset = 1;
+  // let nextGame;
+  // rotateShape(matrix, direction);
+  // while (isShapeColliding(shape, board)) {
+  //   shape.position.x += offset;
+  //   shape.matrix = rotateShape(matrix, direction);
+  //   console.log('nextShape', shape);
 
+  //   nextGame = placeShape(shape.matrix, board, shape.position)
+  //   offset = -(offset + (offset > 0 ? 1 : -1));
+  //   if (offset > shape.matrix[0].length) {
+  //     return {
+  //       board: originalBoard,
+  //       shape: originalShape,
+  //     }
+  //   }
+  // }
+  // return nextGame as Game;
 }

@@ -1,4 +1,4 @@
-import { Coordinate } from "./types";
+import { Coordinate, Tetrominoe } from "./types";
 
 export const ROWS = 20;
 export const COLUMNS = 10;
@@ -48,6 +48,16 @@ export const T = [
   [7, 7, 7],
   [0, 0, 0],
 ];
+
+export const SHAPES = {
+  [Tetrominoe.I]: I,
+  [Tetrominoe.O]: O,
+  [Tetrominoe.J]: J,
+  [Tetrominoe.L]: L,
+  [Tetrominoe.Z]: Z,
+  [Tetrominoe.S]: S,
+  [Tetrominoe.T]: T,
+}
 
 
 

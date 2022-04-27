@@ -3,27 +3,23 @@ export interface Coordinate {
   y: number;
 }
 
-export enum Move {
+export enum Direction {
   UP = "UP",
   LEFT = "LEFT",
   DOWN = "DOWN",
-  RIGHT = "RIGHT" 
+  RIGHT = "RIGHT",
+  CLOCKWISE = "CLOCKWISE",
+  ANTI_CLOCKWISE = "ANTI_CLOCKWISE"
 }
 
 export enum Tetrominoe {
   I = "I",
   O = "O",
+  J = "O",
   T = "T",
-  L = "L" ,
-  S = "S" 
-}
-
-export enum TetrominoeColor {
-  I = "#44FFFF",
-  O = "#FFFF43",
-  T = "#FF44FF",
-  L = "#F8F9FA" ,
-  S = "#44FF43" 
+  L = "L",
+  S = "S",
+  Z = "Z"
 }
 export interface Shape {
   matrix: number[][],
@@ -33,9 +29,4 @@ export interface Shape {
 export interface Game {
   board: number[][],
   shape: Shape,
-}
-
-export enum Rotate {
-  CLOCKWISE = "CLOCKWISE",
-  ANTI_CLOCKWISE = "ANTI_CLOCKWISE"
 }

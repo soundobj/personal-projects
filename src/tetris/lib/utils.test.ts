@@ -1,41 +1,15 @@
 import {
   createMatrix,
-  placeShape,
+  initShape,
   moveShape,
   clearShape,
   isShapeColliding,
   rotateShape,
+  rotateShapeInBounds,
 } from "./utils";
-import { Move, Rotate } from "../types";
-import cloneDeep from 'lodash/cloneDeep';
-import { L } from '../consts';
+import { Direction, Tetrominoe } from "../types";
 
 describe("tetris utils", () => {
-  describe('placeShape', () => {
-    it('places a shape in the board', () => {
-      const l = cloneDeep(L);
-      const board = createMatrix(5, 5);
-      const actual = placeShape(board, l);
-      const expected = {
-        board: [
-          [0, 0, 2, 0, 0],
-          [0, 0, 2, 0, 0],
-          [0, 0, 2, 2, 0],
-          [0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0]
-        ],
-        shape: {
-          matrix: [
-            [0, 2, 0],
-            [0, 2, 0],
-            [0, 2, 2],
-          ],
-          position: { x: 0, y: 1 }
-        },
-      };
-      expect(actual).toMatchObject(expected);
-    });
-  });
   describe('clearShape', () => {
     it('removes a shape from the board', () => {
       const board = [
@@ -67,7 +41,29 @@ describe("tetris utils", () => {
     });
   });
   describe('moveShape', () => {
-    it('moves a shape from the board in a downwards direction', () => {
+    it('places a new shape in the board', () => {
+      const board = createMatrix(5, 5);
+      const actual = moveShape(board, initShape(Tetrominoe.L, board));
+      const expected = {
+        board: [
+          [0, 0, 2, 0, 0],
+          [0, 0, 2, 0, 0],
+          [0, 0, 2, 2, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ],
+        shape: {
+          matrix: [
+            [0, 2, 0],
+            [0, 2, 0],
+            [0, 2, 2],
+          ],
+          position: { x: 0, y: 1 }
+        },
+      };
+      expect(actual).toMatchObject(expected);
+    });
+    it('moves a shape on the board in a downwards direction', () => {
       const board = [
         [0, 0, 2, 0, 0],
         [0, 0, 2, 0, 0],
@@ -101,7 +97,44 @@ describe("tetris utils", () => {
           position: { x: 1, y: 1 }
         }
       };
-      const actual = moveShape(board, shape, Move.DOWN);
+      const actual = moveShape(board, shape, Direction.DOWN);
+      expect(actual).toMatchObject(expected);
+    });
+    it('moves a shape on the board in a clockwise direction', () => {
+      const board = [
+        [0, 0, 2, 0, 0],
+        [0, 0, 2, 0, 0],
+        [0, 0, 2, 2, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ];
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: { x: 0, y: 1 }
+      };
+
+      const expected = {
+        board: [
+          [0, 0, 0, 0, 0],
+          [0, 2, 2, 2, 0],
+          [0, 2, 0, 0, 0],
+          [0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0]
+        ],
+        shape: {
+          matrix: [
+            [0, 0, 0],
+            [2, 2, 2],
+            [2, 0, 0],
+          ],
+          position: { x: 0, y: 1 }
+        }
+      };
+      const actual = moveShape(board, shape, Direction.CLOCKWISE);
       expect(actual).toMatchObject(expected);
     });
   });
@@ -155,7 +188,7 @@ describe("tetris utils", () => {
         [2, 2, 2],
         [2, 0, 0],
       ]
-      const actual = rotateShape(shape, Rotate.CLOCKWISE);
+      const actual = rotateShape(shape, Direction.CLOCKWISE);
       expect(actual).toMatchObject(expected);
     });
     it('rotates shape anticlockwise', () => {
@@ -169,8 +202,57 @@ describe("tetris utils", () => {
         [2, 2, 2],
         [0, 0, 0],
       ]
-      const actual = rotateShape(shape, Rotate.ANTI_CLOCKWISE);
+      const actual = rotateShape(shape, Direction.ANTI_CLOCKWISE);
       expect(actual).toMatchObject(expected);
     });
   });
+  // describe('rotateShapeInBounds', () => {
+  //   it('rotates shape clockwise and maintains it in bounds', () => {
+  //     const shape = {
+  //       matrix: [
+  //         [0, 2, 0],
+  //         [0, 2, 0],
+  //         [0, 2, 2],
+  //       ],
+  //       position: {
+  //         x: 0,
+  //         y: 3,
+  //       }
+  //     };
+  //     const _board = [
+  //       [0, 0, 0, 2, 0],
+  //       [0, 0, 0, 2, 0],
+  //       [0, 0, 0, 2, 2],
+  //       [0, 0, 0, 0, 0],
+  //       [0, 0, 0, 0, 0]
+  //     ];
+
+  //     const expected = {
+  //       board: [
+  //         [0, 0, 0, 0, 0],
+  //         [0, 0, 2, 2, 2],
+  //         [0, 0, 2, 0, 0],
+  //         [0, 0, 0, 0, 0],
+  //         [0, 0, 0, 0, 0]
+  //       ],
+  //       shape: {
+  //         matrix: [
+  //           [0, 0, 0],
+  //           [2, 2, 2],
+  //           [2, 0, 0],
+  //         ],
+  //         positon: {
+  //           x: 0,
+  //           y: 2
+  //         }
+  //       }
+  //     };
+
+  //     const actual = rotateShapeInBounds(shape, _board, Direction.CLOCKWISE);
+  //     const { board, shape: { matrix } } = actual;
+  //     console.table(board);
+  //     console.table(matrix);
+  //     expect(actual).toMatchObject(expected);
+  //   });
+  // });
 });
