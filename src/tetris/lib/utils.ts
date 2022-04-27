@@ -54,8 +54,9 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
   if (direction) {
     nextBoard = clearShape(matrix, shape);
   }
+
   const { position } = shape;
-  let nextPosition: Coordinate = { x: -1, y: -1 };
+  let nextPosition = { ...position };
 
   switch (direction) {
     case Direction.DOWN:
@@ -67,10 +68,9 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
       shape.matrix = rotateShape(shape.matrix, direction);
       break;
     default: {
-      nextPosition = getShapeInitPosition(nextBoard, shape.matrix);
+      nextPosition = position;
       break;
     }
-
   }
 
   shape.matrix.forEach((row, x) => {
