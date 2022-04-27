@@ -54,10 +54,8 @@ export const mapNumberToDirection = (number: number): Direction => (number > 0) 
 export const moveShape = (matrix: number[][], shape: Shape, direction?: Direction) => {
   let nextBoard = matrix;
   if (direction) {
-    // console.log('clearing shape');
     nextBoard = clearShape(matrix, shape);
   }
-  console.table(nextBoard);
 
   const { position } = shape;
   let nextPosition = { ...position };
@@ -94,7 +92,6 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
 
 export const isShapeColliding = (shape: Shape, board: number[][]): boolean => {
   const { matrix, position } = shape;
-  console.log('isc', position);
   for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
       if (
@@ -106,7 +103,6 @@ export const isShapeColliding = (shape: Shape, board: number[][]): boolean => {
       }
     }
   }
-  console.log('isc false');
   return false;
 }
 
@@ -129,31 +125,25 @@ export const rotateShape = (matrix: number[][], direction: Direction): number[][
     : nextMatrix.reverse();
 }
 
+export const cloneGame = (shape: Shape, board: number[][]) => ({
+  shape: cloneDeep(shape),
+  board: cloneDeep(board)
+})
+
 export const rotateShapeInBounds = (shape: Shape, board: number[][], direction: Direction): Game => {
-  const originalShape = cloneDeep(shape);
-  const originalBoard = cloneDeep(board);
-
-  let offset = 1;
-
+  const origGame = cloneGame(shape, board);
+  const isClockwise = direction === Direction.CLOCKWISE;
+  const breakIndex = isClockwise? 0 : board[0].length;
+  const increment = isClockwise ? -1 : 1;
   shape.matrix = rotateShape(shape.matrix, direction); 
   while (isShapeColliding(shape, board)) {
-    board = clearShape(board, originalShape);
-    shape.position.y += offset;
-    console.log('try new shape pos y', shape.position);
-    offset = -(offset + (offset > 0 ? 1 : -1));
-    console.log('next offset', offset);
-    
-    if (offset > shape.matrix[0].length + 2) {
-      console.log('return orig');
-      return {
-        board: originalBoard,
-        shape: originalShape,
-      }
+    shape.position.y += increment;
+    if (
+      (isClockwise && shape.position.y === -1)
+      || (!isClockwise && shape.position.y === breakIndex)
+    ) {
+      return origGame;
     }
   }
-
-  console.log('done test', shape);
-  
-
   return moveShape(board, shape);
 }

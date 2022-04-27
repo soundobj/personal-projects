@@ -237,7 +237,7 @@ describe("tetris utils", () => {
           y: 2,
         }
       };
-      const _board = [
+      const   board = [
         [0, 0, 0, 0, 2],
         [0, 0, 0, 0, 2],
         [0, 0, 0, 0, 2],
@@ -247,8 +247,8 @@ describe("tetris utils", () => {
       const expected = {
         board: [
           [0, 0, 0, 0, 2],
-          [0, 2, 2, 2, 2],
-          [0, 2, 0, 0, 2],
+          [2, 2, 2, 0, 2],
+          [2, 0, 0, 0, 2],
         ],
         shape: {
           matrix: [
@@ -256,20 +256,14 @@ describe("tetris utils", () => {
             [2, 2, 2],
             [2, 0, 0],
           ],
-          positon: {
+          position: {
             x: 0,
-            y: 1
+            y: 0
           }
         }
       };
 
-      const actual = rotateShapeInBounds(shape, _board, Direction.CLOCKWISE);
-      const { board, shape: { matrix } } = actual;
-      console.log('done');
-      
-      console.table(board);
-      console.table(matrix);
-      console.log(shape)
+      const actual = rotateShapeInBounds(shape, board, Direction.CLOCKWISE);
       expect(actual).toMatchObject(expected);
     });
   });
