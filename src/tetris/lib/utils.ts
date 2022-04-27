@@ -95,25 +95,18 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
 export const isShapeColliding = (shape: Shape, board: number[][]): boolean => {
   const { matrix, position } = shape;
   console.log('isc', position);
-  console.table(matrix);
   for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
-      
-      // console.log('board exists y:', y + position.y, board[y + position.y] );
-
       if (
         matrix[y][x] !== 0
         && (board[y + position.y]
           && board[y + position.y][x + position.x]) !== 0
       ) {
-        // console.log('failing pos x', (y + position.y), (x + position.x));
-        
         return true;
       }
     }
   }
   console.log('isc false');
-  
   return false;
 }
 
@@ -140,23 +133,18 @@ export const rotateShapeInBounds = (shape: Shape, board: number[][], direction: 
   const originalShape = cloneDeep(shape);
   const originalBoard = cloneDeep(board);
 
-  let offset = 0;
+  let offset = 1;
 
   shape.matrix = rotateShape(shape.matrix, direction); 
   while (isShapeColliding(shape, board)) {
-    console.log('colliding');
     board = clearShape(board, originalShape);
-    console.log('board after clear');
-    console.table(board);
-    
-    
-    shape.position.x += offset;
+    shape.position.y += offset;
+    console.log('try new shape pos y', shape.position);
     offset = -(offset + (offset > 0 ? 1 : -1));
-    console.log('new offset', offset);
+    console.log('next offset', offset);
     
-    if (offset > shape.matrix[0].length) {
+    if (offset > shape.matrix[0].length + 2) {
       console.log('return orig');
-      
       return {
         board: originalBoard,
         shape: originalShape,

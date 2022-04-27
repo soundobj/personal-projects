@@ -225,7 +225,7 @@ describe("tetris utils", () => {
     });
   });
   describe.only('rotateShapeInBounds', () => {
-    it('rotates shape clockwise and maintains it in bounds', () => {
+    it.only('rotates shape clockwise and maintains it in bounds', () => {
       const shape = {
         matrix: [
           [0, 2, 0],
@@ -241,8 +241,7 @@ describe("tetris utils", () => {
         [0, 0, 0, 0, 2],
         [0, 0, 0, 0, 2],
         [0, 0, 0, 0, 2],
-        [0, 0, 0, 0, 2],
-        [0, 0, 0, 0, 2]
+
       ];
 
       const expected = {
@@ -250,8 +249,6 @@ describe("tetris utils", () => {
           [0, 0, 0, 0, 2],
           [0, 2, 2, 2, 2],
           [0, 2, 0, 0, 2],
-          [0, 0, 0, 0, 2],
-          [0, 0, 0, 0, 2]
         ],
         shape: {
           matrix: [
