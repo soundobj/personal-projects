@@ -157,13 +157,31 @@ describe("tetris utils", () => {
       };
       expect(isShapeColliding(shape, board)).toBe(true);
     });
+    it('returns true if the shape is off the grid', () => {
+      const board = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ];
+      const shape = {
+        matrix: [
+          [0, 0, 0],
+          [2, 2, 2],
+          [2, 0, 0],
+        ],
+        position: { x: 0, y: 3 }
+      };
+      expect(isShapeColliding(shape, board)).toBe(true);
+    });
     it('returns false if the shape is not overlapping an existing tile', () => {
       const board = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
-        [0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0]
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0]
       ];
       const shape = {
         matrix: [
@@ -206,53 +224,56 @@ describe("tetris utils", () => {
       expect(actual).toMatchObject(expected);
     });
   });
-  // describe('rotateShapeInBounds', () => {
-  //   it('rotates shape clockwise and maintains it in bounds', () => {
-  //     const shape = {
-  //       matrix: [
-  //         [0, 2, 0],
-  //         [0, 2, 0],
-  //         [0, 2, 2],
-  //       ],
-  //       position: {
-  //         x: 0,
-  //         y: 3,
-  //       }
-  //     };
-  //     const _board = [
-  //       [0, 0, 0, 2, 0],
-  //       [0, 0, 0, 2, 0],
-  //       [0, 0, 0, 2, 2],
-  //       [0, 0, 0, 0, 0],
-  //       [0, 0, 0, 0, 0]
-  //     ];
+  describe.only('rotateShapeInBounds', () => {
+    it('rotates shape clockwise and maintains it in bounds', () => {
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: {
+          x: 0,
+          y: 2,
+        }
+      };
+      const _board = [
+        [0, 0, 0, 0, 2],
+        [0, 0, 0, 0, 2],
+        [0, 0, 0, 0, 2],
+        [0, 0, 0, 0, 2],
+        [0, 0, 0, 0, 2]
+      ];
 
-  //     const expected = {
-  //       board: [
-  //         [0, 0, 0, 0, 0],
-  //         [0, 0, 2, 2, 2],
-  //         [0, 0, 2, 0, 0],
-  //         [0, 0, 0, 0, 0],
-  //         [0, 0, 0, 0, 0]
-  //       ],
-  //       shape: {
-  //         matrix: [
-  //           [0, 0, 0],
-  //           [2, 2, 2],
-  //           [2, 0, 0],
-  //         ],
-  //         positon: {
-  //           x: 0,
-  //           y: 2
-  //         }
-  //       }
-  //     };
+      const expected = {
+        board: [
+          [0, 0, 0, 0, 2],
+          [0, 2, 2, 2, 2],
+          [0, 2, 0, 0, 2],
+          [0, 0, 0, 0, 2],
+          [0, 0, 0, 0, 2]
+        ],
+        shape: {
+          matrix: [
+            [0, 0, 0],
+            [2, 2, 2],
+            [2, 0, 0],
+          ],
+          positon: {
+            x: 0,
+            y: 1
+          }
+        }
+      };
 
-  //     const actual = rotateShapeInBounds(shape, _board, Direction.CLOCKWISE);
-  //     const { board, shape: { matrix } } = actual;
-  //     console.table(board);
-  //     console.table(matrix);
-  //     expect(actual).toMatchObject(expected);
-  //   });
-  // });
+      const actual = rotateShapeInBounds(shape, _board, Direction.CLOCKWISE);
+      const { board, shape: { matrix } } = actual;
+      console.log('done');
+      
+      console.table(board);
+      console.table(matrix);
+      console.log(shape)
+      expect(actual).toMatchObject(expected);
+    });
+  });
 });

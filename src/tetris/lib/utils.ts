@@ -1,4 +1,4 @@
-import { Shape, Coordinate, Game, Direction, Tetrominoe } from "../types";
+import { Shape, Game, Direction, Tetrominoe } from "../types";
 import { ROWS, COLUMNS, SHAPES } from '../consts';
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -49,11 +49,15 @@ export const initShape = (type: Tetrominoe, board: number[][]): Shape => {
   }
 };
 
+export const mapNumberToDirection = (number: number): Direction => (number > 0) ? Direction.LEFT : Direction.RIGHT;
+
 export const moveShape = (matrix: number[][], shape: Shape, direction?: Direction) => {
   let nextBoard = matrix;
   if (direction) {
+    // console.log('clearing shape');
     nextBoard = clearShape(matrix, shape);
   }
+  console.table(nextBoard);
 
   const { position } = shape;
   let nextPosition = { ...position };
@@ -64,11 +68,9 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
       nextPosition.y = position.y;
       break;
     case (Direction.CLOCKWISE || Direction.ANTI_CLOCKWISE):
-      nextPosition = position;
       shape.matrix = rotateShape(shape.matrix, direction);
       break;
     default: {
-      nextPosition = position;
       break;
     }
   }
@@ -92,17 +94,26 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
 
 export const isShapeColliding = (shape: Shape, board: number[][]): boolean => {
   const { matrix, position } = shape;
-  for (let x = 0; x < matrix.length; x++) {
-    for (let y = 0; y < matrix[x].length; y++) {
+  console.log('isc', position);
+  console.table(matrix);
+  for (let y = 0; y < matrix.length; y++) {
+    for (let x = 0; x < matrix[y].length; x++) {
+      
+      // console.log('board exists y:', y + position.y, board[y + position.y] );
+
       if (
         matrix[y][x] !== 0
-        && (board[x + position.x]
-          && board[x + position.x][y + position.y]) !== 0
+        && (board[y + position.y]
+          && board[y + position.y][x + position.x]) !== 0
       ) {
+        // console.log('failing pos x', (y + position.y), (x + position.x));
+        
         return true;
       }
     }
   }
+  console.log('isc false');
+  
   return false;
 }
 
@@ -126,25 +137,35 @@ export const rotateShape = (matrix: number[][], direction: Direction): number[][
 }
 
 export const rotateShapeInBounds = (shape: Shape, board: number[][], direction: Direction): Game => {
-  // const originalShape = cloneDeep(shape);
-  // const originalBoard = cloneDeep(board);
-  // const { matrix } = shape;
-  // let offset = 1;
-  // let nextGame;
-  // rotateShape(matrix, direction);
-  // while (isShapeColliding(shape, board)) {
-  //   shape.position.x += offset;
-  //   shape.matrix = rotateShape(matrix, direction);
-  //   console.log('nextShape', shape);
+  const originalShape = cloneDeep(shape);
+  const originalBoard = cloneDeep(board);
 
-  //   nextGame = placeShape(shape.matrix, board, shape.position)
-  //   offset = -(offset + (offset > 0 ? 1 : -1));
-  //   if (offset > shape.matrix[0].length) {
-  //     return {
-  //       board: originalBoard,
-  //       shape: originalShape,
-  //     }
-  //   }
-  // }
-  // return nextGame as Game;
+  let offset = 0;
+
+  shape.matrix = rotateShape(shape.matrix, direction); 
+  while (isShapeColliding(shape, board)) {
+    console.log('colliding');
+    board = clearShape(board, originalShape);
+    console.log('board after clear');
+    console.table(board);
+    
+    
+    shape.position.x += offset;
+    offset = -(offset + (offset > 0 ? 1 : -1));
+    console.log('new offset', offset);
+    
+    if (offset > shape.matrix[0].length) {
+      console.log('return orig');
+      
+      return {
+        board: originalBoard,
+        shape: originalShape,
+      }
+    }
+  }
+
+  console.log('done test', shape);
+  
+
+  return moveShape(board, shape);
 }
