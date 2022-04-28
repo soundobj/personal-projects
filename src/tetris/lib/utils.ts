@@ -154,3 +154,9 @@ export const rotateShapeInBounds = (shape: Shape, board: number[][], direction: 
   }
   return moveShape(board, shape);
 }
+
+export const isShapeCollidingDownwards = (board: number[][], shape: Shape) : boolean => {
+  const testShape = cloneDeep(shape);
+  testShape.position.y += 1;
+  return isShapeColliding(testShape, board);
+}

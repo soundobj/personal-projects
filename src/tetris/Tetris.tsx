@@ -5,12 +5,11 @@ import {
   createMatrix,
   moveShape,
   initShape,
-  isShapeColliding,
   clearShape,
+  isShapeCollidingDownwards,
 } from './lib/utils';
 import Grid from './grid/Grid'
 import stopWatch from "../stopWatch/stopWatch";
-import { useTetrisStore } from './stores/tetrisStore';
 import { COLUMNS, ROWS } from './consts';
 import { clone, cloneDeep } from 'lodash';
 
@@ -18,48 +17,42 @@ const spawnPositionStub = undefined;
 
 const Tetris = () => {
   const watch = stopWatch();
-  // const board: number[][] = useTetrisStore((state: any) => state.board);
-  // const setBoard = useTetrisStore((state: any) => state.setBoard);
-  // const shape = useTetrisStore((state: any) => state.shape);
-  // const setShape = useTetrisStore((state: any) => state.setShape);
   const [board, setBoard] = useState<number[][]>(createMatrix());
   const [shape, setShape] = useState<Shape>(initShape(Tetrominoe.I, board, spawnPositionStub));
 
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
 
+  const updateBoard = (direction?: Direction) => {
+    const { board: nextBoard, shape: nextShape } = moveShape(board, shape, direction);
+    setBoard(nextBoard);
+    setShape(nextShape);
+  }
+
   useEffect(() => {
-    setBoard(board);
     watch.start();
-    // const shape = initShape(randomEnum(Tetrominoe), board);
-    setShape(shape);
-    moveShape(board, shape);
+    updateBoard();
   }, []); // eslint-disable-line
 
   useEffect(() => {
     const { elapsedTime } = timeElapsed;
-    if (elapsedTime) {
-      const testShape = cloneDeep(shape);
-      testShape.position.y += 1;
-      const nextBoard = clearShape(board, shape);
-      const willShapeCollide = isShapeColliding(testShape, nextBoard);
-      if (willShapeCollide) {
-        if (shape.position.y === 0){
-          console.log('game over');
-          const { board: nextBoard, shape: nextShape } = moveShape(board, shape);
-          setBoard(nextBoard);
-          setShape(nextShape);
-        } else {
-          setShape(initShape(Tetrominoe.I, board, spawnPositionStub));  
-        }
-      
-        return
-      } else {
-        const { board: nextBoard, shape: nextShape } = moveShape(board, shape, Direction.DOWN);
-        setBoard(nextBoard);
-        setShape(nextShape);
-      }
+
+    if (!elapsedTime) {
+      return
     }
+
+    const nextBoard = clearShape(board, shape);
+    if (isShapeCollidingDownwards(nextBoard, shape)) {
+      if (shape.position.y === 0) {
+        console.log('game over');
+        updateBoard();
+      } else {
+        setShape(initShape(Tetrominoe.I, board, spawnPositionStub));
+      }
+      return;
+    }
+  
+    updateBoard(Direction.DOWN);
   }, [timeElapsed]); // eslint-disable-line
 
   return (
@@ -67,7 +60,6 @@ const Tetris = () => {
       <span>tetris</span>
       <Grid game={board} />
     </>);
-
 };
 
 export default Tetris;
