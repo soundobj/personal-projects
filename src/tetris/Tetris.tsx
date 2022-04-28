@@ -17,11 +17,11 @@ const spawnPositionStub = undefined;
 
 const Tetris = () => {
   const watch = stopWatch();
-  const [board, setBoard] = useState<number[][]>(createMatrix());
-  const [shape, setShape] = useState<Shape>(initShape(Tetrominoe.I, board, spawnPositionStub));
-
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
+
+  const [board, setBoard] = useState<number[][]>(createMatrix());
+  const [shape, setShape] = useState<Shape>(initShape(Tetrominoe.I, board, spawnPositionStub));
 
   const updateBoard = (direction?: Direction) => {
     const { board: nextBoard, shape: nextShape } = moveShape(board, shape, direction);
@@ -38,7 +38,7 @@ const Tetris = () => {
     const { elapsedTime } = timeElapsed;
 
     if (!elapsedTime) {
-      return
+      return;
     }
 
     const nextBoard = clearShape(board, shape);
