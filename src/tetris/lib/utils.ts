@@ -65,6 +65,14 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
       nextPosition.x = position.x;
       nextPosition.y = position.y + 1;
       break;
+    case Direction.RIGHT:
+      nextPosition.x = position.x + 1;
+      nextPosition.y = position.y;
+      break;
+    case Direction.LEFT:
+      nextPosition.x = position.x -1;
+      nextPosition.y = position.y;
+      break;
     case (Direction.CLOCKWISE || Direction.ANTI_CLOCKWISE):
       shape.matrix = rotateShape(shape.matrix, direction);
       break;

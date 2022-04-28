@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Direction, Shape, Tetrominoe } from './types';
+import { useHotkeys } from 'react-hotkeys-hook';
 import {
   randomEnum,
   createMatrix,
@@ -10,9 +11,8 @@ import {
 } from './lib/utils';
 import Grid from './grid/Grid'
 import stopWatch from "../stopWatch/stopWatch";
-import { COLUMNS, ROWS } from './consts';
-import { clone, cloneDeep } from 'lodash';
 
+// const spawnPositionStub = { x: 4, y: 12};
 const spawnPositionStub = undefined;
 
 const Tetris = () => {
@@ -20,45 +20,57 @@ const Tetris = () => {
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
 
-  const [board, setBoard] = useState<number[][]>(createMatrix());
-  const [shape, setShape] = useState<Shape>(initShape(Tetrominoe.I, board, spawnPositionStub));
+  const boardRef = useRef<number[][]>(createMatrix());
+  const shapeRef = useRef<Shape>(initShape(Tetrominoe.I, boardRef.current, spawnPositionStub));
 
   const updateBoard = (direction?: Direction) => {
-    const { board: nextBoard, shape: nextShape } = moveShape(board, shape, direction);
-    setBoard(nextBoard);
-    setShape(nextShape);
+    const clearBoard = clearShape(boardRef.current, shapeRef.current);
+    const { board: nextBoard, shape: nextShape } = moveShape(clearBoard, shapeRef.current, direction);
+    boardRef.current = nextBoard;
+    shapeRef.current = nextShape;
   }
+
+  const hotKeysMap: Record<string, () => void> = {
+    'ArrowLeft': () => updateBoard(Direction.LEFT),
+    'ArrowRight': () => updateBoard(Direction.RIGHT),
+    'ArrowUp': () => updateBoard(Direction.CLOCKWISE),
+    'ArrowDown': () => updateBoard(Direction.DOWN),
+    'Slash': () => updateBoard(Direction.ANTI_CLOCKWISE),
+  }
+
+  useHotkeys('left,right,up,down,/', (key) => {
+    console.log('pressed something', key)
+    hotKeysMap[key.code]();
+  });
 
   useEffect(() => {
     watch.start();
     updateBoard();
-  }, []); // eslint-disable-line
+  }, []); 
 
   useEffect(() => {
     const { elapsedTime } = timeElapsed;
-
     if (!elapsedTime) {
       return;
     }
 
-    const nextBoard = clearShape(board, shape);
-    if (isShapeCollidingDownwards(nextBoard, shape)) {
-      if (shape.position.y === 0) {
+    const nextBoard = clearShape(boardRef.current, shapeRef.current);
+    if (isShapeCollidingDownwards(nextBoard, shapeRef.current)) {
+      if (shapeRef.current.position.y === 0) {
         console.log('game over');
         updateBoard();
       } else {
-        setShape(initShape(Tetrominoe.I, board, spawnPositionStub));
+        shapeRef.current = initShape(Tetrominoe.I, boardRef.current, spawnPositionStub);
       }
       return;
     }
-  
     updateBoard(Direction.DOWN);
-  }, [timeElapsed]); // eslint-disable-line
+  }, [timeElapsed]);
 
   return (
     <>
       <span>tetris</span>
-      <Grid game={board} />
+      <Grid game={boardRef.current} />
     </>);
 };
 
