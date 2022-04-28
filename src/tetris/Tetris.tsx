@@ -20,6 +20,7 @@ const Tetris = () => {
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
 
+  let [boardUpdate, setBoardUpdate] = useState<number>(1);
   const boardRef = useRef<number[][]>(createMatrix());
   const shapeRef = useRef<Shape>(initShape(Tetrominoe.I, boardRef.current, spawnPositionStub));
 
@@ -28,6 +29,7 @@ const Tetris = () => {
     const { board: nextBoard, shape: nextShape } = moveShape(clearBoard, shapeRef.current, direction);
     boardRef.current = nextBoard;
     shapeRef.current = nextShape;
+    setBoardUpdate(++boardUpdate);
   }
 
   const hotKeysMap: Record<string, () => void> = {
