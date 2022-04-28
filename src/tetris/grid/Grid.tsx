@@ -14,11 +14,15 @@ const Grid = (props: Props) => {
       className={classnames(styles.grid)}
     >
       {game &&
-        game.map((row:number[], x) => {
-          return row.map((column: number, y) => {
-            const key = `${x}-${y}`;
+        game.map((column:number[], y) => {
+          return column.map((row: number, x) => {
+            const key = `${y}-${x}`;
             return (
-              <div key={key} className={styles.cell}>{column}</div>
+              <div
+                key={key}
+                className={classnames(styles.cell, styles[`color${row}`])}>
+                  {row}
+                </div>
             );
           });
         })}

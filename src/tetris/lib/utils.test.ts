@@ -175,6 +175,24 @@ describe("tetris utils", () => {
       };
       expect(isShapeColliding(shape, board)).toBe(true);
     });
+    it.only('returns true if the shape is off the bottom of the board', () => {
+      const board = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+      ];
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: { x: 0, y: 3 }
+      };
+      expect(isShapeColliding(shape, board)).toBe(true);
+    });
     it('returns false if the shape is not overlapping an existing tile', () => {
       const board = [
         [0, 0, 0, 0, 0],
@@ -224,8 +242,8 @@ describe("tetris utils", () => {
       expect(actual).toMatchObject(expected);
     });
   });
-  describe.only('rotateShapeInBounds', () => {
-    it.only('rotates shape clockwise and maintains it in bounds', () => {
+  describe('rotateShapeInBounds', () => {
+    it('rotates shape clockwise and maintains it in bounds', () => {
       const shape = {
         matrix: [
           [0, 2, 0],
