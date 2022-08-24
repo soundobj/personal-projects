@@ -5,7 +5,8 @@ import {
   clearShape,
   isShapeColliding,
   rotateShape,
-  rotateShapeInBounds,
+  playerRotate,
+  // rotateShapeInBounds,
 } from "./utils";
 import { Direction, Tetrominoe } from "../types";
 
@@ -175,7 +176,7 @@ describe("tetris utils", () => {
       };
       expect(isShapeColliding(shape, board)).toBe(true);
     });
-    it.only('returns true if the shape is off the bottom of the board', () => {
+    it('returns true if the shape is off the bottom of the board', () => {
       const board = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
@@ -242,8 +243,8 @@ describe("tetris utils", () => {
       expect(actual).toMatchObject(expected);
     });
   });
-  describe('rotateShapeInBounds', () => {
-    it('rotates shape clockwise and maintains it in bounds', () => {
+  describe('playerRotate', () => {
+    it('rotates shape clockwise and maintains it in bounds clockwise', () => {
       const shape = {
         matrix: [
           [0, 2, 0],
@@ -251,37 +252,66 @@ describe("tetris utils", () => {
           [0, 2, 2],
         ],
         position: {
-          x: 0,
-          y: 2,
+          x: 3,
+          y: 0,
         }
       };
       const   board = [
-        [0, 0, 0, 0, 2],
-        [0, 0, 0, 0, 2],
-        [0, 0, 0, 0, 2],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
 
       ];
 
       const expected = {
-        board: [
-          [0, 0, 0, 0, 2],
-          [2, 2, 2, 0, 2],
-          [2, 0, 0, 0, 2],
-        ],
-        shape: {
           matrix: [
             [0, 0, 0],
             [2, 2, 2],
             [2, 0, 0],
           ],
           position: {
+            x: 2,
+            y: 0
+          }
+      };
+
+      const actual = playerRotate(Direction.CLOCKWISE, shape, board, );
+      expect(actual).toMatchObject(expected);
+    });
+    it('rotates shape clockwise and maintains it in bounds anti-clockwise', () => {
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: {
+          x: -1,
+          y: 0,
+        }
+      };
+      const   board = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+
+      ];
+
+      const expected = {
+          matrix: [
+            [0, 0, 2],
+            [2, 2, 2],
+            [0, 0, 0],
+          ],
+          position: {
             x: 0,
             y: 0
           }
-        }
       };
 
-      const actual = rotateShapeInBounds(shape, board, Direction.CLOCKWISE);
+      const actual = playerRotate(Direction.ANTI_CLOCKWISE, shape, board);
+      console.log('actual', actual);
+      
       expect(actual).toMatchObject(expected);
     });
   });

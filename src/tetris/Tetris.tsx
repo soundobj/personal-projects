@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Direction, Shape, Tetrominoe } from './types';
 import { useHotkeys } from 'react-hotkeys-hook';
+import cloneDeep from 'lodash/cloneDeep'
+
 import {
   randomEnum,
   createMatrix,
@@ -8,6 +10,7 @@ import {
   initShape,
   clearShape,
   isShapeCollidingDownwards,
+  isShapeColliding,
 } from './lib/utils';
 import Grid from './grid/Grid'
 import stopWatch from "../stopWatch/stopWatch";
@@ -26,7 +29,20 @@ const Tetris = () => {
 
   const updateBoard = (direction?: Direction) => {
     const clearBoard = clearShape(boardRef.current, shapeRef.current);
-    const { board: nextBoard, shape: nextShape } = moveShape(clearBoard, shapeRef.current, direction);
+    const testShape = cloneDeep(shapeRef.current);
+
+    if (direction === Direction.LEFT) {
+      testShape.position.x += -1;
+    } else if (direction === Direction.RIGHT) {
+      testShape.position.x += 1;
+    } else if (direction === Direction.DOWN) {
+      testShape.position.y += 1;
+    }
+    
+    const { board: nextBoard, shape: nextShape } = isShapeColliding(testShape, clearBoard)
+      ? moveShape(clearBoard, shapeRef.current)
+      : moveShape(clearBoard, shapeRef.current, direction);
+
     boardRef.current = nextBoard;
     shapeRef.current = nextShape;
     setBoardUpdate(++boardUpdate);
@@ -41,7 +57,7 @@ const Tetris = () => {
   }
 
   useHotkeys('left,right,up,down,/', (key) => {
-    console.log('pressed something', key)
+    // console.log('pressed something', key)
     hotKeysMap[key.code]();
   });
 
@@ -63,6 +79,7 @@ const Tetris = () => {
         updateBoard();
       } else {
         shapeRef.current = initShape(Tetrominoe.I, boardRef.current, spawnPositionStub);
+        setBoardUpdate(1);
       }
       return;
     }
