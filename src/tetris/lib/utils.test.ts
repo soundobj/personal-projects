@@ -5,7 +5,7 @@ import {
   clearShape,
   isShapeColliding,
   rotateShape,
-  playerRotate,
+  rotateShapeInBounds,
   // rotateShapeInBounds,
 } from "./utils";
 import { Direction, Tetrominoe } from "../types";
@@ -243,7 +243,7 @@ describe("tetris utils", () => {
       expect(actual).toMatchObject(expected);
     });
   });
-  describe('playerRotate', () => {
+  describe('rotateShapeInBounds', () => {
     it('rotates shape clockwise and maintains it in bounds clockwise', () => {
       const shape = {
         matrix: [
@@ -275,7 +275,7 @@ describe("tetris utils", () => {
           }
       };
 
-      const actual = playerRotate(Direction.CLOCKWISE, shape, board, );
+      const actual = rotateShapeInBounds(Direction.CLOCKWISE, shape, board, );
       expect(actual).toMatchObject(expected);
     });
     it('rotates shape clockwise and maintains it in bounds anti-clockwise', () => {
@@ -309,9 +309,39 @@ describe("tetris utils", () => {
           }
       };
 
-      const actual = playerRotate(Direction.ANTI_CLOCKWISE, shape, board);
+      const actual = rotateShapeInBounds(Direction.ANTI_CLOCKWISE, shape, board);
       console.log('actual', actual);
       
+      expect(actual).toMatchObject(expected);
+    });
+  });
+  describe('clearCompletedRows', () => {
+    it('rotates shape clockwise', () => {
+      const shape = [
+        [0, 2, 0],
+        [0, 2, 0],
+        [0, 2, 2],
+      ];
+      const expected = [
+        [0, 0, 0],
+        [2, 2, 2],
+        [2, 0, 0],
+      ]
+      const actual = rotateShape(shape, Direction.CLOCKWISE);
+      expect(actual).toMatchObject(expected);
+    });
+    it('rotates shape anticlockwise', () => {
+      const shape = [
+        [0, 2, 0],
+        [0, 2, 0],
+        [0, 2, 2],
+      ];
+      const expected = [
+        [0, 0, 2],
+        [2, 2, 2],
+        [0, 0, 0],
+      ]
+      const actual = rotateShape(shape, Direction.ANTI_CLOCKWISE);
       expect(actual).toMatchObject(expected);
     });
   });

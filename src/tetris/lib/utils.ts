@@ -74,7 +74,7 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
       nextPosition.y = position.y;
       break;
     case (Direction.CLOCKWISE || Direction.ANTI_CLOCKWISE):
-      const nextShape = playerRotate(direction, shape, matrix);
+      const nextShape = rotateShapeInBounds(direction, shape, matrix);
       nextPosition = nextShape.position;
       shape.matrix = nextShape.matrix;
       console.log('player rotate', nextShape);
@@ -145,7 +145,7 @@ export const cloneGame = (shape: Shape, board: number[][]) => ({
   board: cloneDeep(board)
 })
 
-export const playerRotate = (direction: Direction, shape: Shape, board: number[][]) => {
+export const rotateShapeInBounds = (direction: Direction, shape: Shape, board: number[][]) => {
   const { position, matrix } = shape;
   let xPos = position.x;
   let offset = 1;
