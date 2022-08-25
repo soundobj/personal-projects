@@ -152,19 +152,21 @@ export const playerRotate = (direction: Direction, shape: Shape, board: number[]
   // console.log(`xpos: ${xPos} offset: ${offset}`, direction);
   const nextMatrix = rotateShape(matrix, direction)
   const testShape = {
-    position,
-    matrix: nextMatrix,
+    position: cloneDeep(position),
+    matrix: cloneDeep(nextMatrix),
   };
   while (isShapeColliding(testShape, board, true)) {
     xPos += offset;
     offset = -(offset + (offset > 0 ? 1 : -1));
     // console.log('offset', offset);
     testShape.position.x = xPos;
-    if (offset > nextMatrix[0].length) {
-      // console.log('could not rotate');
-      return shape
+    if (offset > nextMatrix[0].length + 1) {
+      // console.log('could not rotate', nextMatrix[0].length, xPos);
+      return shape;
     }
   }
+  console.log('pr', testShape);
+  
   return testShape;
 
 }
