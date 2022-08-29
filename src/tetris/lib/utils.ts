@@ -110,7 +110,7 @@ export const isShapeColliding = (shape: Shape, board: number[][], log: boolean =
   for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
       if (
-        matrix[y][x] !== 0 // if the shape part is not empty
+        matrix[y][x] !== 0 // if the shape unit cell is not empty
         && (board[y + position.y]
           && board[y + position.y][x + position.x]) !== 0
       ) {
@@ -158,21 +158,36 @@ export const rotateShapeInBounds = (direction: Direction, shape: Shape, board: n
   while (isShapeColliding(testShape, board, true)) {
     xPos += offset;
     offset = -(offset + (offset > 0 ? 1 : -1));
-    // console.log('offset', offset);
     testShape.position.x = xPos;
     if (offset > nextMatrix[0].length + 1) {
-      // console.log('could not rotate', nextMatrix[0].length, xPos);
       return shape;
     }
   }
-  console.log('pr', testShape);
-  
   return testShape;
 
-}
+};
 
 export const isShapeCollidingDownwards = (board: number[][], shape: Shape): boolean => {
   const testShape = cloneDeep(shape);
   testShape.position.y += 1;
   return isShapeColliding(testShape, board);
-}
+};
+
+export const clearBoardCompletedRows = (board: number[][], shape: Shape): number[][] => {
+  const nextBoard = cloneDeep(board);
+  const shapeLength = shape.matrix.length;
+  const shapePosY = shape.position.y;
+  for (var i = shapePosY; i < (shapePosY + shapeLength); i++) {
+    if (!nextBoard[i].includes(0)) {
+      // console.log('need to shift rows', i);
+      for (var b = i -1; b >= 0; b--) {
+        // console.log('row to copy', b);
+        nextBoard[b + 1] = nextBoard[b];
+        if (b === 0) {
+          nextBoard[0] = nextBoard[b].map(x => 0);
+        }
+      }
+    }
+  }
+  return nextBoard;
+};
