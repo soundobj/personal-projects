@@ -11,6 +11,7 @@ import {
   clearShape,
   isShapeCollidingDownwards,
   isShapeColliding,
+  clearBoardCompletedRows,
 } from './lib/utils';
 import Grid from './grid/Grid'
 import stopWatch from "../stopWatch/stopWatch";
@@ -38,11 +39,11 @@ const Tetris = () => {
     } else if (direction === Direction.DOWN) {
       testShape.position.y += 1;
     }
-    
+
     const { board: nextBoard, shape: nextShape } = isShapeColliding(testShape, clearBoard)
       ? moveShape(clearBoard, shapeRef.current)
       : moveShape(clearBoard, shapeRef.current, direction);
-
+      
     boardRef.current = nextBoard;
     shapeRef.current = nextShape;
     setBoardUpdate(++boardUpdate);
@@ -74,6 +75,7 @@ const Tetris = () => {
 
     const nextBoard = clearShape(boardRef.current, shapeRef.current);
     if (isShapeCollidingDownwards(nextBoard, shapeRef.current)) {
+      boardRef.current = clearBoardCompletedRows(boardRef.current, shapeRef.current);
       if (shapeRef.current.position.y === 0) {
         console.log('game over');
         updateBoard();

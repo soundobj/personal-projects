@@ -77,8 +77,6 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
       const nextShape = rotateShapeInBounds(direction, shape, matrix);
       nextPosition = nextShape.position;
       shape.matrix = nextShape.matrix;
-      console.log('player rotate', nextShape);
-
       break;
     default: {
       break;
@@ -102,11 +100,8 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
   };
 }
 
-export const isShapeColliding = (shape: Shape, board: number[][], log: boolean = false): boolean => {
+export const isShapeColliding = (shape: Shape, board: number[][]): boolean => {
   const { matrix, position } = shape;
-  if (log) {
-    console.log('isc', matrix, position);
-  }
   for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < matrix[y].length; x++) {
       if (
@@ -149,13 +144,12 @@ export const rotateShapeInBounds = (direction: Direction, shape: Shape, board: n
   const { position, matrix } = shape;
   let xPos = position.x;
   let offset = 1;
-  // console.log(`xpos: ${xPos} offset: ${offset}`, direction);
   const nextMatrix = rotateShape(matrix, direction)
   const testShape = {
     position: cloneDeep(position),
     matrix: cloneDeep(nextMatrix),
   };
-  while (isShapeColliding(testShape, board, true)) {
+  while (isShapeColliding(testShape, board)) {
     xPos += offset;
     offset = -(offset + (offset > 0 ? 1 : -1));
     testShape.position.x = xPos;
@@ -177,11 +171,10 @@ export const clearBoardCompletedRows = (board: number[][], shape: Shape): number
   const nextBoard = cloneDeep(board);
   const shapeLength = shape.matrix.length;
   const shapePosY = shape.position.y;
+
   for (var i = shapePosY; i < (shapePosY + shapeLength); i++) {
-    if (!nextBoard[i].includes(0)) {
-      // console.log('need to shift rows', i);
+    if (nextBoard[i] && !nextBoard[i].includes(0)) {
       for (var b = i -1; b >= 0; b--) {
-        // console.log('row to copy', b);
         nextBoard[b + 1] = nextBoard[b];
         if (b === 0) {
           nextBoard[0] = nextBoard[b].map(x => 0);
