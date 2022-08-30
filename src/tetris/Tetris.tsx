@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Direction, Shape, Tetrominoe } from './types';
 import { useHotkeys } from 'react-hotkeys-hook';
-import cloneDeep from 'lodash/cloneDeep'
 
 import {
   randomEnum,
+  getTestShape,
   createMatrix,
   moveShape,
   initShape,
@@ -30,20 +30,12 @@ const Tetris = () => {
 
   const updateBoard = (direction?: Direction) => {
     const clearBoard = clearShape(boardRef.current, shapeRef.current);
-    const testShape = cloneDeep(shapeRef.current);
-
-    if (direction === Direction.LEFT) {
-      testShape.position.x += -1;
-    } else if (direction === Direction.RIGHT) {
-      testShape.position.x += 1;
-    } else if (direction === Direction.DOWN) {
-      testShape.position.y += 1;
-    }
+    const testShape = getTestShape(shapeRef.current, direction);
 
     const { board: nextBoard, shape: nextShape } = isShapeColliding(testShape, clearBoard)
       ? moveShape(clearBoard, shapeRef.current)
       : moveShape(clearBoard, shapeRef.current, direction);
-      
+
     boardRef.current = nextBoard;
     shapeRef.current = nextShape;
     setBoardUpdate(++boardUpdate);
@@ -65,7 +57,7 @@ const Tetris = () => {
   useEffect(() => {
     watch.start();
     updateBoard();
-  }, []); 
+  }, []);
 
   useEffect(() => {
     const { elapsedTime } = timeElapsed;
@@ -82,6 +74,7 @@ const Tetris = () => {
       } else {
         shapeRef.current = initShape(Tetrominoe.I, boardRef.current, spawnPositionStub);
         setBoardUpdate(1);
+        updateBoard();
       }
       return;
     }

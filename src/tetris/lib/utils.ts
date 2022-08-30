@@ -24,9 +24,21 @@ export const getShapeInitPosition = (matrix: number[][], shape: number[][]) => {
   const shapeMiddle = getMatrixCentre(shape);
   return {
     y: 0,
-    x: boardMiddle - shapeMiddle
+    x: boardMiddle - shapeMiddle,
   };
 }
+
+export const getTestShape = (shape: Shape, direction?: Direction, ) => {
+  const testShape = cloneDeep(shape);
+  if (direction === Direction.LEFT) {
+    testShape.position.x += -1;
+  } else if (direction === Direction.RIGHT) {
+    testShape.position.x += 1;
+  } else if (direction === Direction.DOWN) {
+    testShape.position.y += 1;
+  }
+  return testShape;
+};
 
 export const clearShape = (board: number[][], shape: Shape) => {
   const { position } = shape;
