@@ -179,13 +179,19 @@ export const isShapeCollidingDownwards = (board: number[][], shape: Shape): bool
   return isShapeColliding(testShape, board);
 };
 
-export const clearBoardCompletedRows = (board: number[][], shape: Shape): number[][] => {
+export const clearBoardCompletedRows = (
+  board: number[][],
+  shape: Shape,
+  callback?: (consecutiveCompletedRows: number) => {}
+): number[][] => {
   const nextBoard = cloneDeep(board);
   const shapeLength = shape.matrix.length;
   const shapePosY = shape.position.y;
+  let consecutiveCompletedRows = 0
 
   for (var i = shapePosY; i < (shapePosY + shapeLength); i++) {
     if (nextBoard[i] && !nextBoard[i].includes(0)) {
+      consecutiveCompletedRows++;
       for (var b = i -1; b >= 0; b--) {
         nextBoard[b + 1] = nextBoard[b];
         if (b === 0) {
@@ -194,5 +200,10 @@ export const clearBoardCompletedRows = (board: number[][], shape: Shape): number
       }
     }
   }
+
+  if (consecutiveCompletedRows && callback) {
+    callback(consecutiveCompletedRows);
+  }
+
   return nextBoard;
 };

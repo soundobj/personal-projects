@@ -13,7 +13,8 @@ import {
   isShapeColliding,
   clearBoardCompletedRows,
 } from './lib/utils';
-import Grid from './grid/Grid'
+import Grid from './grid/Grid';
+import Score from './score/Score';
 import stopWatch from "../stopWatch/stopWatch";
 
 // const spawnPositionStub = { x: 4, y: 12};
@@ -85,6 +86,7 @@ const Tetris = () => {
     <>
       <span>tetris</span>
       <Grid game={boardRef.current} />
+      <Score />
     </>);
 };
 
