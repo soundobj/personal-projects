@@ -8,6 +8,7 @@ export interface StopWatch {
   getElapsedTime: () => StopWatchCallbackPayload
   setElapsedSeconds: (milliseconds: number) => void
   getIsRunning: () => boolean
+  setIntervalLength: (internal: number) => void
 }
 
 export interface StopWatchCallbackPayload {
@@ -23,16 +24,17 @@ export const initialTimeElapsed = {
 /*
   Supply a callback to stoWatch to be notified with CallbackPayload every time the stopWatch ticks
 */
-export const stopWatch = (): StopWatch => {
+export const stopWatch = (interval: number = 1000): StopWatch => {
   let elapsedTime = 0;
-  let timer: NodeJS.Timeout
-  let callback: (c:any) => void
-  let isRunning: boolean = false
+  let timer: NodeJS.Timeout;
+  let callback: (c:any) => void;
+  let isRunning: boolean = false;
+  let _interval = interval;
 
   function add() {
     elapsedTime++;
     callback({
-      elapsedTime: elapsedTime * 1000,
+      elapsedTime: elapsedTime * _interval,
       ISOString: printElapsedTime(),
     });
   }
@@ -48,7 +50,7 @@ export const stopWatch = (): StopWatch => {
       console.error('@_StopWatch is already running, cannot start!');
       return
     }
-    timer = setInterval(add, 1000); // one second
+    timer = setInterval(add, _interval); // one second
     isRunning = true
   }
 
@@ -56,23 +58,25 @@ export const stopWatch = (): StopWatch => {
     clearInterval(timer);
     isRunning = false;
   };
-  const getElapsedSeconds = () => elapsedTime * 1000;
+  const getElapsedSeconds = () => elapsedTime * _interval;
   const printElapsedTime = () => {
-    const timeEllpased = new Date(elapsedTime * 1000).toISOString()
-    return timeEllpased.substr(12, 7);
+    const timeEllapsed = new Date(elapsedTime * _interval).toISOString()
+    return timeEllapsed.substr(12, 7);
   }
   const getElapsedTime = () => ({
-    elapsedTime: elapsedTime * 1000,
+    elapsedTime: elapsedTime * _interval,
     ISOString: printElapsedTime(),
   });
   
   const setCallback = (c:(c:any) => void) => callback = c
 
+  const setIntervalLength = (interval: number) => _interval = interval;
+
   const getIsRunning = () => {
     return isRunning
   }
 
-  const setElapsedSeconds = (milliseconds: number) => elapsedTime = milliseconds / 1000
+  const setElapsedSeconds = (milliseconds: number) => elapsedTime = milliseconds / _interval
 
   return {
     start,
@@ -84,6 +88,7 @@ export const stopWatch = (): StopWatch => {
     getElapsedTime,
     setElapsedSeconds,
     getIsRunning,
+    setIntervalLength,
   };
 };
 

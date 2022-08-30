@@ -86,7 +86,7 @@ const Tetris = () => {
     <>
       <span>tetris</span>
       <Grid game={boardRef.current} />
-      <Score />
+      <Score stopWatch={watch} />
     </>);
 };
 
