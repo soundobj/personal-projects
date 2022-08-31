@@ -315,7 +315,7 @@ describe("tetris utils", () => {
       expect(actual).toMatchObject(expected);
     });
   });
-  describe.only('clearBoardCompletedRows', () => {
+  describe('clearBoardCompletedRows', () => {
     it('clears rows that have been completed', () => {
       const board = [
         [1, 0, 0, 0, 0],

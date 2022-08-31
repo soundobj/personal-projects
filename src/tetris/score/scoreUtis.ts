@@ -33,11 +33,28 @@ export const levelProps = Object.freeze({
   },
 });
 
+export const getNextLevel = (level: Level): Level => {
+  return Level.MEDIUM;
+}
+
 export const getNextScore = (
   score: number,
   completedRows: number,
   level: Level,
   scoreThresholdReachedCallback: (nextLevel: Level) => void
   ): number => {
-    return 0;
+    const { 
+      rowCompletedValue,
+      multipleRowCompletedValueIncrement,
+      nextLevelScoreThreshold,
+    } = levelProps[level];
+
+    const nextValue = rowCompletedValue * completedRows;
+    const nextScore = score + nextValue;
+    
+    if (nextScore >= nextLevelScoreThreshold) {
+      scoreThresholdReachedCallback(getNextLevel(level))
+    }
+
+    return nextScore;
 }
