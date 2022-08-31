@@ -1,25 +1,42 @@
-import { levelProps, Level, getNextScore } from './scoreUtis';
+import {
+  levelProps, Level, getNextScore, getNextLevel
+} from './scoreUtis';
 
 describe("score utils", () => {
   describe('getNextScore', () => {
-    it.only('executes callback when next level threshold is reached', () => {
+    it('executes callback when next level threshold is reached', () => {
       const score = 90;
       const completedRows = 1;
       const level = Level.EASY;
-      const scoreThresholdReachedCallback = jest.fn();
-      
+      const onScoreThresholdReached = jest.fn();
+
       const actual = getNextScore(
         score,
         completedRows,
         level,
-        scoreThresholdReachedCallback
+        onScoreThresholdReached
       );
-      
+
       expect(actual).toBe(100);
-      expect(scoreThresholdReachedCallback).toHaveBeenCalledWith(Level.MEDIUM);
+      expect(onScoreThresholdReached).toHaveBeenCalledWith(Level.MEDIUM);
     });
     it('calculates bonus score for consecutive multiple rows', () => {
-      expect(true).toBe(true);
+      const score = 0;
+      const completedRows = 2;
+      const level = Level.EASY;
+
+      const actual = getNextScore(
+        score,
+        completedRows,
+        level,
+      );
+
+      expect(actual).toBe(22);
+    });
+  });
+  describe('getNextLevel', () => {
+    it('gets MEDIUM after EASY level', () => {
+      expect(getNextLevel(Level.EASY)).toBe(Level.MEDIUM);
     });
   });
 });
