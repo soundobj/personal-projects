@@ -31,4 +31,13 @@ export const levelProps = Object.freeze({
     nextLevelScoreThreshold: 400,
     gameSpeed: 300,
   },
-}); 
+});
+
+export const getNextScore = (
+  score: number,
+  completedRows: number,
+  level: Level,
+  scoreThresholdReachedCallback: (nextLevel: Level) => void
+  ): number => {
+    return 0;
+}

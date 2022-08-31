@@ -15,13 +15,13 @@ import {
 } from './lib/utils';
 import Grid from './grid/Grid';
 import Score from './score/Score';
-import stopWatch from "../stopWatch/stopWatch";
+import useScore from './score/useScore';
 
 // const spawnPositionStub = { x: 4, y: 12};
 const spawnPositionStub = undefined;
 
 const Tetris = () => {
-  const watch = stopWatch();
+  const { watch, score, scoreMessage, completedRowsCallback } = useScore();
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
 
@@ -68,7 +68,7 @@ const Tetris = () => {
 
     const nextBoard = clearShape(boardRef.current, shapeRef.current);
     if (isShapeCollidingDownwards(nextBoard, shapeRef.current)) {
-      boardRef.current = clearBoardCompletedRows(boardRef.current, shapeRef.current);
+      boardRef.current = clearBoardCompletedRows(boardRef.current, shapeRef.current, completedRowsCallback);
       if (shapeRef.current.position.y === 0) {
         console.log('game over');
         updateBoard();
@@ -86,7 +86,7 @@ const Tetris = () => {
     <>
       <span>tetris</span>
       <Grid game={boardRef.current} />
-      <Score stopWatch={watch} />
+      <Score score={score} scoreMessage={scoreMessage} />
     </>);
 };
 

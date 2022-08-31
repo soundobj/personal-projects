@@ -1,18 +1,17 @@
 import React from 'react';
-import { StopWatch } from '../../stopWatch/stopWatch';
 
 import styles from  "./score.module.scss"
 
 const Score = (props: Score) => {
-  const { stopWatch } = props;
-  // stopWatch.setIntervalLength(100);
+  const { score, scoreMessage } = props;
   return (
-    <div className={styles.score}>score</div>
+    <div className={styles.score}>score: ${score}</div>
   )
 }
 
 type Score = {
-  stopWatch: StopWatch
+  score: number,
+  scoreMessage: string,
 }  
 
 export default Score;

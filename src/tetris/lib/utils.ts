@@ -182,7 +182,7 @@ export const isShapeCollidingDownwards = (board: number[][], shape: Shape): bool
 export const clearBoardCompletedRows = (
   board: number[][],
   shape: Shape,
-  callback?: (consecutiveCompletedRows: number) => {}
+  callback?: (consecutiveCompletedRows: number) => void
 ): number[][] => {
   const nextBoard = cloneDeep(board);
   const shapeLength = shape.matrix.length;
