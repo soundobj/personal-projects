@@ -62,7 +62,7 @@ export const getNextValue = (score: number, completedRows: number, level: Level)
   }
 
   const bonus = nextValue * bonusPercentage;
-  return nextValue + bonus;
+  return score + nextValue + bonus;
 };
 
 export const getNextScore = (
