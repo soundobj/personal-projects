@@ -49,19 +49,10 @@ export const getNextLevel = (level: Level): Level => {
 };
 
 export const getNextValue = (score: number, completedRows: number, level: Level): number => {
-  const { 
-    rowCompletedValue,
-    bonusPercentage,
-  } = levelProps[level];
-
+  const { rowCompletedValue, bonusPercentage } = levelProps[level];
   const nextValue = rowCompletedValue * completedRows;
+  const bonus = (completedRows > 1) ? nextValue * bonusPercentage : 0; 
 
-  if (completedRows === 1) {
-    const nextScore = score + nextValue;
-    return nextScore;
-  }
-
-  const bonus = nextValue * bonusPercentage;
   return score + nextValue + bonus;
 };
 
