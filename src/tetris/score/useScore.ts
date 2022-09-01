@@ -14,7 +14,6 @@ const useScore = () => {
   }
 
   const completedRowsCallback = (completedRows: number) => {
-    console.log('just completed rows count', completedRows);
     const nextScore = getNextScore(score, completedRows, level, onScoreThresholdReached);
     setScore(nextScore); 
   }
