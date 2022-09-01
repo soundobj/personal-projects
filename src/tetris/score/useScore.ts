@@ -3,7 +3,7 @@ import stopWatch from "../../stopWatch/stopWatch";
 import { levelProps, Level, getNextScore } from "./scoreUtis";
 
 const useScore = () => {
-  const watch = stopWatch();
+  const watch = stopWatch(levelProps[Level.EASY].gameSpeed);
   const [score, setScore] = useState<number>(0);
   const [level, setLevel] = useState<Level>(Level.EASY);
   const scoreMessage = 'foo';

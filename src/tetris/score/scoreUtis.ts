@@ -11,25 +11,25 @@ export const levelProps = Object.freeze({
     rowCompletedValue: 10,
     bonusPercentage: 0.1,
     nextLevelScoreThreshold: 100,
-    gameSpeed: 1000,
+    gameSpeed: 700,
   },
   [Level.MEDIUM]: {
     rowCompletedValue: 15,
     bonusPercentage: 0.2,
     nextLevelScoreThreshold: 200,
-    gameSpeed: 700,
+    gameSpeed: 500,
   },
   [Level.HARD]: {
     rowCompletedValue: 20,
     bonusPercentage: 0.3,
     nextLevelScoreThreshold: 300,
-    gameSpeed: 500,
+    gameSpeed: 300,
   },
   [Level.INSANE]: {
     rowCompletedValue: 30,
     bonusPercentage: 0.4,
     nextLevelScoreThreshold: 400,
-    gameSpeed: 300,
+    gameSpeed: 100,
   },
 });
 
