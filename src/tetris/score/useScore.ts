@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import stopWatch from "../../stopWatch/stopWatch";
-import { levelProps, Level } from "./scoreUtis";
+import { levelProps, Level, getNextScore } from "./scoreUtis";
 
 const useScore = () => {
   const watch = stopWatch();
@@ -8,8 +8,15 @@ const useScore = () => {
   const [level, setLevel] = useState<Level>(Level.EASY);
   const scoreMessage = 'foo';
 
+  const onScoreThresholdReached = (nextLevel: Level) => {
+    setLevel(nextLevel);
+    watch.setIntervalLength(levelProps[nextLevel].gameSpeed);
+  }
+
   const completedRowsCallback = (completedRows: number) => {
-    console.log('just completed rows count', completedRows); 
+    console.log('just completed rows count', completedRows);
+    const nextScore = getNextScore(score, completedRows, level, onScoreThresholdReached);
+    setScore(nextScore); 
   }
 
   return {

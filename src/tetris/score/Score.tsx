@@ -5,7 +5,7 @@ import styles from  "./score.module.scss"
 const Score = (props: Score) => {
   const { score, scoreMessage } = props;
   return (
-    <div className={styles.score}>score: ${score}</div>
+    <div className={styles.score}>score:{score}</div>
   )
 }
 
