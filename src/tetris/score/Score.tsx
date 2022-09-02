@@ -1,14 +1,20 @@
 import React, { useRef, useEffect } from 'react';
 
 import styles from "./score.module.scss"
-import { animateValue } from './scoreUtis';
+import { animateValue, animateVal } from './scoreUtis';
 
 const Score = (props: Score) => {
   const { score, scoreMessage, lastScore } = props;
   const numberRef = useRef<HTMLElement>();
 
+  const onValueUpdate = (value: number) => {
+    if (numberRef && numberRef.current?.innerHTML) {
+      numberRef.current.innerHTML = `${value}`;
+    }
+  };
+
   useEffect(() => {
-    animateValue(numberRef.current, lastScore, score, 1200);
+    animateVal(lastScore, score, 1200, onValueUpdate);
   }, [score, lastScore]);
 
   return (

@@ -1,9 +1,9 @@
 
 export enum Level {
-  EASY = "EASY", 
-  MEDIUM = "MEDIUM", 
-  HARD = "HARD", 
-  INSANE = "INSANE", 
+  EASY = "EASY",
+  MEDIUM = "MEDIUM",
+  HARD = "HARD",
+  INSANE = "INSANE",
 }
 
 export const levelProps = Object.freeze({
@@ -36,7 +36,7 @@ export const levelProps = Object.freeze({
 export const getNextLevel = (level: Level): Level => {
   switch (level) {
     case Level.EASY:
-      return Level.MEDIUM;  
+      return Level.MEDIUM;
     case Level.MEDIUM:
       return Level.HARD;
     case Level.HARD:
@@ -51,7 +51,7 @@ export const getNextLevel = (level: Level): Level => {
 export const getNextValue = (score: number, completedRows: number, level: Level): number => {
   const { rowCompletedValue, bonusPercentage } = levelProps[level];
   const nextValue = rowCompletedValue * completedRows;
-  const bonus = (completedRows > 1) ? nextValue * bonusPercentage : 0; 
+  const bonus = (completedRows > 1) ? nextValue * bonusPercentage : 0;
 
   return score + nextValue + bonus;
 };
@@ -61,15 +61,15 @@ export const getNextScore = (
   completedRows: number,
   level: Level,
   onScoreThresholdReached?: (nextLevel: Level) => void
-  ): number => {
-    const {  nextLevelScoreThreshold } = levelProps[level];
-    const nextScore = getNextValue(score, completedRows, level);
-    
-    if (nextScore >= nextLevelScoreThreshold) {
-      onScoreThresholdReached && onScoreThresholdReached(getNextLevel(level))
-    }
+): number => {
+  const { nextLevelScoreThreshold } = levelProps[level];
+  const nextScore = getNextValue(score, completedRows, level);
 
-    return nextScore;
+  if (nextScore >= nextLevelScoreThreshold) {
+    onScoreThresholdReached && onScoreThresholdReached(getNextLevel(level))
+  }
+
+  return nextScore;
 }
 
 export const animateValue = (obj: HTMLElement, start: number, end: number, duration: number) => {
@@ -83,4 +83,29 @@ export const animateValue = (obj: HTMLElement, start: number, end: number, durat
     }
   };
   window.requestAnimationFrame(step);
+}
+
+export const animateVal = (
+  start: number,
+  end: number,
+  duration: number,
+  callback: (value: number) => void
+) => {
+  if (start === end) {
+    return;
+  }
+  const range = end - start;
+  let current = start;
+  callback(start);
+  const increment = end > start ? 1 : -1;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  console.log('setTime', stepTime);
+  
+  const timer = setInterval(function () {
+    const value = current += increment;
+    callback(value);
+    if (current === end) {
+      clearInterval(timer);
+    }
+  }, stepTime);
 }
