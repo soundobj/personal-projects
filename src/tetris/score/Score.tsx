@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 
 import styles from "./score.module.scss"
-import { animateValue, animateVal } from './scoreUtis';
+import { animateValue, animateVal, easeInOutQuad } from './scoreUtis';
 
 const Score = (props: Score) => {
   const { score, scoreMessage, lastScore } = props;
@@ -14,7 +14,7 @@ const Score = (props: Score) => {
   };
 
   useEffect(() => {
-    animateVal(lastScore, score, 1200, onValueUpdate);
+    animateVal(lastScore, score, 1000, onValueUpdate, easeInOutQuad);
   }, [score, lastScore]);
 
   return (

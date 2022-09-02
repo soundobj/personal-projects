@@ -1,5 +1,5 @@
 import {
-  animateVal, Level, getNextScore, getNextLevel
+  animateVal, Level, getNextScore, getNextLevel, easeInOutQuad
 } from './scoreUtis';
 
 jest.useFakeTimers();
@@ -42,7 +42,7 @@ describe("score utils", () => {
     });
   });
   describe('animateVal', () => {
-    it.only('does stuff', () => {
+    it('animates values linearly', () => {
       const mockFn = jest.fn();
       const callback = (value: number, stepTime: number) => {
         console.log(`value:${value}, stepTime:${stepTime}`);
@@ -53,6 +53,16 @@ describe("score utils", () => {
       expect(mockFn).toBeCalledTimes(11);
       expect(mockFn).nthCalledWith(1, 0, 120);
       expect(mockFn).nthCalledWith(2, 1, 120);
+    });
+    it.only('animates values easing out', () => {
+      const mockFn = jest.fn();
+      const callback = (value: number, stepTime: number) => {
+        console.log(`value:${value}, stepTime:${stepTime}`);
+        mockFn(value, stepTime);
+      }; 
+      animateVal(0, 10, 1200, callback, easeInOutQuad)
+      jest.runAllTimers();
+      // expect(mockFn).toBeCalledTimes(11);
     });
   });
 });
