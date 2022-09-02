@@ -5,6 +5,7 @@ import { levelProps, Level, getNextScore } from "./scoreUtis";
 const useScore = () => {
   const watch = stopWatch(levelProps[Level.EASY].gameSpeed);
   const [score, setScore] = useState<number>(0);
+  const [lastScore, setLastScore ] = useState<number>(0);
   const [level, setLevel] = useState<Level>(Level.EASY);
   const scoreMessage = 'foo';
 
@@ -15,12 +16,14 @@ const useScore = () => {
 
   const completedRowsCallback = (completedRows: number) => {
     const nextScore = getNextScore(score, completedRows, level, onScoreThresholdReached);
+    setLastScore(score);
     setScore(nextScore); 
   }
 
   return {
     watch,
     score,
+    lastScore,
     scoreMessage,
     completedRowsCallback,
   }

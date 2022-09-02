@@ -21,7 +21,7 @@ import useScore from './score/useScore';
 const spawnPositionStub = undefined;
 
 const Tetris = () => {
-  const { watch, score, scoreMessage, completedRowsCallback } = useScore();
+  const { watch, score, lastScore, scoreMessage, completedRowsCallback } = useScore();
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
 
@@ -86,7 +86,7 @@ const Tetris = () => {
     <>
       <span>tetris</span>
       <Grid game={boardRef.current} />
-      <Score score={score} scoreMessage={scoreMessage} />
+      <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
     </>);
 };
 
