@@ -89,21 +89,20 @@ export const animateVal = (
   start: number,
   end: number,
   duration: number,
-  callback: (value: number) => void
+  callback: (value: number, stepTime: number) => void
 ) => {
   if (start === end) {
     return;
   }
   const range = end - start;
   let current = start;
-  callback(start);
   const increment = end > start ? 1 : -1;
   let stepTime = Math.abs(Math.floor(duration / range));
-  console.log('setTime', stepTime);
+  callback(start, stepTime);
   
-  const timer = setInterval(function () {
+  const timer = setInterval(() => {
     const value = current += increment;
-    callback(value);
+    callback(value, stepTime);
     if (current === end) {
       clearInterval(timer);
     }

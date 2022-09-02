@@ -1,6 +1,8 @@
 import {
-  levelProps, Level, getNextScore, getNextLevel
+  animateVal, Level, getNextScore, getNextLevel
 } from './scoreUtis';
+
+jest.useFakeTimers();
 
 describe("score utils", () => {
   describe('getNextScore', () => {
@@ -37,6 +39,20 @@ describe("score utils", () => {
   describe('getNextLevel', () => {
     it('gets MEDIUM after EASY level', () => {
       expect(getNextLevel(Level.EASY)).toBe(Level.MEDIUM);
+    });
+  });
+  describe('animateVal', () => {
+    it.only('does stuff', () => {
+      const mockFn = jest.fn();
+      const callback = (value: number, stepTime: number) => {
+        console.log(`value:${value}, stepTime:${stepTime}`);
+        mockFn(value, stepTime);
+      }; 
+      animateVal(0, 10, 1200, callback)
+      jest.runAllTimers();
+      expect(mockFn).toBeCalledTimes(11);
+      expect(mockFn).nthCalledWith(1, 0, 120);
+      expect(mockFn).nthCalledWith(2, 1, 120);
     });
   });
 });
