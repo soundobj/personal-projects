@@ -1,5 +1,9 @@
 import {
-  animateVal, Level, getNextScore, getNextLevel, easeInOutQuad
+  animateValue,
+  Level,
+  getNextScore,
+  getNextLevel,
+  easeInOutQuad,
 } from './scoreUtis';
 
 jest.useFakeTimers();
@@ -41,29 +45,29 @@ describe("score utils", () => {
       expect(getNextLevel(Level.EASY)).toBe(Level.MEDIUM);
     });
   });
-  describe('animateVal', () => {
+  describe('animateValue', () => {
     it('animates values linearly', () => {
       const mockFn = jest.fn();
       const callback = (value: number, stepTime: number) => {
         console.log(`value:${value}, stepTime:${stepTime}`);
         mockFn(value, stepTime);
       }; 
-      animateVal(0, 10, 1200, callback)
+      animateValue(0, 10, 1200, callback)
       jest.runAllTimers();
       expect(mockFn).toBeCalledTimes(11);
-      expect(mockFn).nthCalledWith(1, 0, 120);
+      expect(mockFn).nthCalledWith(1, 0, 0);
       expect(mockFn).nthCalledWith(2, 1, 120);
     });
-    it.only('animates values easing out', () => {
-      const mockFn = jest.fn();
-      const callback = (value: number, stepTime: number) => {
-        console.log(`value:${value}, stepTime:${stepTime}`);
-        mockFn(value, stepTime);
-      }; 
-      animateVal(0, 10, 1200, callback, easeInOutQuad)
-      jest.runAllTimers();
-      // expect(mockFn).toBeCalledTimes(11);
-    });
+    // it.only('animates values easing out', () => {
+    //   const mockFn = jest.fn();
+    //   const callback = (value: number, stepTime: number) => {
+    //     console.log(`value:${value}, stepTime:${stepTime}`);
+    //     mockFn(value, stepTime);
+    //   }; 
+    //   animateValue(0, 10, 1200, callback, easeInOutQuad)
+    //   jest.runAllTimers();
+    //   // expect(mockFn).toBeCalledTimes(11);
+    // });
   });
 });
 
