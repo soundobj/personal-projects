@@ -14,12 +14,14 @@ const Score = (props: Score) => {
   };
 
   useEffect(() => {
+    // @ts-ignore
     animateVal(lastScore, score, 1000, onValueUpdate, easeInOutQuad);
   }, [score, lastScore]);
 
   return (
     <div className={styles.score}>
       score:
+      {/* @ts-ignore */}
       <span ref={numberRef} className={styles.number}>
         {score}
       </span>

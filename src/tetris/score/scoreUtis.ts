@@ -114,41 +114,43 @@ export const animateVal = (
   end: number,
   duration: number,
   callback: (value: number, stepTime: number) => void,
-  easingFn?: (t: number, b: number, c: number, d: number) => number
+  easingFn: (t: number, b: number, c: number, d: number) => number
 ) => {
   if (start === end) {
     return;
   }
   const range = end - start;
-
-  if (easingFn) {
-    for (var i = start, len = range; i <= len; i++) {
+    callback(start, 0);
+  // if (easingFn) {
+    for (var i = 0; i <= range; i++) {
 
       let time = easingFn(i, start, duration, range);
       (function (s) {
         setTimeout(function () {
-          callback(s, time)
+          callback(start +s, time)
         }, time);
       })(i);
 
       console.log(time);
     }
 
-  } else {
-    let current = start;
-    const increment = end > start ? 1 : -1;
-    let stepTime = Math.abs(Math.floor(duration / range));
-    callback(start, stepTime);
+  // } else {
+  //   let current = start;
+  //   const increment = end > start ? 1 : -1;
+  //   let stepTime = Math.abs(Math.floor(duration / range));
+  //   callback(start, stepTime);
 
-    const timer = setInterval(() => {
-      const value = current += increment;
-      callback(value, stepTime);
-      if (current === end) {
-        clearInterval(timer);
-      }
-    }, stepTime);
-  }
+  //   const timer = setInterval(() => {
+  //     const value = current += increment;
+  //     callback(value, stepTime);
+  //     if (current === end) {
+  //       clearInterval(timer);
+  //     }
+  //   }, stepTime);
+  // }
 }
+
+// https://github.com/danro/jquery-easing/blob/master/jquery.easing.js
 
 // from http://jsfiddle.net/7GQMq/3/
 /*
@@ -166,6 +168,15 @@ export const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
   if ((t/=d/2) < 1) return c/2*t*t + b;
   return -c/2 * ((--t)*(t-2) - 1) + b;
 }  
+// @
+// export  const easeInOutElastic = (x, t, b, c, d) => {
+//   var s=1.70158;var p=0;var a=c;
+//   if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
+//   if (a < Math.abs(c)) { a=c; var s=p/4; }
+//   else var s = p/(2*Math.PI) * Math.asin (c/a);
+//   if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+//   return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+// },
 
 // export const easeInOutQuad = (time: number, start: number, change: number, duration: number) => {
 //   if ((time /= duration / 2) < 1) {
