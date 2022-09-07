@@ -96,7 +96,7 @@ export const animateValue = (
     return;
   }
   const range = end - start;
-  // callback(start, 0);
+  callback(start, 0);
   for (var i = 0; i <= range; i++) {
     let time = easingFn(i, start, duration, range);
     (function (s) {
@@ -120,6 +120,21 @@ export const animateValue = (
 
 export const easeLinear = (t: number, b: number, c: number, d: number) => {
   return Math.abs(Math.floor(c / d)) * t;
+}
+
+export const easeOutQuad = (t: number, b: number, c: number, d: number) => -c * (t /= d) * (t - 2) + b;
+
+export const easeInQuad = (t: number, b: number, c: number, d: number) => c * (t /= d) * t + b;
+
+export const easeInOut = (t: number, b: number, c: number, d: number) => {
+  if (t >= (d / 2)) {
+    console.log('in', t);
+    return easeInQuad(t, b, c, d);
+  } else {
+  console.log('out', t);
+  return easeOutQuad(t, b, c, d);
+
+  }
 }
 
 export const easeInOutQuad = (t: number, b: number, c: number, d: number) => {
