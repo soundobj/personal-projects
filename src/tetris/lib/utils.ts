@@ -1,4 +1,5 @@
 import { Shape, Game, Direction, Tetrominoe, Coordinate } from "../types";
+import { levelProps, Level } from "../score/scoreUtis";
 import { ROWS, COLUMNS, SHAPES } from '../consts';
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -207,3 +208,18 @@ export const clearBoardCompletedRows = (
 
   return nextBoard;
 };
+
+export type Progress = { lastProgress: number, progress: number}
+
+const getProgress = (unitsToGo: number, unitCount: number) : number => (unitCount - unitsToGo) / 10;
+
+export const mapScoreToProgress = (lastScore: number, score: number, level: Level): Progress => {
+  const { nextLevelScoreThreshold, unitCount } = levelProps[level];
+  
+  const lastProgressUnits = nextLevelScoreThreshold - lastScore;
+  const progressUnits = nextLevelScoreThreshold - score;
+  return ({
+    lastProgress: getProgress(lastProgressUnits, unitCount),
+    progress: getProgress(progressUnits, unitCount)
+  });
+}

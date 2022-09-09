@@ -7,8 +7,11 @@ import {
   rotateShape,
   rotateShapeInBounds,
   clearBoardCompletedRows,
+  mapScoreToProgress,
 } from "./utils";
 import { Direction, Tetrominoe } from "../types";
+
+import { Level } from '../score/scoreUtis'
 
 describe("tetris utils", () => {
   describe('clearShape', () => {
@@ -256,7 +259,7 @@ describe("tetris utils", () => {
           y: 0,
         }
       };
-      const   board = [
+      const board = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
@@ -264,18 +267,18 @@ describe("tetris utils", () => {
       ];
 
       const expected = {
-          matrix: [
-            [0, 0, 0],
-            [2, 2, 2],
-            [2, 0, 0],
-          ],
-          position: {
-            x: 2,
-            y: 0
-          }
+        matrix: [
+          [0, 0, 0],
+          [2, 2, 2],
+          [2, 0, 0],
+        ],
+        position: {
+          x: 2,
+          y: 0
+        }
       };
 
-      const actual = rotateShapeInBounds(Direction.CLOCKWISE, shape, board, );
+      const actual = rotateShapeInBounds(Direction.CLOCKWISE, shape, board,);
       expect(actual).toMatchObject(expected);
     });
     it('rotates shape clockwise and maintains it in bounds anti-clockwise', () => {
@@ -290,7 +293,7 @@ describe("tetris utils", () => {
           y: 0,
         }
       };
-      const   board = [
+      const board = [
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
@@ -298,20 +301,20 @@ describe("tetris utils", () => {
       ];
 
       const expected = {
-          matrix: [
-            [0, 0, 2],
-            [2, 2, 2],
-            [0, 0, 0],
-          ],
-          position: {
-            x: 0,
-            y: 0
-          }
+        matrix: [
+          [0, 0, 2],
+          [2, 2, 2],
+          [0, 0, 0],
+        ],
+        position: {
+          x: 0,
+          y: 0
+        }
       };
 
       const actual = rotateShapeInBounds(Direction.ANTI_CLOCKWISE, shape, board);
       console.log('actual', actual);
-      
+
       expect(actual).toMatchObject(expected);
     });
   });
@@ -345,6 +348,26 @@ describe("tetris utils", () => {
         [1, 1, 0, 1, 1]
       ]
       const actual = clearBoardCompletedRows(board, shape);
+      expect(actual).toMatchObject(expected);
+    });
+  });
+  describe('mapScoreToProgress', () => {
+    it('converst current score to a progress unit, MEDIUM', () => {
+      const lastScore = 120;
+      const score = 140;
+      const currentLevel = Level.MEDIUM;
+
+      const expected = { lastProgress: 2, progress: 4 };
+      const actual = mapScoreToProgress(lastScore, score, currentLevel);
+      expect(actual).toMatchObject(expected);
+    });
+    it('converst current score to a progress unit', () => {
+      const lastScore = 0;
+      const score = 15;
+      const currentLevel = Level.EASY;
+
+      const expected = { lastProgress: 0, progress: 1.5 };
+      const actual = mapScoreToProgress(lastScore, score, currentLevel);
       expect(actual).toMatchObject(expected);
     });
   });
