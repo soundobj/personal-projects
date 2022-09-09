@@ -1,0 +1,15 @@
+.progressBarContainer {
+  height: 40px;
+  width: 200px;
+  border: solid 1px black;
+  margin-left: 20px;
+  overflow: hidden;
+
+  .completedPercentage {
+    height: 100%;
+    width: 10%;
+    background-color: orange;
+    // transform: scaleX(1);
+    transform-origin: left center;
+  }
+}

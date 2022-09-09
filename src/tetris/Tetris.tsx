@@ -16,6 +16,7 @@ import {
 import Grid from './grid/Grid';
 import Score from './score/Score';
 import useScore from './score/useScore';
+import ProgressBar from './progressBar/ProgressBar';
 
 // const spawnPositionStub = { x: 4, y: 12};
 const spawnPositionStub = undefined;
@@ -87,6 +88,7 @@ const Tetris = () => {
       <span>tetris</span>
       <Grid game={boardRef.current} />
       <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
+      <ProgressBar completedPercentage={0} />
     </>);
 };
 
