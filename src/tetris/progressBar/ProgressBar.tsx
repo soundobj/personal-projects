@@ -22,12 +22,18 @@ const ProgressBar = (props: ProgressBar) => {
           { transform: 'scaleX(3)' },
           { transform: 'scaleX(6)' }
         ],
-        { duration: 1500, fill: 'forwards' }
+        { duration: 300, fill: 'forwards' }
       );
     
     const progressAnimation = new Animation(progressKeyframes, document.timeline);
     
     progressAnimation.play();
+
+    const onFinished = progressAnimation.finished;
+
+    onFinished.then(() => {
+      console.log('progressAnimation finished');
+    });
   }, []);
 
 

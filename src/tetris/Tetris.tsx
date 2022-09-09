@@ -85,10 +85,10 @@ const Tetris = () => {
 
   return (
     <>
-      <span>tetris</span>
-      <Grid game={boardRef.current} />
       <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
       <ProgressBar completedPercentage={0} />
+      <Grid game={boardRef.current} />
+
     </>);
 };
 
