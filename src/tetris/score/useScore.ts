@@ -25,6 +25,7 @@ const useScore = () => {
     score,
     lastScore,
     scoreMessage,
+    level,
     completedRowsCallback,
   }
 }

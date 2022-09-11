@@ -351,24 +351,20 @@ describe("tetris utils", () => {
       expect(actual).toMatchObject(expected);
     });
   });
-  describe('mapScoreToProgress', () => {
+  describe.only('mapScoreToProgress', () => {
     it('converst current score to a progress unit, MEDIUM', () => {
       const lastScore = 120;
-      const score = 140;
       const currentLevel = Level.MEDIUM;
 
-      const expected = { lastProgress: 2, progress: 4 };
-      const actual = mapScoreToProgress(lastScore, score, currentLevel);
-      expect(actual).toMatchObject(expected);
+      const actual = mapScoreToProgress(lastScore, currentLevel);
+      expect(actual).toBe(2);
     });
     it('converst current score to a progress unit', () => {
-      const lastScore = 0;
       const score = 15;
       const currentLevel = Level.EASY;
 
-      const expected = { lastProgress: 0, progress: 1.5 };
-      const actual = mapScoreToProgress(lastScore, score, currentLevel);
-      expect(actual).toMatchObject(expected);
+      const actual = mapScoreToProgress(score, currentLevel);
+      expect(actual).toBe(1.5);
     });
   });
 });

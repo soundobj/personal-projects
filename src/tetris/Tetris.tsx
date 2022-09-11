@@ -12,6 +12,7 @@ import {
   isShapeCollidingDownwards,
   isShapeColliding,
   clearBoardCompletedRows,
+  mapScoreToProgress,
 } from './lib/utils';
 import Grid from './grid/Grid';
 import Score from './score/Score';
@@ -22,7 +23,7 @@ import ProgressBar from './progressBar/ProgressBar';
 const spawnPositionStub = undefined;
 
 const Tetris = () => {
-  const { watch, score, lastScore, scoreMessage, completedRowsCallback } = useScore();
+  const { watch, score, lastScore, scoreMessage, completedRowsCallback, level } = useScore();
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
 
@@ -86,7 +87,10 @@ const Tetris = () => {
   return (
     <>
       <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
-      <ProgressBar completedPercentage={0} />
+      <ProgressBar
+        lastProgress={mapScoreToProgress(lastScore, level)}
+        progress={mapScoreToProgress(score, level)}
+      />
       <Grid game={boardRef.current} />
     </>);
 };

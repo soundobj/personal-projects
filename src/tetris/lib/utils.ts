@@ -209,17 +209,11 @@ export const clearBoardCompletedRows = (
   return nextBoard;
 };
 
-export type Progress = { lastProgress: number, progress: number}
-
 const getProgress = (unitsToGo: number, unitCount: number) : number => (unitCount - unitsToGo) / 10;
 
-export const mapScoreToProgress = (lastScore: number, score: number, level: Level): Progress => {
+export const mapScoreToProgress = (score: number, level: Level): number => {
   const { nextLevelScoreThreshold, unitCount } = levelProps[level];
   
-  const lastProgressUnits = nextLevelScoreThreshold - lastScore;
   const progressUnits = nextLevelScoreThreshold - score;
-  return ({
-    lastProgress: getProgress(lastProgressUnits, unitCount),
-    progress: getProgress(progressUnits, unitCount)
-  });
+  return getProgress(progressUnits, unitCount);
 }

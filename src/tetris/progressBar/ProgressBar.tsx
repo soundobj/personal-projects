@@ -9,8 +9,7 @@ import classNames from 'classnames';
 
 const ProgressBar = (props: ProgressBar) => {
 
-  const { className, completedPercentage, test } = props;
-  const [percentage, setPercentage] = useState<number>(0);
+  const { className, lastProgress, progress } = props;
   const progressRef = useRef();
   
  
@@ -19,8 +18,8 @@ const ProgressBar = (props: ProgressBar) => {
         // @ts-ignore
         progressRef.current,
         [
-          { transform: 'scaleX(3)' },
-          { transform: 'scaleX(6)' }
+          { transform: `scaleX(${lastProgress})` },
+          { transform: `scaleX(${progress})` }
         ],
         { duration: 300, fill: 'forwards' }
       );
@@ -34,7 +33,7 @@ const ProgressBar = (props: ProgressBar) => {
     onFinished.then(() => {
       console.log('progressAnimation finished');
     });
-  }, []);
+  }, [lastProgress, progress]);
 
 
   return (
@@ -49,8 +48,8 @@ const ProgressBar = (props: ProgressBar) => {
 
 type ProgressBar = {
   className?: string,
-  completedPercentage?: number,
-  test?: boolean
+  lastProgress: number,
+  progress: number,
 }
 
 export default ProgressBar;
