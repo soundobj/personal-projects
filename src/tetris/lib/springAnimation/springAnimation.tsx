@@ -1,3 +1,6 @@
+// https://codesandbox.io/s/simple-spring-animation-x2svy?from-embed=&file=/index.html
+// https://www.kirillvasiltsov.com/writing/how-to-create-a-spring-animation-with-web-animation-api/
+
 export const createSpringAnimation = (
   dx: number, 
   dy: number,

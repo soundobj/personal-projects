@@ -2,15 +2,14 @@ import React, { useRef, useEffect, useState } from 'react';
 
 import styles from "./progressBar.module.scss"
 import classNames from 'classnames';
-
-// https://blog.maximeheckel.com/posts/the-physics-behind-spring-animations
-// https://codesandbox.io/s/simple-spring-animation-x2svy?from-embed=&file=/index.html
-// https://www.kirillvasiltsov.com/writing/how-to-create-a-spring-animation-with-web-animation-api/
+import { createSpringAnimation } from '../lib/springAnimation/springAnimation';
 
 const ProgressBar = (props: ProgressBar) => {
 
   const { className, lastProgress, progress } = props;
   const progressRef = useRef();
+  const springRef = useRef();
+  const [progressWidth, setProgressWidth] = useState(0); 
   
  
   useEffect(() => {
@@ -21,8 +20,7 @@ const ProgressBar = (props: ProgressBar) => {
           { transform: `scaleX(${lastProgress})` },
           { transform: `scaleX(${progress})` }
         ],
-        { duration: 500, fill: 'forwards', easing: 'ease-in' }
-  
+        { duration: 300, fill: 'forwards', easing: 'ease-in' }
       );
     
     const progressAnimation = new Animation(progressKeyframes, document.timeline);
@@ -32,7 +30,22 @@ const ProgressBar = (props: ProgressBar) => {
     const onFinished = progressAnimation.finished;
 
     onFinished.then(() => {
-      console.log('progressAnimation finished');
+      setProgressWidth(progress * 10);
+      setTimeout(() => {
+        const { positions, frames } = createSpringAnimation(20, 0);
+        const keyframes = new KeyframeEffect(
+          // @ts-ignore
+          springRef.current, positions, {
+          duration: (frames / 60) * 400,
+          fill: "both",
+          easing: "linear",
+          iterations: 1
+        });
+
+        const springAnimation = new Animation(keyframes);
+        springAnimation.play();
+      })
+
     });
   }, [lastProgress, progress]);
 
@@ -41,7 +54,11 @@ const ProgressBar = (props: ProgressBar) => {
     <>
       <div className={classNames(styles.progressBarContainer, className)}>
         {/* @ts-ignore */}
-        <div ref={progressRef} className={styles.completedPercentage} style={{}}></div>
+        <div ref={progressRef} className={styles.completedPercentage} />
+        {/* @ts-ignore */}
+        <div ref={springRef} className={styles.completedPercentageSpring} style={{
+          width: `${progressWidth}%`,
+        }} />
       </div>
     </>
   )
