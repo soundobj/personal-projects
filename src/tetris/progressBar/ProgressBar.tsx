@@ -20,7 +20,7 @@ const ProgressBar = (props: ProgressBar) => {
           { transform: `scaleX(${lastProgress})` },
           { transform: `scaleX(${progress})` }
         ],
-        { duration: 300, fill: 'forwards', easing: 'ease-in' }
+        { duration: 200, fill: 'forwards', easing: 'ease-in' }
       );
     
     const progressAnimation = new Animation(progressKeyframes, document.timeline);
