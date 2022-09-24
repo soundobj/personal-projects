@@ -19,6 +19,7 @@ import Score from './score/Score';
 import useScore from './score/useScore';
 import ProgressBar from './progressBar/ProgressBar';
 import Level from './level/Level';
+import styles from './tetris.module.scss'
 
 // const spawnPositionStub = { x: 4, y: 12};
 const spawnPositionStub = undefined;
@@ -93,6 +94,7 @@ const Tetris = () => {
         <ProgressBar
           lastProgress={mapScoreToProgress(lastScore, level)}
           progress={mapScoreToProgress(score, level)}
+          className={styles.levelProgress}
         />
       </Level>
       <Grid game={boardRef.current} />

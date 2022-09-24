@@ -1,7 +1,6 @@
 .progressBarContainer {
-  mix-blend-mode: lighten;
-  height: 150px;
-  width: 400px;
+  width: 100px;
+  height: 40px;
   border: solid 1px black;
   margin-left: 20px;
   overflow: hidden;
@@ -10,13 +9,13 @@
   .completedPercentage {
     height: 100%;
     width: 10%;
-    background-color: orange;
+    // background-color: orange;
     transform-origin: left center;
   }
 
   .completedPercentageSpring {
     height: 100%;
-    background-color: orange;
+    // background-color: orange;
     position: absolute;
     top: 0;
     left: 0;
