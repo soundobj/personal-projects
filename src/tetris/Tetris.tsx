@@ -18,6 +18,7 @@ import Grid from './grid/Grid';
 import Score from './score/Score';
 import useScore from './score/useScore';
 import ProgressBar from './progressBar/ProgressBar';
+import Level from './level/Level';
 
 // const spawnPositionStub = { x: 4, y: 12};
 const spawnPositionStub = undefined;
@@ -87,10 +88,13 @@ const Tetris = () => {
   return (
     <>
       <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
-      <ProgressBar
-        lastProgress={mapScoreToProgress(lastScore, level)}
-        progress={mapScoreToProgress(score, level)}
-      />
+      <Level level="EASY">
+        {/* @ts-ignore */}
+        <ProgressBar
+          lastProgress={mapScoreToProgress(lastScore, level)}
+          progress={mapScoreToProgress(score, level)}
+        />
+      </Level>
       <Grid game={boardRef.current} />
     </>);
 };

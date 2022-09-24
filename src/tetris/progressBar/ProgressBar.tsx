@@ -9,22 +9,22 @@ const ProgressBar = (props: ProgressBar) => {
   const { className, lastProgress, progress } = props;
   const progressRef = useRef();
   const springRef = useRef();
-  const [progressWidth, setProgressWidth] = useState(0); 
-  
- 
+  const [progressWidth, setProgressWidth] = useState(0);
+
+
   useEffect(() => {
     const progressKeyframes = new KeyframeEffect(
-        // @ts-ignore
-        progressRef.current,
-        [
-          { transform: `scaleX(${lastProgress})` },
-          { transform: `scaleX(${progress})` }
-        ],
-        { duration: 200, fill: 'forwards', easing: 'ease-in' }
-      );
-    
+      // @ts-ignore
+      progressRef.current,
+      [
+        { transform: `scaleX(${lastProgress})` },
+        { transform: `scaleX(${progress})` }
+      ],
+      { duration: 200, fill: 'forwards', easing: 'ease-in' }
+    );
+
     const progressAnimation = new Animation(progressKeyframes, document.timeline);
-    
+
     progressAnimation.play();
 
     const onFinished = progressAnimation.finished;
@@ -51,16 +51,14 @@ const ProgressBar = (props: ProgressBar) => {
 
 
   return (
-    <>
-      <div className={classNames(styles.progressBarContainer, className)}>
-        {/* @ts-ignore */}
-        <div ref={progressRef} className={styles.completedPercentage} />
-        {/* @ts-ignore */}
-        <div ref={springRef} className={styles.completedPercentageSpring} style={{
-          width: `${progressWidth}%`,
-        }} />
-      </div>
-    </>
+    <div className={classNames(styles.progressBarContainer, className)}>
+      {/* @ts-ignore */}
+      <div ref={progressRef} className={styles.completedPercentage} />
+      {/* @ts-ignore */}
+      <div ref={springRef} className={styles.completedPercentageSpring} style={{
+        width: `${progressWidth}%`,
+      }} />
+    </div>
   )
 }
 

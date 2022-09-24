@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+
+  .text {
+    position: absolute;
+    top:0;
+    left:0;
+    font-size: 19vh;
+    mix-blend-mode: normal;
+  }
+}

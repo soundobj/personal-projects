@@ -108,7 +108,7 @@ export const animateValue = (
         callback(start + s, time)
       }, time);
     })(i);
-    console.log(time);
+    // console.log(time);
   }
 }
 
