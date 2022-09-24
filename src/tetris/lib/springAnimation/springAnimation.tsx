@@ -62,10 +62,6 @@ export const createSpringAnimation = (
     }
 
     if (frames_below_threshold >= 60) {
-      console.debug(
-        "Largest displacement over last 60 frames",
-        `${Math.abs(largest_displ)}px`
-      );
       frames = step;
       break;
     }
@@ -75,8 +71,5 @@ export const createSpringAnimation = (
     frames = 1000;
   }
 
-  console.debug(`Generated ${frames} frames`);
-
   return { positions, frames };
-
 }
