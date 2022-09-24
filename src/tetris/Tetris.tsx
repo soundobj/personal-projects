@@ -87,7 +87,7 @@ const Tetris = () => {
   }, [timeElapsed]);
 
   return (
-    <>
+    <div className={styles.tetris}>
       <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
       <Level level="EASY">
         {/* @ts-ignore */}
@@ -98,7 +98,7 @@ const Tetris = () => {
         />
       </Level>
       <Grid game={boardRef.current} />
-    </>);
+    </div>);
 };
 
 export default Tetris;

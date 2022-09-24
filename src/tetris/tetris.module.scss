@@ -1,9 +1,17 @@
-.levelProgress {
-  mix-blend-mode: lighten;
-  height: 150px;
-  width: 400px;
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
-  div {
-    background-color: pink;
+.tetris {
+
+  font-family: 'Luckiest Guy', cursive;
+
+
+  .levelProgress {
+    mix-blend-mode: lighten;
+    height: 150px;
+    width: 400px;
+
+    div {
+      background-color: pink;
+    }
   }
 }
