@@ -9,7 +9,8 @@ export enum Direction {
   DOWN = "DOWN",
   RIGHT = "RIGHT",
   CLOCKWISE = "CLOCKWISE",
-  ANTI_CLOCKWISE = "ANTI_CLOCKWISE"
+  ANTI_CLOCKWISE = "ANTI_CLOCKWISE",
+  BOTTOM = "BOTTOM"
 }
 
 export enum Tetrominoe {

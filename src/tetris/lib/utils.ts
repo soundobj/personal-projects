@@ -64,6 +64,18 @@ export const initShape = (type: Tetrominoe, board: number[][], position?: Coordi
 
 export const mapNumberToDirection = (number: number): Direction => (number > 0) ? Direction.LEFT : Direction.RIGHT;
 
+export const calculateBottomY = (board: number[][], shape: Shape) => {
+  const nextShape = cloneDeep(shape);
+  const nextBoard = clearShape(cloneDeep(board), shape);
+  for (let index = 0; index < board.length; index++) {
+    nextShape.position.y = index;    
+    if (isShapeColliding(nextShape, nextBoard)) {
+      break;
+    }
+  }
+  return nextShape.position.y - 1;
+}
+
 export const moveShape = (matrix: number[][], shape: Shape, direction?: Direction) => {
   let nextBoard = matrix;
   if (direction) {
@@ -77,6 +89,10 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
     case Direction.DOWN:
       nextPosition.x = position.x;
       nextPosition.y = position.y + 1;
+      break;
+    case Direction.BOTTOM:
+      nextPosition.x = position.x;
+      nextPosition.y = calculateBottomY(matrix, shape);
       break;
     case Direction.RIGHT:
       nextPosition.x = position.x + 1;

@@ -52,9 +52,10 @@ const Tetris = () => {
     'ArrowUp': () => updateBoard(Direction.CLOCKWISE),
     'ArrowDown': () => updateBoard(Direction.DOWN),
     'Slash': () => updateBoard(Direction.ANTI_CLOCKWISE),
+    'Space': () =>  updateBoard(Direction.BOTTOM),
   }
 
-  useHotkeys('left,right,up,down,/', (key) => {
+  useHotkeys('left,right,up,down,/,space', (key) => {
     // console.log('pressed something', key)
     hotKeysMap[key.code]();
   });

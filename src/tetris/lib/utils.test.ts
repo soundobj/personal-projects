@@ -8,6 +8,7 @@ import {
   rotateShapeInBounds,
   clearBoardCompletedRows,
   mapScoreToProgress,
+  calculateBottomY
 } from "./utils";
 import { Direction, Tetrominoe } from "../types";
 
@@ -42,6 +43,29 @@ describe("tetris utils", () => {
       const actual = clearShape(board, shape);
 
       expect(actual).toMatchObject(expected);
+    });
+  });
+  describe.only('calculateBottomY', () => {
+    it('moves shape to the lowest possible place in the board', () => {
+      const board = [
+        [0, 0, 2, 0, 0],
+        [0, 0, 2, 0, 0],
+        [0, 0, 2, 2, 0],
+        [0, 0, 0, 0, 0],
+        [0, 3, 0, 0, 0]
+      ];
+      const shape = {
+        matrix: [
+          [0, 2, 0],
+          [0, 2, 0],
+          [0, 2, 2],
+        ],
+        position: { x: 2, y: 0 }
+      };
+
+      const actual = calculateBottomY(board, shape);
+
+      expect(actual).toBe(2);
     });
   });
   describe('moveShape', () => {
