@@ -4,11 +4,14 @@
 
   font-family: 'Luckiest Guy', cursive;
 
+  .statsContainer {
+    display:  flex;
+  }
 
   .levelProgress {
     mix-blend-mode: lighten;
-    height: 150px;
-    width: 400px;
+    height: 50px;
+    width: 200px;
 
     div {
       background-color: pink;

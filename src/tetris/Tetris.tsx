@@ -89,6 +89,7 @@ const Tetris = () => {
 
   return (
     <div className={styles.tetris}>
+      <div className={styles.statsContainer}>
       <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
       <Level level="EASY">
         {/* @ts-ignore */}
@@ -98,6 +99,7 @@ const Tetris = () => {
           className={styles.levelProgress}
         />
       </Level>
+      </div>
       <Grid game={boardRef.current} />
     </div>);
 };
