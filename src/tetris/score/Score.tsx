@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 
 import styles from "./score.module.scss"
-import { animateValue, easeInQuad} from './scoreUtis';
+import { animateValue, easeInQuad } from './scoreUtis';
 
 const Score = (props: Score) => {
   const { score, scoreMessage, lastScore } = props;
@@ -19,13 +19,15 @@ const Score = (props: Score) => {
   }, [score, lastScore]);
 
   return (
-    <div className={styles.score}>
-      score:
-      {/* @ts-ignore */}
-      <span ref={numberRef} className={styles.number}>
-        {score}
-      </span>
-    </div>
+    <dl className={styles.score}>
+      <dt>score</dt>
+      <dd>
+        {/* @ts-ignore */}
+        <span ref={numberRef} className={styles.number}>
+          {score}
+        </span>
+      </dd>
+    </dl>
   )
 }
 
