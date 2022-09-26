@@ -10,8 +10,10 @@
 
   .levelProgress {
     mix-blend-mode: lighten;
-    height: 50px;
-    width: 200px;
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    top: -5px;
 
     div {
       background-color: pink;
