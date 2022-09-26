@@ -5,9 +5,9 @@ $border: var(--boardGridWidth) solid var(--boardGridArea);
 .grid {
   display: grid;
   grid: repeat(10, auto) / repeat(10, auto);
-  max-width: 17rem+ ($gutter * 2);
+  max-width: 16rem+ ($gutter * 2);
   margin: 0 auto;
-  padding: var(--board-padding);
+  padding-right: var(--board-padding);
 
   & > div {
     border-top: $border;
