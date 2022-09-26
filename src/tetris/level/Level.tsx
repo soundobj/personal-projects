@@ -5,13 +5,18 @@ import classNames from 'classnames';
 
 const Level = (props: Level) => {
 
-  const { children, className, level } = props; 
- 
+  const { children, className, level } = props;
+
   return (
-    <div className={styles.container}>
-      <h1 className={classNames(styles.text, className)}>{level}</h1>
-      {children}
-    </div>
+    <dl>
+      <dt>Level</dt>
+      <dd>
+        <div className={styles.container}>
+          <h1 className={classNames(styles.text, className)}>{level}</h1>
+          {children}
+        </div>
+      </dd>
+    </dl>
   )
 }
 
