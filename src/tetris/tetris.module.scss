@@ -11,6 +11,10 @@
     max-width: 16rem+ ($gutter * 2);
     margin: 0 auto;
     margin-top: 16px;
+
+    dd {
+      font-size: 70px;
+    }
   }
 
   .levelProgress {
