@@ -6,11 +6,23 @@
   font-family: 'Luckiest Guy', cursive;
 
   .statsContainer {
-    display:  flex;
+    display: flex;
     justify-content: space-between;
     max-width: 16rem+ ($gutter * 2);
     margin: 0 auto;
     margin-top: 16px;
+
+    dl {
+      width: 100%;
+
+      &:first-child {
+        margin-right: 8px;
+      }
+    }
+
+    dt {
+      border-bottom: solid 1px black;
+    }
 
     dd {
       font-size: 70px;
