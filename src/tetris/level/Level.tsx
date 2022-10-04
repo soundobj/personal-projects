@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import styles from "./level.module.scss"
 import classNames from 'classnames';
+import fitty from 'fitty';
 
 const Level = (props: Level) => {
 
   const { children, className, level } = props;
+
+  useEffect(() => {
+    fitty(`.${styles.text}`);
+  }, []);
 
   return (
     <dl>

@@ -91,7 +91,7 @@ const Tetris = () => {
     <div className={styles.tetris}>
       <div className={styles.statsContainer}>
       <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
-      <Level level="EASY">
+      <Level level={level}>
         {/* @ts-ignore */}
         <ProgressBar
           lastProgress={mapScoreToProgress(lastScore, level)}

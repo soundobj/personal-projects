@@ -8,7 +8,7 @@ export enum Level {
 
 export const levelProps = Object.freeze({
   [Level.EASY]: {
-    rowCompletedValue: 10,
+    rowCompletedValue: 101,
     bonusPercentage: 0.1,
     nextLevelScoreThreshold: 100,
     unitCount: 100,

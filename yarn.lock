@@ -6366,6 +6366,11 @@
     "locate-path" "^5.0.0"
     "path-exists" "^4.0.0"
 
+"fitty@^2.3.6":
+  "integrity" "sha512-ENp/+MqqYmXBGHC0dlltCX75+5zL5m0uiIGCgYdoThao99BrJpNYzEh3xrvhiy4b7O5X82CQT7dPTiB53H6stw=="
+  "resolved" "https://registry.npmjs.org/fitty/-/fitty-2.3.6.tgz"
+  "version" "2.3.6"
+
 "flat-cache@^2.0.1":
   "integrity" "sha512-LoQe6yDuUMDzQAEH8sgmh4Md6oZnc/7PjtwjNFSzveXqSHt6ka9fPBuso7IGf9Rz4uqnSnWiFH2B/zj24a5ReA=="
   "resolved" "https://registry.npmjs.org/flat-cache/-/flat-cache-2.0.1.tgz"
