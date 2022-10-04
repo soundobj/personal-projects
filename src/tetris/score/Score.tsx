@@ -15,7 +15,7 @@ const Score = (props: Score) => {
 
   useEffect(() => {
     // @ts-ignore
-    animateValue(lastScore, score, 1500, onValueUpdate, easeInQuad);
+    animateValue(lastScore, score, 500, onValueUpdate, easeInQuad);
   }, [score, lastScore]);
 
   return (
