@@ -2,7 +2,7 @@
 @import "../sudoku/sass-vars.scss";
 
 .tetris {
-
+  height: 100%; overflow: hidden;
   font-family: 'Luckiest Guy', cursive;
 
   .statsContainer {
