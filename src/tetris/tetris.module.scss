@@ -12,6 +12,10 @@
     margin: 0 auto;
     margin-top: 16px;
 
+    .score {
+      background-color: inherit;
+    }
+
     dl {
       width: 50%;
 
@@ -27,6 +31,7 @@
     dd {
       font-size: 70px;
       margin: 10px 0 -10px 0;
+      vertical-align: text-top;
     }
   }
 

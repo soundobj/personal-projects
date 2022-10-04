@@ -90,8 +90,14 @@ const Tetris = () => {
   return (
     <div className={styles.tetris}>
       <div className={styles.statsContainer}>
-      <Score score={score} lastScore={lastScore} scoreMessage={scoreMessage} />
-      <Level level={level}>
+      <Score score={score} className={styles.score} lastScore={lastScore} scoreMessage={scoreMessage} />
+      <Level level={level} onLevelChange={(newFontSize: number) => {
+        const scoreElement = document.getElementsByClassName(styles.score);
+        if (scoreElement.length) {
+          /* @ts-ignore */
+          scoreElement[0].style.fontSize = `${newFontSize}px`;
+        }
+      }}>
         {/* @ts-ignore */}
         <ProgressBar
           lastProgress={mapScoreToProgress(lastScore, level)}

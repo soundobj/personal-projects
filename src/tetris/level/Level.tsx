@@ -6,10 +6,15 @@ import fitty from 'fitty';
 
 const Level = (props: Level) => {
 
-  const { children, className, level } = props;
+  const { children, className, level, onLevelChange } = props;
 
   useEffect(() => {
-    fitty(`.${styles.text}`);
+    const levelTextFittyInstance = fitty(`.${styles.text}`);
+    levelTextFittyInstance[0].element.addEventListener('fit', (e) => {
+      // @ts-ignore
+      const newFontSize = e.detail.newValue;
+      onLevelChange(newFontSize);
+  });
   }, []);
 
   return (
@@ -29,6 +34,7 @@ type Level = {
   children?: any[],
   className?: string,
   level: string,
+  onLevelChange: (newFontSize: number) => void;
 }
 
 export default Level;
