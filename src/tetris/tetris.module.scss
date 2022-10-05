@@ -29,7 +29,6 @@
     }
 
     dd {
-      font-size: 70px;
       margin: 10px 0 -10px 0;
       vertical-align: text-top;
     }
@@ -37,7 +36,7 @@
 
   .levelProgress {
     mix-blend-mode: lighten;
-    height: 60px;
+    height: 60px; // @todo: this should be dynamic from fit
     width: 100%;
     position: absolute;
     top: -5px;

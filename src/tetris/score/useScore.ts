@@ -27,6 +27,7 @@ const useScore = () => {
     scoreMessage,
     level,
     completedRowsCallback,
+    setLevel,
   }
 }
 
