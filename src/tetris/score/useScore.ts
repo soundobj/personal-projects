@@ -2,13 +2,15 @@ import { useState } from "react";
 import stopWatch from "../../stopWatch/stopWatch";
 import { levelProps, Level, getNextScore } from "./scoreUtis";
 
-const watch = stopWatch(levelProps[Level.EASY].gameSpeed);
+const initLevel = Level.EASY
+const initLevelSpeed = levelProps[initLevel].gameSpeed;
+const watch = stopWatch(initLevelSpeed);
 
 const useScore = () => {
   const [score, setScore] = useState<number>(0);
   const [lastScore, setLastScore ] = useState<number>(0);
-  const [level, setLevel] = useState<Level>(Level.EASY);
-  const scoreMessage = 'foo';
+  const [level, setLevel] = useState<Level>(initLevel);
+  const scoreMessage = 'foo'; // @TODO: show bonus messages when player clears multiple rows at once.
 
   const onScoreThresholdReached = (nextLevel: Level) => {
     setLevel(nextLevel);
@@ -16,8 +18,7 @@ const useScore = () => {
   }
 
   const resetLevel = () => {
-    watch.setIntervalLength(levelProps[Level.EASY].gameSpeed);
-    setLevel(Level.EASY);
+    onScoreThresholdReached(Level.EASY);
   }
 
   const completedRowsCallback = (completedRows: number) => {

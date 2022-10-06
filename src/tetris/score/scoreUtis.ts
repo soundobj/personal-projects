@@ -8,28 +8,28 @@ export enum Level {
 
 export const levelProps = Object.freeze({
   [Level.EASY]: {
-    rowCompletedValue: 101,
+    rowCompletedValue: 10,
     bonusPercentage: 0.1,
     nextLevelScoreThreshold: 100,
     unitCount: 100,
     gameSpeed: 700,
   },
   [Level.MEDIUM]: {
-    rowCompletedValue: 150,
+    rowCompletedValue: 15,
     bonusPercentage: 0.2,
     nextLevelScoreThreshold: 200,
     unitCount: 100,
     gameSpeed: 500,
   },
   [Level.HARD]: {
-    rowCompletedValue: 200,
+    rowCompletedValue: 20,
     bonusPercentage: 0.3,
     nextLevelScoreThreshold: 300,
     unitCount: 100,
     gameSpeed: 300,
   },
   [Level.INSANE]: {
-    rowCompletedValue: 300,
+    rowCompletedValue: 30,
     bonusPercentage: 0.4,
     nextLevelScoreThreshold: 400,
     unitCount: 100,

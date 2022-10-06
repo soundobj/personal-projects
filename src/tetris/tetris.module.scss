@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import "../sudoku/sass-vars.scss";
 
+$font-offset: -10px;
+
 .tetris {
   height: 100%; overflow: hidden;
   font-family: 'Luckiest Guy', cursive;
@@ -29,17 +31,17 @@
     }
 
     dd {
-      margin: 10px 0 -10px 0;
+      margin: 10px 0 $font-offset 0;
       vertical-align: text-top;
     }
   }
 
   .levelProgress {
     mix-blend-mode: lighten;
-    height: 60px; // @todo: this should be dynamic from fit
+    height: 100%;
     width: 100%;
     position: absolute;
-    top: -5px;
+    top: $font-offset;
 
     div {
       background-color: pink;

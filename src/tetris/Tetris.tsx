@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Direction, Shape, Tetrominoe } from './types';
 import { useHotkeys } from 'react-hotkeys-hook';
-import {  Level as LevelEnum } from "./score/scoreUtis";
+import { Level as LevelEnum } from "./score/scoreUtis";
 
 import {
   randomEnum,
