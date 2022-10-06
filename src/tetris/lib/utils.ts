@@ -1,4 +1,4 @@
-import { Shape, Game, Direction, Tetrominoe, Coordinate } from "../types";
+import { Shape, Direction, Tetrominoe, Coordinate } from "../types";
 import { levelProps, Level } from "../score/scoreUtis";
 import { ROWS, COLUMNS, SHAPES } from '../consts';
 import cloneDeep from 'lodash/cloneDeep'
