@@ -15,6 +15,11 @@ const useScore = () => {
     watch.setIntervalLength(levelProps[nextLevel].gameSpeed);
   }
 
+  const resetLevel = () => {
+    watch.setIntervalLength(levelProps[Level.EASY].gameSpeed);
+    setLevel(Level.EASY);
+  }
+
   const completedRowsCallback = (completedRows: number) => {
     const nextScore = getNextScore(score, completedRows, level, onScoreThresholdReached);
     setLastScore(score);
@@ -29,6 +34,7 @@ const useScore = () => {
     level,
     completedRowsCallback,
     setLevel,
+    resetLevel
   }
 }
 

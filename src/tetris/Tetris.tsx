@@ -3,7 +3,6 @@ import { Direction, Shape, Tetrominoe } from './types';
 import { useHotkeys } from 'react-hotkeys-hook';
 import {  Level as LevelEnum } from "./score/scoreUtis";
 
-
 import {
   randomEnum,
   getTestShape,
@@ -25,7 +24,7 @@ import styles from './tetris.module.scss'
 import GameOver from './gameOver/GameOver';
 
 const Tetris = () => {
-  const { watch, score, lastScore, scoreMessage, completedRowsCallback, level, setLevel } = useScore();
+  const { watch, score, lastScore, scoreMessage, completedRowsCallback, level, resetLevel } = useScore();
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
   const [showGameOver, setShowGameOver] = useState<boolean>(false);
@@ -91,11 +90,10 @@ const Tetris = () => {
 
   const onRestart = () => {
     setTimeout(() => {
-      watch.start();
+      resetLevel();
       boardRef.current = createMatrix();
       shapeRef.current = initShape(Tetrominoe.I, boardRef.current)
       setShowGameOver(false);
-      setLevel(LevelEnum.EASY)
       updateBoard();
     }, 400); // let moveitback animation play
   };
