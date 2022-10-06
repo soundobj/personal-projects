@@ -5,7 +5,6 @@ import { levelProps, Level, getNextScore } from "./scoreUtis";
 const watch = stopWatch(levelProps[Level.EASY].gameSpeed);
 
 const useScore = () => {
-
   const [score, setScore] = useState<number>(0);
   const [lastScore, setLastScore ] = useState<number>(0);
   const [level, setLevel] = useState<Level>(Level.EASY);

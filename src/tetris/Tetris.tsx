@@ -96,6 +96,7 @@ const Tetris = () => {
       shapeRef.current = initShape(Tetrominoe.I, boardRef.current)
       setShowGameOver(false);
       setLevel(LevelEnum.EASY)
+      updateBoard();
     }, 400); // let moveitback animation play
   };
 

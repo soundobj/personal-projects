@@ -50,7 +50,7 @@ export const stopWatch = (interval: number = 1000): StopWatch => {
       console.error('@_StopWatch is already running, cannot start!');
       return
     }
-    timer = setInterval(add, _interval); // one second
+    timer = setInterval(add, _interval);
     isRunning = true
   }
 
@@ -70,7 +70,11 @@ export const stopWatch = (interval: number = 1000): StopWatch => {
   
   const setCallback = (c:(c:any) => void) => callback = c
 
-  const setIntervalLength = (interval: number) => _interval = interval;
+  const setIntervalLength = (interval: number) => {
+    _interval = interval;
+    clearInterval(timer);
+    timer = setInterval(add, _interval);
+  };
 
   const getIsRunning = () => {
     return isRunning
