@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
-@import "../sudoku/sass-vars.scss";
+@import "./vars.scss";
 
 $font-offset: -10px;
 
@@ -10,7 +10,7 @@ $font-offset: -10px;
   .statsContainer {
     display: flex;
     justify-content: space-between;
-    max-width: 16rem+ ($gutter * 2);
+    max-width: $boardSize;
     margin: 0 auto;
     margin-top: 16px;
 

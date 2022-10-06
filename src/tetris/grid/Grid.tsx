@@ -1,5 +1,4 @@
 import React from "react";
-// @ts-ignore
 import classnames from 'classnames'
 import styles from  "./grid.module.scss"
 

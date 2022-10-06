@@ -4,8 +4,8 @@ import styles from "./score.module.scss"
 import { animateValue, easeInQuad } from './scoreUtis';
 import classNames from 'classnames';
 const Score = (props: Score) => {
-  const { score, scoreMessage, lastScore, className } = props;
-  const numberRef = useRef<HTMLElement>();
+  const { score, lastScore, className } = props;
+  const numberRef = useRef<HTMLDivElement>(null);
 
   const onValueUpdate = (value: number) => {
     if (numberRef && numberRef.current?.innerHTML) {
@@ -14,7 +14,6 @@ const Score = (props: Score) => {
   };
 
   useEffect(() => {
-    // @ts-ignore
     animateValue(lastScore, score, 500, onValueUpdate, easeInQuad);
   }, [score, lastScore]);
 
@@ -22,7 +21,6 @@ const Score = (props: Score) => {
     <dl className={styles.score}>
       <dt>score</dt>
       <dd>
-        {/* @ts-ignore */}
         <span ref={numberRef} className={classNames(styles.number, className)}>
           {score}
         </span>
@@ -34,7 +32,7 @@ const Score = (props: Score) => {
 type Score = {
   score: number,
   lastScore: number
-  scoreMessage: string,
+  scoreMessage?: string,
   className: string,
 }
 

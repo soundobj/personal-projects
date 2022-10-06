@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 
 import styles from "./level.module.scss"
 import classNames from 'classnames';
@@ -11,7 +11,7 @@ const Level = (props: Level) => {
   useEffect(() => {
     const levelTextFittyInstance = fitty(`.${styles.text}`);
     levelTextFittyInstance[0].element.addEventListener('fit', (e) => {
-      // @ts-ignore
+      // @ts-ignore fitty detail prop
       const newFontSize = e.detail.newValue;
       onLevelChange(newFontSize);
   });
@@ -31,7 +31,7 @@ const Level = (props: Level) => {
 }
 
 type Level = {
-  children?: any[],
+  children?: ReactElement,
   className?: string,
   level: string,
   onLevelChange: (newFontSize: number) => void;

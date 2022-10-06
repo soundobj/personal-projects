@@ -56,7 +56,6 @@ const Tetris = () => {
   }
 
   useHotkeys('left,right,up,down,/,space', (key) => {
-    // console.log('pressed something', key)
     hotKeysMap[key.code]();
   });
 
@@ -103,13 +102,11 @@ const Tetris = () => {
       <div className={styles.statsContainer}>
       <Score score={score} className={styles.score} lastScore={lastScore} scoreMessage={scoreMessage} />
       <Level level={level} onLevelChange={(newFontSize: number) => {
-        const scoreElement = document.getElementsByClassName(styles.score);
-        if (scoreElement.length) {
-          /* @ts-ignore */
-          scoreElement[0].style.fontSize = `${newFontSize}px`;
+        const scoreElement: HTMLElement | null = document.querySelector(`.${styles.score}`);
+        if (scoreElement) {
+          scoreElement.style.fontSize = `${newFontSize}px`;
         }
       }}>
-        {/* @ts-ignore */}
         <ProgressBar
           lastProgress={mapScoreToProgress(lastScore, level)}
           progress={mapScoreToProgress(score, level)}
