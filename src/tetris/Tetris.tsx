@@ -24,9 +24,6 @@ import Level from './level/Level';
 import styles from './tetris.module.scss'
 import GameOver from './gameOver/GameOver';
 
-// const spawnPositionStub = { x: 4, y: 12};
-const spawnPositionStub = undefined;
-
 const Tetris = () => {
   const { watch, score, lastScore, scoreMessage, completedRowsCallback, level, setLevel } = useScore();
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
@@ -35,7 +32,7 @@ const Tetris = () => {
 
   let [boardUpdate, setBoardUpdate] = useState<number>(1);
   const boardRef = useRef<number[][]>(createMatrix());
-  const shapeRef = useRef<Shape>(initShape(Tetrominoe.I, boardRef.current, spawnPositionStub));
+  const shapeRef = useRef<Shape>(initShape(Tetrominoe.I, boardRef.current));
 
   const updateBoard = (direction?: Direction) => {
     const clearBoard = clearShape(boardRef.current, shapeRef.current);
@@ -83,7 +80,7 @@ const Tetris = () => {
         setShowGameOver(true);
         watch.clear();
       } else {
-        shapeRef.current = initShape(Tetrominoe.I, boardRef.current, spawnPositionStub);
+        shapeRef.current = initShape(Tetrominoe.I, boardRef.current);
         setBoardUpdate(1);
         updateBoard();
       }
@@ -96,7 +93,7 @@ const Tetris = () => {
     setTimeout(() => {
       watch.start();
       boardRef.current = createMatrix();
-      shapeRef.current = initShape(Tetrominoe.I, boardRef.current, spawnPositionStub)
+      shapeRef.current = initShape(Tetrominoe.I, boardRef.current)
       setShowGameOver(false);
       setLevel(LevelEnum.EASY)
     }, 400); // let moveitback animation play
