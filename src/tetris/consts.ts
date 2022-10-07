@@ -59,6 +59,10 @@ export const SHAPES = {
   [Tetrominoe.T]: T,
 }
 
+export const tetrominoes = Object.keys(Tetrominoe);
 
-
-
+export const getRandomTetrominoe = (): Tetrominoe => {
+  const randomIndex = Math.floor(Math.random() * tetrominoes.length);
+  // @ts-ignore
+  return Tetrominoe[randomIndex];
+}

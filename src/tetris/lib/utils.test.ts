@@ -8,7 +8,7 @@ import {
   rotateShapeInBounds,
   clearBoardCompletedRows,
   mapScoreToProgress,
-  calculateBottomY
+  calculateBottomY,
 } from "./utils";
 import { Direction, Tetrominoe } from "../types";
 
@@ -45,7 +45,7 @@ describe("tetris utils", () => {
       expect(actual).toMatchObject(expected);
     });
   });
-  describe.only('calculateBottomY', () => {
+  describe('calculateBottomY', () => {
     it('moves shape to the lowest possible place in the board', () => {
       const board = [
         [0, 0, 2, 0, 0],
@@ -375,7 +375,7 @@ describe("tetris utils", () => {
       expect(actual).toMatchObject(expected);
     });
   });
-  describe.only('mapScoreToProgress', () => {
+  describe('mapScoreToProgress', () => {
     it('converst current score to a progress unit, MEDIUM', () => {
       const lastScore = 120;
       const currentLevel = Level.MEDIUM;
@@ -383,7 +383,7 @@ describe("tetris utils", () => {
       const actual = mapScoreToProgress(lastScore, currentLevel);
       expect(actual).toBe(2);
     });
-    it('converst current score to a progress unit', () => {
+    it('converts current score to a progress unit', () => {
       const score = 15;
       const currentLevel = Level.EASY;
 

@@ -1,13 +1,13 @@
 import { Shape, Direction, Tetrominoe, Coordinate } from "../types";
 import { levelProps, Level } from "../score/scoreUtis";
-import { ROWS, COLUMNS, SHAPES } from '../consts';
+import { ROWS, COLUMNS, SHAPES, tetrominoes } from '../consts';
 import cloneDeep from 'lodash/cloneDeep'
 
-export const randomEnum = <T>(anEnum: T): T[keyof T] => {
-  const enumValues = Object.keys(anEnum) as unknown as T[keyof T][];
-  const randomIndex = Math.floor(Math.random() * enumValues.length);
-  const randomEnumValue = enumValues[randomIndex];
-  return randomEnumValue;
+export const getRandomArrayIndex = (array: any[]): number => Math.floor(Math.random() * array.length);
+
+export const getRandomTetrominoe = (): Tetrominoe => {
+  const randomIndex = getRandomArrayIndex(tetrominoes);  
+  return Tetrominoe[tetrominoes[randomIndex] as keyof typeof Tetrominoe];
 }
 
 export const createMatrix = (rows: number = ROWS, columns: number = COLUMNS): number[][] => {

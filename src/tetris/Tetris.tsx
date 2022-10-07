@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Direction, Shape, Tetrominoe } from './types';
+import { Direction, Shape } from './types';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { Level as LevelEnum } from "./score/scoreUtis";
 
 import {
-  randomEnum,
   getTestShape,
   createMatrix,
   moveShape,
@@ -14,6 +12,7 @@ import {
   isShapeColliding,
   clearBoardCompletedRows,
   mapScoreToProgress,
+  getRandomTetrominoe
 } from './lib/utils';
 import Grid from './grid/Grid';
 import Score from './score/Score';
@@ -31,7 +30,7 @@ const Tetris = () => {
 
   let [boardUpdate, setBoardUpdate] = useState<number>(1);
   const boardRef = useRef<number[][]>(createMatrix());
-  const shapeRef = useRef<Shape>(initShape(Tetrominoe.I, boardRef.current));
+  const shapeRef = useRef<Shape>(initShape(getRandomTetrominoe(), boardRef.current));
 
   const updateBoard = (direction?: Direction) => {
     const clearBoard = clearShape(boardRef.current, shapeRef.current);
@@ -72,13 +71,15 @@ const Tetris = () => {
 
     const nextBoard = clearShape(boardRef.current, shapeRef.current);
     if (isShapeCollidingDownwards(nextBoard, shapeRef.current)) {
+
       boardRef.current = clearBoardCompletedRows(boardRef.current, shapeRef.current, completedRowsCallback);
+
       if (shapeRef.current.position.y === 0) {
-        updateBoard();
         setShowGameOver(true);
         watch.clear();
+        updateBoard();
       } else {
-        shapeRef.current = initShape(Tetrominoe.I, boardRef.current);
+        shapeRef.current = initShape(getRandomTetrominoe(), boardRef.current);
         setBoardUpdate(1);
         updateBoard();
       }
@@ -91,7 +92,7 @@ const Tetris = () => {
     setTimeout(() => {
       resetLevel();
       boardRef.current = createMatrix();
-      shapeRef.current = initShape(Tetrominoe.I, boardRef.current)
+      shapeRef.current = initShape(getRandomTetrominoe(), boardRef.current)
       setShowGameOver(false);
       updateBoard();
     }, 400); // let moveitback animation play
