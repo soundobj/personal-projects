@@ -3,6 +3,7 @@
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1;
 
   .outro {
     animation: moveitback 400ms ease forwards, fadeOut 400ms ease forwards; 
@@ -20,11 +21,12 @@
   }
 
   button {
-    color: lime;
+    color: white;
     font-size: 30pt;
     border: 0;
     padding: 0;
     background-color: inherit;
+    -webkit-text-stroke: 1px black;
   }
 }
 

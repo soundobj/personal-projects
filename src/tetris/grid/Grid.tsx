@@ -4,13 +4,14 @@ import styles from "./grid.module.scss"
 
 interface Props {
   game: number[][] | undefined;
+  className: string;
 }
 
 const Grid = (props: Props) => {
-  const { game } = props;
+  const { game, className } = props;
   return (
     <div
-      className={classnames(styles.grid)}
+      className={classnames(styles.grid, className)}
     >
       {game &&
         game.map((column: number[], y) => {

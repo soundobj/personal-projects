@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Direction, Shape } from './types';
 import { useHotkeys } from 'react-hotkeys-hook';
+import classnames from 'classnames';
 
 import {
   getTestShape,
@@ -116,7 +117,7 @@ const Tetris = () => {
       </Level>
       </div>
       { showGameOver && <GameOver onRestart={onRestart} /> }
-      <Grid game={boardRef.current} />
+      <Grid game={boardRef.current} className={classnames({ [styles.gameOver]: showGameOver})} />
     </div>);
 };
 

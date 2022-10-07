@@ -7,6 +7,10 @@ $font-offset: -10px;
   height: 100%; overflow: hidden;
   font-family: 'Luckiest Guy', cursive;
 
+  .gameOver {
+    filter: grayscale(1);
+  }
+
   .statsContainer {
     display: flex;
     justify-content: space-between;
