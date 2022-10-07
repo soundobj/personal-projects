@@ -19,6 +19,7 @@ const useScore = () => {
 
   const resetLevel = () => {
     onScoreThresholdReached(Level.EASY);
+    setScore(0);
   }
 
   const completedRowsCallback = (completedRows: number) => {
