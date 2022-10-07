@@ -102,7 +102,6 @@ const Tetris = () => {
   return (
     <div className={styles.tetris}>
       <div className={styles.statsContainer}>
-      <Score score={score} className={styles.score} lastScore={lastScore} scoreMessage={scoreMessage} />
       <Level level={level} onLevelChange={(newFontSize: number) => {
         const scoreElement: HTMLElement | null = document.querySelector(`.${styles.score}`);
         if (scoreElement) {
@@ -115,6 +114,7 @@ const Tetris = () => {
           className={styles.levelProgress}
         />
       </Level>
+      <Score score={score} className={styles.score} lastScore={lastScore} scoreMessage={scoreMessage} />
       </div>
       { showGameOver && <GameOver onRestart={onRestart} /> }
       <Grid game={boardRef.current} className={classnames({ [styles.gameOver]: showGameOver})} />

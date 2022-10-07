@@ -17,6 +17,7 @@ $font-offset: -10px;
     max-width: $boardSize;
     margin: 0 auto;
     margin-top: 16px;
+    padding-right: var(--board-padding);
 
     .score {
       background-color: inherit;
@@ -27,6 +28,10 @@ $font-offset: -10px;
 
       &:first-child {
         margin-right: 8px;
+      }
+
+      &:last-child {
+        text-align: right;
       }
     }
 
