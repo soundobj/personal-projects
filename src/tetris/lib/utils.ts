@@ -82,6 +82,8 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
     nextBoard = clearShape(matrix, shape);
   }
 
+  let nextRotatedShape: Shape;
+
   const { position } = shape;
   let nextPosition = { ...position };
 
@@ -102,10 +104,15 @@ export const moveShape = (matrix: number[][], shape: Shape, direction?: Directio
       nextPosition.x = position.x - 1;
       nextPosition.y = position.y;
       break;
-    case (Direction.CLOCKWISE || Direction.ANTI_CLOCKWISE):
-      const nextShape = rotateShapeInBounds(direction, shape, matrix);
-      nextPosition = nextShape.position;
-      shape.matrix = nextShape.matrix;
+    case (Direction.CLOCKWISE):
+      nextRotatedShape = rotateShapeInBounds(direction, shape, matrix);
+      nextPosition = nextRotatedShape.position;
+      shape.matrix = nextRotatedShape.matrix;
+      break;
+    case (Direction.ANTI_CLOCKWISE):
+      nextRotatedShape = rotateShapeInBounds(direction, shape, matrix);
+      nextPosition = nextRotatedShape.position;
+      shape.matrix = nextRotatedShape.matrix;
       break;
     default: {
       break;
