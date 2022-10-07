@@ -16,7 +16,7 @@ export enum Direction {
 export enum Tetrominoe {
   I = "I",
   O = "O",
-  J = "O",
+  J = "J",
   T = "T",
   L = "L",
   S = "S",
