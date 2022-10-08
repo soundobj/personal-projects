@@ -6,6 +6,7 @@ import Sudoku from "./sudoku/Sudoku";
 import Tetris from "./tetris/Tetris";
 import FoodCompare from "./foodComparison/foodCompare/FoodCompare";
 import IndexPage from "./indexPage/IndexPage";
+import Back from './back/Back';
 
 import "./App.css";
 
@@ -32,10 +33,10 @@ const projects = [
     link: "/sudoku",
   },
   {
-    thumb: `${process.env.PUBLIC_URL}/projects/sudoku.jpg`,
+    thumb: `${process.env.PUBLIC_URL}/projects/tetris.jpg`,
     title: "Tetris",
     caption:
-      "Classic puzzle game. Utilizes React Hooks, multiple difficulty levels and dark & light modes using CSS variables.",
+      "Classic arcade game. Multiple difficulty. Spring animations.",
     link: "/tetris",
   },
   {
@@ -57,6 +58,7 @@ export const App = () => {
       <Route path="/sudoku" component={Sudoku} />
       <Route path="/foodCompare" component={FoodCompare} />
       <Route path="/tetris" component={Tetris} />
+      <Back />
     </HashRouter>
   );
 };
