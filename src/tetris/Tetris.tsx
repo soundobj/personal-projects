@@ -22,9 +22,11 @@ import ProgressBar from './progressBar/ProgressBar';
 import Level from './level/Level';
 import styles from './tetris.module.scss'
 import GameOver from './gameOver/GameOver';
+import { useIsDevice } from '../hooks/useIsDevice';
 
 const Tetris = () => {
   const { watch, score, lastScore, scoreMessage, completedRowsCallback, level, resetLevel } = useScore();
+  const { isMobile } = useIsDevice();
   const [timeElapsed, setTimeElapsed] = useState(watch.getElapsedTime());
   watch.setCallback(setTimeElapsed);
   const [showGameOver, setShowGameOver] = useState<boolean>(false);
@@ -52,7 +54,7 @@ const Tetris = () => {
     'ArrowUp': () => updateBoard(Direction.CLOCKWISE),
     'ArrowDown': () => updateBoard(Direction.DOWN),
     'Slash': () => updateBoard(Direction.ANTI_CLOCKWISE),
-    'Space': () =>  updateBoard(Direction.BOTTOM),
+    'Space': () => updateBoard(Direction.BOTTOM),
   }
 
   useHotkeys('left,right,up,down,/,space', (key) => {
@@ -99,26 +101,34 @@ const Tetris = () => {
     }, 400); // let moveitback animation play
   };
 
+
+
   return (
     <div className={styles.tetris}>
-      <div className={styles.statsContainer}>
-      <Level level={level} onLevelChange={(newFontSize: number) => {
-        const scoreElement: HTMLElement | null = document.querySelector(`.${styles.score}`);
-        if (scoreElement) {
-          scoreElement.style.fontSize = `${newFontSize}px`;
-        }
-      }}>
-        <ProgressBar
-          lastProgress={mapScoreToProgress(lastScore, level)}
-          progress={mapScoreToProgress(score, level)}
-          className={styles.levelProgress}
-        />
-      </Level>
-      <Score score={score} className={styles.score} lastScore={lastScore} scoreMessage={scoreMessage} />
-      </div>
-      { showGameOver && <GameOver onRestart={onRestart} /> }
-      <Grid game={boardRef.current} className={classnames({ [styles.gameOver]: showGameOver})} />
-    </div>);
+      { isMobile ? <div className={styles.visitDesktop}>Mobile version coming soon, please visit the desktop version</div> : 
+      <>
+        <div className={styles.statsContainer}>
+          <Level level={level} onLevelChange={(newFontSize: number) => {
+            const scoreElement: HTMLElement | null = document.querySelector(`.${styles.score}`);
+            if (scoreElement) {
+              scoreElement.style.fontSize = `${newFontSize}px`;
+            }
+          }}>
+            <ProgressBar
+              lastProgress={mapScoreToProgress(lastScore, level)}
+              progress={mapScoreToProgress(score, level)}
+              className={styles.levelProgress}
+            />
+          </Level>
+          <Score score={score} className={styles.score} lastScore={lastScore} scoreMessage={scoreMessage} />
+        </div>
+        { showGameOver && <GameOver onRestart={onRestart} /> }
+        <Grid game={boardRef.current} className={classnames({ [styles.gameOver]: showGameOver })} />
+      </>
+      }
+    </div>
+
+  );
 };
 
 export default Tetris;

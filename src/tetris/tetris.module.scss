@@ -7,6 +7,16 @@ $font-offset: -10px;
   height: 100%; overflow: hidden;
   font-family: 'Luckiest Guy', cursive;
 
+  .visitDesktop {
+    font-size: 30pt;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
   .gameOver {
     filter: grayscale(1);
   }
