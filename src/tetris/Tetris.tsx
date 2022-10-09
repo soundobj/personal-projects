@@ -101,30 +101,29 @@ const Tetris = () => {
     }, 400); // let moveitback animation play
   };
 
-
-
   return (
     <div className={styles.tetris}>
-      { isMobile ? <div className={styles.visitDesktop}>Mobile version coming soon, please visit the desktop version</div> : 
-      <>
-        <div className={styles.statsContainer}>
-          <Level level={level} onLevelChange={(newFontSize: number) => {
-            const scoreElement: HTMLElement | null = document.querySelector(`.${styles.score}`);
-            if (scoreElement) {
-              scoreElement.style.fontSize = `${newFontSize}px`;
-            }
-          }}>
-            <ProgressBar
-              lastProgress={mapScoreToProgress(lastScore, level)}
-              progress={mapScoreToProgress(score, level)}
-              className={styles.levelProgress}
-            />
-          </Level>
-          <Score score={score} className={styles.score} lastScore={lastScore} scoreMessage={scoreMessage} />
-        </div>
-        { showGameOver && <GameOver onRestart={onRestart} /> }
-        <Grid game={boardRef.current} className={classnames({ [styles.gameOver]: showGameOver })} />
-      </>
+      {isMobile
+        ? <div className={styles.visitDesktop}>Mobile version coming soon, please visit the desktop version</div>
+        : <>
+          <div className={styles.statsContainer}>
+            <Level level={level} onLevelChange={(newFontSize: number) => {
+              const scoreElement: HTMLElement | null = document.querySelector(`.${styles.score}`);
+              if (scoreElement) {
+                scoreElement.style.fontSize = `${newFontSize}px`;
+              }
+            }}>
+              <ProgressBar
+                lastProgress={mapScoreToProgress(lastScore, level)}
+                progress={mapScoreToProgress(score, level)}
+                className={styles.levelProgress}
+              />
+            </Level>
+            <Score score={score} className={styles.score} lastScore={lastScore} scoreMessage={scoreMessage} />
+          </div>
+          {showGameOver && <GameOver onRestart={onRestart} />}
+          <Grid game={boardRef.current} className={classnames({ [styles.gameOver]: showGameOver })} />
+        </>
       }
     </div>
 
