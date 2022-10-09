@@ -7,6 +7,19 @@ $font-offset: -10px;
   height: 100%; overflow: hidden;
   font-family: 'Luckiest Guy', cursive;
 
+  .info {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer {
+    max-width: $boardSize;
+    margin: 0 auto;
+    padding-right: var(--board-padding);
+    margin-top: 5px;
+    padding-left: 7px;
+  }
+
   .visitDesktop {
     font-size: 30pt;
     text-align: center;

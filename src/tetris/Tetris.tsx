@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Direction, Shape } from './types';
 import { useHotkeys } from 'react-hotkeys-hook';
 import classnames from 'classnames';
+import ReactTooltip from 'react-tooltip';
 
 import {
   getTestShape,
@@ -23,6 +24,8 @@ import Level from './level/Level';
 import styles from './tetris.module.scss'
 import GameOver from './gameOver/GameOver';
 import { useIsDevice } from '../hooks/useIsDevice';
+import Info from './info/Info';
+import { ReactComponent as InfoIcon } from "../assets/info.svg";
 
 const Tetris = () => {
   const { watch, score, lastScore, scoreMessage, completedRowsCallback, level, resetLevel } = useScore();
@@ -123,6 +126,17 @@ const Tetris = () => {
           </div>
           {showGameOver && <GameOver onRestart={onRestart} />}
           <Grid game={boardRef.current} className={classnames({ [styles.gameOver]: showGameOver })} />
+          <footer className={styles.footer}>
+            <InfoIcon
+              data-tip=''
+              data-for="test"
+              className={styles.info}
+            />
+            <ReactTooltip
+              id="test"
+              getContent={() => <Info />}
+            />
+          </footer>
         </>
       }
     </div>
