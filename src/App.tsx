@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter, Route } from "react-router-dom";
-import { createBrowserHistory } from "history";
+// import { createBrowserHistory } from "history";
 
 import Sudoku from "./sudoku/Sudoku";
 import Tetris from "./tetris/Tetris";
@@ -10,7 +10,7 @@ import Back from './back/Back';
 
 import "./App.css";
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 
 const projects = [
   {
