@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react';
+import { animateValue, easeInQuad } from '../lib/springAnimation/animateValue';
 
-import styles from "./score.module.scss"
-import { animateValue, easeInQuad } from './scoreUtis';
-import classNames from 'classnames';
 const Score = (props: Score) => {
   const { score, lastScore, className } = props;
   const numberRef = useRef<HTMLDivElement>(null);
@@ -18,10 +16,10 @@ const Score = (props: Score) => {
   }, [score, lastScore]);
 
   return (
-    <dl className={styles.score}>
+    <dl>
       <dt>score</dt>
       <dd>
-        <span ref={numberRef} className={classNames(styles.number, className)}>
+        <span ref={numberRef} className={className}>
           {score}
         </span>
       </dd>
