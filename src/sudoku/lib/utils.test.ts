@@ -176,7 +176,7 @@ describe("sudoku/utils", () => {
   })
   describe('createDifficultyMap',() => {
     it('creates a map to track how many occurrences of a number should be displayed in the board', () => {
-      const res = utils.createNumberDifficultyMap([2,4,6], VALID_NUMBERS)
+      const res = utils.createNumberDifficultyMap(GameLevel.EASY, [2,4,6])
       expect(Object.keys(res)).toMatchObject(["1","2","3"])
       expect(res[1].count).toBeLessThanOrEqual(2)
       expect(res[2].count).toBeLessThanOrEqual(4)
