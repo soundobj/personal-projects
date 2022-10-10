@@ -31,7 +31,7 @@
     "fast-deep-equal": "^3.1.1",
     "fast-memoize": "^2.5.2",
     "fitty": "^2.3.6",
-    "immer": "^6.0.3",
+    "immer": "^9.0.6",
     "jsdom": "^19.0.0",
     "lodash": "^4.17.19",
     "memoize-one": "^5.1.1",
