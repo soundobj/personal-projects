@@ -1,0 +1,22 @@
+.progressBarContainer {
+  border: solid 1px black;
+  overflow: hidden;
+  position: relative;
+
+  div {
+    background-color: orange;
+  }
+
+  .completedPercentage {
+    height: 100%;
+    width: 10%;
+    transform-origin: left center;
+  }
+
+  .completedPercentageSpring {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

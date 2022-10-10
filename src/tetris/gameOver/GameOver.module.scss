@@ -1,0 +1,60 @@
+.gameOver {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  .outro {
+    animation: moveitback 400ms ease forwards, fadeOut 400ms ease forwards; 
+  }
+
+  main {
+    font-size: 80pt;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    opacity: 1;
+    animation: moveit 900ms ease forwards, fadeIn 900ms ease forwards;
+    will-change: transform;
+  }
+
+  button {
+    color: white;
+    font-size: 30pt;
+    border: 0;
+    padding: 0;
+    background-color: inherit;
+    -webkit-text-stroke: 1px black;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes moveit {
+  0% { transform: translateY(0) scale3d(0.96,0.96,1); }
+  20% { transform: translateY(80px) scale3d(1.1,1.1,1); }
+  40% { transform: translateY(50px) scale3d(0.98,0.98,1); }
+  60% { transform: translateY(62px) scale3d(1.05,1.05,1); }
+  80% { transform: translateY(60px) scale3d(1.01,1.01,1); }
+  100% { transform: translateY(60px) scale3d(1,1,1); }
+}
+
+@keyframes moveitback {
+  0% { transform: translateY(60px); }
+  100% { transform: translateY(0) scale3d(0.96,0.96,1); }
+}
+
+@keyframes scale {
+  0% { transform: scale3d(0.96,0.96,1); }
+  100% { transform: scale3d(1,1,1); }
+}

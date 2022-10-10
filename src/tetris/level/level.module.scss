@@ -1,0 +1,10 @@
+@import "../vars.scss";
+
+.container {
+  position: relative;
+
+  .text {
+    mix-blend-mode: normal;
+    -webkit-text-stroke: 1.5px $levelColor;
+  }
+}

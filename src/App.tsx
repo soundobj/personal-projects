@@ -1,14 +1,13 @@
 import React from "react";
 import { HashRouter, Route } from "react-router-dom";
-import { createBrowserHistory } from "history";
 
 import Sudoku from "./sudoku/Sudoku";
+import Tetris from "./tetris/Tetris";
 import FoodCompare from "./foodComparison/foodCompare/FoodCompare";
 import IndexPage from "./indexPage/IndexPage";
+import Back from './back/Back';
 
 import "./App.css";
-
-const history = createBrowserHistory();
 
 const projects = [
   {
@@ -31,6 +30,13 @@ const projects = [
     link: "/sudoku",
   },
   {
+    thumb: `${process.env.PUBLIC_URL}/projects/tetris.jpg`,
+    title: "Tetris",
+    caption:
+      "Classic arcade game. Multiple difficulty. Spring animations.",
+    link: "/tetris",
+  },
+  {
     thumb: `${process.env.PUBLIC_URL}/GitHub-Mark-120px-plus.png`,
     title: "Github",
     caption: "Take a peek a some personal projects.",
@@ -48,6 +54,8 @@ export const App = () => {
       />
       <Route path="/sudoku" component={Sudoku} />
       <Route path="/foodCompare" component={FoodCompare} />
+      <Route path="/tetris" component={Tetris} />
+      <Back />
     </HashRouter>
   );
 };

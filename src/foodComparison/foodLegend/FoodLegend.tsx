@@ -31,6 +31,7 @@ const FoodLegend = (props: { legendData: Legend[] }) => {
               <ul className="foodLegend__item__values">
                 {item.values.map((value, index) => (
                   <li
+                    key={`foodLegendItem-${index}`}
                     className={`foodLegend__item__value ${
                       index === 1 && "dark"
                     }`}

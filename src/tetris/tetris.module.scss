@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import "./vars.scss";
+
+$font-offset: -10px;
+
+.tetris {
+  height: 100%; overflow: hidden;
+  font-family: 'Luckiest Guy', cursive;
+
+  .info {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer {
+    max-width: $boardSize;
+    margin: 0 auto;
+    padding-right: var(--board-padding);
+    margin-top: 5px;
+    padding-left: 7px;
+  }
+
+  .visitDesktop {
+    font-size: 30pt;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .gameOver {
+    filter: grayscale(1);
+  }
+
+  .statsContainer {
+    display: flex;
+    justify-content: space-between;
+    max-width: $boardSize;
+    margin: 0 auto;
+    margin-top: 16px;
+    padding-right: var(--board-padding);
+
+    .score {
+      background-color: inherit;
+    }
+
+    dl {
+      width: 50%;
+
+      &:first-child {
+        margin-right: 8px;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    dt {
+      border-bottom: solid 1px black;
+    }
+
+    dd {
+      margin: 10px 0 $font-offset 0;
+      vertical-align: text-top;
+    }
+  }
+
+  .levelProgress {
+    mix-blend-mode: lighten;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: $font-offset;
+
+    div {
+      background-color: $levelColor;
+    }
+  }
+}

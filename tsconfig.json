@@ -17,7 +17,8 @@
     "jsx": "react",
     "strict": true,
     "isolatedModules": true,
-    "module": "esnext"
+    "module": "esnext",
+    "downlevelIteration": true
   },
   "include": [
     "src"

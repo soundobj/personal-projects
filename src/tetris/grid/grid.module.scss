@@ -1,0 +1,56 @@
+@import "../../sudoku/sass-vars.scss";
+@import "../vars.scss";
+
+$border: var(--boardGridWidth) solid var(--boardGridArea);
+
+.grid {
+  display: grid;
+  grid: repeat(10, auto) / repeat(10, auto);
+  max-width: $boardSize;
+  margin: 0 auto;
+  padding-right: var(--board-padding);
+
+  & > div {
+    border-top: $border;
+    border-left: $border;
+    text-align: center;
+  }
+
+  // /* outer bottom black line row */
+  & > div:nth-last-child(-n + 10) {
+    border-bottom: $border;
+  }
+
+  /* outer right black line column */
+  & > div:nth-child(10n) {
+    border-right: $border;
+  }
+}
+
+.cell {
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 4 / 4;
+}
+
+.color1 {
+  background-color: #82BAFF;
+}
+.color2 {
+  background-color: #749EFF;
+}
+.color3 {
+  background-color: #B4A5FF
+}
+.color4 {
+  background-color: #BA93FF
+}
+.color5 {
+  background-color: #FFABF5
+}
+.color6 {
+  background-color: #FFBEE8
+}
+.color7 {
+  background-color: #FFAAD0
+}

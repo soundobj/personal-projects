@@ -6,5 +6,8 @@ module.exports = {
     'ts-jest': {
       diagnostics: false
     }
-  }
+  },
+  setupFiles: [
+    "./__mocks__/client.js"
+  ],
 };
