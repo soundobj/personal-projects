@@ -31,9 +31,9 @@ export const levelProps = Object.freeze({
   [Level.INSANE]: {
     rowCompletedValue: 30,
     bonusPercentage: 0.4,
-    nextLevelScoreThreshold: 9999999999999,
+    nextLevelScoreThreshold: 400,
     unitCount: 100,
-    gameSpeed: 100,
+    gameSpeed: 200,
   },
 });
 
